@@ -15,7 +15,10 @@ class Article extends Model
         'name',
         'quantity',
         'photo',
-        'technical_sheet'
+        'technical_sheet',
+        'id_presentation',
+        'id_category',
+        'id_supplier'
     ];
 
     public function presentation() {

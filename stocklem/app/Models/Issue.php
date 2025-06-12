@@ -8,4 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Issue extends Model
 {
     use HasFactory;
+
+    protected $table = 'issue';
+
+    protected $fillable = [
+        'date',
+        'quantity',
+        'observations',
+        'id_article',
+        'document',
+        'id_unit'
+    ];
+
+    public function article() {
+        return $this->belongsTo(Article::class);
+    }
+
+    public function person() {
+        return $this->belongsTo(Person::class);
+    }
+
+    public function unit() {
+        return $this->belongsTo(Unit::class);
+    }
 }
