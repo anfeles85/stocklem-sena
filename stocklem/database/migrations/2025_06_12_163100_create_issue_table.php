@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('issue', function (Blueprint $table) {
             $table->id();
-            $table->date('date')->comment('fecha salida');
+            $table->date('date_issue')->comment('fecha salida');
             $table->integer('quantity')->comment('cantidad salida');
             $table->text('observations')->comment('observaciones salida');
             $table->foreignId('article_id')->constrained('article')->onDelete('cascade')->onUpdate('cascade')->comment('FK con articulo');
