@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('supplier', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->comment('Nombre suplemento');
-            $table->string('phone')->comment('Telefono suplemento');
+            $table->string('name')->comment('Nombre proveedor');
+            $table->string('phone')->comment('Telefono proveedor');
             $table->timestamps();
         });
     }

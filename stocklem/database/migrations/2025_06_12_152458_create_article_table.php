@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('article', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->comment('nombre articulo');
+            $table->integer('quantity')->comment('cantidad articulo');
+            $table->string('photo',255)->comment('foto articulo');
+            $table->string('technical_sheet')->comment('ficha tecnica articulo');
+            $table->foreignId('presentation_id')->constrained('presentation')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con presentacion');
+            $table->foreignId('category_id')->constrained('category')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con categoria');
+            $table->foreignId('supplier_id')->constrained('supplier')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con proveedor');;
             $table->timestamps();
         });
     }
