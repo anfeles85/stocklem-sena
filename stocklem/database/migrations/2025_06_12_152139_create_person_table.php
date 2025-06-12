@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('person', function (Blueprint $table) {
-            $table->bigInteger('document')->default(19)->primary()->comment('documento persona');
+            $table->id();
+            $table->bigInteger('document')->unique()->comment('documento persona');
             $table->string('phone')->nullable()->comment('telefono persona');
             $table->string('name')->comment('nombre persona');
             $table->timestamps();

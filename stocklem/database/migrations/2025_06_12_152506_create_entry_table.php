@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('entry', function (Blueprint $table) {
             $table->id();
+            $table->string('sena_code')->comment('codigo sena');
+            $table->date('date')->comment('fecha entrada');
+            $table->date('expiration_date')->comment('fecha expiracion');
+            $table->integer('quantity')->comment('cantidad entrada');
+            $table->text('observations')->comment('observaciones entrada');
+            $table->foreignId('article_id')->constrained('article')->onDelete('cascade')->onUpdate('cascade')->comment('FK con articulo');
             $table->timestamps();
         });
     }
