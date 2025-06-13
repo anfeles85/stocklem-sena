@@ -21,14 +21,14 @@ class Issue extends Model
     ];
 
     public function article() {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Article::class, 'id_article');
     }
 
     public function person() {
-        return $this->belongsTo(Person::class);
+        return $this->belongsTo(Person::class, 'document');
     }
 
     public function unit() {
-        return $this->belongsTo(Unit::class);
+        return $this->belongsTo(Unit::class, 'id_unit');
     }
 }

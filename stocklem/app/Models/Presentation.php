@@ -14,4 +14,8 @@ class Presentation extends Model
     protected $fillable = [
         'description'
     ];
+
+    public function article() {
+        return $this->hasMany(Article::class);
+    }
 }

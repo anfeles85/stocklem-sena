@@ -22,14 +22,14 @@ class Article extends Model
     ];
 
     public function presentation() {
-        return $this->belongsTo(Presentation::class);
+        return $this->belongsTo(Presentation::class, 'id_presentation');
     }
 
     public function category() {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'id_category');
     }
 
     public function supplier() {
-        return $this->belongsTo(Supplier::class);
+        return $this->belongsTo(Supplier::class, 'id_supplier');
     }
 }

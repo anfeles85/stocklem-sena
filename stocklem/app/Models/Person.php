@@ -15,4 +15,8 @@ class Person extends Model
         'phone',
         'name'
     ];
+
+    public function issue() {
+        return $this->hasMany(Issue::class);
+    }
 }
