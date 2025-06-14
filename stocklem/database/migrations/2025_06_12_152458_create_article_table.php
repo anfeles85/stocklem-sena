@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name')->comment('nombre articulo');
             $table->integer('quantity')->comment('cantidad articulo');
-            $table->string('photo',255)->comment('foto articulo');
-            $table->string('technical_sheet')->comment('ficha tecnica articulo');
-            $table->foreignId('presentation_id')->constrained('presentation')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con presentacion');
-            $table->foreignId('category_id')->constrained('category')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con categoria');
-            $table->foreignId('supplier_id')->constrained('supplier')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con proveedor');;
+            $table->string('photo',255)->nullable()->comment('foto articulo');
+            $table->string('technical_sheet')->nullable()->comment('ficha tecnica articulo');
+            $table->foreignId('presentation_id')->nullable()->constrained('presentation')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con presentacion');
+            $table->foreignId('category_id')->nullable()->constrained('category')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con categoria');
+            $table->foreignId('supplier_id')->nullable()->constrained('supplier')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con proveedor');;
             $table->timestamps();
         });
     }
