@@ -16,7 +16,7 @@ class Category extends Model
         'description'
     ];
 
-    public function article() {
+    public function articles() {
         return $this->hasMany(Article::class);
     }
 }
