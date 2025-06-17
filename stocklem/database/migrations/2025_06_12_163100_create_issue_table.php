@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('date_issue')->comment('fecha salida');
             $table->integer('quantity')->comment('cantidad salida');
-            $table->text('observations')->comment('observaciones salida');
+            $table->text('observations')->nullable()->comment('observaciones salida');
             $table->foreignId('article_id')->constrained('article')->onDelete('cascade')->onUpdate('cascade')->comment('FK con articulo');
             $table->foreignId('document')->constrained('person')->onDelete('cascade')->onUpdate('cascade')->comment('FK con persona');
             $table->foreignId('unit_id')->constrained('unit')->onDelete('cascade')->onUpdate('cascade')->comment('FK con unidad');
