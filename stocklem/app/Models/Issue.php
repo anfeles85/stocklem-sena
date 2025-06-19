@@ -12,23 +12,23 @@ class Issue extends Model
     protected $table = 'issue';
 
     protected $fillable = [
-        'date',
+        'date_issue',
         'quantity',
         'observations',
-        'id_article',
-        'document',
-        'id_unit'
+        'article_id',
+        'person_id',
+        'unit_id'
     ];
 
     public function article() {
-        return $this->belongsTo(Article::class, 'id_article');
+        return $this->belongsTo(Article::class, 'article_id');
     }
 
     public function person() {
-        return $this->belongsTo(Person::class, 'document');
+        return $this->belongsTo(Person::class, 'person_id');
     }
 
     public function unit() {
-        return $this->belongsTo(Unit::class, 'id_unit');
+        return $this->belongsTo(Unit::class, 'unit_id');
     }
 }

@@ -13,10 +13,11 @@ class Person extends Model
 
     protected $fillable = [
         'phone',
+        'document',
         'name'
     ];
 
-    public function issue() {
+    public function issues() {
         return $this->hasMany(Issue::class);
     }
 }
