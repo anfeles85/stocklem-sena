@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\PresentationController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,3 +48,23 @@ Route::prefix()->group(function(){
     Route::get('/update/{id}', [PresentationController::class, 'update'])->name('presentation.update');
     Route::get('/destroy/{id}', [PresentationController::class, 'destroy'])->name('presentation.destroy');
 });
+
+    Route::prefix()->group(function(){
+    Route::get('/index', [SupplierController::class, 'index'])->name('supplier.index');
+    Route::get('/create', [SupplierController::class, 'create'])->name('supplier.create');
+    Route::get('/store', [SupplierController::class, 'store'])->name('supplier.store');
+    Route::get('/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
+    Route::get('/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
+    Route::get('/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
+});
+
+    Route::prefix()->group(function(){
+    Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
+    Route::get('/create', [UnitController::class, 'create'])->name('unit.create');
+    Route::get('/store', [UnitController::class, 'store'])->name('unit.store');
+    Route::get('/edit/{id}', [UnitController::class, 'edit'])->name('unit.edit');
+    Route::get('/update/{id}', [UnitController::class, 'update'])->name('unit.update');
+    Route::get('/destroy/{id}', [UnitController::class, 'destroy'])->name('unit.destroy');
+});
+
+
