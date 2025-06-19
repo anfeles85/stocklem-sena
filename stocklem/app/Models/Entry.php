@@ -13,14 +13,14 @@ class Entry extends Model
 
     protected $fillable = [
         'sena_code',
-        'date',
+        'date_entry',
         'expiration_date',
         'quantity',
         'observations',
-        'id_article'
+        'article_id'
     ];
 
     public function article() {
-        return $this->belongsTo(Article::class, 'id_article');
+        return $this->belongsTo(Article::class, 'article_id');
     }
 }

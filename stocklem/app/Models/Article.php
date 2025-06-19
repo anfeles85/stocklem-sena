@@ -16,20 +16,20 @@ class Article extends Model
         'quantity',
         'photo',
         'technical_sheet',
-        'id_presentation',
-        'id_category',
-        'id_supplier'
+        'presentation_id',
+        'category_id',
+        'supplier_id'
     ];
 
     public function presentation() {
-        return $this->belongsTo(Presentation::class, 'id_presentation');
+        return $this->belongsTo(Presentation::class, 'presentation_id');
     }
 
     public function category() {
-        return $this->belongsTo(Category::class, 'id_category');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function supplier() {
-        return $this->belongsTo(Supplier::class, 'id_supplier');
+        return $this->belongsTo(Supplier::class, 'supplier_id');
     }
 }
