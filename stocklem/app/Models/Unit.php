@@ -15,7 +15,7 @@ class Unit extends Model
         'name'
     ];
 
-    public function issue() {
+    public function issues() {
         return $this->hasMany(Issue::class);
     }
 }

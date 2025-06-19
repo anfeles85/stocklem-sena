@@ -24,8 +24,8 @@ class IssueSeeder extends Seeder
         $article = Article::where('id', 1)->first();
         $issue->article_id = $article->id;
 
-        $person = Person::where('document', 1001111111)->first();
-        $issue->document= $person->id;
+        $person = Person::where('id', 1)->first();
+        $issue->person_id=$person->id;
 
         $unit = Unit::where('id', 1)->first();
         $issue->unit_id = $unit->id;
