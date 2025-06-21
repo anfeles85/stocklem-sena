@@ -1,0 +1,58 @@
+/* Variables de colores SENA y ambientales */
+:root {
+    --sena-green: #00995D;
+    --sena-dark: #003B29;
+    --sena-light: #E8F5F0;
+    --sena-accent: #66B366;
+    --earth-brown: #8B4513;
+    --nature-beige: #F5F5DC;
+}
+
+/* Tipografía */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Colores principales SENA */
+.bg-sena {
+    background-color: var(--sena-green) !important;
+}
+
+.bg-sena-dark {
+    background-color: var(--sena-dark) !important;
+}
+
+.bg-sena-light {
+    background-color: var(--sena-light) !important;
+}
+
+.text-sena {
+    color: var(--sena-green) !important;
+}
+
+.text-sena-dark {
+    color: var(--sena-dark) !important;
+}
+
+.border-sena {
+    border-color: var(--sena-green) !important;
+}
+
+/* Navegación lateral */
+.nav-link-hover {
+    transition: all 0.3s ease;
+}
+
+.nav-link-hover:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.nav-link.active {
+    background-color: var(--sena-green) !important;
+    border-radius: 8px;
+    margin: 0 10px;
+}

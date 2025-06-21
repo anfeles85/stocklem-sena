@@ -1,67 +1,55 @@
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
-    <!-- Logo Container -->
-    <div class="text-center py-4">
-        <img src="{{ asset('img/stockclem-logo.png') }}" class="img-fluid" style="max-width: 140px;">
-        <h4 class="text-dark mt-3">STOCK CLEM</h4>
+<nav class="bg-sena-dark text-white d-none d-lg-block" style="width: 280px; min-height: 100vh; position: fixed; left: 0; top: 0; z-index: 1000;">
+    <!-- Logo -->
+    <div class="text-center py-4 border-bottom border-secondary">
+        <img src="{{ asset('img/stockclem-logo.png') }}" class="img-fluid mb-3" style="max-width: 180px;" alt="STOCKCLEM Logo">
+        <h4 class="text-white mb-0 fw-bold">STOCKCLEM</h4>
+        <small class="text-white-50">Sistema de Inventario</small>
     </div>
-    
-    <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse w-auto">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a href="" class="nav-link d-flex align-items-center">
-            <div class="d-flex justify-content-center align-items-center me-3">
-              <i class="fa-solid fa-house fs-5"></i>
-            </div>
-            <span class="nav-link-text fs-5">Inicio</span>
-          </a>
-        </li>
 
-        <li class="nav-item">
-          <a href="" class="nav-link d-flex align-items-center">
-            <div class="d-flex justify-content-center align-items-center me-3">
-              <i class="fa-solid fa-users fs-5"></i>
-            </div>
-            <span class="nav-link-text fs-5">Usuarios</span>
-          </a>
-        </li>
+    <!-- Navigation Menu -->
+    <div class="py-3">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a href="{{ route('index') }}" class="nav-link text-white d-flex align-items-center py-3 px-4 nav-link-hover">
+                    <i class="fas fa-home me-3"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white d-flex align-items-center py-3 px-4 nav-link-hover">
+                    <i class="fas fa-users me-3"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white d-flex align-items-center py-3 px-4 nav-link-hover">
+                    <i class="fas fa-truck me-3"></i>
+                    <span>Proveedores</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white d-flex align-items-center py-3 px-4 nav-link-hover">
+                    <i class="fas fa-warehouse me-3"></i>
+                    <span>Inventario</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white d-flex align-items-center py-3 px-4 nav-link-hover">
+                    <i class="fas fa-route me-3"></i>
+                    <span>Trazabilidad</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white d-flex align-items-center py-3 px-4 nav-link-hover">
+                    <i class="fas fa-chart-bar me-3"></i>
+                    <span>Reportes</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-        <li class="nav-item">
-          <a href="" class="nav-link d-flex align-items-center">
-            <div class="d-flex justify-content-center align-items-center me-3">
-              <i class="fa-solid fa-truck fs-5"></i>
-            </div>
-            <span class="nav-link-text fs-5">Proveedores</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="" class="nav-link d-flex align-items-center">
-            <div class="d-flex justify-content-center align-items-center me-3">
-              <i class="fa-solid fa-warehouse fs-5"></i>
-            </div>
-            <span class="nav-link-text fs-5">Inventario</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="" class="nav-link d-flex align-items-center">
-            <div class="d-flex justify-content-center align-items-center me-3">
-              <i class="fa-solid fa-timeline fs-5"></i>
-            </div>
-            <span class="nav-link-text fs-5">Trazabilidad</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a href="" class="nav-link d-flex align-items-center">
-            <div class="d-flex justify-content-center align-items-center me-3">
-              <i class="fa-solid fa-clipboard-check fs-5"></i>
-            </div>
-            <span class="nav-link-text fs-5">Reportes</span>
-          </a>
-        </li>
-
-      </ul>
-    </div>   
-  </aside>
+<!-- Spacer for fixed sidebar - only on large screens -->
+<div class="d-none d-lg-block" style="margin-left: 280px;">
+    <!-- Content will be pushed here -->
+</div>
