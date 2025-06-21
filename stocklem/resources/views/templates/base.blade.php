@@ -22,7 +22,7 @@
         @include('templates.nav')
         
         <!-- Main Content -->
-        <div class="flex-fill">
+        <div class="flex-fill" style="margin-left: 260px;">
             <!-- Top Bar -->
             @include('templates.topbar')
             
