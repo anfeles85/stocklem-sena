@@ -2,6 +2,6 @@
 @section('title', 'Editar categoria')
 @section('header', 'Editar categoria')
 @section('content')
-    @include('templates.messages')
+   
 
 @endsection
