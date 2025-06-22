@@ -6,7 +6,7 @@
     </div>
     <ul class="nav flex-column mt-3">
         <li class="nav-item">
-            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+            <a href="{{ route('index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
                 <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
                     <i class="fas fa-home"></i>
                 </div>
@@ -38,7 +38,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+            <a href="{{ route('category.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
                 <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
                     <i class="fas fa-tags"></i>
                 </div>
@@ -46,7 +46,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+            <a href="{{ route('presentation.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
                 <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
                     <i class="fas fa-cubes"></i>
                 </div>
@@ -70,7 +70,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+            <a href="{{ route('unit.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
                 <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
                     <i class="fas fa-weight-hanging"></i>
                 </div>
