@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+            <a href="{{ route('person.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
                 <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
                     <i class="fas fa-user-friends"></i>
                 </div>
@@ -22,7 +22,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+            <a href="{{ route('supplier.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
                 <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
                     <i class="fas fa-truck"></i>
                 </div>
