@@ -1,0 +1,29 @@
+@extends('templates.base')
+@section('title', 'Crear presentación')
+@section('header', 'Crear presentación')
+@section('content')
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <form action="{{ route('presentation.store') }}" method="POST">
+                @csrf
+                <div class="row form-group">
+                    <div class="col-lg-12 mb-4">
+                        <label for="description">Descripción</label>
+                        <input type="text" class="form-control" name="description" id="description" required
+                            value="{{ old('description') }}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 d-grid">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                    <div class="col-md-6 d-grid">
+                        <a href="{{ route('presentation.index') }}" class="btn btn-danger">Cancelar</a>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+
+@endsection
