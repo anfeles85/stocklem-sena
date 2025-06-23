@@ -30,11 +30,10 @@
                                     class="btn btn-warning btn-sm me-1" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('supplier.destroy', $supplier->id) }}" method="POST" class="d-inline">
+                                <form id="form-delete-{{ $supplier->id }}" action="{{ route('supplier.destroy', $supplier->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" title="Eliminar"
-                                        onclick="return confirm('¿Seguro que desea eliminar este proveedor?')">
+                                    <button type="button" class="btn btn-danger btn-sm" title="Eliminar" onclick="remove({{ $supplier->id }})">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
@@ -50,4 +49,39 @@
             </table>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '¡OK!',
+                text: '{{ session('success') }}',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+
+    <script>
+        function remove(id) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡Esta acción no se puede deshacer!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('form-delete-' + id).submit();
+                }
+            });
+    
+        }
+    </script>    
 @endsection
