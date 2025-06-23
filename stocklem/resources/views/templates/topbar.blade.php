@@ -1,33 +1,17 @@
-<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
-      <div class="container-fluid py-1 px-3">
-        <nav aria-label="breadcrumb">          
-          <h6 class="font-weight-bolder text-white mb-0">@yield('header')</h6>
-        </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            </div>
-          </div>
-          <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
-              </a>
-            </li>
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line bg-white"></i>
-                  <i class="sidenav-toggler-line bg-white"></i>
-                  <i class="sidenav-toggler-line bg-white"></i>
-                </div>
-              </a>
-            </li>           
-           
-          </ul>
+<nav class="navbar navbar-expand-lg navbar-main bg-sena shadow-none mb-4">
+    <div class="container-fluid d-flex justify-content-between align-items-center py-2 px-3">
+        <!-- Botón para abrir el sidebar en mobile -->
+        <button class="btn btn-outline-light d-lg-none me-3" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h3 class="mb-0 text-white fw-bold">@yield('header', 'Panel Principal')</h3>
+        <div class="d-flex align-items-center">
+            <span class="me-3 text-white fw-bold">
+                {{ Auth::user()->name ?? 'Invitado' }}
+            </span>
+            <a href="#" class="btn btn-outline-light btn-sm">
+                <i class="fa fa-sign-out-alt"></i> Salir
+            </a>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>

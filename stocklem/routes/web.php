@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('index');
 
 Route::prefix('category')->group(function(){
     Route::get('/index', [CategoryController::class, 'index'])->name('category.index');

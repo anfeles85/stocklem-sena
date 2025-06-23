@@ -66,7 +66,7 @@ class PresentationController extends Controller
         $presentation = Presentation::find($id);
 
         if($presentation){
-            return view('presentation.edit',compact(' $presentation '));
+            return view('presentation.edit',compact('presentation'));
         }
     }
 
