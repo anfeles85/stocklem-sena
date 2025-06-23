@@ -12,7 +12,7 @@ class CategoryController extends Controller
     
     private $rules = [
         'name' => 'required|string|min:3|max:80',
-        'description' => 'text|min:31|max:100'
+        'description' => 'required|string|min:31|max:100'
 
     ];
 
