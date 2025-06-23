@@ -68,6 +68,10 @@ class PresentationController extends Controller
         if($presentation){
             return view('presentation.edit',compact('presentation'));
         }
+        else{
+            session()->flash('error', 'No se encontró la presentación');
+            return redirect()->route('presentation.index');
+        }
     }
 
     /**
@@ -75,22 +79,21 @@ class PresentationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $validator = Validator::make($request->all(),$this->rules);
-       $validator->setAttributeNames($this->traductionAttributes);
-       if($validator->fails())
-       {
+        $validator = Validator::make($request->all(),$this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+        if($validator->fails())
+        {
             $errors = $validator->errors();
             return redirect()->route('presentation.edit',$id)->withInput()->withErrors($errors);
-       }
-          $presentation = Presentation::find($id);
-
+        }
+        $presentation = Presentation::find($id);
         if($presentation){
             $presentation->update($request->all());
-             session()->flash('message','Registro actualizado exitosamente');
+             session()->flash('message','Se actualizado exitosamente');
         }
         else
         {
-            session()->flash('warning','No se encuentra el registro solicitado');
+            session()->flash('error','No se encuentra el registro solicitado');
         }
         return redirect()->route('presentation.index');
     
@@ -108,8 +111,8 @@ class PresentationController extends Controller
              session()->flash('message','Registro eliminado exitosamente');
         }
         else{
-             session()->flash('warning','No se encuentra el registro solicitado');
+             session()->flash('error','No se encuentra el registro solicitado');
         }
-           return redirect()->route('presentation.index');
+        return redirect()->route('presentation.index');
     }
 }
