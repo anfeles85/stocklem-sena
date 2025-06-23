@@ -86,7 +86,7 @@ class SupplierController extends Controller
         $supplier = Supplier::find($id);
         if($supplier){
             $supplier->update($request->all());
-            session()->flash('success', 'Se actualizo correctamente');
+            session()->flash('message', 'Se actualizo correctamente');
         }
         else{
             session()->flash('error', 'Ha ocurrido un problema al actualizar el proveedor');
@@ -102,7 +102,7 @@ class SupplierController extends Controller
         $supplier = Supplier::find($id);
         if($supplier){
             $supplier->delete();
-            session()->flash('success', 'El proveedor se elimino correctamente');
+            session()->flash('message', 'El proveedor se elimino correctamente');
         }
         else{
             session()->flash('error', 'Ha ocurrido un problema al eliminar el proveedor');
