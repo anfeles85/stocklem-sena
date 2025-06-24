@@ -48,8 +48,7 @@ class UnitController extends Controller
             return redirect()->route('unit.create')->withInput()->withErrors($errors);
         }
         $unit = Unit::create($request->all());
-        session()->flash('message','Registro creado exitosamente');
-        return redirect()->route('unit.index');
+        return redirect()->route('unit.index')->with('success','Registro creado exitosamente');
     }
 
     /**
@@ -70,6 +69,10 @@ class UnitController extends Controller
         if($unit){
             return view('unit.edit',compact('unit'));
         }
+        else{
+            return redirect()->with('error', 'No se encontró la unidad');
+            return redirect()->route('unit.index');
+        }
     }
 
     /**
@@ -88,11 +91,11 @@ class UnitController extends Controller
 
         if($unit){
             $unit->update($request->all());
-            session()->flash('message','Registro actualizado exitosamente');
+            return redirect()->with('success','Registro actualizado exitosamente');
         }
         else
         {
-            session()->flash('warning','No se encuentra el registro solicitado');
+            return redirect()->route('unit.index')->with('error','No se encuentra el registro solicitado');
         }
         return redirect()->route('unit.index');
     }
@@ -106,11 +109,10 @@ class UnitController extends Controller
 
         if($unit){
             $unit->delete();
-            session()->flash('message','Registro eliminado exitosamente');
+            return redirect()->with('success','Registro eliminado exitosamente');
         }
         else{
-             session()->flash('warning','No se encuentra el registro solicitado');
+            return redirect()->route('unit.index')->with('error','No se encuentra el registro solicitado');
         }
-          return redirect()->route('unit.index');
     }
 }

@@ -26,10 +26,13 @@
                                 <a href="{{ route('presentation.edit', $presentation['id']) }}"
                                     class="btn btn-warning btn-circle btn-sm" title="Editar"><i class="far fa-edit"></i>
                                 </a>
-                                <a href="{{ route('presentation.destroy', $presentation['id']) }}"
-                                    class="btn btn-danger btn-circle btn-sm" class="Eliminar" onclick="return remove();"><i
-                                        class="fa-solid fa-trash-can"></i>
-                                </a>
+                                <form action="{{ route('presentation.destroy', $presentation['id']) }}" method="POST" class="d-inline delete-form">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Eliminar">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -39,5 +42,28 @@
     </div>
 @endsection
 @section('scripts')
-    <script src="{{ asset('js/general.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.querySelectorAll('.delete-form').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "Esta acción no se puede deshacer.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
+
