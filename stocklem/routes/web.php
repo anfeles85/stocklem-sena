@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EntryController;
+use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\SupplierController;
@@ -49,7 +52,7 @@ Route::prefix('presentation')->group(function(){
     Route::delete('/destroy/{id}', [PresentationController::class, 'destroy'])->name('presentation.destroy');
 });
 
-    Route::prefix('supplier')->group(function(){
+Route::prefix('supplier')->group(function(){
     Route::get('/index', [SupplierController::class, 'index'])->name('supplier.index');
     Route::get('/create', [SupplierController::class, 'create'])->name('supplier.create');
     Route::post('/store', [SupplierController::class, 'store'])->name('supplier.store');
@@ -58,7 +61,7 @@ Route::prefix('presentation')->group(function(){
     Route::delete('/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
 });
 
-    Route::prefix('unit')->group(function(){
+Route::prefix('unit')->group(function(){
     Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
     Route::get('/create', [UnitController::class, 'create'])->name('unit.create');
     Route::post('/store', [UnitController::class, 'store'])->name('unit.store');
@@ -67,4 +70,29 @@ Route::prefix('presentation')->group(function(){
     Route::delete('/destroy/{id}', [UnitController::class, 'destroy'])->name('unit.destroy');
 });
 
+Route::prefix('article')->group(function(){
+    Route::get('/index', [ArticleController::class, 'index'])->name('article.index');
+    Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
+    Route::post('/store', [ArticleController::class, 'store'])->name('article.store');
+    Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::put('/update/{id}', [ArticleController::class, 'update'])->name('article.update');
+    Route::delete('/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+});
 
+Route::prefix('entry')->group(function(){
+    Route::get('/index', [EntryController::class, 'index'])->name('entry.index');
+    Route::get('/create', [EntryController::class, 'create'])->name('entry.create');
+    Route::post('/store', [EntryController::class, 'store'])->name('entry.store');
+    Route::get('/edit/{id}', [EntryController::class, 'edit'])->name('entry.edit');
+    Route::put('/update/{id}', [EntryController::class, 'update'])->name('entry.update');
+    Route::delete('/destroy/{id}', [EntryController::class, 'destroy'])->name('entry.destroy');
+});
+
+Route::prefix('issue')->group(function(){
+    Route::get('/index', [IssueController::class, 'index'])->name('issue.index');
+    Route::get('/create', [IssueController::class, 'create'])->name('issue.create');
+    Route::post('/store', [IssueController::class, 'store'])->name('issue.store');
+    Route::get('/edit/{id}', [IssueController::class, 'edit'])->name('issue.edit');
+    Route::put('/update/{id}', [IssueController::class, 'update'])->name('issue.update');
+    Route::delete('/destroy/{id}', [IssueController::class, 'destroy'])->name('issue.destroy');
+});

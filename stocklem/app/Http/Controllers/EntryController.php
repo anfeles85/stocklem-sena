@@ -23,10 +23,10 @@ class EntryController extends Controller
     private $traductionAttributes = [
         'sena_code' => 'codigo sena',
         'date_entry' => 'fecha entrada',
-        'expiration_date' => 'fecha expiracion',
+        'expiration_date' => 'fecha expiración',
         'quantity' => 'cantidad',
         'observations' => 'observaciones',
-        'article_id' => 'articulo'
+        'article_id' => 'artículo'
     ];
 
 

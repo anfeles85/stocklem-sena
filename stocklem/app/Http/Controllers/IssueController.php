@@ -21,8 +21,8 @@ class IssueController extends Controller
         'date_issue' => 'fecha salida',
         'quantity' => 'cantidad',
         'observations' => 'observaciones',
-        'article_id' =>  'articulo',
-        'person_id' => 'person',
+        'article_id' =>  'artículo',
+        'person_id' => 'persona',
         'unit_id' => 'unidad'
     ];
     public function index()
@@ -93,7 +93,7 @@ class IssueController extends Controller
         $issue= Issue::find($id);
         if($issue){
         $issue->update($request->all());
-            return redirect()->route('issue.index')->with('success', '¡Saliada actualizada correctamente!');
+            return redirect()->route('issue.index')->with('success', '¡Salida actualizada correctamente!');
         }
         return redirect()->route('issue.index')->with('error', 'Ha ocurrido un problema al actualizar la salida.');
     }
