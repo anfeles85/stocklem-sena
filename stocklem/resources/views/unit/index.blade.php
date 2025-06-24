@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Crear unidad')
-@section('header', 'Crear unidad')
+@section('title', 'Unidades')
+@section('header', 'Unidades')
 @section('content')
     <div class="mb-3">
         <a href="{{ route('unit.create') }}" class="btn btn-primary">
