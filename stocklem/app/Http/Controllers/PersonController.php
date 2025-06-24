@@ -52,7 +52,7 @@ class PersonController extends Controller
         }
 
         $person = Person::create($request->all());
-        return redirect()->route('person.index')->with('success', 'persona creado exitosamente');
+        return redirect()->route('person.index')->with('success', 'Persona creada exitosamente');
     }
 
     /**
@@ -97,13 +97,12 @@ class PersonController extends Controller
         if($person)//la persona existe
         {
             $person->update($request->all());
-            return redirect()->with('success', 'Registro actualizado exitosamente');
+            return redirect()->route('person.index')->with('success', 'Registro actualizado exitosamente');
         }
         else
         {
-            return redirect()->with('error', 'No se encuentra el registro solicitado');
+            return redirect()->route('person.index')->with('error', 'No se encuentra el registro solicitado');
         }
-        return redirect()->route('person.index');
     }
 
     /**
@@ -115,12 +114,11 @@ class PersonController extends Controller
         if($person)//la persona existe
         {
             $person->delete();
-            return redirect()->with('success', 'Registro eliminado exitosamente');
+            return redirect()->route('person.index')->with('success', 'Registro eliminado exitosamente');
         }
         else
         {
-            return redirect()->with('error', 'No se encuentra el registro solicitado');
+            return redirect()->route('person.index')->with('error', 'No se encuentra el registro solicitado');
         }
-        return redirect()->route('person.index');
     }
 }
