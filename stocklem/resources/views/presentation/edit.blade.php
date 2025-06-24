@@ -2,27 +2,29 @@
 @section('title', 'Editar presentación')
 @section('header', 'Editar presentación')
 @section('content')
+    @include('templates.validation_errors')
     <div class="row">
-         <div class="col-lg-12 mb-4">
-            <form action="{{ route('presentation.update',$presentation['id']) }}" method="POST">
+        <div class="col-lg-12 mb-4">
+            <form action="{{ route('presentation.update', $presentation['id']) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row form-group">
-                    <div class="col-lg-6 mb-4">
+                    <div class="col-md-4 mb-4">
                         <label for="description">Descripción</label>
-                        <input type="text" class="form-control" name="description" id="description" value="{{ $presentation['description'] }}" required>
+                        <input type="text" class="form-control" name="description" id="description"
+                            value="{{ $presentation['description'] }}" required>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-md-6 mb-4 d-grid">
                         <button type="submit" class="btn btn-success">Guardar</button>
                     </div>
-                    <div class="col-lg-2">
-                        <a href="{{ route('presentation.index') }}" class="btn btn-danger btn-block">Cancelar</a>
+                    <div class="col-md-6 mb-4 d-grid">
+                        <a href="{{ route('presentation.index') }}" class="btn btn-info">Cancelar</a>
                     </div>
                 </div>
             </form>
-         </div>
+        </div>
     </div>
 
 @endsection
