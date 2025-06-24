@@ -88,9 +88,12 @@ class CategoryController extends Controller
         $category = Category::find($id);
         if($category){
             $category->update($request->all());
-            return redirect()->with('success', '¡Categoria actualizada correctamente!');
+            return redirect()->route('category.index')->with('success', 'La categoría se actualizó correctamente');
         }
-        return redirect()->route('category.index')->with('error', 'Ha ocurrido un problema al actualizar la categoria.');
+        else
+        {
+            return redirect()->route('category.index')->with('error', 'Ha ocurrido un problema al actualizar');
+        }
     }
 
     /**
@@ -99,11 +102,13 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::find($id);
-        if($category){
+        if($category)
+        {
             $category->delete();
-            return redirect()->with('auccess', '¡Categoria eliminada correctamente!');
+            return redirect()->route('category.index')->with('success', 'Categoría eliminada exitosamente');
         }
-        else{
+        else
+        {
             return redirect()->route('category.index')->with('error', 'Ha ocurrido un problema al eliminar la categoria');
         }
     }

@@ -97,7 +97,10 @@ class PersonController extends Controller
             $person->update($request->all());
             return redirect()->route('person.index')->with('success', '¡Registro actualizado correctamente!');
         }
-        return redirect()->route('person.index')->with('error', 'Ha ocurrido un problema al acttualizar la persona');
+        else
+        {
+            return redirect()->route('person.index')->with('error', 'Ha ocurrido un problema al acttualizar la persona');
+        }
     }
 
     /**
@@ -109,7 +112,7 @@ class PersonController extends Controller
         if($person)//la persona existe
         {
             $person->delete();
-            return redirect()->route('person.index')->with('success', '¡Registro eliminado correctamente!');
+            return redirect()->route('person.index')->with('success', 'Registro eliminado exitosamente');
         }
         else
         {

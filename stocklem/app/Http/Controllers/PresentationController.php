@@ -46,7 +46,7 @@ class PresentationController extends Controller
             return redirect()->route('presentation.create')->withInput()->withErrors($errors);
         }
         $presentation = Presentation::create($request->all());
-        return redirect()->route('presentation.index')->with('message', '¡Presentación creada exitosamente!');
+        return redirect()->route('presentation.index')->with('success', '¡Presentación creada exitosamente!');
     }
 
     /**
@@ -87,9 +87,9 @@ class PresentationController extends Controller
         $presentation = Presentation::find($id);
         if($presentation){
             $presentation->update($request->all());
-             return redirect()->route('presentation.index')->with('succes', '¡Presentación actualizada correctamente!');
+            return redirect()->route('presentation.index')->with('success', '¡Presentación actualizada correctamente!');
         }
-        return redirect()->route('presentation.index')->with('error', 'Ha corrudo un problema al actualizar la presentación');
+        return redirect()->route('presentation.index')->with('error', 'Ha ocurrido un problema al actualizar la presentación');
     }
 
     /**
@@ -101,10 +101,11 @@ class PresentationController extends Controller
 
         if($presentation){
             $presentation->delete();
-             return redirect()->route('presentation.index')->with('success','¡Presentación eliminada correctamente!');
+            return redirect()->route('presentation.index')->with('success','¡Presentación eliminada correctamente!');
         }
-        else{
-             return redirect()->route('presentation.index')->with('error','Ha ocurrido un problema al eliminar la presentación.');
-        }
+        else
+        {
+            return redirect()->route('presentation.index')->with('error','Ha ocurrido un problema al eliminar la presentación.');    
+        } 
     }
 }
