@@ -87,11 +87,15 @@ class UnitController extends Controller
             return redirect()->route('unit.edit',$id)->withInput()->withErrors($errors);
         }
         $unit = Unit::find($id);
-        if($unit){
+        if($unit)
+        {
             $unit->update($request->all());
             return redirect()->route('unit.index')->with('success','¡Unidad actualizada correctamente!');
         }
-        return redirect()->route('unit.index')->with('error','Ha ocurrido un problema al actualizar la unidad');
+        else
+        {
+            return redirect()->route('unit.index')->with('error','Ha ocurrido un problema al actualizar la unidad');
+        }   
     }
 
     /**
@@ -105,7 +109,8 @@ class UnitController extends Controller
             $unit->delete();
             return redirect()->route('unit.index')->with('success','¡Unidad eliminada correctamente!');
         }
-        else{
+        else
+        {
             return redirect()->route('unit.index')->with('error','Ha ocurrido un problema al eliminar la unidad');
         }
     }
