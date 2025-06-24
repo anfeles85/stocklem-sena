@@ -48,7 +48,7 @@ class UnitController extends Controller
             return redirect()->route('unit.create')->withInput()->withErrors($errors);
         }
         $unit = Unit::create($request->all());
-        return redirect()->route('unit.index')->with('success','Registro creado exitosamente');
+        return redirect()->route('unit.index')->with('success','¡Unidad creada exitosamente!');
     }
 
     /**
@@ -70,8 +70,7 @@ class UnitController extends Controller
             return view('unit.edit',compact('unit'));
         }
         else{
-            return redirect()->with('error', 'No se encontró la unidad');
-            return redirect()->route('unit.index');
+            return redirect()->route('unit.index')->with('error', 'No se encontró la unidad');
         }
     }
 
@@ -88,15 +87,15 @@ class UnitController extends Controller
             return redirect()->route('unit.edit',$id)->withInput()->withErrors($errors);
         }
         $unit = Unit::find($id);
-
-        if($unit){
+        if($unit)
+        {
             $unit->update($request->all());
-            return redirect()->route('unit.index')->with('success','Registro actualizado exitosamente');
+            return redirect()->route('unit.index')->with('success','¡Unidad actualizada correctamente!');
         }
         else
         {
-            return redirect()->route('unit.index')->with('error','No se encuentra el registro solicitado');
-        }
+            return redirect()->route('unit.index')->with('error','Ha ocurrido un problema al actualizar la unidad');
+        }   
     }
 
     /**
@@ -108,10 +107,11 @@ class UnitController extends Controller
 
         if($unit){
             $unit->delete();
-            return redirect()->route('unit.index')->with('success','Registro eliminado exitosamente');
+            return redirect()->route('unit.index')->with('success','¡Unidad eliminada correctamente!');
         }
-        else{
-            return redirect()->route('unit.index')->with('error','No se encuentra el registro solicitado');
+        else
+        {
+            return redirect()->route('unit.index')->with('error','Ha ocurrido un problema al eliminar la unidad');
         }
     }
 }

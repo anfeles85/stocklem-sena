@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Crear presentación')
-@section('header', 'Crear presentación')
+@section('title', 'Presentaciones')
+@section('header', 'Presentaciones')
 @section('content')
     <div class="mb-3">
         <a href="{{ route('presentation.create') }}" class="btn btn-primary">
@@ -14,7 +14,7 @@
                     <tr>
                         <th>ID</th>
                         <th>DESCRIPCION</th>
-                        <th>ACCIONES</th>
+                        <th class="text-center">ACCIONES</th>
                     </tr>
                 </thead>
                 <body>
@@ -66,4 +66,3 @@
         });
     </script>
 @endsection
-
