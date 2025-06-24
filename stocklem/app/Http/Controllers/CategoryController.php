@@ -12,7 +12,7 @@ class CategoryController extends Controller
     
     private $rules = [
         'name' => 'required|string|min:3|max:80',
-        'description' => 'text|min:31|max:100'
+        'description' => 'required|string|min:31|max:100'
 
     ];
 
@@ -23,8 +23,8 @@ class CategoryController extends Controller
 
    public function index()
     {
-        $categorys = Category::all();
-        return view('category.index', compact('categorys'));
+        $categories = Category::all();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -48,8 +48,7 @@ class CategoryController extends Controller
             return redirect()->route('category.create')->withInput()->withErrors($errors);
         }
         $category = Category::create($request->all());
-        session()->flash('message', 'La categoria se creo correctamente');
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('success', 'La categoria se creo correctamente');
     }
 
     /**
@@ -70,8 +69,7 @@ class CategoryController extends Controller
             return view('category.edit', compact('category'));
         }
         else {
-            session()->flash('error', 'No se encontró el registro');
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with('error', 'No se encontró el registro');
         }
     }
 
@@ -91,12 +89,12 @@ class CategoryController extends Controller
         $category = Category::find($id);
         if($category){
             $category->update($request->all());
-            session()->flash('message', 'La categoria se actualizo correctamente');
+            return redirect()->with('success', 'La categoria se actualizo correctamente');
         }
         else{
-            session()->flash('error', 'Ha ocurrido un problema al actualizar');
+            return redirect()->with('error', 'Ha ocurrido un problema al actualizar');
         }
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('error', 'Ha ocurrido un problema al actualizar la categoria.');
     }
 
     /**
@@ -107,10 +105,10 @@ class CategoryController extends Controller
         $category = Category::find($id);
         if($category){
             $category->delete();
-            session()->flash('message', 'Eliminado Correctamente');
+            return redirect()->with('auccess', 'Eliminado Correctamente');
         }
         else{
-            session()->flash('error', 'Ha ocurrido un problema al eliminar la categoria');
+            return redirect()->with('error', 'Ha ocurrido un problema al eliminar la categoria');
         }
         return redirect()->route('category.index');
     }

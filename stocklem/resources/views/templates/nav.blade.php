@@ -1,81 +1,81 @@
-<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
-    <div class="sidenav-header">
-      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="#" target="_blank">
-        <img src="{{ asset('img/stockclem-logo.png') }}" class="navbar-brand-img h-120" alt="main_logo">
-        <span class="ms-1 font-weight-bold">StockClem</span>
-      </a>
+<nav id="sidebarMenu" class="d-lg-block bg-sena-dark sidebar collapse position-fixed h-100" style="width: 260px; z-index: 1040;">
+    <div class="text-center py-4 border-bottom border-secondary">
+        <img src="{{ asset('img/stockclem-logo.png') }}" class="img-fluid mb-2" style="max-width: 120px;" alt="STOCKCLEM Logo">
+        <h4 class="text-white mb-0 fw-bold">STOCKCLEM</h4>
+        <small class="text-white-50">Sistema de Inventario</small>
     </div>
-    <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-      <ul class="navbar-nav">
+    <ul class="nav flex-column mt-3">
         <li class="nav-item">
-          <a class="nav-link " href="../pages/dashboard.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-tv-2 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
+            <a href="{{ route('index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span>Inicio</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="../pages/tables.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Tables</span>
-          </a>
+            <a href="{{ route('person.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <span>Personas</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/billing.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Billing</span>
-          </a>
+            <a href="{{ route('supplier.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <span>Proveedores</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/virtual-reality.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-app text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Virtual Reality</span>
-          </a>
+            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <span>Artículos</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/rtl.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">RTL</span>
-          </a>
-        </li>
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+            <a href="{{ route('category.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <span>Categorías</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/profile.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
+            <a href="{{ route('presentation.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <span>Presentaciones</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/sign-in.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Sign In</span>
-          </a>
+            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+                <span>Entradas</span>
+            </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/sign-up.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
-          </a>
+            <a href="#" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+                <span>Salidas</span>
+            </a>
         </li>
-      </ul>
-    </div>    
-  </aside>
+        <li class="nav-item">
+            <a href="{{ route('unit.index') }}" class="nav-link text-white d-flex align-items-center px-4 py-2 nav-link-hover">
+                <div class="me-3 d-flex align-items-center justify-content-center" style="width: 28px;">
+                    <i class="fas fa-weight-hanging"></i>
+                </div>
+                <span>Unidades</span>
+            </a>
+        </li>
+    </ul>
+</nav>
