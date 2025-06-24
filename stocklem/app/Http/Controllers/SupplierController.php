@@ -66,7 +66,7 @@ class SupplierController extends Controller
             return view('supplier.edit', compact('supplier'));
         }
         else{
-            session()->flash('Error', 'No se encontró el proveedor');
+            session()->flash('error', 'No se encontró el proveedor');
             return redirect()->route('supplier.index');
         }
     }
@@ -81,7 +81,7 @@ class SupplierController extends Controller
         if($validator->fails())
         {
             $errors = $validator->errors();
-            return redirect()->route('supplier.update', $id)->withInput()->withErrors($errors);
+            return redirect()->route('supplier.edit', $id)->withInput()->withErrors($errors);
         }
         $supplier = Supplier::find($id);
         if($supplier){
@@ -105,7 +105,7 @@ class SupplierController extends Controller
             session()->flash('message', 'El proveedor se elimino correctamente');
         }
         else{
-            session()->flash('    error', 'Ha ocurrido un problema al eliminar el proveedor');
+            session()->flash('error', 'Ha ocurrido un problema al eliminar el proveedor');
         }
         return redirect()->route('supplier.index');
     }

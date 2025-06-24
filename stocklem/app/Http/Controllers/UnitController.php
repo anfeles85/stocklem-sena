@@ -70,6 +70,10 @@ class UnitController extends Controller
         if($unit){
             return view('unit.edit',compact('unit'));
         }
+        else{
+            session()->flash('error', 'No se encontró la unidad');
+            return redirect()->route('unit.index');
+        }
     }
 
     /**
@@ -92,7 +96,7 @@ class UnitController extends Controller
         }
         else
         {
-            session()->flash('warning','No se encuentra el registro solicitado');
+            session()->flash('error','No se encuentra el registro solicitado');
         }
         return redirect()->route('unit.index');
     }
@@ -109,7 +113,7 @@ class UnitController extends Controller
             session()->flash('message','Registro eliminado exitosamente');
         }
         else{
-             session()->flash('warning','No se encuentra el registro solicitado');
+             session()->flash('error','No se encuentra el registro solicitado');
         }
           return redirect()->route('unit.index');
     }

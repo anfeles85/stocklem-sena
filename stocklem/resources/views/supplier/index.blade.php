@@ -19,35 +19,54 @@
                         <th class="text-center">ACCIONES</th>
                     </tr>
                 </thead>
-                <tbody>
+                <body>
                     @foreach ($suppliers as $supplier)
                         <tr>
-                            <td>{{ $supplier->id }}</td>
-                            <td>{{ $supplier->name }}</td>
-                            <td>{{ $supplier->phone }}</td>
+                            <td>{{ $supplier['id'] }}</td>
+                            <td>{{ $supplier['name'] }}</td>
+                            <td>{{ $supplier['description'] }}</td>
                             <td class="text-center">
-                                <a href="{{ route('supplier.edit', $supplier->id) }}"
-                                    class="btn btn-warning btn-sm me-1" title="Editar">
-                                    <i class="fas fa-edit"></i>
+                                <a href="{{ route('supplier.edit', $supplier['id']) }}"
+                                    class="btn btn-warning btn-sm me-1" title="Editar"><i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('supplier.destroy', $supplier->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('supplier.destroy', $supplier['id']) }}" method="POST" class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" title="Eliminar"
-                                        onclick="return confirm('¿Seguro que desea eliminar este proveedor?')">
-                                        <i class="fas fa-trash"></i>
+                                    <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Eliminar">
+                                        <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
-                    @if($suppliers->isEmpty())
-                        <tr>
-                            <td colspan="4" class="text-center text-muted">No hay proveedores registrados.</td>
-                        </tr>
-                    @endif
-                </tbody>
+                </body>
             </table>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.querySelectorAll('.delete-form').forEach(form => {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "Esta acción no se puede deshacer.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#6c757d',
+                    confirmButtonText: 'Sí, eliminar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
