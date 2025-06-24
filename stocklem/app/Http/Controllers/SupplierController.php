@@ -80,7 +80,6 @@ class SupplierController extends Controller
         {
             $errors = $validator->errors();
             return redirect()->route('supplier.edit', $id)->withInput()->withErrors($errors);
-            return redirect()->route('supplier.edit', $id)->withInput()->withErrors($errors);
         }
         $supplier = Supplier::find($id);
         if($supplier){
