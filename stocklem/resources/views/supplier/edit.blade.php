@@ -2,6 +2,7 @@
 @section('title', 'Editar proveedor')
 @section('header', 'Editar proveedor')
 @section('content')
+    @include('templates.validation_errors')
 
 <div class="row">
     <div class="col-lg-12 mb-4">

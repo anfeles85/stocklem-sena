@@ -44,8 +44,7 @@ class SupplierController extends Controller
             return redirect()->route('supplier.create')->withInput()->withErrors($errors);
         }
         $supplier = Supplier::create($request->all());
-        session()->flash('message', 'El Proveedor se creo correctamente');
-        return redirect()->route('supplier.index');
+        return redirect()->route('supplier.index')->with('success', '¡Proveedor creado exitosamente!');
     }
 
     /**
@@ -66,8 +65,7 @@ class SupplierController extends Controller
             return view('supplier.edit', compact('supplier'));
         }
         else{
-            session()->flash('error', 'No se encontró el proveedor');
-            return redirect()->route('supplier.index');
+            return redirect()->route('supplier.index')->with('Error', 'No se encontró el proveedor');
         }
     }
 
@@ -86,12 +84,10 @@ class SupplierController extends Controller
         $supplier = Supplier::find($id);
         if($supplier){
             $supplier->update($request->all());
-            session()->flash('message', 'Se actualizo correctamente');
+            return redirect()->route('supplier.index')->with('success', '¡Proveedor actualizado correctamente!');
         }
-        else{
-            session()->flash('error', 'Ha ocurrido un problema al actualizar el proveedor');
-        }
-        return redirect()->route('supplier.index');
+        return redirect()->route('supplier.index')->with('error', 'Ha ocurrido un problema al actualizar el proveedor.');
+
     }
 
     /**
@@ -102,11 +98,10 @@ class SupplierController extends Controller
         $supplier = Supplier::find($id);
         if($supplier){
             $supplier->delete();
-            session()->flash('message', 'El proveedor se elimino correctamente');
+            return redirect()->route('supplier.index')->with('success', '¡Proveedor eliminado correctamente!');
         }
         else{
-            session()->flash('error', 'Ha ocurrido un problema al eliminar el proveedor');
+            return redirect()->route('supplier.index')->with('error', 'Ha ocurrido un problema al eliminar el proveedor.');
         }
-        return redirect()->route('supplier.index');
     }
 }
