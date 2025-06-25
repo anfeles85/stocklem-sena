@@ -12,7 +12,7 @@
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
-                    <tr>
+                    <tr class="text-center">
                         <th>ID</th>
                         <th>FECHA SALIDA</th>
                         <th>CANTIDAD</th>
@@ -20,12 +20,12 @@
                         <th>ARTICULO</th>
                         <th>PERSONA</th>
                         <th>UNIDAD</th>
-                        <th class="text-center">ACCIONES</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($issues as $issue)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{ $issue->id }}</td>
                             <td>{{ $issue->date_issue }}</td>
                             <td>{{ $issue->quantity }}</td>
@@ -38,11 +38,12 @@
                                     title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('issue.destroy', $issue->id) }}" method="POST"
-                                    class="d-inline delete-form">
+                                <form id="form-delete-{{ $issue->id }}" action="{{ route('issue.destroy', $issue->id) }}"
+                                     method="POST" class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                                    <button type="button" class="btn btn-danger btn-sm" title="Eliminar" 
+                                     onclick="removeId({{ $issue->id }})">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
