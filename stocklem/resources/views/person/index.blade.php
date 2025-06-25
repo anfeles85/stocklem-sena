@@ -32,10 +32,12 @@
                                     class="btn btn-warning btn-sm me-1" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('person.destroy', $person->id) }}" method="POST" class="d-inline delete-form">
+                                <form id="form-delete-{{ $person->id }}" action="{{ route('person.destroy', $person->id) }}"
+                                     method="POST" class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                                    <button type="button" class="btn btn-danger btn-sm" title="Eliminar" 
+                                     onclick="removeId({{ $person->id }})">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
@@ -51,33 +53,4 @@
             </table>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.delete-form').forEach(form => {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    Swal.fire({
-                        title: '¿Estás seguro?',
-                        text: "¡Esta acción no se puede deshacer!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        cancelButtonColor: '#6c757d',
-                        confirmButtonText: 'Sí, eliminar',
-                        cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            form.submit();
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 @endsection

@@ -48,7 +48,7 @@ class CategoryController extends Controller
             return redirect()->route('category.create')->withInput()->withErrors($errors);
         }
         $category = Category::create($request->all());
-        return redirect()->route('category.index')->with('success', 'La categoria se creo correctamente');
+        return redirect()->route('category.index')->with('success', '¡Categoria creada correctamente!');
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoryController extends Controller
             return view('category.edit', compact('category'));
         }
         else {
-            return redirect()->route('category.index')->with('error', 'No se encontró el registro');
+            return redirect()->route('category.index')->with('error', 'No se encontró la categoria');
         }
     }
 
@@ -83,18 +83,17 @@ class CategoryController extends Controller
         if($validator->fails())
         {
             $errors = $validator->errors();
-            return redirect()->route('category.update', $id)->withInput()->withErrors($errors);
+            return redirect()->route('category.edit', $id)->withInput()->withErrors($errors);
         }
-
         $category = Category::find($id);
         if($category){
             $category->update($request->all());
-            return redirect()->with('success', 'La categoria se actualizo correctamente');
+            return redirect()->route('category.index')->with('success', 'La categoría se actualizó correctamente');
         }
-        else{
-            return redirect()->with('error', 'Ha ocurrido un problema al actualizar');
+        else
+        {
+            return redirect()->route('category.index')->with('error', 'Ha ocurrido un problema al actualizar');
         }
-        return redirect()->route('category.index')->with('error', 'Ha ocurrido un problema al actualizar la categoria.');
     }
 
     /**
@@ -103,13 +102,14 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::find($id);
-        if($category){
+        if($category)
+        {
             $category->delete();
-            return redirect()->with('auccess', 'Eliminado Correctamente');
+            return redirect()->route('category.index')->with('success', 'Categoría eliminada exitosamente');
         }
-        else{
-            return redirect()->with('error', 'Ha ocurrido un problema al eliminar la categoria');
+        else
+        {
+            return redirect()->route('category.index')->with('error', 'Ha ocurrido un problema al eliminar la categoria');
         }
-        return redirect()->route('category.index');
     }
 }

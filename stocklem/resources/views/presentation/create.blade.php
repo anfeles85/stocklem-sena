@@ -2,6 +2,7 @@
 @section('title', 'Crear presentación')
 @section('header', 'Crear presentación')
 @section('content')
+    @include('templates.validation_errors')
     <div class="row">
         <div class="col-lg-12 mb-4">
             <form action="{{ route('presentation.store') }}" method="POST">
