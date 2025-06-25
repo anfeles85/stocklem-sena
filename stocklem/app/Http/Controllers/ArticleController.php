@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Issue;
+use App\Models\Person;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -77,13 +80,15 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $article = Article::find($id);
-        if($article)
-        {
-            return view('article.edit', compact('article'));
+        if($article){
+            $persons = Person::all();
+            $units = Unit::all();
+            $issues = Issue::all();
+            return view('article.edit', compact('article', 'persons', 'units', 'issues'));
         }
-        else
-        {
-            return redirect()->route('article.index')->with('Error', 'No se encontró el artículo');
+        else{
+            session()->flash('error', 'No se encontró el artículo.');
+            return redirect()->route('article.index');
         }
     }
 
