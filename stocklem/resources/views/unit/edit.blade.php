@@ -5,13 +5,13 @@
     @include('templates.validation_errors')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="{{ route('unit.update', $unit['id']) }}" method="POST">
+            <form action="{{ route('unit.update', $unit->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row form-group">
                     <div class="col-md-12 mb-4">
                         <label for="name">Nombre</label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{ $unit['name'] }}"
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $unit->name }}"
                             required>
                     </div>
                 </div>

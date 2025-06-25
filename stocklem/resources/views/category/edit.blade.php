@@ -5,19 +5,19 @@
     @include('templates.validation_errors')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="{{ route('category.update', $category['id']) }}" method="POST">
+            <form action="{{ route('category.update', $category->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row form-group">
                     <div class="col-lg-6 mb-4">
                         <label for="name">Nombre</label>
                         <input type="text" class="form-control" name="name" id="name"
-                            value="{{ $category['name'] }}" required>
+                            value="{{ $category->name }}" required>
                     </div>
                     <div class="col-lg-6 mb-4">
                         <label for="description">Descripción</label>
                         <input type="text" class="form-control" name="description" id="description"
-                            value="{{ $category['description'] }}" required>
+                            value="{{ $category->description }}" required>
                     </div>
                 </div>
                 <div class="row">

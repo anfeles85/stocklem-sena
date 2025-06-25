@@ -17,52 +17,34 @@
                         <th class="text-center">ACCIONES</th>
                     </tr>
                 </thead>
-                <body>
+                <tbody>
                     @foreach ($presentations as $presentation)
-                        <tr+>
-                            <td>{{ $presentation['id'] }}</td>
-                            <td>{{ $presentation['description'] }}</td>
+                        <tr>
+                            <td>{{ $presentation->id }}</td>
+                            <td>{{ $presentation->description }}</td>
                             <td class="text-center">
-                                <a href="{{ route('presentation.edit', $presentation['id']) }}"
+                                <a href="{{ route('presentation.edit', $presentation->id) }}"
                                     class="btn btn-warning btn-circle btn-sm" title="Editar"><i class="far fa-edit"></i>
                                 </a>
-                                <form action="{{ route('presentation.destroy', $presentation['id']) }}" method="POST" class="d-inline delete-form">
+                                <form id="form-delete-{{ $presentation->id }}" action="{{ route('presentation.destroy', $presentation->id) }}" 
+                                     method="POST" class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm btn-delete" title="Eliminar">
+                                    <button type="button" class="btn btn-danger btn-sm btn-delete" title="Eliminar" 
+                                         onclick="removeId({{ $presentation->id }})">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
                             </td>
                         </tr>
                     @endforeach
-                </body>
+                    @if($presentations->isEmpty())
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No hay Presentaciones registradas.</td>
+                        </tr>
+                    @endif
+                </tbody>
             </table>
         </div>
     </div>
-@endsection
-@section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        document.querySelectorAll('.delete-form').forEach(form => {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: '¿Estás seguro?',
-                    text: "Esta acción no se puede deshacer.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#6c757d',
-                    confirmButtonText: 'Sí, eliminar',
-                    cancelButtonText: 'Cancelar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        form.submit();
-                    }
-                });
-            });
-        });
-    </script>
 @endsection

@@ -2,6 +2,7 @@
 @section('title', 'Crear persona')
 @section('header', 'Crear persona')
 @section('content')
+    @include('templates.validation_errors')
 
 <form action="{{ route('person.store') }}" method="POST">
     @csrf
