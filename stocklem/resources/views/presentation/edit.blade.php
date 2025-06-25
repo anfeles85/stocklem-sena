@@ -5,14 +5,14 @@
     @include('templates.validation_errors')
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="{{ route('presentation.update', $presentation['id']) }}" method="POST">
+            <form action="{{ route('presentation.update', $presentation->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="row form-group">
                     <div class="col-md-4 mb-4">
                         <label for="description">Descripción</label>
                         <input type="text" class="form-control" name="description" id="description"
-                            value="{{ $presentation['description'] }}" required>
+                            value="{{ $presentation->description }}" required>
                     </div>
                 </div>
                 <div class="row">

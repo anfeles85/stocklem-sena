@@ -2,7 +2,7 @@
 @section('title', 'Crear proveedor')
 @section('header', 'Crear proveedor')
 @section('content')
-
+    @include('templates.validation_errors')
 <form action="{{ route('supplier.store') }}" method="POST">
     @csrf
     <div class="row mb-3">
