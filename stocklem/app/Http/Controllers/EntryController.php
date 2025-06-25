@@ -45,7 +45,8 @@ class EntryController extends Controller
      */
     public function create()
     {
-         return view('entry.create');
+        $articles = Article::all();
+        return view('entry.create', compact('articles'));
     }
 
     /**

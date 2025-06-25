@@ -2,6 +2,7 @@
 @section('title', 'Crear entrada')
 @section('header', 'Crear entrada')
 @section('content')
+@include('templates.validation_errors')
 
 <form action="{{ route('entry.store') }}" method="POST">
     @csrf
