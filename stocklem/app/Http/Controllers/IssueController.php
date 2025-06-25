@@ -39,8 +39,13 @@ class IssueController extends Controller
      */
     public function create()
     {
-        return view('issue.create');
+        $articles = Article::all();
+        $persons = Person::all();
+        $units = Unit::all();
+        $issue = new Issue();
+        return view('issue.create', compact('articles', 'persons', 'units','issue'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -49,10 +54,9 @@ class IssueController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
-             return redirect()->route('issue.create')->withInput()->withErrors($errors);
+            return redirect()->route('issue.create')->withInput()->withErrors($errors);
         }
         $issue = Issue::create($request->all());
         return redirect()->route('issue.index')->with('success', 'Salida creada exitosamente');
@@ -72,13 +76,12 @@ class IssueController extends Controller
     public function edit(string $id)
     {
         $issue = Issue::find($id);
-        if($issue){
+        if ($issue) {
             $articles = Article::all();
             $persons = Person::all();
             $units = Unit::all();
             return view('issue.edit', compact('issue', 'articles', 'persons', 'units'));
-        }
-        else{
+        } else {
             session()->flash('error', 'No se encontró la salida.');
             return redirect()->route('issue.index');
         }
@@ -91,14 +94,13 @@ class IssueController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('issue.edit', $id)->withInput()->withErrors($errors);
         }
-        $issue= Issue::find($id);
-        if($issue){
-        $issue->update($request->all());
+        $issue = Issue::find($id);
+        if ($issue) {
+            $issue->update($request->all());
             return redirect()->route('issue.index')->with('success', '¡Salida actualizada correctamente!');
         }
         return redirect()->route('issue.index')->with('error', 'Ha ocurrido un problema al actualizar la salida.');
@@ -110,13 +112,10 @@ class IssueController extends Controller
     public function destroy(string $id)
     {
         $issue = Issue::find($id);
-        if($issue)
-        {
+        if ($issue) {
             $issue->delete();
             return redirect()->route('issue.index')->with('success', '¡Salida eliminada correctamente!');
-        }
-        else
-        {
+        } else {
             return redirect()->route('issue.index')->with('error', 'Ha ocurrido un problema al eliminar la Salida.');
         }
     }
