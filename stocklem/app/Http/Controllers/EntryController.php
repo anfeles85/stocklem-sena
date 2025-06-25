@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Article;
 use App\Models\Entry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -78,13 +78,13 @@ class EntryController extends Controller
     public function edit(string $id)
     {
         $entry = Entry::find($id);
-        if($entry)
-        {
-            return view('entry.edit', compact('entry'));
+        if($entry){
+            $articles = Article::all();
+            return view('entry.edit', compact('entry', 'articles'));
         }
-        else
-        {
-            return redirect()->route('entry.index')->with('Error', 'No se encontró la entrada');
+        else{
+            session()->flash('error', 'No se encontró la entrada.');
+            return redirect()->route('entry.index');
         }
     }
 

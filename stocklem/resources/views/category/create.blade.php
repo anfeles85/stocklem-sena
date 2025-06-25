@@ -2,6 +2,7 @@
 @section('title', 'Crear categoria')
 @section('header', 'Crear categoria')
 @section('content')
+    @include('templates.validation_errors')
     <div class="row">
         <div class="col-lg-12 mb-4">
             <form action="{{ route('category.store') }}" method="POST">

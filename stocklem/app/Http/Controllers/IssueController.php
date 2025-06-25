@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Issue;
+use App\Models\Person;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -69,12 +72,15 @@ class IssueController extends Controller
     public function edit(string $id)
     {
         $issue = Issue::find($id);
-        if($issue)
-        {
-            return view('issue.edit', compact('issue'));
+        if($issue){
+            $articles = Article::all();
+            $persons = Person::all();
+            $units = Unit::all();
+            return view('issue.edit', compact('issue', 'articles', 'persons', 'units'));
         }
         else{
-            return redirect()->route('issue.index')->with('Error', 'No se encontró la salida');
+            session()->flash('error', 'No se encontró la salida.');
+            return redirect()->route('issue.index');
         }
     }
 
