@@ -12,10 +12,11 @@ class Unit extends Model
     protected $table = "unit";
 
     protected $fillable = [
-        'name'
+        'name',
     ];
 
     public function issues() {
         return $this->hasMany(Issue::class);
     }
+
 }
