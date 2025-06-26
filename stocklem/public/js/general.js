@@ -5,7 +5,7 @@ $(document).ready(function () {
         "language": {
             "paginate": {
                 "previous": "Anterior",
-                "next": "Sgte"
+                "next": "Siguiente"
             },
             "search": "Buscar:",
             "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
