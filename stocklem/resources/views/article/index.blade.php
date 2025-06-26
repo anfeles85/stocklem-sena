@@ -72,3 +72,7 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+<script src="{{ asset('js/general.js') }}"></script>
+@endsection

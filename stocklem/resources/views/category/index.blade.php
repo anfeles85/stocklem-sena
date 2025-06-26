@@ -12,17 +12,17 @@
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
-                    <tr>
+                    <tr  class="text-center">
                         <th>ID</th>
                         <th>NOMBRE</th>
                         <th>DESCRIPCION</th>
-                        <th class="text-center">ACCIONES</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach ($categories as $category)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->description }}</td>
