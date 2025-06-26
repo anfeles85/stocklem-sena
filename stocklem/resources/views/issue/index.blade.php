@@ -49,17 +49,9 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
-                    @if ($issues->isEmpty())
-                        <tr>
-                            <td colspan="5" class="text-center text-muted">No hay unidades registradas.</td>
-                        </tr>
-                    @endif
+                    @endforeach       
                 </tbody>
             </table>
         </div>
     </div>
-@endsection
-@section('scripts')
-    <script src="{{ asset('js/general.js') }}"></script>
 @endsection

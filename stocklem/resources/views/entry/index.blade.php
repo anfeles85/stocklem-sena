@@ -50,17 +50,9 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
-                    @if($entries->isEmpty())
-                        <tr>
-                            <td colspan="8" class="text-center text-muted">No hay entradas registradas.</td>
-                        </tr>
-                    @endif
+                    @endforeach     
                 </tbody>
             </table>
         </div>
     </div>
-@endsection
-@section('scripts')
-    <script src="{{ asset('js/general.js') }}"></script>
 @endsection

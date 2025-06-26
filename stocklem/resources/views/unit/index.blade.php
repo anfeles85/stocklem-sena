@@ -9,7 +9,7 @@
     </div>
     <div class="card">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
+            <table id="table_data" class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr>
                         <th>ID</th>
@@ -38,11 +38,6 @@
                         </td>
                     </tr>
                     @endforeach
-                    @if($units->isEmpty())
-                        <tr>
-                            <td colspan="5" class="text-center text-muted">No hay unidades registradas.</td>
-                        </tr>
-                    @endif
                 </tbody>
             </table>
         </div>
