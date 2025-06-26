@@ -72,6 +72,13 @@
         </div>
     </div>
 @endsection
+<<<<<<< G3
 @section('scripts')
     <script src="{{ asset('js/general.js') }}"></script>
 @endsection
+=======
+
+@section('scripts')
+<script src="{{ asset('js/general.js') }}"></script>
+@endsection
+>>>>>>> dev

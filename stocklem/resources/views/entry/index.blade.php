@@ -13,28 +13,28 @@
         <div class="table-responsive">
             <table id="table_data" class="table table-hover align-middle mb-0">
                 <thead class="table-light">
-                    <tr>
-                        <th class="text-center">ID</th>
-                        <th class="text-center">CÓDIGO SENA</th>
-                        <th class="text-center">FECHA</th>
-                        <th class="text-center">FECHA VENCIMIENTO</th>
-                        <th class="text-center">CANTIDAD</th>
-                        <th class="text-center">OBSERVACIONES</th>
-                        <th class="text-center">ARTÍCULO</th>
-                        <th class="text-center">ACCIONES</th>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>CÓDIGO SENA</th>
+                        <th>FECHA</th>
+                        <th>FECHA VENCIMIENTO</th>
+                        <th>CANTIDAD</th>
+                        <th>OBSERVACIONES</th>
+                        <th>ARTÍCULO</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($entries as $entry)
-                        <tr>
-                            <td class="text-center">{{ $entry->id }}</td>
-                            <td class="text-center">{{ $entry->sena_code }}</td>
-                            <td class="text-center">{{ $entry->date_entry }}</td>
-                            <td class="text-center">{{ $entry->expiration_date }}</td>
-                            <td class="text-center">{{ $entry->quantity }}</td>
-                            <td class="text-center">{{ $entry->observations }}</td>
-                            <td class="text-center">{{ $entry->article->name ?? 'Sin artículo' }}</td>
-                            <td class="text-center">
+                        <tr class="text-center">
+                            <td>{{ $entry->id }}</td>
+                            <td>{{ $entry->sena_code }}</td>
+                            <td>{{ $entry->date_entry }}</td>
+                            <td>{{ $entry->expiration_date }}</td>
+                            <td>{{ $entry->quantity }}</td>
+                            <td>{{ $entry->observations }}</td>
+                            <td>{{ $entry->article->name ?? 'Sin artículo' }}</td>
+                            <td>
                                 <a href="{{ route('entry.edit', $entry->id) }}"
                                     class="btn btn-warning btn-sm me-1" title="Editar">
                                     <i class="fas fa-edit"></i>
