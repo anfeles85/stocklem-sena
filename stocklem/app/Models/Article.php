@@ -18,7 +18,8 @@ class Article extends Model
         'technical_sheet',
         'presentation_id',
         'category_id',
-        'supplier_id'
+        'supplier_id',
+        'unit_id'
     ];
 
     public function presentation() {
@@ -31,5 +32,8 @@ class Article extends Model
 
     public function supplier() {
         return $this->belongsTo(Supplier::class, 'supplier_id');
+    }
+       public function units(){
+        return $this->hasMany(Unit::class);
     }
 }
