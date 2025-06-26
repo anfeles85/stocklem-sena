@@ -9,7 +9,7 @@
     </div>
     <div class="card">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
+            <table id="table_data" class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr class="text-center">
                         <th>ID</th>
@@ -72,7 +72,13 @@
         </div>
     </div>
 @endsection
+<<<<<<< G3
+@section('scripts')
+    <script src="{{ asset('js/general.js') }}"></script>
+@endsection
+=======
 
 @section('scripts')
 <script src="{{ asset('js/general.js') }}"></script>
 @endsection
+>>>>>>> dev

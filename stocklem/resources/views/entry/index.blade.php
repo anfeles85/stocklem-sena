@@ -11,7 +11,7 @@
 
     <div class="card">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
+            <table id="table_data" class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr class="text-center">
                         <th>ID</th>
@@ -60,4 +60,7 @@
             </table>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script src="{{ asset('js/general.js') }}"></script>
 @endsection
