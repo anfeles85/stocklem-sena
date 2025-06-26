@@ -49,10 +49,10 @@
     </div>
     <div class="row">
         <div class="col-md-6 d-grid">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
         </div>
         <div class="col-md-6 d-grid">
-            <a href="{{ route('entry.index') }}" class="btn btn-danger">Cancelar</a>
+            <a href="{{ route('entry.index') }}" class="btn btn-info">Cancelar</a>
         </div>
     </div>
 </form>
