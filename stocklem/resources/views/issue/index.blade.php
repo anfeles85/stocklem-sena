@@ -16,10 +16,8 @@
                         <th>ID</th>
                         <th>FECHA SALIDA</th>
                         <th>CANTIDAD</th>
-                        <th>OBSERVACIONES</th>
                         <th>ARTICULO</th>
                         <th>PERSONA</th>
-                        <th>UNIDAD</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
@@ -29,10 +27,8 @@
                             <td>{{ $issue->id }}</td>
                             <td>{{ $issue->date_issue }}</td>
                             <td>{{ $issue->quantity }}</td>
-                            <td>{{ $issue->observations }}</td>
                             <td>{{ $issue->article->name }}</td>
                             <td>{{ $issue->person->name }}</td>
-                            <td>{{ $issue->unit->name }}</td>
                             <td class="text-center">
                                 <a href="{{ route('issue.edit', $issue->id) }}" class="btn btn-warning btn-sm me-1"
                                     title="Editar">
