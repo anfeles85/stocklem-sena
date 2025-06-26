@@ -19,3 +19,21 @@ function removeId(id) {
         }
     });
 }
+function showSuccess(message) {
+    Swal.fire({
+        icon: 'success',
+        title: 'Exito',
+        text: message,
+        showConfirmButton: false,
+        timer: 2000
+    })
+}
+function showError(message) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: message,
+        showConfirmButton: false,
+        timer: 2000
+    })
+}

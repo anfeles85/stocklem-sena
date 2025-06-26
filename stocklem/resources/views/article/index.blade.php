@@ -44,17 +44,8 @@
                             </td>
                         </tr>
                     @endforeach
-                    @if($articles->isEmpty())
-                        <tr>
-                            <td colspan="9" class="text-center text-muted">No hay artículos registrados.</td>
-                        </tr>
-                    @endif
                 </tbody>
             </table>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-<script src="{{ asset('js/general.js') }}"></script>
 @endsection

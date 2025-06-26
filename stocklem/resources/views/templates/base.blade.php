@@ -60,28 +60,17 @@
     <script src="{{ asset('js/argon-dashboard.min.js?v=2.1.0')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('utils/alertMessages.js') }}"></script>
+    <script src="{{ asset('js/general.js') }}"></script>
 
     @if(session('success'))
     <script>
-        Swal.fire({
-            icon: 'success',
-            title: '¡OK!',
-            text: '{{ session("success") }}',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK'
-        });
+        showSuccess('{{ session("success") }}');
     </script>
     @endif
 
     @if(session('error'))
     <script>
-        Swal.fire({
-            icon: 'error',
-            title: '¡Error!',
-            text: '{{ session("error") }}',
-            confirmButtonColor: '#d33',
-            confirmButtonText: 'OK'
-        });
+        showError('{{ session("error") }}');
     </script>
     @endif
 
