@@ -42,16 +42,8 @@
                     </td>
                 </tr>
                 @endforeach
-                @if($suppliers->isEmpty())
-                <tr>
-                    <td colspan="4" class="text-center text-muted">No hay proveedores registrados.</td>
-                </tr>
-                @endif
             </tbody>
         </table>
     </div>
 </div>
-@endsection
-@section('scripts')
-    <script src="{{ asset('js/general.js') }}"></script>
 @endsection
