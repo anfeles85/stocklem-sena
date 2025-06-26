@@ -15,11 +15,8 @@
                         <th>ID</th>
                         <th>NOMBRE</th>
                         <th>CANTIDAD</th>
-                        <th>FOTO</th>
-                        <th>FICHA TÉCNICA</th>
                         <th>PRESENTACIÓN</th>
                         <th>CATEGORÍA</th>
-                        <th>PROVEEDOR</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
@@ -29,23 +26,8 @@
                             <td>{{ $article->id }}</td>
                             <td>{{ $article->name }}</td>
                             <td>{{ $article->quantity }}</td>
-                            <td>
-                                @if($article->photo)
-                                    <img src="{{$article->photo }}" alt="Foto" class="img-fluid" style="max-width: 40px">
-                                @else
-                                    <span class="text-muted">Sin foto</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($article->technical_sheet)
-                                    <a href="{{$article->technical_sheet }}" target="_blank">Ver ficha</a>
-                                @else
-                                    <span class="text-muted">Sin ficha</span>
-                                @endif
-                            </td>
                             <td>{{ $article->presentation->description ?? 'Sin presentación' }}</td>
                             <td>{{ $article->category->name ?? 'Sin categoría' }}</td>
-                            <td>{{ $article->supplier->name ?? 'Sin proveedor' }}</td>
                             <td>
                                 <a href="{{ route('article.edit', $article->id) }}" class="btn btn-warning btn-sm me-1" title="Editar">
                                     <i class="fas fa-edit"></i>

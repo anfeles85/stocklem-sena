@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<div class="row mb-4 mt-5">
+<div class="row mb-4 mt-5 text-center">
     <div class="col-lg-6 mb-4">
         <div class="card shadow-sm">
             <div class="card-body">
@@ -108,7 +108,7 @@
     </div>
 </div>
 
-<div class="row mb-4">
+<div class="row mb-4  text-center">
     <div class="col-lg-6 mb-4">
         <div class="card shadow-sm">
             <div class="card-body">

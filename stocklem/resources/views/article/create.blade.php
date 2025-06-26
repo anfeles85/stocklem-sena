@@ -18,44 +18,49 @@
     <div class="row mb-3">
         <div class="col-md-6 mb-3 mb-md-0">
             <label for="photo" class="form-label">Foto</label>
-            <input type="file" name="photo" id="photo" class="form-control">
+            <input type="file" name="photo" id="photo" class="form-control" value="{{ old('photo') }}">
         </div>
         <div class="col-md-6">
             <label for="technical_sheet" class="form-label">Ficha técnica</label>
-            <input type="file" name="technical_sheet" id="technical_sheet" class="form-control">
+            <input type="file" name="technical_sheet" id="technical_sheet" class="form-control" value="{{ old('technical_sheet') }}">
         </div>
     </div>
     <div class="row mb-3">
         <div class="col-md-4 mb-3 mb-md-0">
             <label for="presentation_id" class="form-label">Presentación</label>
-            <select name="presentation_id" id="presentation_id" class="form-control" required>
-                <option value="">Seleccione una presentación</option>
+            <select name="presentation_id" id="presentation_id" class="form-control form-select" required>
+                <option value="">Seleccione</option>
                 @foreach($presentations as $presentation)
-                    <option value="{{ $presentation->id }}" {{ old('presentation_id') == $presentation->id ? 'selected' : '' }}>
-                        {{ $presentation->description }}
-                    </option>
+                <option value="{{ $presentation['id'] }}"
+                    @if(old('presentation_id') == $presentation->id) selected @endif>
+                    {{ $presentation['description'] }}
+                </option>
                 @endforeach
             </select>
         </div>
+
         <div class="col-md-4 mb-3 mb-md-0">
             <label for="category_id" class="form-label">Categoría</label>
-            <select name="category_id" id="category_id" class="form-control" required>
-                <option value="">Seleccione una categoría</option>
+            <select name="category_id" id="category_id" class="form-control form-select" required>
+                <option value="">Seleccione</option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                        {{ $category->name }}
-                    </option>
+                <option value="{{ $category['id'] }}"
+                    @if(old('category_id') == $category['id']) selected @endif>
+                    {{ $category['name'] }}
+                </option>
                 @endforeach
             </select>
         </div>
+
         <div class="col-md-4">
             <label for="supplier_id" class="form-label">Proveedor</label>
-            <select name="supplier_id" id="supplier_id" class="form-control" required>
-                <option value="">Seleccione un proveedor</option>
+            <select name="supplier_id" id="supplier_id" class="form-control form-select" required>
+                <option value="">Seleccione</option>
                 @foreach($suppliers as $supplier)
-                    <option value="{{ $supplier->id }}" {{ old('supplier_id') == $supplier->id ? 'selected' : '' }}>
-                        {{ $supplier->name }}
-                    </option>
+                <option value="{{ $supplier['id'] }}" 
+                @if(old('supplier_id') == $supplier['id']) selected @endif>
+                    {{ $supplier['name'] }}
+                </option>
                 @endforeach
             </select>
         </div>

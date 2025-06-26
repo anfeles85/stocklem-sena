@@ -7,41 +7,41 @@
 
 <div class="row">
     <div class="col-lg-12 mb-4">
-        <form action="{{ route('entry.update', $entry['id']) }}" method="POST">
+        <form action="{{ route('entry.update', $entry->id) }}" method="POST">
             @csrf
             @method('PUT')
             <div class="row form-group">
                 <div class="col-md-6 mb-4">
                     <label for="sena_code">Código SENA</label>
-                    <input type="text" id="sena_code" name="sena_code" required value="{{ $entry['sena_code'] }}"
+                    <input type="text" id="sena_code" name="sena_code" value="{{ $entry->sena_code }}"
                         class="form-control">
                 </div>
                 <div class="col-md-6 mb-4">
                     <label for="date">Fecha</label>
-                    <input type="date" id="date" name="date" required value="{{ $entry['date_entry'] }}"
+                    <input type="date" id="date_entry" name="date_entry" required value="{{ $entry->date_entry }}"
                         class="form-control">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-md-6 mb-4">
                     <label for="expiration_date">Fecha de vencimiento</label>
-                    <input type="date" id="expiration_date" name="expiration_date" required value="{{ $entry['expiration_date'] }}"
+                    <input type="date" id="expiration_date" name="expiration_date" value="{{ $entry->expiration_date }}"
                         class="form-control">
                 </div>
                 <div class="col-md-6 mb-4">
                     <label for="quantity">Cantidad</label>
-                    <input type="number" id="quantity" name="quantity" required value="{{ $entry['quantity'] }}"
+                    <input type="number" id="quantity" name="quantity" required value="{{ $entry->quantity }}"
                         class="form-control">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-md-6 mb-4">
                     <label for="observations">Observaciones</label>
-                    <textarea id="observations" name="observations" class="form-control" rows="3">{{ $entry['observations'] }}</textarea>
+                    <textarea id="observations" name="observations" class="form-control" rows="3">{{ $entry->observations }}</textarea>
                 </div>
                 <div class="col-md-6 mb-4">
-                    <label for="id_article">Artículo</label>
-                    <select id="id_article" name="id_article" required class="form-control">
+                    <label for="article_id">Artículo</label>
+                    <select id="article_id" name="article_id" required class="form-control">
                         <option value="">Seleccione un artículo</option>
                         @foreach($articles as $article)
                             <option value="{{ $article->id }}" {{ (old('id_article', $entry['id_article']) == $article->id) ? 'selected' : '' }}>

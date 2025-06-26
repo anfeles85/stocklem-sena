@@ -12,11 +12,11 @@ class EntryController extends Controller
 
 
     private $rules = [
-        'sena_code' => 'string|max:70',
+        'sena_code' => 'max:70',
         'date_entry' => 'required |date|date_format:Y-m-d',
-        'expiration_date' => 'date|date_format:Y-m-d',
+        'expiration_date' => 'nullable|date|after:date_entry|date_format:Y-m-d',
         'quantity' => 'required|numeric|min:1|max:9999999999',
-        'observations' => 'string|min:3|max:100',
+        'observations' => 'max:100',
         'article_id' => 'required|numeric|min:1|max:99999999999999999999'
     ];
 
@@ -46,6 +46,7 @@ class EntryController extends Controller
     public function create()
     {
         $articles = Article::all();
+        
         return view('entry.create', compact('articles'));
     }
 
@@ -94,7 +95,7 @@ class EntryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $validator = Validator::make($request->all(), $this->rules);
+        $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
         if($validator->fails())
         {

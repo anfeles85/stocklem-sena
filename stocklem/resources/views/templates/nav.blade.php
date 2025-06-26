@@ -67,11 +67,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-sena-light" href="{{ route('issue.index') }}">
+                <a class="nav-link {{ request()->routeIs('issue.*') ? 'active' : '' }} text-sena-light" href="{{ route('issue.index') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-arrow-up text-sena-light text-sm opacity-10"></i>
+                        <i class="fas fa-arrow-up text-sena-light text-sm opacity-10 {{ request()->routeIs('issue.*') ? 'active-icon' : '' }}"></i>
                     </div>
-                    <span class="nav-link-text ms-1 fs-6">Salidas</span>
+                    <span class="nav-link-text ms-1 fs-6 {{ request()->routeIs('issue.*') ? 'active-text' : '' }}">Salidas</span>
                 </a>
             </li>
             <li class="nav-item">
