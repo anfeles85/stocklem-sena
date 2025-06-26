@@ -49,5 +49,5 @@
     </div>
 @endsection
 @section('script')
- <script src="{{ assset('js/general.js') }}"></script>
+ <script src="{{ asset('js/general.js') }}"></script>
 @endsection
