@@ -10,15 +10,15 @@
                 <div class="row form-group">
                     <div class="col-md-4 mb-4">
                         <label for="date_issue">Fecha salida</label>
-                        <input type="date" class="form-control" name="date_issue" id="date_issue" value="{{ $issue->date_issue }}" required>
+                        <input type="date" class="form-control" name="date_issue" id="date_issue" value="{{ old('date_issue') }}" required>
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="quantity">Cantidad</label>
-                        <input type="number" class="form-control" name="quantity" id="quantity" value="{{ $issue->quantity }}" required>
+                        <input type="number" class="form-control" name="quantity" id="quantity" value="{{ old('quantity') }}" required>
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="observations">Observaciones</label>
-                        <input type="text" class="form-control" name="observations" id="observations" value="{{ $issue->observations }}" required>
+                        <input type="text" class="form-control" name="observations" id="observations" value="{{ old('observations') }}" required>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -27,9 +27,9 @@
                         <select name="article_id" id="article_id" class="form-control form-select">
                             <option value="">Seleccione</option>
                             @foreach($articles as $article)
-                                <option value="{{ $article->id }}"
-                                    @if($article->id == $issue->article_id) selected @endif>
-                                    {{ $article->name }}
+                                <option value="{{ $article['id'] }}"
+                                    @if(old('article_id') == $article['id']) selected @endif>
+                                    {{ $article['name'] }}
                                 </option>
                             @endforeach
                         </select>
@@ -37,11 +37,11 @@
                     <div class="col-md-4 mb-4">
                         <label for="person_id">Persona</label>
                         <select name="person_id" id="person_id" class="form-control form-select">
-                            <option value="">Seleccione</option>
+                            <option value="">Seleccione </option>
                             @foreach($persons as $person)
-                                <option value="{{ $person->id }}" 
-                                    @if($person->id == $issue->person_id) selected @endif>
-                                    {{ $person->name }}
+                                <option value="{{ $person['id'] }}" 
+                                    @if(old('person_id') == $person['id']) selected @endif>
+                                    {{ $person['name'] }}
                                 </option>
                             @endforeach
                         </select>
@@ -51,9 +51,9 @@
                         <select name="unit_id" id="unit_id" class="form-control form-select">
                             <option value="">Seleccione</option>
                             @foreach($units as $unit)
-                                <option value="{{ $unit->id }}" 
-                                    @if($unit->id == $issue->unit_id) selected @endif>
-                                    {{ $unit->name }}
+                                <option value="{{ $unit['id'] }}" 
+                                    @if(old('unit_id') == $unit['id']) selected @endif>
+                                    {{ $unit['name'] }}
                                 </option>
                             @endforeach
                         </select>
