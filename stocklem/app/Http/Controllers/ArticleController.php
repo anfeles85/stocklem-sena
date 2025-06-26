@@ -53,7 +53,8 @@ class ArticleController extends Controller
         $presentations = Presentation::all();
         $categories = Category::all();
         $suppliers = Supplier::all();
-        return view('article.create', compact('presentations', 'categories', 'suppliers'));
+        $units = Unit::all();
+        return view('article.create', compact('presentations', 'categories', 'suppliers', 'units'));
     }
 
     /**
