@@ -11,18 +11,18 @@
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
-                    <tr>
+                    <tr class="text-center">
                         <th>ID</th>
                         <th>NOMBRE</th>
-                        <th class="text-center">ACCIONES</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($units as $unit)
-                    <tr>
+                    <tr class="text-center">
                         <td>{{ $unit->id }}</td>
                         <td>{{ $unit->name }}</td>
-                        <td class="text-center">
+                        <td>
                             <a href="{{ route('unit.edit', $unit->id) }}"
                                     class="btn btn-warning btn-circle btn-sm" title="Editar"><i class="far fa-edit"></i>
                             </a>

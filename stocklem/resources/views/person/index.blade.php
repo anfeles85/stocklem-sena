@@ -12,17 +12,17 @@
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
-                    <tr>
+                    <tr class="text-center">
                         <th>ID</th>
                         <th>DOCUMENTO</th>
                         <th>NOMBRE</th>
                         <th>TELÉFONO</th>
-                        <th class="text-center">ACCIONES</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($persons as $person)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{ $person->id }}</td>
                             <td>{{ $person->document }}</td>
                             <td>{{ $person->name }}</td>

@@ -11,15 +11,15 @@
         <div class="table-responsive">
             <table class="table table-hover align-middle mb-0">
                 <thead class="table-light">
-                    <tr>
+                    <tr class="text-center">
                         <th>ID</th>
                         <th>DESCRIPCION</th>
-                        <th class="text-center">ACCIONES</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($presentations as $presentation)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{ $presentation->id }}</td>
                             <td>{{ $presentation->description }}</td>
                             <td class="text-center">
