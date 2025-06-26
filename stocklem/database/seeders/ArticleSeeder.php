@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Presentation;
 use App\Models\Supplier;
+use App\Models\Unit;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -30,6 +31,9 @@ class ArticleSeeder extends Seeder
 
         $supplier = Supplier::where('id', 1)->first();
         $article->supplier_id = $supplier->id;
+
+        $unit = Unit::where('id', 1)->first();
+        $article->unit_id = $unit->id;
 
         $article->save();
     }
