@@ -10,19 +10,19 @@
 
     <div class="card">
         <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
+            <table id="table_data" class="table table-hover align-middle mb-0">
                 <thead class="table-light">
-                    <tr>
+                    <tr class="text-center">
                         <th>ID</th>
                         <th>DOCUMENTO</th>
                         <th>NOMBRE</th>
                         <th>TELÉFONO</th>
-                        <th class="text-center">ACCIONES</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($persons as $person)
-                        <tr>
+                        <tr class="text-center">
                             <td>{{ $person->id }}</td>
                             <td>{{ $person->document }}</td>
                             <td>{{ $person->name }}</td>
@@ -32,10 +32,12 @@
                                     class="btn btn-warning btn-sm me-1" title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form action="{{ route('person.destroy', $person->id) }}" method="POST" class="d-inline delete-form">
+                                <form id="form-delete-{{ $person->id }}" action="{{ route('person.destroy', $person->id) }}"
+                                     method="POST" class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+                                    <button type="button" class="btn btn-danger btn-sm" title="Eliminar" 
+                                     onclick="removeId({{ $person->id }})">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
@@ -52,32 +54,6 @@
         </div>
     </div>
 @endsection
-
 @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.delete-form').forEach(form => {
-                form.addEventListener('submit', function (e) {
-                    e.preventDefault();
-
-                    Swal.fire({
-                        title: '¿Estás seguro?',
-                        text: "¡Esta acción no se puede deshacer!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        cancelButtonColor: '#6c757d',
-                        confirmButtonText: 'Sí, eliminar',
-                        cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            form.submit();
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+    <script src="{{ asset('js/general.js') }}"></script>
 @endsection

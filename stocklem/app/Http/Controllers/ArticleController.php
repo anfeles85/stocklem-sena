@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\Issue;
 use App\Models\Person;
+use App\Models\Presentation;
+use App\Models\Supplier;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -47,7 +50,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article.create');
+        $presentations = Presentation::all();
+        $categories = Category::all();
+        $suppliers = Supplier::all();
+        return view('article.create', compact('presentations', 'categories', 'suppliers'));
     }
 
     /**
@@ -84,7 +90,11 @@ class ArticleController extends Controller
             $persons = Person::all();
             $units = Unit::all();
             $issues = Issue::all();
-            return view('article.edit', compact('article', 'persons', 'units', 'issues'));
+            $presentations = Presentation::all();
+            $categories = Category::all();
+            $suppliers = Supplier::all();
+            return view('article.edit', compact(
+                'article', 'persons', 'units', 'issues', 'presentations', 'categories', 'suppliers'));
         }
         else{
             session()->flash('error', 'No se encontró el artículo.');
