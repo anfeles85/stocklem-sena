@@ -17,7 +17,6 @@ class Issue extends Model
         'observations',
         'article_id',
         'person_id',
-        'unit_id'
     ];
 
     public function article() {
@@ -26,9 +25,5 @@ class Issue extends Model
 
     public function person() {
         return $this->belongsTo(Person::class, 'person_id');
-    }
-
-    public function unit() {
-        return $this->belongsTo(Unit::class, 'unit_id');
     }
 }

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('observations')->nullable()->comment('observaciones salida');
             $table->foreignId('article_id')->constrained('article')->onDelete('cascade')->onUpdate('cascade')->comment('FK con articulo');
             $table->foreignId('person_id')->constrained('person')->onDelete('cascade')->onUpdate('cascade')->comment('FK con persona');
-            $table->foreignId('unit_id')->constrained('unit')->onDelete('cascade')->onUpdate('cascade')->comment('FK con unidad');
             $table->timestamps();
         });
     }
