@@ -45,12 +45,17 @@
   <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
   <script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
+  <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js "></script>
+  <!-- jQuery UI -->
+  <script src="{{ asset('vendor/jquery-ui-1.14.1/jquery-ui.min.js') }}"></script>
+  <link rel="stylesheet" href="{{ asset('vendor/jquery-ui-1.14.1/jquery-ui.min.css') }}">
   <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js "></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
   <script src="{{ asset('js/argon-dashboard.min.js?v=2.1.0')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="{{ asset('utils/alertMessages.js') }}"></script>
+  <script src="{{ asset('js/general.js') }}"></script>
 
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

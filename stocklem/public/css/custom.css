@@ -70,3 +70,15 @@ body {
 tr * {
     text-align: center !important;
 }
+
+.ui-autocomplete {
+    max-height: 200px;                 /* Altura máxima del menú desplegable */
+    overflow-y: auto;                  /* Activa scroll vertical si excede los 200px */
+    overflow-x: hidden;                /* Oculta cualquier desbordamiento horizontal */
+    z-index: 1051 !important;          /* Se asegura de que esté por encima de otros elementos, como modales */
+    background-color: white;          /* Fondo blanco del menú */
+    border: 1px solid #ced4da;         /* Borde gris claro, como los formularios de Bootstrap */
+    border-radius: 0.25rem;            /* Esquinas redondeadas para un aspecto moderno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para levantar visualmente la lista */
+}
+

@@ -46,18 +46,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-4 mb-4">
-                        <label for="unit_id">Unidad</label>
-                        <select name="unit_id" id="unit_id" class="form-control form-select">
-                            <option value="">Seleccione</option>
-                            @foreach($units as $unit)
-                                <option value="{{ $unit['id'] }}" 
-                                    @if(old('unit_id') == $unit['id']) selected @endif>
-                                    {{ $unit['name'] }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-4 d-grid">
