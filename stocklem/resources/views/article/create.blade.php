@@ -1,8 +1,6 @@
 @extends('templates.base')
-
 @section('title', 'Crear artículo')
 @section('header', 'Crear artículo')
-
 @section('content')
     @include('templates.validation_errors')
 
@@ -102,6 +100,8 @@
                 <input type="hidden" name="unit_id" id="unit_id" value="{{ old('unit_id') }}">
             </div>
         </div>
+
+        <br>
 
         {{-- Botones --}}
         <div class="row">

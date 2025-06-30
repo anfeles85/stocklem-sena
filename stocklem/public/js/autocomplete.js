@@ -63,36 +63,65 @@ $(function () {
         });
     }
 
-    // Inicializamos los autocompletados para cada campo
-    initAutocomplete({
-        inputId: "presentation_description",
-        hiddenId: "presentation_id",
-        clearId: "presentation_clear",
-        arrowId: "presentation_arrow",
-        sourceList: presentations
-    });
+    // ======= LLAMADAS SOLO SI EXISTEN VARIABLES ======= //
 
-    initAutocomplete({
-        inputId: "category_name",
-        hiddenId: "category_id",
-        clearId: "category_clear",
-        arrowId: "category_arrow",
-        sourceList: categories
-    });
+    if (typeof presentations !== 'undefined') {
+        initAutocomplete({
+            inputId: "presentation_description",
+            hiddenId: "presentation_id",
+            clearId: "presentation_clear",
+            arrowId: "presentation_arrow",
+            sourceList: presentations
+        });
+    }
 
-    initAutocomplete({
-        inputId: "supplier_name",
-        hiddenId: "supplier_id",
-        clearId: "supplier_clear",
-        arrowId: "supplier_arrow",
-        sourceList: suppliers
-    });
+    if (typeof categories !== 'undefined') {
+        initAutocomplete({
+            inputId: "category_name",
+            hiddenId: "category_id",
+            clearId: "category_clear",
+            arrowId: "category_arrow",
+            sourceList: categories
+        });
+    }
 
-    initAutocomplete({
-        inputId: "unit_name",
-        hiddenId: "unit_id",
-        clearId: "unit_clear",
-        arrowId: "unit_arrow",
-        sourceList: units
-    });
+    if (typeof suppliers !== 'undefined') {
+        initAutocomplete({
+            inputId: "supplier_name",
+            hiddenId: "supplier_id",
+            clearId: "supplier_clear",
+            arrowId: "supplier_arrow",
+            sourceList: suppliers
+        });
+    }
+
+    if (typeof units !== 'undefined') {
+        initAutocomplete({
+            inputId: "unit_name",
+            hiddenId: "unit_id",
+            clearId: "unit_clear",
+            arrowId: "unit_arrow",
+            sourceList: units
+        });
+    }
+
+    if (typeof articles !== 'undefined') {
+        initAutocomplete({
+            inputId: "article_name",
+            hiddenId: "article_id",
+            clearId: "article_clear",
+            arrowId: "article_arrow",
+            sourceList: articles
+        });
+    }
+
+    if (typeof persons !== 'undefined') {
+        initAutocomplete({
+            inputId: "person_name",
+            hiddenId: "person_id",
+            clearId: "person_clear",
+            arrowId: "person_arrow",
+            sourceList: persons
+        });
+    }
 });
