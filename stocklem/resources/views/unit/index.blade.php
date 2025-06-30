@@ -43,6 +43,3 @@
         </div>
     </div>
 @endsection
-@section('script')
- <script src="{{ asset('js/general.js') }}"></script>
-@endsection

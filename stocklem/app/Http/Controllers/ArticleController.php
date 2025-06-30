@@ -50,10 +50,23 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $presentations = Presentation::all();
-        $categories = Category::all();
-        $suppliers = Supplier::all();
-        return view('article.create', compact('presentations', 'categories', 'suppliers'));
+        $presentations = Presentation::all()->map(function ($item) {
+            return ['label' => $item->description, 'value' => $item->id];
+        });
+
+        $categories = Category::all()->map(function ($item) {
+            return ['label' => $item->name, 'value' => $item->id];
+        });
+
+        $suppliers = Supplier::all()->map(function ($item) {
+            return ['label' => $item->name, 'value' => $item->id];
+        });
+
+        $units = Unit::all()->map(function ($item) {
+            return ['label' => $item->name, 'value' => $item->id];
+        });
+
+        return view('article.create', compact('presentations', 'categories', 'suppliers', 'units'));
     }
 
     /**
@@ -63,8 +76,7 @@ class ArticleController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('article.create')->withInput()->withErrors($errors);
         }
@@ -86,17 +98,20 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $article = Article::find($id);
-        if($article){
-            $persons = Person::all();
-            $units = Unit::all();
-            $issues = Issue::all();
-            $presentations = Presentation::all();
-            $categories = Category::all();
-            $suppliers = Supplier::all();
+        if ($article) {
+            $presentations = Presentation::all()->map(fn($item) => ['label' => $item->description, 'value' => $item->id]);
+            $categories = Category::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
+            $suppliers = Supplier::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
+            $units = Unit::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
+
             return view('article.edit', compact(
-                'article', 'persons', 'units', 'issues', 'presentations', 'categories', 'suppliers'));
-        }
-        else{
+                'article',
+                'presentations',
+                'categories',
+                'suppliers',
+                'units'
+            ));
+        } else {
             session()->flash('error', 'No se encontró el artículo.');
             return redirect()->route('article.index');
         }
@@ -109,18 +124,16 @@ class ArticleController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('article.edit', $id)->withInput()->withErrors($errors);
         }
         $article = Article::find($id);
-        if($article){
+        if ($article) {
             $article->update($request->all());
             return redirect()->route('article.index')->with('success', '¡Artículo actualizado correctamente!');
         }
         return redirect()->route('article.index')->with('error', 'Ha ocurrido un problema al actualizar el artículo.');
-
     }
 
     /**
@@ -129,13 +142,10 @@ class ArticleController extends Controller
     public function destroy(string $id)
     {
         $article = Article::find($id);
-        if($article)
-        {
+        if ($article) {
             $article->delete();
             return redirect()->route('article.index')->with('success', '¡Artículo eliminado correctamente!');
-        }
-        else
-        {
+        } else {
             return redirect()->route('article.index')->with('error', 'Ha ocurrido un problema al eliminar el artículo.');
         }
     }
