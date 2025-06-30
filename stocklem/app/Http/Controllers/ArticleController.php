@@ -99,20 +99,17 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         if ($article) {
-            $persons = Person::all();
-            $units = Unit::all();
-            $issues = Issue::all();
-            $presentations = Presentation::all();
-            $categories = Category::all();
-            $suppliers = Supplier::all();
+            $presentations = Presentation::all()->map(fn($item) => ['label' => $item->description, 'value' => $item->id]);
+            $categories = Category::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
+            $suppliers = Supplier::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
+            $units = Unit::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
+
             return view('article.edit', compact(
                 'article',
-                'persons',
-                'units',
-                'issues',
                 'presentations',
                 'categories',
-                'suppliers'
+                'suppliers',
+                'units'
             ));
         } else {
             session()->flash('error', 'No se encontró el artículo.');
