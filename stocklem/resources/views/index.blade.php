@@ -3,37 +3,49 @@
 @section('header', 'Inicio')
 @section('content')
 
-<div class="row mb-4">
-    <div class="col-lg-4">
+<div class="row mb-4 g-3">
+    <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card text-center shadow-sm">
             <div class="card-body">
                 <div class="mb-2">
-                    <i class="fa fa-pills fa-2x text-sena"></i>
+                    <i class="fas fa-box-open fa-2x text-sena"></i>
                 </div>
-                <h5 class="card-title">Medicamentos</h5>
-                <h2 class="fw-bold">630</h2>
+                <h5 class="card-title">Articulos</h5>
+                <h2 class="fw-bold">{{ $articles->count() }}</h2>
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card text-center shadow-sm">
             <div class="card-body">
                 <div class="mb-2">
-                    <i class="fa fa-boxes fa-2x text-sena"></i>
+                    <i class="fas fa-arrow-down fa-2x text-sena"></i>
                 </div>
-                <h5 class="card-title">Insumos</h5>
-                <h2 class="fw-bold">380</h2>
+
+                <h5 class="card-title">Entradas</h5>
+                <h2 class="fw-bold">{{ $entries->count() }}</h2>
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card text-center shadow-sm">
+            <div class="card-body">
+                <div class="mb-2">
+                    <i class="fas fa-arrow-up fa-2x text-sena"></i>
+                </div>
+                <h5 class="card-title">Salidas</h5>
+                <h2 class="fw-bold">{{ $issues->count() }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card text-center shadow-sm">
             <div class="card-body">
                 <div class="mb-2">
                     <i class="fa fa-truck fa-2x text-sena"></i>
                 </div>
                 <h5 class="card-title">Proveedores</h5>
-                <h2 class="fw-bold">250</h2>
+                <h2 class="fw-bold">{{ $suppliers->count() }}</h2>
             </div>
         </div>
     </div>
@@ -73,6 +85,7 @@
             </div>
         </div>
     </div>
+    
     <div class="col-lg-6 mb-4">
         <div class="card shadow-sm">
             <div class="card-body">

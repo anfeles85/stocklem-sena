@@ -24,7 +24,7 @@
   @include('templates.nav')
 
   <!-- Contenido principal -->
-  <main class="main-content position-relative border-radius-lg flex-fill d-flex flex-column">
+  <main class="main-content position-relative flex-fill d-flex flex-column">
     
     @include('templates.topbar')
 
