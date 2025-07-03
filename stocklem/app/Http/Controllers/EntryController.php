@@ -37,7 +37,7 @@ class EntryController extends Controller
     public function index()
     {
         $entries = Entry::all();
-         return view('entry.index', compact('entries'));
+        return view('entry.index', compact('entries'));
     }
 
     /**
@@ -45,8 +45,10 @@ class EntryController extends Controller
      */
     public function create()
     {
-        $articles = Article::all();
-        
+        $articles = Article::all()->map(function ($item) {
+            return ['label' => $item->name, 'value' => $item->id];
+        });
+
         return view('entry.create', compact('articles'));
     }
 
@@ -57,8 +59,7 @@ class EntryController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('entry.create')->withInput()->withErrors($errors);
         }
@@ -78,17 +79,18 @@ class EntryController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-    {
-        $entry = Entry::find($id);
-        if($entry){
-            $articles = Article::all();
-            return view('entry.edit', compact('entry', 'articles'));
-        }
-        else{
-            session()->flash('error', 'No se encontró la entrada.');
-            return redirect()->route('entry.index');
-        }
+{
+    $entry = Entry::find($id);
+    if ($entry) {
+        $articles = Article::all()->map(function ($item) {
+            return ['label' => $item->name, 'value' => $item->id];
+        });
+        return view('entry.edit', compact('entry', 'articles'));
+    } else {
+        session()->flash('error', 'No se encontró la entrada.');
+        return redirect()->route('entry.index');
     }
+}
 
     /**
      * Update the specified resource in storage.
@@ -97,14 +99,13 @@ class EntryController extends Controller
     {
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('entry.edit', $id)->withInput()->withErrors($errors);
         }
-        $entry= Entry::find($id);
-        if($entry){
-        $entry->update($request->all());
+        $entry = Entry::find($id);
+        if ($entry) {
+            $entry->update($request->all());
             return redirect()->route('entry.index')->with('success', '¡Entrada actualizada correctamente!');
         }
         return redirect()->route('entry.index')->with('error', 'Ha ocurrido un problema al actualizar la entrada.');
@@ -115,14 +116,11 @@ class EntryController extends Controller
      */
     public function destroy(string $id)
     {
-         $entry = Entry::find($id);
-        if($entry)
-        {
+        $entry = Entry::find($id);
+        if ($entry) {
             $entry->delete();
             return redirect()->route('entry.index')->with('success', '¡Entrada eliminada correctamente!');
-        }
-        else
-        {
+        } else {
             return redirect()->route('entry.index')->with('error', 'Ha ocurrido un problema al eliminar la entrada.');
         }
     }

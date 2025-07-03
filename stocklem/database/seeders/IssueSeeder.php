@@ -27,9 +27,6 @@ class IssueSeeder extends Seeder
         $person = Person::where('id', 1)->first();
         $issue->person_id=$person->id;
 
-        $unit = Unit::where('id', 1)->first();
-        $issue->unit_id = $unit->id;
-
         $issue->save();
     }
 }
