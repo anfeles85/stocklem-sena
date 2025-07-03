@@ -9,15 +9,8 @@
                 @yield('header')
             </h3>
         </nav>
-        <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-<<<<<<< Updated upstream
-                    <i class="fa fa-user me-sm-1"></i>
-                    <span class="d-sm-inline d-none fs-6">Sign In</span>
-                </a>
-            </li>
-=======
+     
+
                     <li class="nav-item dropdown d-flex align-items-center">
     <a class="nav-link dropdown-toggle text-white font-weight-bold px-0" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fa fa-user me-sm-1"></i>
@@ -25,10 +18,10 @@
     </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                 <li>
-                    <a class="dropdown-item" href="#">Cambiar contraseña</a>
+                    <a class="dropdown-item" href="{{ route('auth.changePassword') }}">Cambiar contraseña</a>
                 </li>
             </ul>
->>>>>>> Stashed changes
+
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                     <div class="sidenav-toggler-inner">

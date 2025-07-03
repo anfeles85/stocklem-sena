@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class ChangePasswordController extends Controller
 {
+
+
+    public function index(){
+        return view('auth.change_password');
+    }
+
+
     public function changePassword(Request $request)
     {
         $request->validate([

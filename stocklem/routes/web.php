@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PersonController;
@@ -95,4 +96,9 @@ Route::prefix('issue')->group(function(){
     Route::get('/edit/{id}', [IssueController::class, 'edit'])->name('issue.edit');
     Route::put('/update/{id}', [IssueController::class, 'update'])->name('issue.update');
     Route::delete('/destroy/{id}', [IssueController::class, 'destroy'])->name('issue.destroy');
+});
+
+Route::prefix('auth')->group(function(){
+    Route::get('/changePassword', [ChangePasswordController::class, 'index']);
+   Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword');
 });
