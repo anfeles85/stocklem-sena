@@ -16,10 +16,8 @@
                         <th>ID</th>
                         <th>FECHA SALIDA</th>
                         <th>CANTIDAD</th>
-                        <th>OBSERVACIONES</th>
                         <th>ARTICULO</th>
                         <th>PERSONA</th>
-                        <th>UNIDAD</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
@@ -29,10 +27,8 @@
                             <td>{{ $issue->id }}</td>
                             <td>{{ $issue->date_issue }}</td>
                             <td>{{ $issue->quantity }}</td>
-                            <td>{{ $issue->observations }}</td>
                             <td>{{ $issue->article->name }}</td>
                             <td>{{ $issue->person->name }}</td>
-                            <td>{{ $issue->unit->name }}</td>
                             <td class="text-center">
                                 <a href="{{ route('issue.edit', $issue->id) }}" class="btn btn-warning btn-sm me-1"
                                     title="Editar">
@@ -49,18 +45,9 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
-                    @if ($issues->isEmpty())
-                        <tr>
-                            <td colspan="5" class="text-center text-muted">No hay unidades registradas.</td>
-                        </tr>
-                    @endif
+                    @endforeach       
                 </tbody>
             </table>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-<script src="{{ asset('js/general.js') }}"></script>
 @endsection

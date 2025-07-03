@@ -3929,19 +3929,19 @@ fieldset:disabled .btn {
 
 .btn-warning {
   --bs-btn-color: #000;
-  --bs-btn-bg: #fb6340;
-  --bs-btn-border-color: #fb6340;
+  --bs-btn-bg: #ffc107;
+  --bs-btn-border-color: #ffc107;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: rgb(251.6, 122.4, 92.65);
-  --bs-btn-hover-border-color: rgb(251.4, 114.6, 83.1);
+  --bs-btn-hover-bg: #ffc107;
+  --bs-btn-hover-border-color: #ffc107;
   --bs-btn-focus-shadow-rgb: 213, 84, 54;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: rgb(251.8, 130.2, 102.2);
-  --bs-btn-active-border-color: rgb(251.4, 114.6, 83.1);
+  --bs-btn-active-bg: #ffc107;
+  --bs-btn-active-border-color: #ffc107;
   --bs-btn-active-shadow: none;
   --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #fb6340;
-  --bs-btn-disabled-border-color: #fb6340;
+  --bs-btn-disabled-bg: #ffc107;
+  --bs-btn-disabled-border-color: #ffc107;
 }
 
 .btn-danger {
@@ -21896,8 +21896,8 @@ fieldset:disabled .btn {
 
 .btn-warning:hover,
 .btn.bg-gradient-warning:hover {
-  background-color: #fb6340;
-  border-color: #fb6340;
+  background-color: #ffc107;
+  border-color: #ffc107;
 }
 
 .btn-warning .btn.bg-outline-warning,

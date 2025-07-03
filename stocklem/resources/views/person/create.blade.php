@@ -20,12 +20,13 @@
             <input type="number" name="phone" id="phone" class="form-control" required value="{{ old('phone') }}">
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-md-6 d-grid">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-success">Guardar</button>
         </div>
         <div class="col-md-6 d-grid">
-            <a href="{{ route('person.index') }}" class="btn btn-danger">Cancelar</a>
+            <a href="{{ route('person.index') }}" class="btn btn-info">Cancelar</a>
         </div>
     </div>
 </form>
