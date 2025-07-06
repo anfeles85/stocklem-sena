@@ -82,6 +82,14 @@
                     <span class="nav-link-text ms-1 fs-6 {{ request()->routeIs('unit.*') ? 'active-text' : '' }}">Unidades</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('reports.*') ? 'active' : '' }} text-sena-light" href="{{ route('reports.index') }}">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-file-pdf text-sena-light text-sm opacity-10 {{ request()->routeIs('reports.*') ? 'active-icon' : '' }}"></i>
+                    </div>
+                    <span class="nav-link-text ms-1 fs-6 {{ request()->routeIs('reports.*') ? 'active-text' : '' }}">Reportes</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>
