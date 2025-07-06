@@ -24,7 +24,7 @@
   @include('templates.nav')
 
   <!-- Contenido principal -->
-  <main class="main-content position-relative border-radius-lg flex-fill d-flex flex-column">
+  <main class="main-content position-relative flex-fill d-flex flex-column">
     
     @include('templates.topbar')
 
@@ -55,7 +55,8 @@
   <script src="{{ asset('js/argon-dashboard.min.js?v=2.1.0')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="{{ asset('utils/alertMessages.js') }}"></script>
-  <script src="{{ asset('js/general.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ asset('js/general.js') }}"></script>
 
   <script>
     var win = navigator.platform.indexOf('Win') > -1;

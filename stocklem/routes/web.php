@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EntryController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\PresentationController;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::prefix('category')->group(function(){
     Route::get('/index', [CategoryController::class, 'index'])->name('category.index');

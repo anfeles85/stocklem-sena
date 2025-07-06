@@ -1,9 +1,11 @@
-<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl custom-navbar bg-sena" id="navbarBlur"
+<nav class="navbar navbar-main navbar-expand-lg px-0  shadow-none custom-navbar bg-sena" id="navbarBlur"
     data-scroll="false">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb" class="d-flex align-items-center">
-            <img src="{{ asset('img/sena-logo.png') }}" alt="logo-sena" width="70px" height="70px">
-            <h3 class="ms-4 mb-0 text-white">
+            <a href="{{ route('index') }}" class="d-flex align-items-center text-decoration-none">
+                <img src="{{ asset('img/sena-logo.png') }}" alt="logo-sena" width="70" height="70">
+            </a>
+            <h3 class="ms-3 mb-0 text-white">
                 @yield('header')
             </h3>
         </nav>
