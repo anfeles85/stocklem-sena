@@ -29,6 +29,7 @@ class ReportController extends Controller
                 'defaultFont' => 'sans-serif', 
                 'isRemoteEnabled' => true
             ]);
+
         return $pdf->download('articles.pdf');
     }
 
@@ -50,19 +51,20 @@ class ReportController extends Controller
                 'defaultFont' => 'sans-serif', 
                 'isRemoteEnabled' => true
             ]);
+
         return $pdf->download('movementsByArticle_' . $request['id_article'] . '.pdf');
     }
 
     public function export_all_movements_by_date(Request $request)
     {
-        $entries = Entry::whereBetween('date', [$request['date1'], $request['date2']])->get();
-        $issues = Issue::whereBetween('date', [$request['date1'], $request['date2']])->get();
-                
+        $entries = Entry::whereBetween('date_entry', [$request['start_date'], $request['end_date']])->get();
+        $issues = Issue::whereBetween('date_issue', [$request['start_date'], $request['end_date']])->get();
+
         $data = array(
             'entries' => $entries,
             'issues' => $issues,
-            'date1' => $request['date1'],
-            'date2' => $request['date2']
+            'start_date' => $request['start_date'],
+            'end_date' => $request['end_date']
         );
 
         $pdf = Pdf::loadView('reports.export_all_movements_by_date', $data)
@@ -70,7 +72,7 @@ class ReportController extends Controller
                 ->setOptions([
                     'defaultFont'=>'sans-serif', 
                     'isRemoteEnabled'=>true
-                ]); 
+                ]);
                 
         return $pdf->download('MovementsByDate.pdf');
     }
