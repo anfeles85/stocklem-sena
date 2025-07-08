@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ChangePasswordController extends Controller
@@ -13,7 +12,8 @@ class ChangePasswordController extends Controller
     public $traductionAttributes = [
         'email' => 'correo electrónico',
         'password' => 'contraseña',
-        'current_password' => 'contraseña actual'
+        'current_password' => 'contraseña actual',
+        'password_confirmation' => 'confirmación de contraseña',
     ];
 
     public function index(){
@@ -23,23 +23,29 @@ class ChangePasswordController extends Controller
 
     public function changePassword(Request $request)
     {
-        $request->validate([
-            'current_password' => 'required|string|min:6',
-            'password' => 'required|string|min:6|confirmed',
-            'email' => 'required|string|min:12'
-        ]);
+    $request->validate([
+        'current_password' => 'required|string|min:6',
+        'password' => 'required|string|min:6|confirmed',
+        'email' => 'required|email|min:12'
+    ]);
 
-        $currentPasswordstatus = Hash::check($request->current_password, auth()->user()->password);
-        if($currentPasswordstatus)
-        {
-            User::findOrFail(Auth::user()->id)->update([
-                'password' => Hash::make($request->password),
-            ]);
-            return redirect()->back()->with('success', 'Contraseña cambiada exitosamente');
-        }
-        else
-        {
-            return redirect()->back()->with('error', 'La contraseña actual no coincide con la contraseña antigua');
-        }
+
+
+    $user = User::where('email', $request->email)->first();
+
+    if (!$user) {
+        return redirect()->back()->with('error', 'Usuario no encontrado');
     }
+
+    $currentPasswordstatus = Hash::check($request->current_password, $user->password);
+    if ($currentPasswordstatus) {
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->back()->with('success', 'Contraseña cambiada exitosamente');
+    } else {
+        return redirect()->back()->with('error', 'La contraseña actual no coincide con la contraseña antigua');
+    }
+    }
+
 }

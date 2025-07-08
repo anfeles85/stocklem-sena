@@ -20,7 +20,7 @@
                     <div class="card-body p-0">
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="#" alt="#"
+                                <img src="{{ asset('img/stockclem-logo.png') }}" alt="#"
                                 class="img-fluid">
                             </div>
                             <div class="col-lg-6">
@@ -28,25 +28,40 @@
                                     <div class="text-center">
                                         <h1 class="text-gray-900">Cambio contraseña</h1>
                                     </div>
+                                    @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+
+                                    @if(session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
                                      @include('templates.validation_errors')
 
-                                    <form  class="user" action="{{ route('auth.changePassword') }}" method="POST">
-                                        @csrf
-                                        <div class="form-group">
-                                            <input type="email" name="email" id="email"
-                                            class="form-control form-control-user" placeholder="Correo electronico" value="{{ old('email') }}" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password" id="password"
-                                            class="form-control form-control-user" placeholder="Contraseña" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="current_password" id="current_password"
-                                            class="form-control form-control-user" placeholder="Confirmar contraseña" required>
-                                        </div>
-                                        <input type="hidden" name="role_id" name="role_id" value="2">
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">Cambiar Contraseña</button>
-                                    </form>
+                                    <form class="user" action="{{ route('auth.changePassword') }}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="email"
+                                        class="form-control form-control-user" placeholder="Correo electrónico" value="{{ old('email') }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="current_password" id="current_password"
+                                        class="form-control form-control-user" placeholder="Contraseña actual" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password"
+                                        class="form-control form-control-user" placeholder="Nueva contraseña" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password_confirmation" id="password_confirmation"
+                                        class="form-control form-control-user" placeholder="Confirmar nueva contraseña" required>
+                                    </div>
+                                    <input type="hidden" name="role_id" value="2">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Cambiar Contraseña</button>
+                                </form>
                                         <hr>
                                 </div>
                             </div>
