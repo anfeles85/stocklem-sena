@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\IssueController;
@@ -97,9 +98,15 @@ Route::prefix('issue')->group(function(){
     Route::delete('/destroy/{id}', [IssueController::class, 'destroy'])->name('issue.destroy');
 });
 
+
+Route::prefix('auth')->group(function(){
+    Route::get('/changePassword', [ChangePasswordController::class, 'index'])->name('auth.changePassword');
+    Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword');
+
 Route::prefix('reports')->group(function () {
     Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
     Route::get('/export_articles', [ReportController::class, 'export_articles'])->name('reports.articles');
     Route::post('/export_movements_by_article', [ReportController::class, 'export_movements_by_article'])->name('reports.movements_article');
     Route::post('/export_all_movements_by_date', [ReportController::class, 'export_all_movements_by_date'])->name('reports.all_movements_date');
+
 });
