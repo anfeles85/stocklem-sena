@@ -40,8 +40,8 @@
         @yield('content')
     </div>
 
-    <footer id="version-text">
-        <p style="margin:0;">&copy; {{ date('Y') }} Stocklem - Reporte generado automáticamente.</p>
+    <footer id="version_text" style="text-align: center; margin-top: 32px;">
+        <p style="margin: 0; font-size: 14px; font-style: italic;">&copy; {{ date('Y') }} Stocklem - Reporte generado automáticamente.</p>
     </footer>
 </body>
 </html>

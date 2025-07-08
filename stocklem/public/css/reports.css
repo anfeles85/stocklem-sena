@@ -2,7 +2,7 @@ body{
     font-family: 'Inter', sans-serif;
 }
 
-.reportTable{
+.reportTable, #reportTable{
     border-collapse: collapse;
     width: 100%;
     font-size: 10px;
