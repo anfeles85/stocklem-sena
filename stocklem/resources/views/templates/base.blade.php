@@ -24,7 +24,7 @@
   @include('templates.nav')
 
   <!-- Contenido principal -->
-  <main class="main-content position-relative border-radius-lg flex-fill d-flex flex-column">
+  <main class="main-content position-relative flex-fill d-flex flex-column">
     
     @include('templates.topbar')
 
@@ -50,12 +50,14 @@
   <!-- jQuery UI -->
   <script src="{{ asset('vendor/jquery-ui-1.14.1/jquery-ui.min.js') }}"></script>
   <link rel="stylesheet" href="{{ asset('vendor/jquery-ui-1.14.1/jquery-ui.min.css') }}">
+  <!-- Scripts -->
   <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js "></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
   <script src="{{ asset('js/argon-dashboard.min.js?v=2.1.0')}}"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="{{ asset('utils/alertMessages.js') }}"></script>
-  <script src="{{ asset('js/general.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ asset('js/general.js') }}"></script>
 
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
