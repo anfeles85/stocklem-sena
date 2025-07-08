@@ -99,6 +99,6 @@ Route::prefix('issue')->group(function(){
 });
 
 Route::prefix('auth')->group(function(){
-    Route::get('/changePassword', [ChangePasswordController::class, 'index']);
-   Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword');
+    Route::get('/changePassword', [ChangePasswordController::class, 'index'])->name('auth.changePassword');
+    Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword');
 });

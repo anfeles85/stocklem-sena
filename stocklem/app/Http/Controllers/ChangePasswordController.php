@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class ChangePasswordController extends Controller
 {
-
+    
+    public $traductionAttributes = [
+        'email' => 'correo electrónico',
+        'password' => 'contraseña',
+        'current_password' => 'contraseña actual'
+    ];
 
     public function index(){
         return view('auth.change_password');
@@ -19,8 +24,8 @@ class ChangePasswordController extends Controller
     public function changePassword(Request $request)
     {
         $request->validate([
-            'current_password' => ['required|string|min:6'],
-            'password' => ['required|string|min:6|confirmed'],
+            'current_password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|confirmed',
             'email' => 'required|string|min:12'
         ]);
 
