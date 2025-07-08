@@ -35,9 +35,9 @@ class ReportController extends Controller
 
     public function export_movements_by_article(Request $request)
     {
-        $article = Article::findOrFail($request['id_article']);
-        $entries = Entry::where('id_article', $request['id_article'])->get();
-        $issues = Issue::where('id_article', $request['id_article'])->get();
+        $article = Article::findOrFail($request['article_id']);
+        $entries = Entry::where('article_id', $request['article_id'])->get();
+        $issues = Issue::where('article_id', $request['article_id'])->get();
 
         $data = array(
             'article' => $article,

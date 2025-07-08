@@ -71,8 +71,8 @@
         <form action="{{ route('reports.movements_article') }}" method="POST" class="row g-3 align-items-end">
             @csrf
             <div class="col-auto">
-                <label for="id_article" class="form-label">Artículo:</label>
-                <select name="id_article" id="id_article" class="form-control" required>
+                <label for="article_id" class="form-label">Artículo:</label>
+                <select name="article_id" id="article_id" class="form-control" required>
                     <option value="">Selecciona un artículo</option>
                     @foreach ($articles as $article)
                         <option value="{{ $article['id'] }}">{{ $article['name'] }}</option>
