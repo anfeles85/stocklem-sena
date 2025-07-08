@@ -56,7 +56,7 @@
             <div class="card shadow-sm">
                 <div class="card-body text-center">
                     <h6 class="card-title">Distribución del Stock</h6>
-                    <canvas id="stockChart" height="200"></canvas>
+                    <canvas id="stockChart" style="max-height: 250px"></canvas>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
             <div class="card shadow-sm">
                 <div class="card-body text-center">
                     <h6 class="card-title">Movimientos Mensuales</h6>
-                    <canvas id="monthMovement" height="300"></canvas>
+                    <canvas id="monthMovement" style="max-height: 250px"></canvas>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h6 class="card-title">Entradas</h6>
-                    <table class="table table-sm table-bordered mb-0">
+                    <table class="table table-sm table-striped mb-0">
                         <thead class="table-light">
                             <tr>
                                 <th>Codigo SENA</th>
@@ -103,7 +103,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h6 class="card-title">Salidas</h6>
-                    <table class="table table-sm table-bordered mb-0">
+                    <table class="table table-sm table-striped mb-0">
                         <thead class="table-light">
                             <tr>
                                 <th>ID</th>
@@ -132,7 +132,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Stock de articulos</h6>
                     <div class="table-responsive">
-                        <table class="table table-sm table-bordered mb-0">
+                        <table class="table table-sm table-striped mb-0">
                             <thead class="table-light">
                                 <tr>
                                     <th>Nombre</th>
@@ -168,7 +168,7 @@
                 <div class="card-body">
                     <h6 class="card-title">Top 5 Proveedores con más artículos</h6>
                     <div class="table-responsive">
-                        <table class="table table-sm table-bordered mb-0">
+                        <table class="table table-sm table-striped mb-0">
                             <thead class="table-light">
                                 <tr>
                                     <th>Nombre</th>
