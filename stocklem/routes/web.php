@@ -7,6 +7,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\PresentationController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
@@ -94,4 +95,11 @@ Route::prefix('issue')->group(function(){
     Route::get('/edit/{id}', [IssueController::class, 'edit'])->name('issue.edit');
     Route::put('/update/{id}', [IssueController::class, 'update'])->name('issue.update');
     Route::delete('/destroy/{id}', [IssueController::class, 'destroy'])->name('issue.destroy');
+});
+
+Route::prefix('reports')->group(function () {
+    Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
+    Route::get('/export_articles', [ReportController::class, 'export_articles'])->name('reports.articles');
+    Route::post('/export_movements_by_article', [ReportController::class, 'export_movements_by_article'])->name('reports.movements_article');
+    Route::post('/export_all_movements_by_date', [ReportController::class, 'export_all_movements_by_date'])->name('reports.all_movements_date');
 });
