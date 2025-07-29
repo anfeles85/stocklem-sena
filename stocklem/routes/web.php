@@ -102,6 +102,7 @@ Route::prefix('issue')->group(function(){
 Route::prefix('auth')->group(function(){
     Route::get('/changePassword', [ChangePasswordController::class, 'index'])->name('auth.changePassword');
     Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword');
+});
 
 Route::prefix('reports')->group(function () {
     Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
