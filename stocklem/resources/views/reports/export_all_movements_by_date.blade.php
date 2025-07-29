@@ -4,10 +4,10 @@
     <section id="result">
         @if (count($entries) !=0 || count($issues) != 0)
 
-            <p>
-                <strong>Fecha reporte: </strong>
+            <p style="font-size: 14px;">
+                <strong>Rango de fechas consultado </strong>
                 <br>
-                <strong>Desde: {{ $start_date }} - Hasta: {{ $end_date }}</strong>
+                Desde: {{ $start_date }} - Hasta: {{ $end_date }}
             </p>
             <br>
             <h3>Entradas</h3>
@@ -27,7 +27,7 @@
                     @foreach($entries as $entry)
                         <tr>      
                             <td>{{ $entry->article->name }}</td>
-                            <td>{{ $entry->code_sena }}</td>
+                            <td>{{ $entry->sena_code }}</td>
                             <td>{{ date('Y-m-d', strtotime($entry->date_entry)) }}</td>
                             <td>@if ($entry->expiration_date)
                                 {{ date('Y-m-d', strtotime($entry->expiration_date)) }}
@@ -47,6 +47,7 @@
                 <thead>
                     <tr> 
                         <th>Articulo</th>
+                        <th>Codigo Sena</th>
                         <th>Persona</th>
                         <th>Fecha de salida</th>
                         <th>Cantidad</th>
@@ -57,6 +58,7 @@
                     @foreach($issues as $issue)
                         <tr>
                             <td>{{ $issue->article->name }}</td>
+                            <td>{{ $issue->sena_code}}</td>
                             <td>{{ $issue->person->name }}</td>      
                             <td>{{ date('Y-m-d', strtotime($issue->date_issue)) }}</td>
                             <td>{{ $issue->quantity }}</td>
