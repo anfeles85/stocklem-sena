@@ -17,9 +17,7 @@
                         <th>ID</th>
                         <th>CÓDIGO SENA</th>
                         <th>FECHA</th>
-                        <th>FECHA VENCIMIENTO</th>
                         <th>CANTIDAD</th>
-                        <th>OBSERVACIONES</th>
                         <th>ARTÍCULO</th>
                         <th>ACCIONES</th>
                     </tr>
@@ -30,9 +28,7 @@
                             <td>{{ $entry->id }}</td>
                             <td>{{ $entry->sena_code }}</td>
                             <td>{{ $entry->date_entry }}</td>
-                            <td>{{ $entry->expiration_date }}</td>
                             <td>{{ $entry->quantity }}</td>
-                            <td>{{ $entry->observations }}</td>
                             <td>{{ $entry->article->name ?? 'Sin artículo' }}</td>
                             <td>
                                 <a href="{{ route('entry.edit', $entry->id) }}"
