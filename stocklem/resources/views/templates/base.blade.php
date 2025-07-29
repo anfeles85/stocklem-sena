@@ -50,6 +50,7 @@
   <!-- jQuery UI -->
   <script src="{{ asset('vendor/jquery-ui-1.14.1/jquery-ui.min.js') }}"></script>
   <link rel="stylesheet" href="{{ asset('vendor/jquery-ui-1.14.1/jquery-ui.min.css') }}">
+  <!-- Scripts -->
   <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js "></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
   <script src="{{ asset('js/argon-dashboard.min.js?v=2.1.0')}}"></script>
