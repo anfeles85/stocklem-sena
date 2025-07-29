@@ -15,7 +15,7 @@
     </div>
 
     <!-- Logo Stocklem centrado debajo -->
-    <div style="text-align: center; margin: 32px 0 0 0;">
+    <div style="text-align: center;">
         <img src="{{ asset('img/stockclem-logo.png') }}" alt="STOCKCLEM Logo" style="height: 80px;">
         <h4 style="color: #39a900; margin: 8px 0 0 0;">STOCKCLEM</h4>
     </div>
@@ -26,9 +26,9 @@
         </p>
     </div>
 
-    <section id="infoReport" style="margin-bottom: 16px;">
+    <section id="infoReport" style="margin: 45px 0 0 0; margin-bottom: 16px;">
         <p style="font-size: 14px; margin:0;">
-            <strong>Fecha reporte: </strong>
+            <strong>Fecha de generación del reporte: </strong>
             @php
                 $time = time();
                 echo date('d-m-Y (H:i:s)', $time);
@@ -41,7 +41,7 @@
     </div>
 
     <footer id="version_text" style="text-align: center; margin-top: 32px;">
-        <p style="margin: 0; font-size: 14px; font-style: italic;">&copy; {{ date('Y') }} Stocklem - Reporte generado automáticamente.</p>
+        <p style="margin: 0; font-size: 14px; font-style: italic;">&copy; {{ date('Y') }} Stocklem </p>
     </footer>
 </body>
 </html>

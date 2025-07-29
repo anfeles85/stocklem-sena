@@ -8,17 +8,22 @@
             <form action="{{ route('issue.store') }}" method="POST">
                 @csrf
                 <div class="row form-group">
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-3 mb-3">
+                        <label for="sena_code">Codigo sena</label>
+                        <input type="text" class="form-control" name="sena_code" id="sena_code"
+                            value="{{ old('sena_code') }}" required>
+                    </div>
+                    <div class="col-md-3 mb-3">
                         <label for="date_issue">Fecha salida</label>
                         <input type="date" class="form-control" name="date_issue" id="date_issue"
                             value="{{ old('date_issue') }}" required>
                     </div>
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-3 mb-3">
                         <label for="quantity">Cantidad</label>
                         <input type="number" class="form-control" name="quantity" id="quantity"
                             value="{{ old('quantity') }}" required>
                     </div>
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-3 mb-3">
                         <label for="observations">Observaciones</label>
                         <input type="text" class="form-control" name="observations" id="observations"
                             value="{{ old('observations') }}" required>
