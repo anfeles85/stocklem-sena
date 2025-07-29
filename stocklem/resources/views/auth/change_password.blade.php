@@ -32,6 +32,18 @@
                                     <h3 class="mb-0">Cambio de contraseña</h3>
                                 </div>
 
+                                @if(session('success'))
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if(session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
                                 <div class="p-3">
                                     @include('templates.validation_errors')
 
@@ -52,7 +64,7 @@
 
                                         <div class="form-group">
                                             <label for="current_password">Confirmar nueva contraseña</label>
-                                            <input type="password" name="current_password" id="current_password"
+                                            <input type="password" name="password_confirmation" id="password_confirmation"
                                                 class="form-control" placeholder="Confirmar contraseña" required>
                                         </div>
 
