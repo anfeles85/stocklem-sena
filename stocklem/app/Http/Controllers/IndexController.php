@@ -32,9 +32,9 @@ class IndexController extends Controller
 
         // Estadísticas de stock
         $stockLevels = [
-            'sufficient' => $articles->where('quantity', '>=', 1000)->count(),
-            'warning'    => $articles->whereBetween('quantity', [100, 999])->count(),
-            'danger'     => $articles->where('quantity', '<', 100)->count(),
+            'sufficient' => $articles->where('quantity', '>=', 500)->count(),
+            'warning'    => $articles->whereBetween('quantity', [200, 499])->count(),
+            'danger'     => $articles->where('quantity', '<=', 199)->count(),
         ];
 
         // Entradas y salidas por mes actual

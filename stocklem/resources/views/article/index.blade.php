@@ -22,21 +22,23 @@
                 </thead>
                 <tbody>
                     @foreach ($articles as $article)
-                        <tr class="text-center">
+                        <tr class="text-center {{ $article->isBelowMinimum() ? 'table-danger' : '' }}">
                             <td>{{ $article->id }}</td>
                             <td>{{ $article->name }}</td>
                             <td>{{ $article->quantity }}</td>
                             <td>{{ $article->presentation->description ?? 'Sin presentación' }}</td>
                             <td>{{ $article->category->name ?? 'Sin categoría' }}</td>
                             <td>
-                                <a href="{{ route('article.edit', $article->id) }}" class="btn btn-warning btn-sm me-1" title="Editar">
+                                <a href="{{ route('article.edit', $article->id) }}" class="btn btn-warning btn-sm me-1"
+                                    title="Editar">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form id="form-delete-{{ $article->id }}" action="{{ route('article.destroy', $article->id) }}" 
-                                    method="POST" class="d-inline delete-form">
+                                <form id="form-delete-{{ $article->id }}"
+                                    action="{{ route('article.destroy', $article->id) }}" method="POST"
+                                    class="d-inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-danger btn-sm" title="Eliminar" 
+                                    <button type="button" class="btn btn-danger btn-sm" title="Eliminar"
                                         onclick="removeId({{ $article->id }})">
                                         <i class="fas fa-trash"></i>
                                     </button>
