@@ -70,7 +70,7 @@
 
                                         <input type="hidden" name="role_id" value="2">
 
-                                        <button type="submit" class="btn btn-primary btn-block mt-4">Cambiar Contraseña</button>
+                                        <button type="submit" class="btn btn-primary btn-block mt-4">Cambiar Contraseña.</button>
                                     </form>
                                 </div>
                             </div>
