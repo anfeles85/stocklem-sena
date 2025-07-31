@@ -14,6 +14,7 @@
                 <thead class="table-light">
                     <tr class="text-center">
                         <th>ID</th>
+                        <th>CODIGO SENA</th>
                         <th>FECHA SALIDA</th>
                         <th>CANTIDAD</th>
                         <th>ARTICULO</th>
@@ -25,6 +26,7 @@
                     @foreach ($issues as $issue)
                         <tr class="text-center">
                             <td>{{ $issue->id }}</td>
+                            <td>{{ $issue->sena_code }}</td>
                             <td>{{ $issue->date_issue }}</td>
                             <td>{{ $issue->quantity }}</td>
                             <td>{{ $issue->article->name }}</td>

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('issue', function (Blueprint $table) {
             $table->id();
+            $table->string('sena_code')->nullable()->comment('codigo sena');
             $table->date('date_issue')->comment('fecha salida');
             $table->integer('quantity')->comment('cantidad salida');
             $table->text('observations')->nullable()->comment('observaciones salida');

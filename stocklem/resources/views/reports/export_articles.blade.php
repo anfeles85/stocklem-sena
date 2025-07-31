@@ -10,7 +10,6 @@
                         <th>ID</th>
                         <th>Nombre</th>
                         <th>Cantidad</th>
-                        <th>Ficha técnica</th>
                         <th>Presentación</th>
                         <th>Categoría</th>
                         <th>Nombre proveedor</th>
@@ -22,7 +21,6 @@
                             <td>{{ $article->id }}</td>
                             <td>{{ $article->name }}</td>
                             <td>{{ $article->quantity }}</td>
-                            <td>{{ $article->technical_sheet }}</td>
                             <td>{{ $article->presentation->description}}</td>
                             <td>{{ $article->category->name }}</td>
                             <td>{{ $article->supplier->name}}</td>
