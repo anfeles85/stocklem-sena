@@ -32,10 +32,11 @@ class IndexController extends Controller
 
         // Estadísticas de stock
         $stockLevels = [
-            'sufficient' => $articles->where('quantity', '>=', 500)->count(),
-            'warning'    => $articles->whereBetween('quantity', [200, 499])->count(),
-            'danger'     => $articles->where('quantity', '<=', 199)->count(),
+            'danger'     => $articles->filter(fn($a) => $a->quantity <= $a->min_quantity)->count(),
+            'warning'    => $articles->filter(fn($a) => $a->quantity > $a->min_quantity && $a->quantity < 500)->count(),
+            'sufficient' => $articles->filter(fn($a) => $a->quantity >= 500)->count(),
         ];
+
 
         // Entradas y salidas por mes actual
         $monthlyEntries = Entry::selectRaw("MONTH(date_entry) as month, SUM(quantity) as total")
@@ -55,7 +56,7 @@ class IndexController extends Controller
             'monthlyIssues' => $monthlyIssues,
         ];
 
-        return view('index', compact('articles','entries','issues','suppliers','topSuppliers','chartData'));
+        return view('index', compact('articles', 'entries', 'issues', 'suppliers', 'topSuppliers', 'chartData'));
     }
 
     /**

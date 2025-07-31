@@ -146,12 +146,12 @@
                                         <td>{{ $article->name }}</td>
                                         <td>{{ number_format($article->quantity, 0, ',', '.') }}</td>
                                         <td>
-                                            @if ($article->quantity >= 1000)
-                                                <span class="badge bg-success">Stock suficiente</span>
-                                            @elseif($article->quantity >= 100)
+                                            @if ($article->quantity <= $article->min_quantity)
+                                                <span class="badge bg-danger">Reabastecer</span>
+                                            @elseif ($article->quantity < 200)
                                                 <span class="badge bg-warning">Próximo a agotarse</span>
                                             @else
-                                                <span class="badge bg-danger">Reabastecer</span>
+                                                <span class="badge bg-success">Stock suficiente</span>
                                             @endif
                                         </td>
                                     </tr>
