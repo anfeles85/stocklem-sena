@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class IssueController extends Controller
 {
     private $rules = [
+        'sena_code' => 'max:70',
         'date_issue' => 'required|date|date_format:Y-m-d',
         'quantity' => 'required|numeric|min:1|max:9999999999',
         'observations' => 'string|min:3|max:100',
@@ -19,6 +20,7 @@ class IssueController extends Controller
     ];
 
     private $traductionAttributes = [
+        'sena_code' => 'codigo sena',
         'date_issue' => 'fecha salida',
         'quantity' => 'cantidad',
         'observations' => 'observaciones',
