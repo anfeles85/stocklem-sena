@@ -17,6 +17,7 @@ class IssueSeeder extends Seeder
     public function run(): void
     {
         $issue = new Issue();
+        $issue->sena_code = "SENA-001";
         $issue->date_issue = "2025-03-02";
         $issue->quantity = "10";
         $issue->observations = "Salida para uso en tratamiento";

@@ -12,6 +12,7 @@ class Issue extends Model
     protected $table = 'issue';
 
     protected $fillable = [
+        'sena_code',
         'date_issue',
         'quantity',
         'observations',
