@@ -9,14 +9,20 @@
 
         {{-- Nombre y Cantidad --}}
         <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="name" class="form-label">Nombre</label>
                 <input type="text" name="name" id="name" class="form-control" required value="{{ old('name') }}">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="quantity" class="form-label">Cantidad</label>
                 <input type="number" name="quantity" id="quantity" class="form-control" required
                     value="{{ old('quantity') }}">
+            </div>
+            <div class="col-md-4">
+                <label for="min_quantity" class="form-label">Cantidad minima</label>
+                <input type="number" name="min_quantity" id="min_quantity" class="form-control"
+                 min="1" maxlength="9999999999" max="9999999999" required
+                    value="{{ old('min_quantity') }}">
             </div>
         </div>
 
