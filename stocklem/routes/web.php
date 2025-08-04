@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\EntryController;
@@ -110,4 +111,12 @@ Route::prefix('reports')->group(function () {
     Route::post('/export_movements_by_article', [ReportController::class, 'export_movements_by_article'])->name('reports.movements_article');
     Route::post('/export_all_movements_by_date', [ReportController::class, 'export_all_movements_by_date'])->name('reports.all_movements_date');
 
+    
+
+});
+
+Route::prefix('login')->group(function () {
+    Route::get('/', [AuthController::class, 'index'])->name('login.form');         
+    Route::post('/', [AuthController::class, 'login'])->name('login.process');     
+    Route::get('/logout', [AuthController::class, 'logout'])->name('login.logout'); 
 });
