@@ -24,7 +24,10 @@
     </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                 <li>
-                    <a class="dropdown-item" href="{{ route('auth.changePassword') }}">Cambiar contraseña</a>
+                    <a class="dropdown-item" href="{{ route('auth.changePassword.form') }}">Cambiar contraseña</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('auth.logout') }}">Cerrar sesión</a>
                 </li>
             </ul>
 
