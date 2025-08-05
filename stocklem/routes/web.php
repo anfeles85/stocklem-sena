@@ -25,9 +25,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::middleware('auth')->group(function(){
+    Route::get('/index', [IndexController::class, 'index'])->name('index');
+    Route::get('/', [IndexController::class, 'index'])->name('index');
+});
 
-Route::prefix('category')->group(function(){
+Route::prefix('auth')->group(function(){
+    Route::get('/index', [AuthController::class, 'index'])->name('auth.index');
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/change_password', [ChangePasswordController::class, 'index'])->name('auth.change_password');
+    Route::post('/change_password', [ChangePasswordController::class, 'change_password'])->name('auth.change_password');
+});
+
+Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(function(){
     Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
@@ -36,7 +47,7 @@ Route::prefix('category')->group(function(){
     Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });
 
-Route::prefix('person')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('person')->group(function(){
     Route::get('/index', [PersonController::class, 'index'])->name('person.index');
     Route::get('/create', [PersonController::class, 'create'])->name('person.create');
     Route::post('/store', [PersonController::class, 'store'])->name('person.store');
@@ -45,7 +56,7 @@ Route::prefix('person')->group(function(){
     Route::delete('/destroy/{id}', [PersonController::class, 'destroy'])->name('person.destroy');
 });
 
-Route::prefix('presentation')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('presentation')->group(function(){
     Route::get('/index', [PresentationController::class, 'index'])->name('presentation.index');
     Route::get('/create', [PresentationController::class, 'create'])->name('presentation.create');
     Route::post('/store', [PresentationController::class, 'store'])->name('presentation.store');
@@ -54,7 +65,7 @@ Route::prefix('presentation')->group(function(){
     Route::delete('/destroy/{id}', [PresentationController::class, 'destroy'])->name('presentation.destroy');
 });
 
-Route::prefix('supplier')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('supplier')->group(function(){
     Route::get('/index', [SupplierController::class, 'index'])->name('supplier.index');
     Route::get('/create', [SupplierController::class, 'create'])->name('supplier.create');
     Route::post('/store', [SupplierController::class, 'store'])->name('supplier.store');
@@ -63,7 +74,7 @@ Route::prefix('supplier')->group(function(){
     Route::delete('/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
 });
 
-Route::prefix('unit')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function(){
     Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
     Route::get('/create', [UnitController::class, 'create'])->name('unit.create');
     Route::post('/store', [UnitController::class, 'store'])->name('unit.store');
@@ -72,7 +83,7 @@ Route::prefix('unit')->group(function(){
     Route::delete('/destroy/{id}', [UnitController::class, 'destroy'])->name('unit.destroy');
 });
 
-Route::prefix('article')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(function(){
     Route::get('/index', [ArticleController::class, 'index'])->name('article.index');
     Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
     Route::post('/store', [ArticleController::class, 'store'])->name('article.store');
@@ -81,7 +92,7 @@ Route::prefix('article')->group(function(){
     Route::delete('/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
 });
 
-Route::prefix('entry')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('entry')->group(function(){
     Route::get('/index', [EntryController::class, 'index'])->name('entry.index');
     Route::get('/create', [EntryController::class, 'create'])->name('entry.create');
     Route::post('/store', [EntryController::class, 'store'])->name('entry.store');
@@ -90,7 +101,7 @@ Route::prefix('entry')->group(function(){
     Route::delete('/destroy/{id}', [EntryController::class, 'destroy'])->name('entry.destroy');
 });
 
-Route::prefix('issue')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('issue')->group(function(){
     Route::get('/index', [IssueController::class, 'index'])->name('issue.index');
     Route::get('/create', [IssueController::class, 'create'])->name('issue.create');
     Route::post('/store', [IssueController::class, 'store'])->name('issue.store');
@@ -99,21 +110,10 @@ Route::prefix('issue')->group(function(){
     Route::delete('/destroy/{id}', [IssueController::class, 'destroy'])->name('issue.destroy');
 });
 
-Route::prefix('auth')->group(function () {
-    Route::get('/login', [AuthController::class, 'index'])->name('auth.login.form'); 
-    Route::post('/login', [AuthController::class, 'login'])->name('auth.login.process'); 
-    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-    Route::get('/changePassword', [ChangePasswordController::class, 'index'])->name('auth.changePassword.form');
-    Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword.process');
-});
-
-Route::prefix('reports')->group(function () {
+Route::middleware(['auth', 'can:administrador'])->prefix('reports')->group(function () {
     Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
     Route::get('/export_articles', [ReportController::class, 'export_articles'])->name('reports.articles');
     Route::post('/export_movements_by_article', [ReportController::class, 'export_movements_by_article'])->name('reports.movements_article');
     Route::post('/export_all_movements_by_date', [ReportController::class, 'export_all_movements_by_date'])->name('reports.all_movements_date');
-
-    
-
 });
 
