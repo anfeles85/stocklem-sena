@@ -1,11 +1,6 @@
-
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl custom-navbar bg-sena" id="navbarBlur"
-
-<nav class="navbar navbar-main navbar-expand-lg px-0  shadow-none custom-navbar bg-sena" id="navbarBlur"
-
-    data-scroll="false">
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl custom-navbar bg-sena"
+    id="navbarBlur" data-scroll="false">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb" class="d-flex align-items-center">
             <a href="{{ route('index') }}" class="d-flex align-items-center text-decoration-none">
@@ -15,28 +10,42 @@
                 @yield('header')
             </h3>
         </nav>
-     
 
-                    <li class="nav-item dropdown d-flex align-items-center">
-    <a class="nav-link dropdown-toggle text-white font-weight-bold px-0" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fa fa-user me-sm-1"></i>
-        <span class="d-sm-inline d-none fs-6">Account</span>
-    </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                <li>
-                    <a class="dropdown-item" href="{{ route('auth.changePassword') }}">Cambiar contraseña</a>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+            <ul class="navbar-nav ms-md-auto justify-content-end">
+                <li class="nav-item dropdown d-flex align-items-center">
+                    <a class="nav-link dropdown-toggle text-white font-weight-bold px-0" href="#" id="userDropdown"
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user me-sm-1"></i>
+                        <span class="d-sm-inline d-none fs-6">{{ Auth::user()->name }}</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item" href={{ route('auth.change_password') }}>
+                                <i class="fas fa-key me-2"></i>Cambiar Contraseña
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a href={{ route('auth.logout') }} id="logout" class="dropdown-item text-danger">
+                                <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                    <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                        <div class="sidenav-toggler-inner">
+                            <i class="sidenav-toggler-line bg-white"></i>
+                            <i class="sidenav-toggler-line bg-white"></i>
+                            <i class="sidenav-toggler-line bg-white"></i>
+                        </div>
+                    </a>
                 </li>
             </ul>
-
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-                    <div class="sidenav-toggler-inner">
-                        <i class="sidenav-toggler-line bg-white"></i>
-                        <i class="sidenav-toggler-line bg-white"></i>
-                        <i class="sidenav-toggler-line bg-white"></i>
-                    </div>
-                </a>
-            </li>
-        </ul>
+        </div>
     </div>
 </nav>
