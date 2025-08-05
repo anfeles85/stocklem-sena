@@ -139,14 +139,13 @@ tr * {
 .form-control {
     border-radius: 8px;
 }
-
-.btn-primary {
+.change-btn {
     background-color: #2e7d32;
     border-color: #2e7d32;
     border-radius: 8px;
 }
 
-.btn-primary:hover {
+.change-btn:hover {
     background-color: #256429;
     border-color: #256429;
 }
@@ -169,3 +168,4 @@ tr * {
         display: none;
     }
 }
+
