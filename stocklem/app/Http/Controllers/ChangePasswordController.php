@@ -13,7 +13,7 @@ class ChangePasswordController extends Controller
         return view('auth.change_password');
     }
     
-    public function changePassword(Request $request)
+    public function change_password(Request $request)
     {
         $request->validate([
             'password' => 'required|string|min:6|confirmed',
