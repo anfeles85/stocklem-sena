@@ -2,11 +2,14 @@
 @section('title', 'Presentaciones')
 @section('header', 'Presentaciones')
 @section('content')
+    @can('administrador')
     <div class="mb-3">
         <a href="{{ route('presentation.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear presentación
         </a>
     </div>
+    @endcan
+
     <div class="card">
         <div class="table-responsive">
             <table id="table_data" class="table table-hover align-middle mb-0">
@@ -14,7 +17,11 @@
                     <tr class="text-center">
                         <th>ID</th>
                         <th>DESCRIPCION</th>
+
+                        @can('administrador')
                         <th>ACCIONES</th>
+                        @endcan
+
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +29,8 @@
                         <tr class="text-center">
                             <td>{{ $presentation->id }}</td>
                             <td>{{ $presentation->description }}</td>
+
+                            @can('administrador')
                             <td class="text-center">
                                 <a href="{{ route('presentation.edit', $presentation->id) }}"
                                     class="btn btn-warning btn-circle btn-sm" title="Editar"><i class="far fa-edit"></i>
@@ -36,6 +45,7 @@
                                     </button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

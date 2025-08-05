@@ -2,11 +2,13 @@
 @section('title', 'Personas')
 @section('header', 'Personas')
 @section('content')
+    @can('administrador')
     <div class="mb-3">
         <a href="{{ route('person.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear persona
         </a>
     </div>
+    @endcan
 
     <div class="card">
         <div class="table-responsive">
@@ -17,7 +19,10 @@
                         <th>DOCUMENTO</th>
                         <th>NOMBRE</th>
                         <th>TELÉFONO</th>
+
+                        @can('administrador')
                         <th>ACCIONES</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +32,8 @@
                             <td>{{ $person->document }}</td>
                             <td>{{ $person->name }}</td>
                             <td>{{ $person->phone }}</td>
+
+                            @can('administrador')
                             <td class="text-center">
                                 <a href="{{ route('person.edit', $person->id) }}"
                                     class="btn btn-warning btn-sm me-1" title="Editar">
@@ -42,6 +49,8 @@
                                     </button>
                                 </form>
                             </td>
+                            @endcan
+                            
                         </tr>
                     @endforeach
                 </tbody>
