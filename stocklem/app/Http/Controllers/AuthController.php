@@ -15,7 +15,7 @@ class AuthController extends Controller
         if(Auth::check()) {
             return redirect()->route('index');
         }
-        return view('login.form');
+        return view('auth.form');
     }
 
     /**
@@ -46,6 +46,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login.form');
+        return redirect()->route('auth.login.form');
     }
 }

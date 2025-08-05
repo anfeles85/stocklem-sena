@@ -99,10 +99,12 @@ Route::prefix('issue')->group(function(){
     Route::delete('/destroy/{id}', [IssueController::class, 'destroy'])->name('issue.destroy');
 });
 
-
-Route::prefix('auth')->group(function(){
-    Route::get('/changePassword', [ChangePasswordController::class, 'index'])->name('auth.changePassword');
-    Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword');
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('auth.login.form'); 
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login.process'); 
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/changePassword', [ChangePasswordController::class, 'index'])->name('auth.changePassword.form');
+    Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword.process');
 });
 
 Route::prefix('reports')->group(function () {
@@ -115,8 +117,3 @@ Route::prefix('reports')->group(function () {
 
 });
 
-Route::prefix('login')->group(function () {
-    Route::get('/', [AuthController::class, 'index'])->name('login.form');         
-    Route::post('/', [AuthController::class, 'login'])->name('login.process');     
-    Route::get('/logout', [AuthController::class, 'logout'])->name('login.logout'); 
-});
