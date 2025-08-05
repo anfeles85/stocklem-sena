@@ -28,6 +28,7 @@ class ArticleController extends Controller
     private $traductionAttributes = [
         'name' => 'nombre',
         'quantity' => 'cantidad',
+        'min_quantity' => 'cantidad minima',
         'photo' => 'foto',
         'technical_sheet' => 'ficha técnica',
         'presentation_id' => 'presentación',
@@ -42,7 +43,9 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        return view('article.index', compact('articles'));
+        $lowStockArticles = $articles->filter(fn($article) => $article->isBelowMinimum());
+
+        return view('article.index', compact('articles','lowStockArticles'));
     }
 
     /**

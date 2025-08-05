@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\EntryController;
@@ -98,10 +99,12 @@ Route::prefix('issue')->group(function(){
     Route::delete('/destroy/{id}', [IssueController::class, 'destroy'])->name('issue.destroy');
 });
 
-
-Route::prefix('auth')->group(function(){
-    Route::get('/changePassword', [ChangePasswordController::class, 'index'])->name('auth.changePassword');
-    Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword');
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('auth.login.form'); 
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login.process'); 
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::get('/changePassword', [ChangePasswordController::class, 'index'])->name('auth.changePassword.form');
+    Route::post('/changePassword', [ChangePasswordController::class, 'changePassword'])->name('auth.changePassword.process');
 });
 
 Route::prefix('reports')->group(function () {
@@ -110,4 +113,7 @@ Route::prefix('reports')->group(function () {
     Route::post('/export_movements_by_article', [ReportController::class, 'export_movements_by_article'])->name('reports.movements_article');
     Route::post('/export_all_movements_by_date', [ReportController::class, 'export_all_movements_by_date'])->name('reports.all_movements_date');
 
+    
+
 });
+
