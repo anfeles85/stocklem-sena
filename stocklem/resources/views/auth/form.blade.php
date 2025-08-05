@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cambio de contraseña</title>
+    <title>Inicio de sesión</title>
 
     <!-- Custom fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
@@ -22,14 +22,12 @@
                         <div class="col-md-5 bg-white d-flex flex-column align-items-center justify-content-center position-relative">
                             <img src="{{ asset('img/stockclem-logo.png') }}" alt="Logo CLEM" class="sena-logo">
 
-                            <a href="{{ route('index') }}" class="btn btn-primary btn-outline-secondary btn-sm button-under-logo">
-                                Volver
-                            </a>
+                          
                         </div>
                         <div class="col-md-7">
                             <div class="form-section">
                                 <div class="card-header-custom">
-                                    <h3 class="mb-0">Cambio de contraseña</h3>
+                                    <h3 class="mb-0">Inicio de sesión</h3>
                                 </div>
 
                                 @if(session('success'))
@@ -47,7 +45,7 @@
                                 <div class="p-3">
                                     @include('templates.validation_errors')
 
-                                    <form class="user" action="{{ route('auth.changePassword.process') }}" method="POST">
+                                    <form class="user" action="{{ route('auth.login.process') }}" method="POST">
                                         @csrf
 
                                         <div class="form-group">
@@ -57,20 +55,15 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="password">Nueva contraseña</label>
+                                            <label for="password">Contraseña</label>
                                             <input type="password" name="password" id="password"
                                                 class="form-control" placeholder="Contraseña" required>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="current_password">Confirmar nueva contraseña</label>
-                                            <input type="password" name="password_confirmation" id="password_confirmation"
-                                                class="form-control" placeholder="Confirmar contraseña" required>
-                                        </div>
 
                                         <input type="hidden" name="role_id" value="2">
 
-                                        <button type="submit" class="btn btn-primary btn-block mt-4">Cambiar Contraseña.</button>
+                                        <button type="submit" class="btn btn-primary btn-block mt-4">Iniciar Sesión</button>
                                     </form>
                                 </div>
                             </div>
