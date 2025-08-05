@@ -2,11 +2,13 @@
 @section('title', 'Salidas')
 @section('header', 'Salidas')
 @section('content')
+    @can('administrador')
     <div class="mb-3">
         <a href="{{ route('issue.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear salida
         </a>
     </div>
+    @endcan
 
     <div class="card">
         <div class="table-responsive">
@@ -19,7 +21,11 @@
                         <th>CANTIDAD</th>
                         <th>ARTICULO</th>
                         <th>PERSONA</th>
+
+                        @can('administrador')
                         <th>ACCIONES</th>
+                        @endcan
+
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +37,8 @@
                             <td>{{ $issue->quantity }}</td>
                             <td>{{ $issue->article->name }}</td>
                             <td>{{ $issue->person->name }}</td>
+                            
+                            @can('administrador')
                             <td class="text-center">
                                 <a href="{{ route('issue.edit', $issue->id) }}" class="btn btn-warning btn-sm me-1"
                                     title="Editar">
@@ -46,6 +54,8 @@
                                     </button>
                                 </form>
                             </td>
+                            @endcan
+                            
                         </tr>
                     @endforeach       
                 </tbody>
