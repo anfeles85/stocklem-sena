@@ -2,11 +2,13 @@
 @section('title', 'Proveedores')
 @section('header', 'Proveedores')
 @section('content')
+@can('administrador')
 <div class="mb-3">
     <a href="{{ route('supplier.create') }}" class="btn btn-primary">
         <i class="fas fa-plus"></i> Crear proveedor
     </a>
 </div>
+@endcan
 
 <div class="card">
     <div class="table-responsive">
@@ -16,7 +18,11 @@
                     <th>ID</th>
                     <th>NOMBRE</th>
                     <th>TELÉFONO</th>
+
+                    @can('administrador')
                     <th>ACCIONES</th>
+                    @endcan
+
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +31,8 @@
                     <td>{{ $supplier->id }}</td>
                     <td>{{ $supplier->name }}</td>
                     <td>{{ $supplier->phone }}</td>
+
+                    @can('administrador')
                     <td>
                         <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-warning btn-sm me-1"
                             title="Editar">
@@ -40,6 +48,7 @@
                             </button>
                         </form>
                     </td>
+                    @endcan
                 </tr>
                 @endforeach
             </tbody>

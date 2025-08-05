@@ -2,11 +2,14 @@
 @section('title', 'Unidades')
 @section('header', 'Unidades')
 @section('content')
+    @can('administrador')
     <div class="mb-3">
         <a href="{{ route('unit.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear unidad
         </a>
     </div>
+    @endcan
+
     <div class="card">
         <div class="table-responsive">
             <table id="table_data" class="table table-hover align-middle mb-0">
@@ -14,7 +17,10 @@
                     <tr class="text-center">
                         <th>ID</th>
                         <th>NOMBRE</th>
+                        @can('administrador')
                         <th>ACCIONES</th>
+                        @endcan
+
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +28,8 @@
                     <tr class="text-center">
                         <td>{{ $unit->id }}</td>
                         <td>{{ $unit->name }}</td>
+
+                        @can('administrador')
                         <td>
                             <a href="{{ route('unit.edit', $unit->id) }}"
                                     class="btn btn-warning btn-circle btn-sm" title="Editar"><i class="far fa-edit"></i>
@@ -36,6 +44,8 @@
                                     </button>
                                 </form>
                         </td>
+                        @endcan
+                        
                     </tr>
                     @endforeach
                 </tbody>

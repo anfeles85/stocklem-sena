@@ -2,11 +2,13 @@
 @section('title', 'Categorias')
 @section('header', 'Categorias')
 @section('content')
+    @can('administrador')
     <div class="mb-3">
         <a href="{{ route('category.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear Categoria
         </a>
     </div>
+    @endcan
 
     <div class="card">
         <div class="table-responsive">
@@ -16,7 +18,9 @@
                         <th>ID</th>
                         <th>NOMBRE</th>
                         <th>DESCRIPCION</th>
+                        @can('administrador')
                         <th>ACCIONES</th>
+                        @endcan
                     </tr>
                 </thead>
 
@@ -26,6 +30,7 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->description }}</td>
+                            @can('administrador')
                             <td class="text-center">
                                 <a href="{{ route('category.edit', $category->id) }}"
                                     class="btn btn-warning btn-sm me-1" title="Editar"><i class="fas fa-edit"></i>
@@ -40,6 +45,7 @@
                                     </button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>

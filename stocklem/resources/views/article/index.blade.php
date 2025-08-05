@@ -2,11 +2,13 @@
 @section('title', 'Artículos')
 @section('header', 'Artículos')
 @section('content')
+    @can('administrador')
     <div class="mb-3">
         <a href="{{ route('article.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear artículo
         </a>
     </div>
+    @endcan
     <div class="card">
         <div class="table-responsive">
             <table id="table_data" class="table table-hover align-middle mb-0">
@@ -17,7 +19,9 @@
                         <th>CANTIDAD</th>
                         <th>PRESENTACIÓN</th>
                         <th>CATEGORÍA</th>
+                        @can('administrador')
                         <th>ACCIONES</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +32,7 @@
                             <td>{{ $article->quantity }}</td>
                             <td>{{ $article->presentation->description ?? 'Sin presentación' }}</td>
                             <td>{{ $article->category->name ?? 'Sin categoría' }}</td>
+                            @can('administrador')
                             <td>
                                 <a href="{{ route('article.edit', $article->id) }}" class="btn btn-warning btn-sm me-1"
                                     title="Editar">
@@ -44,6 +49,7 @@
                                     </button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                 </tbody>
