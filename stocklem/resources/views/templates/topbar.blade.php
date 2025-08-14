@@ -24,15 +24,12 @@
                             <a class="dropdown-item" href={{ route('auth.change_password') }}>
                                 <i class="fas fa-key me-2"></i>Cambiar Contraseña
                             </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
+                            <a class="dropdown-item" href={{ route('user.profile') }}>
+                                <i class="fas fa-address-card me-2"></i>Perfil
+                            </a>
                             <a href={{ route('auth.logout') }} id="logout" class="dropdown-item text-danger">
                                 <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
                             </a>
-                        </li>
                     </ul>
                 </li>
 
