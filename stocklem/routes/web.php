@@ -9,6 +9,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\PresentationController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
@@ -29,6 +30,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function(){
     Route::get('/index', [IndexController::class, 'index'])->name('index');
     Route::get('/', [IndexController::class, 'index'])->name('index');
+});
+
+Route::middleware('auth')->prefix('user')->group(function(){
+    Route::get('/index', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::prefix('auth')->group(function(){
