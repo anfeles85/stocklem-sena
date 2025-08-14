@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }} text-sena-light"
                     href="{{ route('index') }}">
@@ -30,7 +30,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('person.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('person.index') }}">
@@ -45,7 +45,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('supplier.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('supplier.index') }}">
@@ -60,7 +60,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('article.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('article.index') }}">
@@ -75,7 +75,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('category.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('category.index') }}">
@@ -90,7 +90,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('presentation.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('presentation.index') }}">
@@ -105,7 +105,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('entry.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('entry.index') }}">
@@ -120,7 +120,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('issue.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('issue.index') }}">
@@ -135,7 +135,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('unit.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('unit.index') }}">
@@ -150,7 +150,7 @@
             </li>
             @endcan
 
-            @can('administrador')
+            @can('admin-coordinador')
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('reports.*') ? 'active' : '' }} text-sena-light"
                     href="{{ route('reports.index') }}">

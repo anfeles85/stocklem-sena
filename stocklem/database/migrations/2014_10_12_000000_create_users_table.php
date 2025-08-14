@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique()->comment('correo usuarios');
             $table->string('password')->comment('contraseña usuarios');
             $table->foreignId('role_id')->constrained('role')->onDelete('cascade')->onUpdate('cascade')->comment('FK tabla role');
+            $table->enum('status', ['ACTIVO', 'INACTIVO '])->nullable()->comment('estado del usuario');
             $table->rememberToken();
             $table->timestamps();
         });

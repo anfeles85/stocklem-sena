@@ -117,3 +117,43 @@ Route::middleware(['auth', 'can:administrador'])->prefix('reports')->group(funct
     Route::post('/export_all_movements_by_date', [ReportController::class, 'export_all_movements_by_date'])->name('reports.all_movements_date');
 });
 
+
+// #################### RUTAS PARA COORDINADOR ####################
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('article')->group(function(){
+    Route::get('/index', [ArticleController::class, 'index'])->name('article.index');
+});
+
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('entry')->group(function(){
+    Route::get('/index', [EntryController::class, 'index'])->name('entry.index');
+});
+
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('category')->group(function(){
+    Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
+});
+
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('person')->group(function(){
+    Route::get('/index', [PersonController::class, 'index'])->name('person.index');
+});
+
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('presentation')->group(function(){
+    Route::get('/index', [PresentationController::class, 'index'])->name('presentation.index');
+});
+
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('supplier')->group(function(){
+    Route::get('/index', [SupplierController::class, 'index'])->name('supplier.index');
+});
+
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('unit')->group(function(){
+    Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
+});
+
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('issue')->group(function(){
+    Route::get('/index', [IssueController::class, 'index'])->name('issue.index');
+});
+
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('reports')->group(function () {
+    Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
+    Route::get('/export_articles', [ReportController::class, 'export_articles'])->name('reports.articles');
+    Route::post('/export_movements_by_article', [ReportController::class, 'export_movements_by_article'])->name('reports.movements_article');
+    Route::post('/export_all_movements_by_date', [ReportController::class, 'export_all_movements_by_date'])->name('reports.all_movements_date');
+});

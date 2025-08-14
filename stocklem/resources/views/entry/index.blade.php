@@ -3,11 +3,13 @@
 @section('title', 'Entradas')
 @section('header', 'Entradas')
 @section('content')
+    @can('administrador')
     <div class="mb-3">
         <a href="{{ route('entry.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear entrada
         </a>
     </div>
+    @endcan
 
     <div class="card">
         <div class="table-responsive">
@@ -19,7 +21,10 @@
                         <th>FECHA</th>
                         <th>CANTIDAD</th>
                         <th>ARTÍCULO</th>
+
+                        @can('administrador')
                         <th>ACCIONES</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +35,8 @@
                             <td>{{ $entry->date_entry }}</td>
                             <td>{{ $entry->quantity }}</td>
                             <td>{{ $entry->article->name ?? 'Sin artículo' }}</td>
+                            
+                            @can('administrador')
                             <td>
                                 <a href="{{ route('entry.edit', $entry->id) }}"
                                     class="btn btn-warning btn-sm me-1" title="Editar">
@@ -45,6 +52,7 @@
                                     </button>
                                 </form>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach     
                 </tbody>
