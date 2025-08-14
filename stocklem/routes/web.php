@@ -12,6 +12,7 @@ use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,15 @@ Route::prefix('auth')->group(function(){
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/change_password', [ChangePasswordController::class, 'index'])->name('auth.change_password');
     Route::post('/change_password', [ChangePasswordController::class, 'change_password'])->name('auth.change_password');
+});
+
+Route::middleware(['auth', 'can:administrador'])->prefix('users')->group(function(){
+    Route::get('/index', [UsersController::class, 'index'])->name('users.index');
+    Route::get('/create', [UsersController::class, 'create'])->name('users.create');
+    Route::post('/store', [UsersController::class, 'store'])->name('users.store');
+    Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('/update/{id}', [UsersController::class, 'update'])->name('users.update');
+    Route::delete('/destroy/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(function(){
