@@ -16,7 +16,7 @@
                 <li class="nav-item dropdown d-flex align-items-center">
                     <a class="nav-link dropdown-toggle text-white font-weight-bold px-0" href="#" id="userDropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user me-sm-1"></i>
+                        <i class="fa fa-user me-sm-1"></i>
                         <span class="d-sm-inline d-none fs-6">{{ Auth::user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
@@ -24,20 +24,12 @@
                             <a class="dropdown-item" href={{ route('auth.change_password') }}>
                                 <i class="fas fa-key me-2"></i>Cambiar Contraseña
                             </a>
-                        </li>
-                        <li>
                             <a class="dropdown-item" href={{ route('user.profile') }}>
                                 <i class="fas fa-address-card me-2"></i>Perfil
                             </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
                             <a href={{ route('auth.logout') }} id="logout" class="dropdown-item text-danger">
                                 <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
                             </a>
-                        </li>
                     </ul>
                 </li>
 

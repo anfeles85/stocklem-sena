@@ -77,16 +77,17 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-6 d-grid">
-                                    <a href="{{ route('index') }}" class="btn btn-danger">
-                                        <i class="fas fa-arrow-left me-2"></i>Volver al Dashboard
-                                    </a>
-                                </div>
-                                <div class="col-md-6 d-grid">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-success">
                                         <i class="fas fa-save me-2"></i>Actualizar Email
                                     </button>
+                                </div>
+                                <div class="col-md-6 d-grid">
+                                    <a href="{{ route('index') }}" class="btn btn-info">
+                                        <i class="fas fa-arrow-left me-2"></i>Volver al Dashboard
+                                    </a>
                                 </div>
                             </div>
                         </form>
