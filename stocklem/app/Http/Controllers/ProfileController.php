@@ -5,16 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+
+    private $traductionAttributes = [
+        'name' => 'nombre',
+        'email' => 'correo electrónico',
+        'password' => 'contraseña',
+        'role_id' => 'rol',
+        'status' => 'estado'
+    ];
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        return view('profile.index', compact('user'));
     }
 
     /**
@@ -47,7 +56,7 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        return view('profile.edit'.compact('user'));
+        return view('profile.edit',compact('user'));
     }
 
     /**
@@ -56,25 +65,25 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
-        $request->validate([
-            'email' => [
-                'required',
-                'email',
-                'max:255',
-                'unique:users,email,'.$user->id
-            ],
-            ],[
-                'email.required' => 'el correo es obliagtorio',
-                'email.email' => 'debe ser un correo valido',
-                'email.unique' => 'este correo ya esta en uso'
-            ],[
-                'email' => 'correo electronico'
-            ]);
 
-            $user->email = $request->email;
-            $user->save();
+        $updateRules = [
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id
+        ];
 
-            return redirect()->route('profile.edit')->with('success', 'correo actualizado exitosamente');
+        $validator = Validator::make($request->all(), $updateRules);
+        $validator->setAttributeNames($this->traductionAttributes);
+
+        if ($validator->fails()) {
+            return redirect()->route('user.profile')
+                             ->withInput()
+                             ->withErrors($validator);
+        }
+
+        $user->email = $request->input('email');
+        $user->save();
+
+        session()->flash('success', 'Perfil actualizado correctamente.');
+        return redirect()->route('user.profile');
     }
 
     /**
