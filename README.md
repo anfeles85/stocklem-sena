@@ -4,20 +4,20 @@ proyecto de inventario de la granja para el SENA CLEM
 
 ## 📚 Tabla de Contenido
 
-- [Getting Started](##getting-started)
-- [Prerequisitos](##prerequisitos)
-- [Instalación](##instalación)
-- [Features](##features)
-- [Built With](##built-with)
-- [Autores](##autores)
-- [Contacto](##contacto)
-- [Licencia](##licencia)
+- [Getting Started](#getting-started)
+- [Prerequisitos](#prerequisitos)
+- [Instalación](#instalación)
+- [Features](#features)
+- [Built With](#built-with)
+- [Autores](#autores)
+- [Contacto](#contacto)
+- [Licencia](#licencia)
 
-## 🚀 Getting Started
+# 🚀 Getting Started
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y testing.
 
-## 🛠️ Prerequisitos
+# 🛠️ Prerequisitos
 
 Qué necesitas para instalar el software:<br>
     PHP >= 8.1<br>
@@ -28,7 +28,7 @@ Qué necesitas para instalar el software:<br>
     Git<br>
 
 
-## ⚙️ Instalación
+# ⚙️ Instalación
 
 Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 
@@ -80,7 +80,7 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
   php artisan serve
 
 
-## ✨ Features
+# ✨ Features
 
 - Dashboard con métricas en tiempo real
 - Gestión de personas (CRUD completo)
@@ -92,7 +92,7 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 - Sistema de roles y permisos
 - Diseño responsive
 
-## 🏗️ Built With
+# 🏗️ Built With
 
 - Laravel 10 - Framework PHP
 - PHP 8.1 - Lenguaje de programación
@@ -103,7 +103,7 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 - Composer - Gestor de dependencias PHP
 - NPM - Gestor de paquetes Node.js
 
-## 👩‍💻 Autores
+# 👩‍💻 Autores
 
 <table>
   <tr>
@@ -161,12 +161,12 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 </table>
 
 
-## 📫 Contacto
+# 📫 Contacto
 
 - Email: [software.clem@gmail.com](mailto:software.clem@gmail.com)
 - Proyecto: [https://github.com/anfeles85/stocklem-sena](https://github.com/anfeles85/stocklem-sena)
 
-## 📄 Licencia
+# 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para detalles.
 
