@@ -4,14 +4,14 @@ proyecto de inventario de la granja para el SENA CLEM
 
 ## 📚 Tabla de Contenido
 
-- [Getting Started](#getting-started)
-- [Prerequisitos](#prerequisitos)
-- [Instalación](#instalación)
-- [Features](#features)
-- [Built With](#built-with)
-- [Autores](#autores)
-- [Contacto](#contacto)
-- [Licencia](#licencia)
+- [Getting Started](##getting-started)
+- [Prerequisitos](##prerequisitos)
+- [Instalación](##instalación)
+- [Features](##features)
+- [Built With](##built-with)
+- [Autores](##autores)
+- [Contacto](##contacto)
+- [Licencia](##licencia)
 
 ## 🚀 Getting Started
 
