@@ -23,7 +23,8 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('profile.index', compact('user'));
+        return view('user.profile', compact('user'));
+
     }
 
     /**
@@ -55,8 +56,6 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        $user = Auth::user();
-        return view('profile.edit',compact('user'));
     }
 
     /**
@@ -83,7 +82,7 @@ class ProfileController extends Controller
         $user->save();
 
         session()->flash('success', 'Perfil actualizado correctamente.');
-        return redirect()->route('user.profile');
+        return redirect()->route('index');
     }
 
     /**
