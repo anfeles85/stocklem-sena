@@ -20,12 +20,12 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 ## 🛠️ Prerequisitos
 
 Qué necesitas para instalar el software:<br>
-PHP >= 8.1<br>
-Composer >= 2.0<br>
-Node.js >= 16.x<br>
-NPM >= 8.x<br>
-MySQL >= 8.0<br>
-Git<br>
+    PHP >= 8.1<br>
+    Composer >= 2.0<br>
+    Node.js >= 16.x<br>
+    NPM >= 8.x<br>
+    MySQL >= 8.0<br>
+    Git<br>
 
 
 ## ⚙️ Instalación
@@ -34,50 +34,50 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 
 1. Clonar el repositorio<br>
 
-git clone https://github.com/anfeles85/stocklem-sena.git<br>
-cd stocklem-sena<br>
+  git clone https://github.com/anfeles85/stocklem-sena.git<br>
+  cd stocklem-sena<br>
 
 
 2. Instalar dependencias PHP<br>
 
-composer install<br>
+  composer install<br>
 
 
 3. Instalar dependencias Node.js<br>
 
-npm install<br>
+  npm install<br>
 
 4. Configurar variables de entorno<br>
 
-cp .env.example .env<br>
+  cp .env.example .env<br>
 
 
 5. Configurar base de datos en `.env`<br>
 
-DB_CONNECTION=mysql<br>
-DB_HOST=127.0.0.1<br>
-DB_PORT=3306<br>
-DB_DATABASE=stocklem_db<br>
-DB_USERNAME=tu_usuario<br>
-DB_PASSWORD=tu_contraseña<br>
+  DB_CONNECTION=mysql<br>
+  DB_HOST=127.0.0.1<br>
+  DB_PORT=3306<br>
+  DB_DATABASE=stocklem_db<br>
+  DB_USERNAME=tu_usuario<br>
+  DB_PASSWORD=tu_contraseña<br>
 
 
 6. Generar key de aplicación
 
-php artisan key:generate
+  php artisan key:generate
 
 7. Ejecutar migraciones<br>
 
-php artisan migrate<br>
+  php artisan migrate<br>
 
 
 8. Compilar assets<br>
 
-npm run dev<br>
+  npm run dev<br>
 
 9. Iniciar servidor<br>
 
-php artisan serve
+  php artisan serve
 
 
 ## ✨ Features
@@ -108,21 +108,9 @@ php artisan serve
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/Esteban-cv">
-        <img src="https://github.com/Esteban-cv.png" width="100px;" alt="Esteban-cv"/><br />
-        <sub><b>Esteban-cv</b></sub>
-      </a>
-    </td>
-    <td align="center">
       <a href="https://github.com/Juand4rck12">
         <img src="https://github.com/Juand4rck12.png" width="100px;" alt="Juand4rck12"/><br />
         <sub><b>Juand4rck12</b></sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/juanp356">
-        <img src="https://github.com/juanp356.png" width="100px;" alt="juanp356"/><br />
-        <sub><b>juanp356</b></sub>
       </a>
     </td>
     <td align="center">
@@ -131,18 +119,30 @@ php artisan serve
         <sub><b>JJuanJoArenas</b></sub>
       </a>
     </td>
-  </tr>
-  <tr>
     <td align="center">
-      <a href="https://github.com/Karol-Dayana-2006">
-        <img src="https://github.com/Karol-Dayana-2006.png" width="100px;" alt="Karol-Dayana-2006"/><br />
-        <sub><b>Karol-Dayana-2006</b></sub>
+      <a href="https://github.com/Esteban-cv">
+        <img src="https://github.com/Esteban-cv.png" width="100px;" alt="Esteban-cv"/><br />
+        <sub><b>Esteban-cv</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/DanielOrtiz2003">
         <img src="https://github.com/DanielOrtiz2003.png" width="100px;" alt="DanielOrtiz2003"/><br />
         <sub><b>Daniel Ortiz 2003</b></sub>
+      </a>
+    </td>
+  </tr>
+    <tr>
+    <td align="center">
+      <a href="https://github.com/Karol-Dayana-2006">
+        <img src="https://github.com/Karol-Dayana-2006.png" width="100px;" alt="Karol-Dayana-2006"/><br />
+        <sub><b>Karol-Dayana-2006</b></sub>
+      </a>
+    </td>
+        <td align="center">
+      <a href="https://github.com/juanp356">
+        <img src="https://github.com/juanp356.png" width="100px;" alt="juanp356"/><br />
+        <sub><b>juanp356</b></sub>
       </a>
     </td>
     <td align="center">
