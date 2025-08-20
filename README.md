@@ -2,7 +2,7 @@
 
 proyecto de inventario de la granja para el SENA CLEM
 
-## Tabla de Contenido
+## 📚 Tabla de Contenido
 
 - [Getting Started](#getting-started)
 - [Prerequisitos](#prerequisitos)
@@ -13,11 +13,11 @@ proyecto de inventario de la granja para el SENA CLEM
 - [Contacto](#contacto)
 - [Licencia](#licencia)
 
-## Getting Started
+## 🚀 Getting Started
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y testing.
 
-## Prerequisitos
+## 🛠️ Prerequisitos
 
 Qué necesitas para instalar el software:<br>
 PHP >= 8.1<br>
@@ -28,7 +28,7 @@ MySQL >= 8.0<br>
 Git<br>
 
 
-## Instalación
+## ⚙️ Instalación
 
 Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 
@@ -80,7 +80,7 @@ npm run dev<br>
 php artisan serve
 
 
-## Features
+## ✨ Features
 
 - Dashboard con métricas en tiempo real
 - Gestión de personas (CRUD completo)
@@ -92,7 +92,7 @@ php artisan serve
 - Sistema de roles y permisos
 - Diseño responsive
 
-## Built With
+## 🏗️ Built With
 
 - Laravel 10 - Framework PHP
 - PHP 8.1 - Lenguaje de programación
@@ -103,69 +103,70 @@ php artisan serve
 - Composer - Gestor de dependencias PHP
 - NPM - Gestor de paquetes Node.js
 
-## Autores
+## 👩‍💻 Autores
 
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/NicolleMelendez">
-        <img src="https://github.com/anfeles85.png" width="100px;" alt="Andrés Felipe"/><br />
-        <sub><b>Nicolle Melendez</b></sub>
+      <a href="https://github.com/Esteban-cv">
+        <img src="https://github.com/Esteban-cv.png" width="100px;" alt="Esteban-cv"/><br />
+        <sub><b>Esteban-cv</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/usuario2">
-        <img src="https://github.com/usuario2.png" width="100px;" alt="Usuario 2"/><br />
-        <sub><b>Nombre Usuario 2</b></sub>
+      <a href="https://github.com/Juand4rck12">
+        <img src="https://github.com/Juand4rck12.png" width="100px;" alt="Juand4rck12"/><br />
+        <sub><b>Juand4rck12</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/usuario3">
-        <img src="https://github.com/usuario3.png" width="100px;" alt="Usuario 3"/><br />
-        <sub><b>Nombre Usuario 3</b></sub>
+      <a href="https://github.com/juanp356">
+        <img src="https://github.com/juanp356.png" width="100px;" alt="juanp356"/><br />
+        <sub><b>juanp356</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/usuario4">
-        <img src="https://github.com/usuario4.png" width="100px;" alt="Usuario 4"/><br />
-        <sub><b>Nombre Usuario 4</b></sub>
+      <a href="https://github.com/JJuanJoArenas">
+        <img src="https://github.com/JJuanJoArenas.png" width="100px;" alt="JJuanJoArenas"/><br />
+        <sub><b>JJuanJoArenas</b></sub>
       </a>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <a href="https://github.com/usuario5">
-        <img src="https://github.com/usuario5.png" width="100px;" alt="Usuario 5"/><br />
-        <sub><b>Nombre Usuario 5</b></sub>
+      <a href="https://github.com/Karol-Dayana-2006">
+        <img src="https://github.com/Karol-Dayana-2006.png" width="100px;" alt="Karol-Dayana-2006"/><br />
+        <sub><b>Karol-Dayana-2006</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/usuario6">
-        <img src="https://github.com/usuario6.png" width="100px;" alt="Usuario 6"/><br />
-        <sub><b>Nombre Usuario 6</b></sub>
+      <a href="https://github.com/DanielOrtiz2003">
+        <img src="https://github.com/DanielOrtiz2003.png" width="100px;" alt="DanielOrtiz2003"/><br />
+        <sub><b>Daniel Ortiz 2003</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/usuario7">
-        <img src="https://github.com/usuario7.png" width="100px;" alt="Usuario 7"/><br />
-        <sub><b>Nombre Usuario 7</b></sub>
+      <a href="https://github.com/NicolleMelendez">
+        <img src="https://github.com/NicolleMelendez.png" width="100px;" alt="Nicolle Melendez"/><br />
+        <sub><b>Nicolle Melendez</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/usuario8">
-        <img src="https://github.com/usuario8.png" width="100px;" alt="Usuario 8"/><br />
-        <sub><b>Nombre Usuario 8</b></sub>
+      <a href="https://github.com/Jhon-Zuluaga">
+        <img src="https://github.com/Jhon-Zuluaga.png" width="100px;" alt="Jhon-Zuluaga"/><br />
+        <sub><b>Jhon-Zuluaga</b></sub>
       </a>
     </td>
   </tr>
 </table>
 
-## Contacto
+
+## 📫 Contacto
 
 - Email: [software.clem@gmail.com](mailto:software.clem@gmail.com)
 - Proyecto: [https://github.com/anfeles85/stocklem-sena](https://github.com/anfeles85/stocklem-sena)
 
-## Licencia
+## 📄 Licencia
 
 Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para detalles.
 
