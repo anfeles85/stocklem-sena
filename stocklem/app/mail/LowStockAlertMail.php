@@ -37,7 +37,7 @@ class LowStockAlertMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Low Stock Alert Mail',
+            subject: 'Alerta de Stock Crítico',
         );
     }
 
