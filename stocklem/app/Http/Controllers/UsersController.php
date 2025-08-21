@@ -14,8 +14,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::select('id', 'name', 'email', 'role_id')->get();
-        return view('users.index', compact('users'));
+        $users = User::select('id', 'name', 'email', 'role_id', 'status')->get();
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -24,7 +24,7 @@ class UsersController extends Controller
     public function create()
     {
         $roles = Role::where('name', 'COORDINADOR ADMINISTRATIVO')->get();
-        return view('users.create', compact('roles'));
+        return view('user.create', compact('roles'));
     }
 
     /**
@@ -55,7 +55,7 @@ class UsersController extends Controller
             'role_id' => $request->role_id
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Usuario creado exitosamente');
+        return redirect()->route('user.index')->with('success', 'Usuario creado exitosamente');
     }
 
     /**
@@ -73,7 +73,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $roles = Role::where('name', 'COORDINADOR ADMINISTRATIVO')->get();
-        return view('users.edit', compact('user', 'roles'));
+        return view('user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -102,7 +102,7 @@ class UsersController extends Controller
             'role_id' => $request->role_id
         ]);
 
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente');
+        return redirect()->route('user.index')->with('success', 'Usuario actualizado exitosamente');
     }
 
     /**
@@ -114,6 +114,6 @@ class UsersController extends Controller
         $user->status = 'INACTIVO'; // Valor permitido en el enum
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'Usuario inactivado exitosamente');
+        return redirect()->route('user.index')->with('success', 'Usuario inactivado exitosamente');
     }
 }
