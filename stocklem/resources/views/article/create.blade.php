@@ -4,7 +4,7 @@
 @section('content')
     @include('templates.validation_errors')
 
-    <form action="{{ route('article.store') }}" method="POST">
+    <form action="{{ route('article.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         {{-- Nombre y Cantidad --}}
@@ -34,7 +34,7 @@
             </div>
             <div class="col-md-6">
                 <label for="technical_sheet" class="form-label">Ficha técnica</label>
-                <input type="file" name="technical_sheet" id="technical_sheet" class="form-control"
+                <input type="file" name="technical_sheet" id="technical_sheet" class="form-control" accept="application/pdf"
                     value="{{ old('technical_sheet') }}">
             </div>
         </div>
