@@ -11,6 +11,7 @@ use App\Models\Supplier;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -19,7 +20,7 @@ class ArticleController extends Controller
         'name' => 'required|string|min:3|max:100',
         'quantity' => 'required|numeric|min:1|max:9999999999',
         'photo' => 'max:255',
-        'technical_sheet' => 'max:255',
+        'technical_sheet' => 'mimes:pdf|max:5120',
         'presentation_id' => 'max:9999999999999999999',
         'category_id' => 'max:9999999999999999999',
         'supplier_id' => 'max:9999999999999999999'
@@ -83,7 +84,13 @@ class ArticleController extends Controller
             $errors = $validator->errors();
             return redirect()->route('article.create')->withInput()->withErrors($errors);
         }
-        $article = Article::create($request->all());
+        $data = $request->all();
+
+    if ($request->hasFile('technical_sheet')) {
+        $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
+        $data['technical_sheet'] = Storage::url($path);
+    }
+        $article = Article::create($data);
         return redirect()->route('article.index')->with('success', 'Artículo creado exitosamente');
     }
 
@@ -133,7 +140,13 @@ class ArticleController extends Controller
         }
         $article = Article::find($id);
         if ($article) {
-            $article->update($request->all());
+            $data = $request->all();
+
+            if($request->hasFile('technical_sheet')) {
+                $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
+                $data['technical_sheet'] = Storage::url($path);
+            }
+            $article->update($data);
             return redirect()->route('article.index')->with('success', '¡Artículo actualizado correctamente!');
         }
         return redirect()->route('article.index')->with('error', 'Ha ocurrido un problema al actualizar el artículo.');
