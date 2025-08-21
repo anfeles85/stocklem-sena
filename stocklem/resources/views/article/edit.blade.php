@@ -21,7 +21,7 @@
                     value="{{ old('quantity', $article->quantity) }}">
             </div>
             <div class="col-md-4">
-                <label for="min_quantity" class="form-label">Cantidad minima</label>
+                <label for="min_quantity" class="form-label">Cantidad mínima</label>
                 <input type="number" name="min_quantity" id="min_quantity" class="form-control" min="1" 
                     value="{{ old('min_quantity', $article->min_quantity) }}" disabled>
             </div>

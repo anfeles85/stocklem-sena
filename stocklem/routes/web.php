@@ -45,7 +45,7 @@ Route::prefix('auth')->group(function(){
     Route::post('/change_password', [ChangePasswordController::class, 'change_password'])->name('auth.change_password');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('users')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('user')->group(function(){
     Route::get('/index', [UsersController::class, 'index'])->name('users.index');
     Route::get('/create', [UsersController::class, 'create'])->name('users.create');
     Route::post('/store', [UsersController::class, 'store'])->name('users.store');

@@ -19,7 +19,7 @@
                     value="{{ old('quantity') }}">
             </div>
             <div class="col-md-4">
-                <label for="min_quantity" class="form-label">Cantidad minima</label>
+                <label for="min_quantity" class="form-label">Cantidad mínima</label>
                 <input type="number" name="min_quantity" id="min_quantity" class="form-control"
                  min="1" maxlength="9999999999" max="9999999999" required
                     value="{{ old('min_quantity') }}">
