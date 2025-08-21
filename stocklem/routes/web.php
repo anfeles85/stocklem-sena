@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\EntryController;
+use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PersonController;
@@ -43,6 +44,10 @@ Route::prefix('auth')->group(function(){
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/change_password', [ChangePasswordController::class, 'index'])->name('auth.change_password');
     Route::post('/change_password', [ChangePasswordController::class, 'change_password'])->name('auth.change_password');
+    Route::get('forget-password', [ForgetPasswordController::class, 'showForgetPasswordForm'])->name('auth.forget-password');
+    Route::post('forget-password', [ForgetPasswordController::class, 'submitForgetPasswordForm'])->name('auth.forget-password-link');
+    Route::get('reset-password/{token}', [ForgetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [ForgetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('users')->group(function(){
