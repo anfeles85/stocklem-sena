@@ -37,7 +37,7 @@
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i
-                                class="fas fa-user-friends text-sena-light text-sm opacity-10 {{ request()->routeIs('person.*') ? 'active-icon' : '' }}"></i>
+                                class="fas fa-people-group text-sena-light text-sm opacity-10 {{ request()->routeIs('person.*') ? 'active-icon' : '' }}"></i>
                         </div>
                         <span
                             class="nav-link-text ms-1 fs-6 {{ request()->routeIs('person.*') ? 'active-text' : '' }}">Personas</span>
@@ -47,15 +47,15 @@
 
             @can('admin-coordinador')
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('user.*') ? 'active' : '' }} text-sena-light"
-                        href="{{ route('user.index') }}">
+                    <a class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }} text-sena-light"
+                        href="{{ route('users.index') }}">
                         <div
                             class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i
-                                class="fas fa-user-friends text-sena-light text-sm opacity-10 {{ request()->routeIs('user.*') ? 'active-icon' : '' }}"></i>
+                                class="fas fa-users text-sena-light text-sm opacity-10 {{ request()->routeIs('users.*') ? 'active-icon' : '' }}"></i>
                         </div>
                         <span
-                            class="nav-link-text ms-1 fs-6 {{ request()->routeIs('user.*') ? 'active-text' : '' }}">Usuarios</span>
+                            class="nav-link-text ms-1 fs-6 {{ request()->routeIs('users.*') ? 'active-text' : '' }}">Usuarios</span>
                     </a>
                 </li>
             @endcan
