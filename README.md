@@ -1,19 +1,22 @@
-# stocklem-sena
+<div align="center">
+  <img src="https://github.com/anfeles85/stocklem-sena/blob/dev/stocklem/public/img/stockclem-logo.png" alt="Stocklem Logo" width="350"/><br>
 
-proyecto de inventario de la granja para el SENA CLEM
+</div> <br>
+   <h1> 🌱 
+Stocklem</h1><br>Sistema de gestión de inventario para la granja CLEM desarrollado con Laravel y MySql, especializado en el control de los cerdos, personal, gestion de proveedores, gestion de entradas y salidas de los articulos para la granja SENA CLEM.
 
 ## 📚 Tabla de Contenido
 
-- [🚀 Getting Started](#getting-started)
+- [🚀 Inicio rápido](#Inicio-rápido)
 - [🛠️ Prerequisitos](#prerequisitos)
 - [⚙️ Instalación](#instalacion)
-- [✨ Features](#features)
-- [🏗️ Built With](#built-with)
+- [✨ Características](#Características)
+- [🏗️ Construido con](#Construido-con)
 - [👩‍💻 Autores](#autores)
 - [📫 Contacto](#contacto)
 - [📄 Licencia](#licencia)
 
-## 🚀 Getting Started
+## 🚀 Inicio rápido
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y testing.
 
@@ -80,19 +83,52 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
   php artisan serve
 
 
-## ✨ Features
+## ✨ Características
 
-- Dashboard con métricas en tiempo real
-- Gestión de personas (CRUD completo)
-- Gestión de proveedores
-- Control de artículos e inventario
-- Registro de entradas y salidas
-- Sistema de categorías
-- Generación de reportes
-- Sistema de roles y permisos
-- Diseño responsive
+📊 Panel de Control
 
-## 🏗️ Built With
+Dashboard interactivo con métricas en tiempo real
+Gráficos y estadísticas de inventario
+Alertas y notificaciones automáticas
+
+👥 Gestión de Personas
+
+CRUD completo para empleados
+Roles y permisos personalizables
+Control de acceso por niveles
+
+🏪 Administración de Proveedores
+
+Registro y seguimiento de proveedores
+
+
+📦 Control de Inventario
+
+Gestión completa de artículos
+Registro de entradas y salidas
+Sistema de categorías y subcategorías
+Control de stock mínimo
+
+🐷 Gestión Pecuaria
+
+Control específico de cerdos
+Seguimiento de salud y alimentación
+Registro de nacimientos y defunciones
+
+📈 Reportes Avanzados
+
+Generación automática de reportes
+Exportación a PDF
+
+
+📱 Diseño Responsivo
+
+Interfaz adaptable a dispositivos móviles
+Experiencia de usuario optimizada
+Tema moderno y profesional
+
+
+## 🏗️ Construido con
 
 - Laravel 10 - Framework PHP
 - PHP 8.1 - Lenguaje de programación
@@ -165,11 +201,41 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 
 - Email: [software.clem@gmail.com](mailto:software.clem@gmail.com)
 - Proyecto: [https://github.com/anfeles85/stocklem-sena](https://github.com/anfeles85/stocklem-sena)
+  
+- SENA - <a href="https://portal.senasofiaplus.edu.co/">Servicio Nacional de Aprendizaje</a>
+Centro Latinoamericano de Especies Menores
+</br>
 
 ## 📄 Licencia
+SENA - Servicio Nacional de Aprendizaje
+Este proyecto es desarrollado como parte del programa de formación en Tecnología en Análisis y Desarrollo de Software del SENA.
+📋 Términos de Uso:
 
-Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para detalles.
+✅ Permitido:
 
+- Uso interno en la granja CLEM
+
+- Fines educativos y operativos
+
+- Modificaciones para mejora continua
+
+❌ Prohibido:
+
+- Uso fuera del SENA CLEM
+
+- Distribución externa no autorizada
+
+- Fines comerciales<br>
+
+🏛️ Propiedad Intelectual:
+Los derechos de este proyecto pertenecen al SENA y fueron desarrollados por estudiantes en formación como parte de su proceso educativo.
+Para consultas sobre licenciamiento comercial, contactar al SENA - Centro Latinoamericano de Especies Menores.
+<div align="center">
+🌟 ¡Gracias por tu interés en Stocklem!
+Desarrollado con ❤️ por estudiantes del SENA
+
+© 2025 SENA - Servicio Nacional de Aprendizaje. Proyecto educativo desarrollado por estudiantes en formación.
+</div>
 
 
 
