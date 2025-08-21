@@ -17,18 +17,48 @@ document.querySelectorAll('.toggle-password-sena').forEach(button => {
     });
 });
 
-// Form submission with loading state
-document.getElementById('changePasswordFormSena').addEventListener('submit', function (e) {
-    const submitBtn = this.querySelector('button[type="submit"]');
-    submitBtn.classList.add('btn-loading-sena');
-    submitBtn.disabled = true;
+// Form submission with loading state - AMBOS FORMULARIOS
+const changePasswordForm = document.getElementById('changePasswordFormSena');
+const createUserForm = document.getElementById('createUserForm');
 
-    // Re-enable button after 5 seconds (in case of error)
-    setTimeout(() => {
-        submitBtn.classList.remove('btn-loading-sena');
-        submitBtn.disabled = false;
-    }, 5000);
-});
+if (changePasswordForm) {
+    changePasswordForm.addEventListener('submit', function (e) {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.classList.add('btn-loading-sena');
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            submitBtn.classList.remove('btn-loading-sena');
+            submitBtn.disabled = false;
+        }, 5000);
+    });
+}
+
+if (createUserForm) {
+    createUserForm.addEventListener('submit', function (e) {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.classList.add('btn-loading-sena');
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            submitBtn.classList.remove('btn-loading-sena');
+            submitBtn.disabled = false;
+        }, 5000);
+    });
+}
+
+if (createUserForm) {
+    createUserForm.addEventListener('submit', function (e) {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.classList.add('btn-loading-sena');
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            submitBtn.classList.remove('btn-loading-sena');
+            submitBtn.disabled = false;
+        }, 5000);
+    });
+}
 
 // Auto-hide alerts after 5 seconds
 function hideAlert(alertId) {
@@ -59,9 +89,8 @@ if (passwordInput) {
         if (/[0-9]/.test(password)) strength++;
         if (/[^A-Za-z0-9]/.test(password)) strength++;
 
-        // Visual feedback with SENA colors
         if (strength < 3) {
-            this.style.borderColor = '#dc3545';
+            this.style.borderColor = '#fffff';
         } else if (strength < 4) {
             this.style.borderColor = '#ffc107';
         } else {
