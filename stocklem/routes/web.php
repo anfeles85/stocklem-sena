@@ -46,12 +46,12 @@ Route::prefix('auth')->group(function(){
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('user')->group(function(){
-    Route::get('/index', [UsersController::class, 'index'])->name('user.index');
-    Route::get('/create', [UsersController::class, 'create'])->name('user.create');
-    Route::post('/store', [UsersController::class, 'store'])->name('user.store');
-    Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('user.edit');
-    Route::put('/update/{id}', [UsersController::class, 'update'])->name('user.update');
-    Route::delete('/destroy/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
+    Route::get('/index', [UsersController::class, 'index'])->name('users.index');
+    Route::get('/create', [UsersController::class, 'create'])->name('users.create');
+    Route::post('/store', [UsersController::class, 'store'])->name('users.store');
+    Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('/update/{id}', [UsersController::class, 'update'])->name('users.update');
+    Route::delete('/destroy/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(function(){

@@ -4,7 +4,7 @@
 @section('content')
     @can('administrador')
         <div class="mb-3">
-            <a href="{{ route('user.create') }}" class="btn btn-primary">
+            <a href="{{ route('users.create') }}" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Crear usuario
             </a>
         </div>
@@ -37,12 +37,12 @@
 
                             @can('administrador')
                                 <td>
-                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm me-1"
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm me-1"
                                         title="Editar">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <form id="form-delete-{{ $user->id }}"
-                                        action="{{ route('user.destroy', $user->id) }}" method="POST" class="d-inline">
+                                        action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn btn-danger btn-sm" title="Eliminar"
