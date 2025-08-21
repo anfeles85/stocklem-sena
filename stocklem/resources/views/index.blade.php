@@ -10,7 +10,7 @@
                     <div class="mb-2">
                         <i class="fas fa-box-open fa-2x text-sena"></i>
                     </div>
-                    <h5 class="card-title">Articulos</h5>
+                    <h5 class="card-title">Artículos</h5>
                     <h2 class="fw-bold">{{ $articles->count() }}</h2>
                 </div>
             </div>
@@ -55,7 +55,7 @@
         <div class="col-lg-6 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-                    <h6 class="card-title">Distribución del Stock</h6>
+                    <h6 class="card-title">Distribución del stock</h6>
                     <canvas id="stockChart" style="max-height: 250px"></canvas>
                 </div>
             </div>
@@ -65,7 +65,7 @@
         <div class="col-lg-6 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-                    <h6 class="card-title">Movimientos Mensuales</h6>
+                    <h6 class="card-title">Movimientos mensuales</h6>
                     <canvas id="monthMovement" style="max-height: 250px"></canvas>
                 </div>
             </div>
@@ -130,7 +130,7 @@
         <div class="col-12 col-lg-6 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h6 class="card-title">Stock de articulos</h6>
+                    <h6 class="card-title">Stock de artículos</h6>
                     <div class="table-responsive">
                         <table class="table table-sm table-striped mb-0">
                             <thead class="table-light">
@@ -166,7 +166,7 @@
         <div class="col-lg-6 mb-4">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h6 class="card-title">Top 5 Proveedores con más artículos</h6>
+                    <h6 class="card-title">Top 5 proveedores con más artículos</h6>
                     <div class="table-responsive">
                         <table class="table table-sm table-striped mb-0">
                             <thead class="table-light">
