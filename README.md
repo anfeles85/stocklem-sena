@@ -22,13 +22,14 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 
 ## 🛠️ Prerequisitos
 
-Qué necesitas para instalar el software:<br>
-    PHP >= 8.1<br>
-    Composer >= 2.0<br>
-    Node.js >= 16.x<br>
-    NPM >= 8.x<br>
-    MySQL >= 8.0<br>
-    Git<br>
+Qué necesitas para instalar el software:
+<br>
+  - PHP >= 8.1
+   - Composer >= 2.0
+   - Node.js >= 16.x
+   - NPM >= 8.x
+   - MySQL >= 8.0
+   - Git
 
 
 ## ⚙️ Instalación
@@ -44,7 +45,9 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 
 2. Instalar dependencias PHP<br>
 
-  ```composer install```<br>
+  ```
+    composer install
+  ```
 
 
 3. Instalar dependencias Node.js<br>
@@ -58,12 +61,12 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 
 5. Configurar base de datos en `.env`<br>
 ```
-  DB_CONNECTION=mysql<br>
-  DB_HOST=127.0.0.1<br>
-  DB_PORT=3306<br>
-  DB_DATABASE=stocklem_db<br>
-  DB_USERNAME=tu_usuario<br>
-  DB_PASSWORD=tu_contraseña<br>
+  DB_CONNECTION=mysql
+  DB_HOST=127.0.0.1
+  DB_PORT=3306
+  DB_DATABASE=stocklem_db
+  DB_USERNAME=tu_usuario
+  DB_PASSWORD=tu_contraseña
 
 ```
 6. Generar key de aplicación
@@ -72,12 +75,12 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 ```
 7. Ejecutar migraciones<br>
 ```
-  php artisan migrate<br>
+  php artisan migrate
 
 ```
 8. Compilar assets<br>
 ```
-  npm run dev<br>
+  npm run dev
 ```
 9. Iniciar servidor<br>
 ```
@@ -94,51 +97,50 @@ Alertas y notificaciones automáticas
 
 👥 Gestión de Personas
 
-CRUD completo para empleados
-Roles y permisos personalizables
-Control de acceso por niveles
+- CRUD completo para empleados
+- Roles y permisos personalizables
+- Control de acceso por niveles
 
 🏪 Administración de Proveedores
 
-Registro y seguimiento de proveedores
+- Registro y seguimiento de proveedores
 
 
 📦 Control de Inventario
 
-Gestión completa de artículos
-Registro de entradas y salidas
-Sistema de categorías y subcategorías
-Control de stock mínimo
+- Gestión completa de artículos
+- Registro de entradas y salidas
+- Sistema de categorías y subcategorías
+- Control de stock mínimo
 
 🐷 Gestión Pecuaria
 
-Control específico de cerdos
-Seguimiento de salud y alimentación
-Registro de nacimientos y defunciones
+- Control específico de cerdos
+- Seguimiento de salud y alimentación
+- Registro de nacimientos y defunciones
 
 📈 Reportes Avanzados
 
-Generación automática de reportes
-Exportación a PDF
+- Generación automática de reportes
+- Exportación a PDF
 
 
 📱 Diseño Responsivo
 
-Interfaz adaptable a dispositivos móviles
-Experiencia de usuario optimizada
-Tema moderno y profesional
+- Interfaz adaptable a dispositivos móviles
+- Experiencia de usuario optimizada
+- Tema moderno y profesional
 
 
 ## 🏗️ Construido con
 
-- Laravel 10 - Framework PHP
-- PHP 8.1 - Lenguaje de programación
-- MySQL - Base de datos
-- Bootstrap - Framework CSS
-- JavaScript - Lenguaje frontend
-- Vite - Build tool
-- Composer - Gestor de dependencias PHP
-- NPM - Gestor de paquetes Node.js
+* [![Laravel][Laravel.com]][Laravel-url]
+* [![PHP][PHP.net]][PHP-url]
+* [![MySQL][MySQL.com]][MySQL-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JavaScript][JavaScript.com]][JavaScript-url]
+* [![Composer][Composer.org]][Composer-url]
+
 
 ## 👩‍💻 Autores
 
@@ -210,6 +212,7 @@ Centro Latinoamericano de Especies Menores
 ## 📄 Licencia
 SENA - Servicio Nacional de Aprendizaje
 Este proyecto es desarrollado como parte del programa de formación en Tecnología en Análisis y Desarrollo de Software del SENA.
+<br><br>
 📋 Términos de Uso:
 
 ✅ Permitido:
@@ -228,7 +231,7 @@ Este proyecto es desarrollado como parte del programa de formación en Tecnolog�
 
 - Fines comerciales<br>
 
-🏛️ Propiedad Intelectual:
+🏛️**Propiedad Intelectual**:
 Los derechos de este proyecto pertenecen al SENA y fueron desarrollados por estudiantes en formación como parte de su proceso educativo.
 Para consultas sobre licenciamiento comercial, contactar al SENA - Centro Latinoamericano de Especies Menores.
 <div align="center">
@@ -243,5 +246,25 @@ Desarrollado con ❤️ por estudiantes del SENA
 
 </div> 
 
+<!---  LINKS Y IMAGES-->
 
+[Laravel.com]: https://img.shields.io/badge/Laravel-10-red?style=flat&logo=laravel
+[Laravel-url]: https://laravel.com/
+
+[PHP.net]: https://img.shields.io/badge/PHP-8.1-blue?style=flat&logo=php
+[PHP-url]: https://www.php.net/
+
+[MySQL.com]: https://img.shields.io/badge/MySQL-8.0-blue?style=flat&logo=mysql
+[MySQL-url]: https://www.mysql.com/
+
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-5-orange?style=flat&logo=bootstrap
+[Bootstrap-url]: https://getbootstrap.com/
+
+[JavaScript.com]: https://img.shields.io/badge/JavaScript-yellow?style=flat&logo=javascript
+[JavaScript-url]: https://developer.mozilla.org/es/docs/Web/JavaScript
+
+
+
+[Composer.org]: https://img.shields.io/badge/Composer-black?style=flat&logo=composer
+[Composer-url]: https://getcomposer.org/
 
