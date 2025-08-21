@@ -38,25 +38,26 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
 1. Clonar el repositorio<br>
 
   git clone https://github.com/anfeles85/stocklem-sena.git<br>
-  cd stocklem-sena<br>
-
+  ``` 
+  cd stocklem-sena<br> 
+```
 
 2. Instalar dependencias PHP<br>
 
-  composer install<br>
+  ```composer install```<br>
 
 
 3. Instalar dependencias Node.js<br>
-
-  npm install<br>
-
+```
+  npm install
+```
 4. Configurar variables de entorno<br>
-
-  cp .env.example .env<br>
-
+```
+  cp .env.example .env
+```
 
 5. Configurar base de datos en `.env`<br>
-
+```
   DB_CONNECTION=mysql<br>
   DB_HOST=127.0.0.1<br>
   DB_PORT=3306<br>
@@ -64,24 +65,24 @@ Paso a paso para tener el entorno de desarrollo ejecutándose:<br>
   DB_USERNAME=tu_usuario<br>
   DB_PASSWORD=tu_contraseña<br>
 
-
+```
 6. Generar key de aplicación
-
+```
   php artisan key:generate
-
+```
 7. Ejecutar migraciones<br>
-
+```
   php artisan migrate<br>
 
-
+```
 8. Compilar assets<br>
-
+```
   npm run dev<br>
-
+```
 9. Iniciar servidor<br>
-
+```
   php artisan serve
-
+```
 
 ## ✨ Características
 
@@ -236,6 +237,11 @@ Desarrollado con ❤️ por estudiantes del SENA
 
 © 2025 SENA - Servicio Nacional de Aprendizaje. Proyecto educativo desarrollado por estudiantes en formación.
 </div>
+
+<div align="center">
+  <img src="https://github.com/anfeles85/stocklem-sena/blob/dev/stocklem/public/img/sena-logo.png" alt="SENA Logo" width="200"/><br>
+
+</div> 
 
 
 
