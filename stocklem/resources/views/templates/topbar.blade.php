@@ -14,11 +14,13 @@
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <ul class="navbar-nav ms-md-auto justify-content-end">
                 <li class="nav-item dropdown d-flex align-items-center">
+                    @auth
                     <a class="nav-link dropdown-toggle text-white font-weight-bold px-0" href="#" id="userDropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user me-sm-1"></i>
                         <span class="d-sm-inline d-none fs-6">{{ Auth::user()->name }}</span>
                     </a>
+                    @endauth
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li>
                             <a class="dropdown-item" href={{ route('auth.change_password') }}>

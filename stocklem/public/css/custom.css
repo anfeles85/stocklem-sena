@@ -169,3 +169,37 @@ tr * {
     }
 }
 
+.position-relative {
+    position: relative;
+}
+
+.toggle-password-sena {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.toggle-password-sena:hover {
+    color: #495057;
+}
+
+.toggle-password-sena:focus {
+    outline: none;
+    color: #007bff;
+}
+
+.form-control-sena {
+    padding-right: 40px !important; /* Espacio para el botón */
+}

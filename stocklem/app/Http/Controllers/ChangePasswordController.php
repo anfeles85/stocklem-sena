@@ -33,6 +33,6 @@ class ChangePasswordController extends Controller
         $user->update([
             'password' => Hash::make($request->password),
         ]);
-        return redirect()->back()->with('success', 'Contraseña cambiada exitosamente');
+        return redirect()->route('index')->with('success', 'Contraseña cambiada exitosamente');
     }
 }

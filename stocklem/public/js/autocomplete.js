@@ -124,4 +124,14 @@ $(function () {
             sourceList: persons
         });
     }
+
+    if (typeof roles !== 'undefined') {
+        initAutocomplete({
+            inputId: "role_name",
+            hiddenId: "role_id",
+            clearId: "role_clear",
+            arrowId: "role_arrow",
+            sourceList: roles
+        });
+    }
 });
