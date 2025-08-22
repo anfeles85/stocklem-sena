@@ -63,8 +63,9 @@
                             </div>
 
                             <div class="form-group-sena text-end">
-                                <a href="{{ route('auth.change_password') }}" class="forget-password-link">
-                                    ¿Olvidaste tu contraseña?
+                                <a href="{{ route('auth.index') }}" class="forgot-password-link">
+                                    <i class="fas fa-arrow-left me-2"></i>
+                                    Regresar
                                 </a>
                             </div>
 
