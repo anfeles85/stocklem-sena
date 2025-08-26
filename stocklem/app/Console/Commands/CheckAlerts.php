@@ -2,10 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\LowStockAlertMail;
 use App\Models\Article;
 use App\Models\User;
-use App\Notifications\LowStockAlert;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail; // Asegúrate de tener este use
 
 class CheckAlerts extends Command
 {
@@ -15,33 +16,34 @@ class CheckAlerts extends Command
      * @var string
      */
     protected $signature = 'check:article-alerts';
+    protected $description = 'Verifica artículos con stock bajo y envía correo a administradores';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'verifica que los articulos cuyo stock esta por debajo del minimo y envia una notificacion al administrador';
-
-    /**
-     * Execute the console command.
-     */
+    
     public function handle()
     {
+        // Obtener artículos con stock <= mínimo
         $articles = Article::whereColumn('quantity', '<=', 'min_quantity')->get();
+
         if ($articles->isEmpty()) {
-            $this->info('No hay artículos con stock mínimo.');
+            $this->info('No hay artículos con stock por debajo del mínimo.');
             return;
         }
 
-        $admins = User::where('role_id', '1')->get();
-        if ($admins) {
-            foreach ($admins as $admin) {
-                $admin->notify(new LowStockAlert($articles));
-            }
-            $this->info('Alertas de stock mínimo verificadas y notificaciones enviadas.');
-        } else {
-            $this->error('No se encontró un administrador para enviar las notificaciones.');
+        // Obtener administradores (role_id = 1)
+        $admins = User::where('role_id', 1)->get(); // Nota: usa 1 como entero
+
+        if ($admins->isEmpty()) {
+            $this->error('No se encontraron administradores (role_id = 1).');
+            return;
         }
+
+        // Enviar correo a cada administrador
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(
+                new LowStockAlertMail($articles, $admin->name)
+            );
+        }
+
+        $this->info("Correo enviado a {$admins->count()} administrador(es) con {$articles->count()} artículo(s) en stock crítico.");
     }
 }
