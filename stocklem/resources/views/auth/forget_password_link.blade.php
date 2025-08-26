@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Iniciar Sesión</title>
+    <title>Reestablecer Contraseña</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/sena-logo.png') }}">
     <!-- Custom fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
@@ -31,8 +32,8 @@
                 <div class="col-md-7">
                     <div class="form-section-sena">
                         <div class="form-header-sena">
-                            <h3 class="form-title-sena">Iniciar Sesión</h3>
-                            <p class="form-subtitle-sena">Ingresa tus credenciales para acceder al sistema</p>
+                            <h3 class="form-title-sena">Reestablecer contraseña</h3>
+                            <p class="form-subtitle-sena">Ingresa tu nueva contraseña para restablecer tu acceso</p>
                         </div>
 
                         @if (session('success'))
@@ -51,8 +52,9 @@
 
                         @include('templates.validation_errors')
 
-                        <form id="loginFormSena" class="user" action="{{ route('auth.login') }}" method="POST">
+                        <form id="resetPasswordFormSena" class="user" action="{{ route('reset.password.post') }}" method="POST">
                             @csrf
+                            <input type="hidden" name="token" value="{{ $token }}">
 
                             <div class="form-group-sena">
                                 <label for="email" class="form-label-sena">
@@ -66,11 +68,11 @@
                             <div class="form-group-sena">
                                 <label for="password" class="form-label-sena">
                                     <i class="fas fa-lock me-2"></i>
-                                    Contraseña
+                                    Nueva contraseña
                                 </label>
                                 <div class="input-group-sena">
                                     <input type="password" name="password" id="password"
-                                        class="form-control form-control-sena" placeholder="Ingresa tu contraseña"
+                                        class="form-control form-control-sena" placeholder="Ingresa tu nueva contraseña"
                                         required>
                                     <button type="button" class="toggle-password-sena" data-target="password">
                                         <i class="fas fa-eye"></i>
@@ -79,41 +81,63 @@
                             </div>
 
                             <div class="form-group-sena">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="remember" name="remember">
-                                    <label class="custom-control-label" for="remember">Recordar contraseña</label>
+                                <label for="password_confirmation" class="form-label-sena">
+                                    <i class="fas fa-lock me-2"></i>
+                                    Confirmar contraseña
+                                </label>
+                                <div class="input-group-sena">
+                                    <input type="password" name="password_confirmation" id="password_confirmation"
+                                        class="form-control form-control-sena" placeholder="Confirma tu nueva contraseña"
+                                        required>
+                                    <button type="button" class="toggle-password-sena" data-target="password_confirmation">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="form-group-sena text-end">
-                                <a href="{{ route('auth.forget-password') }}" class="forgot-password-link">
-                                    ¿Olvidaste tu contraseña?
-                                </a>
-                            </div>
-
-
                             <button type="submit" class="btn btn-success-sena mt-4">
-                                <i class="fas fa-sign-in-alt me-2"></i>
-                                Iniciar Sesión
+                                <i class="fas fa-key me-2"></i>
+                                Reestablecer contraseña
                             </button>
+
+                            <div class="text-center mt-3">
+                                <p class="mb-4 text-sm mx-auto">
+                                        <a href="{{ route('auth.index') }}" class="text-primary text-gradient font-weight-bold">Regresar</a>
+                                </p>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="help-container">
-            <button class="btn btn-success btn-lg rounded-circle shadow" type="button">
-                <i class="fas fa-question"></i>
-            </button>
-            <span class="help-message">
-                Si tienes problemas para iniciar sesión, por favor
-                <a href=" {{ route('help') }} ">visita nuestra pagina de ayuda</a>.
-            </span>
-        </div>
-
     </div>
-    <script src="{{ asset('js/change-password.js') }}"></script>
-</body>
 
+    <script src="{{ asset('js/change-password.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '¡OK!',
+                text: '{{ session('success') }}',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @elseif (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: '¡ERROR!',
+                text: '{{ session('error') }}',
+                confirmButtonColor: '#ff0000',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
+
+
+</body>
 </html>

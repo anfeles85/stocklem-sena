@@ -68,7 +68,7 @@
                                 </label>
                                 <input type="email" name="email" id="email"
                                     class="form-control form-control-sena" placeholder="ejemplo@correo.com"
-                                    value="{{ old('email') }}" required>
+                                    value="{{ auth()->user()->email }}" readonly required>
                             </div>
 
                             <div class="form-group-sena">
@@ -76,7 +76,7 @@
                                     <i class="fas fa-lock me-2"></i>
                                     Nueva contraseña
                                 </label>
-                                <div class="input-group-sena">
+                                <div class="position-relative">
                                     <input type="password" name="password" id="password"
                                         class="form-control form-control-sena" placeholder="Ingresa tu nueva contraseña"
                                         required>
@@ -91,7 +91,7 @@
                                     <i class="fas fa-lock me-2"></i>
                                     Confirmar nueva contraseña
                                 </label>
-                                <div class="input-group-sena">
+                                <div class="position-relative">
                                     <input type="password" name="password_confirmation" id="password_confirmation"
                                         class="form-control form-control-sena"
                                         placeholder="Confirma tu nueva contraseña" required>
@@ -101,8 +101,6 @@
                                     </button>
                                 </div>
                             </div>
-
-                            <input type="hidden" name="role_id" value="2">
 
                             <button type="submit" class="btn btn-success-sena mt-4">
                                 <i class="fas fa-key me-2"></i>

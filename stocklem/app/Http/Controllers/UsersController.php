@@ -23,7 +23,10 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Role::where('name', 'COORDINADOR ADMINISTRATIVO')->get();
+        $roles = Role::all()->map(function ($item) {
+            return ['label' => $item->name, 'value' => $item->id];
+        });
+
         return view('user.create', compact('roles'));
     }
 
@@ -36,15 +39,16 @@ class UsersController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
-            'role_id' => 'required|exists:role_id',
+            'role_id' => 'required|exists:role,id',
         ], [], [
             'name' => 'nombre',
             'email' => 'correo electrónico',
             'password' => 'contraseña',
+            'password_confirmation' => 'confirmación de contraseña',
             'role_id' => 'rol'
         ]);
 
-        if($request->role_id == 1) {
+        if ($request->role_id == 1) {
             return redirect()->back()->withInput()->withErrors(['role_id' => 'No se puede crear un usuario Administrador']);
         }
 
@@ -52,10 +56,11 @@ class UsersController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => $request->role_id
+            'role_id' => $request->role_id,
+            'status' => 'ACTIVO'
         ]);
 
-        return redirect()->route('user.index')->with('success', 'Usuario creado exitosamente');
+        return redirect()->route('users.index')->with('success', 'Usuario creado exitosamente');
     }
 
     /**
@@ -72,7 +77,7 @@ class UsersController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        $roles = Role::where('name', 'COORDINADOR ADMINISTRATIVO')->get();
+        $roles = Role::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
         return view('user.edit', compact('user', 'roles'));
     }
 
@@ -84,14 +89,16 @@ class UsersController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
-            'role_id' => 'required|exists:roles,id',
+            'role_id' => 'required|exists:role,id',
+            'status' => 'required|in:ACTIVO,INACTIVO'
         ], [], [
             'name' => 'nombre',
             'email' => 'correo electrónico',
-            'role<_id' => 'rol'
+            'role_id' => 'rol',
+            'status' => 'estado'
         ]);
 
-        if($request->role_id == 1) {
+        if ($request->role_id == 1) {
             return redirect()->back()->withInput()->withErrors(['role_id' => 'No se puede asignar el rol de Administrador']);
         }
 
@@ -99,10 +106,11 @@ class UsersController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'role_id' => $request->role_id
+            'role_id' => $request->role_id,
+            'status' => $request->status
         ]);
 
-        return redirect()->route('user.index')->with('success', 'Usuario actualizado exitosamente');
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente');
     }
 
     /**
@@ -114,6 +122,6 @@ class UsersController extends Controller
         $user->status = 'INACTIVO'; // Valor permitido en el enum
         $user->save();
 
-        return redirect()->route('user.index')->with('success', 'Usuario inactivado exitosamente');
+        return redirect()->route('users.index')->with('success', 'Usuario inactivado exitosamente');
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\EntryController;
+use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PersonController;
@@ -43,15 +44,23 @@ Route::prefix('auth')->group(function(){
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
     Route::get('/change_password', [ChangePasswordController::class, 'index'])->name('auth.change_password');
     Route::post('/change_password', [ChangePasswordController::class, 'change_password'])->name('auth.change_password');
+    Route::get('forget-password', [ForgetPasswordController::class, 'showForgetPasswordForm'])->name('auth.forget-password');
+    Route::post('forget-password', [ForgetPasswordController::class, 'submitForgetPasswordForm'])->name('auth.forget-password-link');
+    Route::get('reset-password/{token}', [ForgetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [ForgetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
+Route::get('/help', function () {
+    return view('help.help');
+})->name('help');
+
 Route::middleware(['auth', 'can:administrador'])->prefix('user')->group(function(){
-    Route::get('/index', [UsersController::class, 'index'])->name('user.index');
-    Route::get('/create', [UsersController::class, 'create'])->name('user.create');
-    Route::post('/store', [UsersController::class, 'store'])->name('user.store');
-    Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('user.edit');
-    Route::put('/update/{id}', [UsersController::class, 'update'])->name('user.update');
-    Route::delete('/destroy/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
+    Route::get('/index', [UsersController::class, 'index'])->name('users.index');
+    Route::get('/create', [UsersController::class, 'create'])->name('users.create');
+    Route::post('/store', [UsersController::class, 'store'])->name('users.store');
+    Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('/update/{id}', [UsersController::class, 'update'])->name('users.update');
+    Route::delete('/destroy/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(function(){
