@@ -140,4 +140,10 @@ return [
     'uppercase'            => 'El campo :attribute debe estar en mayúscula.',
     'url'                  => 'El campo :attribute debe ser una URL válida.',
     'uuid'                 => 'El campo :attribute debe ser un UUID válido.',
+    'custom' => [
+        'g-recaptcha-response' => [
+        'required' => 'Por favor verifica que no seas un robot.',
+        'captcha' => 'Error de Captcha! intenta luego o contacte con el administrador.',
+        ],
+    ],
 ];

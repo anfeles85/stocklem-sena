@@ -31,7 +31,7 @@
                 <div class="col-md-7">
                     <div class="form-section-sena">
                         <div class="form-header-sena">
-                            <h3 class="form-title-sena">Iniciar Sesión</h3>
+                            <h3 class="form-title-sena">Restablecer contraseña</h3>
                             <p class="form-subtitle-sena">Ingresa tus credenciales para acceder al sistema</p>
                         </div>
 
@@ -51,49 +51,27 @@
 
                         @include('templates.validation_errors')
 
-                        <form id="loginFormSena" class="user" action="{{ route('auth.login') }}" method="POST">
+                        <form id="loginFormSena" class="user" action="{{ route('auth.forget-password') }}" method="POST">
                             @csrf
-
                             <div class="form-group-sena">
                                 <label for="email" class="form-label-sena">
                                     <i class="fas fa-envelope me-2"></i>
                                     Correo electrónico
                                 </label>
                                 <input type="email" name="email" id="email" class="form-control form-control-sena"
-                                    placeholder="ejemplo@correo.com" value="{{ old('email') }}" required>
-                            </div>
-
-                            <div class="form-group-sena">
-                                <label for="password" class="form-label-sena">
-                                    <i class="fas fa-lock me-2"></i>
-                                    Contraseña
-                                </label>
-                                <div class="input-group-sena">
-                                    <input type="password" name="password" id="password"
-                                        class="form-control form-control-sena" placeholder="Ingresa tu contraseña"
-                                        required>
-                                    <button type="button" class="toggle-password-sena" data-target="password">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="form-group-sena">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="remember" name="remember">
-                                    <label class="custom-control-label" for="remember">Recordar contraseña</label>
-                                </div>
+                                    placeholder="ejemplo@correo.com" required>
                             </div>
 
                             <div class="form-group-sena text-end">
-                                <a href="{{ route('auth.forget-password') }}" class="forgot-password-link">
-                                    ¿Olvidaste tu contraseña?
+                                <a href="{{ route('auth.index') }}" class="forgot-password-link">
+                                    <i class="fas fa-arrow-left me-2"></i>
+                                    Regresar
                                 </a>
                             </div>
 
                             <button type="submit" class="btn btn-success-sena mt-4">
                                 <i class="fas fa-sign-in-alt me-2"></i>
-                                Iniciar Sesión
+                                enviar
                             </button>
                         </form>
                     </div>
