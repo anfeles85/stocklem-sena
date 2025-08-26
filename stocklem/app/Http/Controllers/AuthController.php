@@ -8,6 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    private $rules = [
+        'email' => 'required|email',
+        'password' => 'required',
+        'g-recaptcha-response' => 'required|captcha'
+    ];
+
+    private $traductionAttributes = array(
+        'email' => 'correo',
+        'password' => 'contraseña',
+        'g-recaptcha-response' => 'captcha'
+    );
+    
     /**
      * Display a listing of the resource.
      */
