@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\validator;
 
 class AuthController extends Controller
 {
@@ -44,26 +45,26 @@ class AuthController extends Controller
      * Login de usuarios
      */
     public function login(Request $request){
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        $validator = Validator::make($request->all(), $this->rules);
+        $validator->setAttributeNames($this->traductionAttributes);
 
-        $user = User::where('email', $credentials['email'])->first();
+        if ($validator->fails()) {
+            return redirect()->route('auth.index')->withInput()->withErrors($validator->errors());
+        } else {
+            $credentials = $request->only(['email', 'password']);
+            $user = User::where('email', $credentials['email'])->first();
 
-        if($user && $user->status !== 'ACTIVO')
-        {
-            return back()->withErrors(['Su usuario esta inactivo',]);
+            if ($user && $user->status !== 'ACTIVO') {
+                return redirect()->route('auth.index')->with('error', 'Su usuario está inactivo');
+            }
+
+            if (Auth::attempt($credentials)) {
+                $request->session()->regenerate();
+                return redirect()->intended('index');
+            } else {
+                return redirect()->route('auth.index')->with('error', 'Credenciales incorrectas');
+            }
         }
-
-        if (Auth::attempt($credentials)){
-            $request->session()->regenerate();
-            return redirect()->intended('index');
-        }
-
-        return back()->withErrors([
-            'email' => 'Estas credenciales no coinciden con nuestros registros.',
-        ])->onlyInput('email');
     }
 
     /**
