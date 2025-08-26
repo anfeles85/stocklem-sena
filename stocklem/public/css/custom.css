@@ -169,3 +169,32 @@ tr * {
     }
 }
 
+.help-container { position: fixed; bottom: 2%; right: 1%; }
+.help-message { 
+    position: absolute; 
+    bottom: 115%; 
+    right: 0; 
+    width: 250px; 
+    background: white; 
+    color: var(--sena-green); 
+    padding: 10px; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s; 
+}
+.help-message a {
+    color: #80caff;
+    text-decoration: underline;
+}
+
+
+.help-container:hover .help-message { 
+    opacity: 1; 
+    visibility: visible;
+}
+
+
+
+
