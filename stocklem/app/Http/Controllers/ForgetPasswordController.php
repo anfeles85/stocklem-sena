@@ -39,7 +39,7 @@ class ForgetPasswordController extends Controller
 
         Mail::send('email.forget_password', ['token' => $token], function($message) use($request){
             $message->to($request->email);
-            $message->subject('Reset Password');
+            $message->subject('Reinicio de contraseña');
         });
         
         return redirect()->route('auth.index')->with('success', 'Hemos enviado un correo con un enlace para recuperar tu contraseña');
