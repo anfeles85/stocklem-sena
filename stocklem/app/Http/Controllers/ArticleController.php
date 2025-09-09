@@ -90,6 +90,10 @@ class ArticleController extends Controller
         $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
         $data['technical_sheet'] = Storage::url($path);
     }
+    if ($request->hasFile('photo')) {
+        $path = $request->file('photo')->store('photos', 'public');
+        $data['photo'] = Storage::url($path);
+    }
         $article = Article::create($data);
         return redirect()->route('article.index')->with('success', 'Artículo creado exitosamente');
     }
@@ -145,6 +149,10 @@ class ArticleController extends Controller
             if($request->hasFile('technical_sheet')) {
                 $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
                 $data['technical_sheet'] = Storage::url($path);
+            }
+            if($request->hasFile('photo')) {
+                $path = $request->file('photo')->store('photos', 'public');
+                $data['photo'] = Storage::url($path);
             }
             $article->update($data);
             return redirect()->route('article.index')->with('success', '¡Artículo actualizado correctamente!');
