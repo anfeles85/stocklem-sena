@@ -91,11 +91,17 @@
                                 </a>
                             </div>
 
+                            <div class="form-group text-center"
+                                style="display: flex; justify-content: center; align-items: center; margin: 5px 0; padding: 5px;">
+                                {!! NoCaptcha::renderJs() !!}
+                                {!! NoCaptcha::display(['data-theme' => 'light']) !!}
+                            </div>
 
                             <button type="submit" class="btn btn-success-sena mt-4">
                                 <i class="fas fa-sign-in-alt me-2"></i>
                                 Iniciar Sesión
                             </button>
+
                         </form>
                     </div>
                 </div>

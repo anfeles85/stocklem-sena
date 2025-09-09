@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\LowStockAlertMail;
+use App\Email\LowStockAlertMail;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail; // Asegúrate de tener este use
+use Illuminate\Support\Facades\Mail;
 
 class CheckAlerts extends Command
 {

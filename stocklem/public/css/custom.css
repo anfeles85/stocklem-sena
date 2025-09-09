@@ -90,6 +90,24 @@ tr * {
     /* Sombra sutil para levantar visualmente la lista */
 }
 
+/* Estilos para el botón de Excel */
+.custom-excel-btn {
+    background-color: var(--sena-green) !important;
+    border-color: var(--sena-green) !important;
+    color: white !important;
+    margin-bottom: 1rem !important;
+    margin-left: 12px !important;
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 0.2rem !important;
+}
+
+.custom-excel-btn:hover {
+    background-color: var(--sena-dark) !important;
+    border-color: var(--sena-dark) !important;
+    opacity: 0.9;
+}
+
 .button-under-logo {
     position: absolute;
     bottom: 20px;

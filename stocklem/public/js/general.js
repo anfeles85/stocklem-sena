@@ -2,6 +2,19 @@ $(document).ready(function () {
     const dataTableOptions = {
         pageLength: 10,
         lengthChange: false,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excel',
+                text: 'Exportar a Excel',
+                text: '<i class="fas fa-file-excel"></i> Excel',
+                className: 'btn btn-sucess mt-2 ml-1 btn-sm custom-excel-btn',
+                exportOptions: {
+                    // Excluir la columna de acciones
+                    columns: ':not(:last-child)'
+                }
+            }
+        ],
         language: {
             paginate: {
                 previous: "Anterior",
@@ -15,6 +28,7 @@ $(document).ready(function () {
     };
 
     $('#table_data').DataTable(dataTableOptions);
+    
 });
 
 window.addEventListener('DOMContentLoaded', function () {
