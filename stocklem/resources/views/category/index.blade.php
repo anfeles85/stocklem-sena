@@ -1,11 +1,11 @@
 @extends('templates.base')
-@section('title', 'Categorias')
-@section('header', 'Categorias')
+@section('title', 'Categorías')
+@section('header', 'Categorías')
 @section('content')
     @can('administrador')
     <div class="mb-3">
         <a href="{{ route('category.create') }}" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Crear Categoria
+            <i class="fas fa-plus"></i> Crear Categoría
         </a>
     </div>
     @endcan
@@ -17,7 +17,7 @@
                     <tr  class="text-center">
                         <th>ID</th>
                         <th>NOMBRE</th>
-                        <th>DESCRIPCION</th>
+                        <th>DESCRIPCIÓN</th>
                         @can('administrador')
                         <th>ACCIONES</th>
                         @endcan
