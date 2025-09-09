@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mail;
+namespace App\Email;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -27,8 +27,8 @@ class LowStockAlertMail extends Mailable
 
     public function build()
     {
-        return $this->subject("⚠️ Alerta de Stock Crítico: {$this->articles->count()} artículo(s)")
-            ->markdown('mail.low-stock-alert');
+        return $this->subject("Alerta de Stock Crítico: {$this->articles->count()} artículo(s)")
+            ->markdown('email.low-stock-alert');
     }
 
     /**
@@ -47,7 +47,7 @@ class LowStockAlertMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'mail.low-stock-alert',
+            markdown: 'email.low-stock-alert',
         );
     }
 

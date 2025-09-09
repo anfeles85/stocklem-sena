@@ -91,15 +91,33 @@
                                 </a>
                             </div>
 
+                            <div class="form-group text-center"
+                                style="display: flex; justify-content: center; align-items: center; margin: 5px 0; padding: 5px;">
+                                {!! NoCaptcha::renderJs() !!}
+                                {!! NoCaptcha::display(['data-theme' => 'light']) !!}
+                            </div>
+
                             <button type="submit" class="btn btn-success-sena mt-4">
                                 <i class="fas fa-sign-in-alt me-2"></i>
                                 Iniciar Sesión
                             </button>
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="help-container">
+            <button class="btn btn-success btn-lg rounded-circle shadow" type="button">
+                <i class="fas fa-question"></i>
+            </button>
+            <span class="help-message">
+                Si tienes problemas para iniciar sesión, por favor
+                <a href=" {{ route('help') }} ">visita nuestra pagina de ayuda</a>.
+            </span>
+        </div>
+
     </div>
     <script src="{{ asset('js/change-password.js') }}"></script>
 </body>
