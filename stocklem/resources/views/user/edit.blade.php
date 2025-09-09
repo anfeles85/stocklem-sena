@@ -16,7 +16,7 @@
                     value="{{ old('name', $user->name) }}">
             </div>
             <div class="col-md-6">
-                <label for="email" class="form-label">Correo electronico</label>
+                <label for="email" class="form-label">Correo electrónico</label>
                 <input type="email" name="email" id="email" class="form-control"
                     value="{{ old('email', $user->email) }}">
             </div>

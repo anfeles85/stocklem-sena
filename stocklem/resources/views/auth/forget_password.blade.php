@@ -71,7 +71,7 @@
 
                             <button type="submit" class="btn btn-success-sena mt-4">
                                 <i class="fas fa-sign-in-alt me-2"></i>
-                                enviar
+                                Enviar
                             </button>
                         </form>
                     </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reestablecer Contraseña</title>
+    <title>Restablecer Contraseña</title>
     <link rel="icon" type="image/png" href="{{ asset('img/sena-logo.png') }}">
     <!-- Custom fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
@@ -32,7 +32,7 @@
                 <div class="col-md-7">
                     <div class="form-section-sena">
                         <div class="form-header-sena">
-                            <h3 class="form-title-sena">Reestablecer contraseña</h3>
+                            <h3 class="form-title-sena">Restablecer contraseña</h3>
                             <p class="form-subtitle-sena">Ingresa tu nueva contraseña para restablecer tu acceso</p>
                         </div>
 
@@ -97,7 +97,7 @@
 
                             <button type="submit" class="btn btn-success-sena mt-4">
                                 <i class="fas fa-key me-2"></i>
-                                Reestablecer contraseña
+                                Restablecer contraseña
                             </button>
 
                             <div class="text-center mt-3">

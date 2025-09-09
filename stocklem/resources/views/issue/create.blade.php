@@ -9,7 +9,7 @@
                 @csrf
                 <div class="row form-group">
                     <div class="col-md-3 mb-3">
-                        <label for="sena_code">Codigo SENA</label>
+                        <label for="sena_code">Código SENA</label>
                         <input type="text" class="form-control" name="sena_code" id="sena_code"
                             value="{{ old('sena_code') }}" required>
                     </div>

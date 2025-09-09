@@ -16,10 +16,10 @@
                 <thead class="table-light">
                     <tr class="text-center">
                         <th>ID</th>
-                        <th>CODIGO SENA</th>
+                        <th>CÓDIGO SENA</th>
                         <th>FECHA SALIDA</th>
                         <th>CANTIDAD</th>
-                        <th>ARTICULO</th>
+                        <th>ARTÍCULO</th>
                         <th>PERSONA</th>
 
                         @can('administrador')
