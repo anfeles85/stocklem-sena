@@ -33,7 +33,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="col-md-6">
                 <label for="password_confirmation" class="form-label-sena">
                     <i class="fas fa-lock me-2"></i>
@@ -52,18 +52,15 @@
         {{-- Rol --}}
         <div class="row mb-3">
             <div class="col-md-12">
-                <label for="role_name" class="form-label">Rol</label>
-                <div class="position-relative">
-                    <input type="text" id="role_name" class="form-control pe-5" required placeholder="Seleccione">
-                    <span id="role_clear" class="position-absolute top-50 translate-middle-y cursor-pointer text-muted"
-                        style="right: 2.2rem; display: none; z-index: 2;">
-                        <i class="fas fa-times"></i>
-                    </span>
-                    <span class="position-absolute top-50 translate-middle-y" style="right: 0.7rem; z-index: 1;">
-                        <i id="role_arrow" class="fas fa-chevron-down"></i>
-                    </span>
-                </div>
-                <input type="hidden" name="role_id" id="role_id">
+                <label for="role_id" class="form-label">Rol</label>
+                <select name="role_id" id="role_id" class="form-control js-example-placeholder-single" required>
+                    <option ></option>
+                    @foreach ($roles as $rol)
+                        <option value="{{ $rol->id }}" @if (old('role_id') == $rol->id) selected @endif>
+                            {{ $rol->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
         </div>
 
@@ -85,7 +82,12 @@
 
 @section('scripts')
     <script>
-        const roles = @json($roles);
+        $(document).ready(function() {
+            $('.js-example-placeholder-single').select2({
+                placeholder: "Seleccione",
+                allowClear: true
+            });
+        });
     </script>
     <script src="{{ asset('js/autocomplete.js') }}"></script>
     <script src="{{ asset('js/change-password.js') }}"></script>

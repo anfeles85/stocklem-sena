@@ -23,10 +23,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Role::all()->map(function ($item) {
-            return ['label' => $item->name, 'value' => $item->id];
-        });
-
+        $roles = Role::all();
         return view('user.create', compact('roles'));
     }
 
