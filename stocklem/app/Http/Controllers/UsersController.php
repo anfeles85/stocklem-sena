@@ -74,7 +74,7 @@ class UsersController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        $roles = Role::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
+        $roles = Role::all();
         return view('user.edit', compact('user', 'roles'));
     }
 

@@ -14,7 +14,7 @@
                 <input type="text" name="name" id="name" class="form-control" required>
             </div>
             <div class="col-md-6">
-                <label for="email" class="form-label">Correo electrónico</label>
+                <label for="email" class="form-label">Correo electronico</label>
                 <input type="email" name="email" id="email" class="form-control" required>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="col-md-12">
                 <label for="role_id" class="form-label">Rol</label>
                 <select name="role_id" id="role_id" class="form-control js-example-placeholder-single" required>
-                    <option ></option>
+                    <option></option>
                     @foreach ($roles as $rol)
                         <option value="{{ $rol->id }}" @if (old('role_id') == $rol->id) selected @endif>
                             {{ $rol->name }}
