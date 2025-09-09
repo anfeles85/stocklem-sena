@@ -50,6 +50,10 @@ Route::prefix('auth')->group(function(){
     Route::post('reset-password', [ForgetPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
+Route::get('/help', function () {
+    return view('help.help');
+})->name('help');
+
 Route::middleware(['auth', 'can:administrador'])->prefix('user')->group(function(){
     Route::get('/index', [UsersController::class, 'index'])->name('users.index');
     Route::get('/create', [UsersController::class, 'create'])->name('users.create');
