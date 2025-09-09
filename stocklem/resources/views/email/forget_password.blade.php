@@ -1,5 +1,5 @@
-<h1>Correo reestablecer contraseña</h1>   
+<h1>Correo restablecer contraseña</h1>   
 
-Puedes reestablecer la contraseña accediendo al siguiente enlace:
+Puedes restablecer la contraseña accediendo al siguiente enlace:
 
-<a href="{{ route('reset.password.get', $token) }}">Reestablecer Contraseña</a>
+<a href="{{ route('reset.password.get', $token) }}">Restablecer Contraseña</a>

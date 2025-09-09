@@ -108,7 +108,7 @@
             </button>
             <span class="help-message">
                 Si tienes problemas para iniciar sesión, por favor
-                <a href=" {{ route('help') }} ">visita nuestra pagina de ayuda</a>.
+                <a href=" {{ route('help') }} ">visita nuestra página de ayuda</a>.
             </span>
         </div>
 

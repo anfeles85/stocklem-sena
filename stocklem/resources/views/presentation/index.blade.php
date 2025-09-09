@@ -16,7 +16,7 @@
                 <thead class="table-light">
                     <tr class="text-center">
                         <th>ID</th>
-                        <th>DESCRIPCION</th>
+                        <th>DESCRIPCIÓN</th>
 
                         @can('administrador')
                         <th>ACCIONES</th>
