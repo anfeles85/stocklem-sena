@@ -78,7 +78,7 @@ class IssueController extends Controller
         if ($issue) {
             $articles = Article::all();
             $persons = Person::all();
-            
+
             return view('issue.edit', compact('issue', 'articles', 'persons'));
         } else {
             session()->flash('error', 'No se encontró la salida.');
@@ -120,4 +120,3 @@ class IssueController extends Controller
         }
     }
 }
-
