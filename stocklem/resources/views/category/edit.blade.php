@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Editar categoria')
-@section('header', 'Editar categoria')
+@section('title', 'Editar categoría')
+@section('header', 'Editar categoría')
 @section('content')
     @include('templates.validation_errors')
     <div class="row">
