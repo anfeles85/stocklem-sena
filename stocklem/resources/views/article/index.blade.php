@@ -48,12 +48,64 @@
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
+                                <button type="button" class="btn btn-info btn-sm" title="Ver" data-bs-toggle="modal" data-bs-target="#viewModal{{ $article->id }}">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
                             </td>
                             @endcan
                         </tr>
+                        {{-- Modal con detalles del artículo --}}
+                        <div class="modal fade" id="viewModal{{ $article->id }}" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content shadow-lg border-0">
+                                    <div class="modal-header" style="background-color: #198754;">
+                                        <h5 class="modal-title text-white">
+                                            <i class="fas fa-info-circle me-2"></i>Detalles del artículo
+                                        </h5>
+                                    </div>
+                                    <div class="modal-body text-black">
+                                        <p class="mb-2"><strong>ID: </strong>{{ $article->id }}</p>
+                                        <p class="mb-2"><strong>Nombre: </strong>{{ $article->name }}</p>
+                                        <p class="mb-2"><strong>Cantidad: </strong>{{ $article->quantity }}</p>
+                                        <p class="mb-2"><strong>Cantidad mínima: </strong>{{ $article->min_quantity }}</p>
+                                        <p class="mb-2"><strong>Presentación: </strong>{{ $article->presentation->description ?? 'Sin presentación' }}</p>
+                                        <p class="mb-2"><strong>Categoría: </strong>{{ $article->category->name ?? 'Sin categoría' }}</p>
+                                        <p class="mb-2"><strong>Proveedor: </strong>{{ $article->supplier->name ?? 'Sin proveedor' }}</p>
+                                        <p class="mb-2"><strong>Unidad: </strong>{{ $article->unit->name ?? 'Sin unidad' }}</p>
+                                        
+                                        @if($article->photo)
+                                            <p class="mb-2">
+                                                <strong>Foto: </strong><br>
+                                                <img src="{{ $article->photo }}" alt="Foto del artículo" class="img-fluid mt-2" style="max-width: 200px; border-radius: 8px;">
+                                            </p>
+                                        @else
+                                            <p class="mb-2"><strong>Foto: </strong>Sin foto</p>
+                                        @endif
+
+                                        @if($article->technical_sheet)
+                                            <p class="mb-0">
+                                                <strong>Ficha técnica: </strong><br>
+                                                <a href="{{ $article->technical_sheet }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
+                                                    <i class="fas fa-file-pdf me-1"></i>Ver ficha técnica
+                                                </a>
+                                            </p>
+                                        @else
+                                            <p class="mb-0"><strong>Ficha técnica: </strong>Sin ficha técnica</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 @endsection
+
+<style>
+    .modal-dialog.modal-lg.modal-dialog-centered {
+        margin-left: auto;
+        margin-right: 10%; 
+    }
+</style>
