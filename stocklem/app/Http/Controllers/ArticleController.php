@@ -54,21 +54,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $presentations = Presentation::all()->map(function ($item) {
-            return ['label' => $item->description, 'value' => $item->id];
-        });
-
-        $categories = Category::all()->map(function ($item) {
-            return ['label' => $item->name, 'value' => $item->id];
-        });
-
-        $suppliers = Supplier::all()->map(function ($item) {
-            return ['label' => $item->name, 'value' => $item->id];
-        });
-
-        $units = Unit::all()->map(function ($item) {
-            return ['label' => $item->name, 'value' => $item->id];
-        });
+        $presentations = Presentation::all();
+        $categories = Category::all();
+        $suppliers = Supplier::all();
+        $units = Unit::all();
 
         return view('article.create', compact('presentations', 'categories', 'suppliers', 'units'));
     }
@@ -109,10 +98,10 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         if ($article) {
-            $presentations = Presentation::all()->map(fn($item) => ['label' => $item->description, 'value' => $item->id]);
-            $categories = Category::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
-            $suppliers = Supplier::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
-            $units = Unit::all()->map(fn($item) => ['label' => $item->name, 'value' => $item->id]);
+            $presentations = Presentation::all();
+            $categories = Category::all();
+            $suppliers = Supplier::all();
+            $units = Unit::all();
 
             return view('article.edit', compact(
                 'article',

@@ -28,10 +28,10 @@
                 <label for="role_id" class="form-label">Rol</label>
                 <select name="role_id" id="role_id" class="form-control js-example-placeholder-single" required>
                     <option></option>
-                    @foreach ($roles as $rol)
-                        <option value="{{ $rol->id }}"
-                            @if (old('role_id', $user->role_id) == $rol->id) selected @endif>
-                            {{ $rol->name }}
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->id }}"
+                            @if (old('role_id', $user->role_id) == $role->id) selected @endif>
+                            {{ $role->name }}
                         </option>
                     @endforeach
                 </select>
@@ -70,5 +70,4 @@
             });
         });
     </script>
-    <script src="{{ asset('js/autocomplete.js') }}"></script>
 @endsection
