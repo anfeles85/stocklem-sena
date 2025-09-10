@@ -45,10 +45,7 @@ class EntryController extends Controller
      */
     public function create()
     {
-        $articles = Article::all()->map(function ($item) {
-            return ['label' => $item->name, 'value' => $item->id];
-        });
-
+        $articles = Article::all();
         return view('entry.create', compact('articles'));
     }
 
@@ -82,9 +79,7 @@ class EntryController extends Controller
 {
     $entry = Entry::find($id);
     if ($entry) {
-        $articles = Article::all()->map(function ($item) {
-            return ['label' => $item->name, 'value' => $item->id];
-        });
+        $articles = Article::all();
         return view('entry.edit', compact('entry', 'articles'));
     } else {
         session()->flash('error', 'No se encontró la entrada.');

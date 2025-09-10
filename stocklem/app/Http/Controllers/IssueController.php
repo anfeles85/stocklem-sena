@@ -39,13 +39,10 @@ class IssueController extends Controller
      */
     public function create()
     {
-        $articles = Article::all()->map(function ($item) {
-            return ['label' => $item->name, 'value' => $item->id];
-        });
-        $persons = Person::all()->map(function ($item) {
-            return ['label' => $item->name, 'value' => $item->id];
-        });
-        $issue = new Issue();
+        $articles = Article::all();
+        $persons = Person::all();
+        $issue = Issue::all();
+
         return view('issue.create', compact('articles', 'persons', 'issue'));
     }
 
@@ -79,12 +76,9 @@ class IssueController extends Controller
     {
         $issue = Issue::find($id);
         if ($issue) {
-            $articles = Article::all()->map(function ($item) {
-                return ['label' => $item->name, 'value' => $item->id];
-            });
-            $persons = Person::all()->map(function ($item) {
-                return ['label' => $item->name, 'value' => $item->id];
-            });
+            $articles = Article::all();
+            $persons = Person::all();
+            
             return view('issue.edit', compact('issue', 'articles', 'persons'));
         } else {
             session()->flash('error', 'No se encontró la salida.');
