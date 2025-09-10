@@ -62,6 +62,7 @@
                                         <h5 class="modal-title text-white">
                                             <i class="fas fa-info-circle me-2"></i>Detalles del artículo
                                         </h5>
+                                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body text-black">
                                         <p class="mb-2"><strong>ID: </strong>{{ $article->id }}</p>
