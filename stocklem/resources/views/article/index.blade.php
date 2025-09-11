@@ -65,34 +65,39 @@
                                         <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body text-black">
-                                        <p class="mb-2"><strong>ID: </strong>{{ $article->id }}</p>
-                                        <p class="mb-2"><strong>Nombre: </strong>{{ $article->name }}</p>
-                                        <p class="mb-2"><strong>Cantidad: </strong>{{ $article->quantity }}</p>
-                                        <p class="mb-2"><strong>Cantidad mínima: </strong>{{ $article->min_quantity }}</p>
-                                        <p class="mb-2"><strong>Presentación: </strong>{{ $article->presentation->description ?? 'Sin presentación' }}</p>
-                                        <p class="mb-2"><strong>Categoría: </strong>{{ $article->category->name ?? 'Sin categoría' }}</p>
-                                        <p class="mb-2"><strong>Proveedor: </strong>{{ $article->supplier->name ?? 'Sin proveedor' }}</p>
-                                        <p class="mb-2"><strong>Unidad: </strong>{{ $article->unit->name ?? 'Sin unidad' }}</p>
-                                        
-                                        @if($article->photo)
-                                            <p class="mb-2">
-                                                <strong>Foto: </strong><br>
-                                                <img src="{{ $article->photo }}" alt="Foto del artículo" class="img-fluid mt-2" style="max-width: 200px; border-radius: 8px;">
-                                            </p>
-                                        @else
-                                            <p class="mb-2"><strong>Foto: </strong>Sin foto</p>
-                                        @endif
-
-                                        @if($article->technical_sheet)
-                                            <p class="mb-0">
-                                                <strong>Ficha técnica: </strong><br>
-                                                <a href="{{ $article->technical_sheet }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
-                                                    <i class="fas fa-file-pdf me-1"></i>Ver ficha técnica
-                                                </a>
-                                            </p>
-                                        @else
-                                            <p class="mb-0"><strong>Ficha técnica: </strong>Sin ficha técnica</p>
-                                        @endif
+                                        <div class="row">
+                                            <div class="col-12 col-md-8">
+                                                <p class="mb-2"><strong>ID: </strong>{{ $article->id }}</p>
+                                                <p class="mb-2"><strong>Nombre: </strong>{{ $article->name }}</p>
+                                                <p class="mb-2"><strong>Cantidad: </strong>{{ $article->quantity }}</p>
+                                                <p class="mb-2"><strong>Cantidad mínima: </strong>{{ $article->min_quantity }}</p>
+                                                <p class="mb-2"><strong>Presentación: </strong>{{ $article->presentation->description ?? 'Sin presentación' }}</p>
+                                                <p class="mb-2"><strong>Categoría: </strong>{{ $article->category->name ?? 'Sin categoría' }}</p>
+                                                <p class="mb-2"><strong>Proveedor: </strong>{{ $article->supplier->name ?? 'Sin proveedor' }}</p>
+                                                <p class="mb-2"><strong>Unidad: </strong>{{ $article->unit->name ?? 'Sin unidad' }}</p>
+                                                
+                                                @if($article->technical_sheet)
+                                                    <p class="mb-0">
+                                                        <strong>Ficha técnica: </strong><br>
+                                                        <a href="{{ $article->technical_sheet }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
+                                                            <i class="fas fa-file-pdf me-1"></i>Ver ficha técnica
+                                                        </a>
+                                                    </p>
+                                                @else
+                                                    <p class="mb-0"><strong>Ficha técnica: </strong>Sin ficha técnica</p>
+                                                @endif
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                @if($article->photo)
+                                                    <div class="text-center">
+                                                        <strong>Foto:</strong><br>
+                                                        <img src="{{ $article->photo }}" alt="Foto del artículo" class="img-fluid mt-2" style="max-width: 100%; border-radius: 8px;">
+                                                    </div>
+                                                @else
+                                                    <p class="mb-2"><strong>Foto: </strong>Sin foto</p>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

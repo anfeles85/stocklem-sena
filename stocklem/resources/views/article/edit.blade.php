@@ -36,7 +36,7 @@
                         <img src="{{ $article->photo }}" alt="Foto actual" class="img-fluid" style="max-width: 60px">
                     </div>
                 @endif
-                <input type="file" name="photo" id="photo" class="form-control" accept="application/pdf">
+                <input type="file" name="photo" id="photo" class="form-control" accept="image/jpeg,image/png,image/jpg">
             </div>
             <div class="col-md-6">
                 <label for="technical_sheet" class="form-label">Ficha técnica</label>
