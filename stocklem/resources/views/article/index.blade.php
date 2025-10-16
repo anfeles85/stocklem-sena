@@ -65,34 +65,39 @@
                                         <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body text-black">
-                                        <p class="mb-2"><strong>ID: </strong>{{ $article->id }}</p>
-                                        <p class="mb-2"><strong>Nombre: </strong>{{ $article->name }}</p>
-                                        <p class="mb-2"><strong>Cantidad: </strong>{{ $article->quantity }}</p>
-                                        <p class="mb-2"><strong>Cantidad mínima: </strong>{{ $article->min_quantity }}</p>
-                                        <p class="mb-2"><strong>Presentación: </strong>{{ $article->presentation->description ?? 'Sin presentación' }}</p>
-                                        <p class="mb-2"><strong>Categoría: </strong>{{ $article->category->name ?? 'Sin categoría' }}</p>
-                                        <p class="mb-2"><strong>Proveedor: </strong>{{ $article->supplier->name ?? 'Sin proveedor' }}</p>
-                                        <p class="mb-2"><strong>Unidad: </strong>{{ $article->unit->name ?? 'Sin unidad' }}</p>
-                                        
-                                        @if($article->photo)
-                                            <p class="mb-2">
-                                                <strong>Foto: </strong><br>
-                                                <img src="{{ $article->photo }}" alt="Foto del artículo" class="img-fluid mt-2" style="max-width: 200px; border-radius: 8px;">
-                                            </p>
-                                        @else
-                                            <p class="mb-2"><strong>Foto: </strong>Sin foto</p>
-                                        @endif
-
-                                        @if($article->technical_sheet)
-                                            <p class="mb-0">
-                                                <strong>Ficha técnica: </strong><br>
-                                                <a href="{{ $article->technical_sheet }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
-                                                    <i class="fas fa-file-pdf me-1"></i>Ver ficha técnica
-                                                </a>
-                                            </p>
-                                        @else
-                                            <p class="mb-0"><strong>Ficha técnica: </strong>Sin ficha técnica</p>
-                                        @endif
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-12 col-md-5 text-center">
+                                                    <p class="mb-2"><strong>ID: </strong>{{ $article->id }}</p>
+                                                    <p class="mb-2"><strong>Nombre: </strong>{{ $article->name }}</p>
+                                                    <p class="mb-2"><strong>Cantidad: </strong>{{ $article->quantity }}</p>
+                                                    <p class="mb-2"><strong>Cantidad mínima: </strong>{{ $article->min_quantity }}</p>
+                                                    <p class="mb-2"><strong>Presentación: </strong>{{ $article->presentation->description ?? 'Sin presentación' }}</p>
+                                                    <p class="mb-2"><strong>Categoría: </strong>{{ $article->category->name ?? 'Sin categoría' }}</p>
+                                                    <p class="mb-2"><strong>Proveedor: </strong>{{ $article->supplier->name ?? 'Sin proveedor' }}</p>
+                                                    <p class="mb-2"><strong>Unidad: </strong>{{ $article->unit->name ?? 'Sin unidad' }}</p>
+                                                </div>
+                                                <div class="col-12 col-md-7 text-center">
+                                                    @if($article->photo)
+                                                        <div class="mb-3">
+                                                            <img src="{{ $article->photo }}" alt="Foto del artículo" class="article-photo">
+                                                        </div>
+                                                    @else
+                                                        <div class="mb-3"><strong>Foto: </strong>Sin foto</div>
+                                                    @endif
+                                                    @if($article->technical_sheet)
+                                                        <p class="mb-0 mt-3">
+                                                            <strong>Ficha técnica: </strong><br>
+                                                            <a href="{{ $article->technical_sheet }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
+                                                                <i class="fas fa-file-pdf me-1"></i>Ver ficha técnica
+                                                            </a>
+                                                        </p>
+                                                    @else
+                                                        <p class="mb-0 mt-3"><strong>Ficha técnica: </strong>Sin ficha técnica</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -107,6 +112,20 @@
 <style>
     .modal-dialog.modal-lg.modal-dialog-centered {
         margin-left: auto;
-        margin-right: 10%; 
+        margin-right: auto; 
+    }
+    /* Tamaño recomendado para la foto dentro de la modal: 150px x 150px (responsive) */
+    .article-photo {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        display: inline-block;
+    }
+    @media (max-width: 576px) {
+        .article-photo {
+            width: 200px;
+            height: 200px;
+        }
     }
 </style>
