@@ -7,6 +7,10 @@
         <a href="{{ route('person.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear persona
         </a>
+
+        <a href="{{ route('person.import.form') }}" class="btn btn-success">
+            <i class="fas fa-file-excel"></i> Importar desde Excel
+        </a>
     </div>
     @endcan
 

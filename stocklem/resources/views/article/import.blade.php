@@ -17,6 +17,89 @@
                             automáticamente.</strong></li>
                     <li>Si ya existen en el sistema, se usarán los registros existentes.</li>
                 </ul>
+
+                <div class="mt-4">
+                    <p class="fw-bold">Especificaciones de los campos:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>nombre:</strong> Nombre del artículo (entre 3 y 100 caracteres)</li>
+                        <li><strong>cantidad:</strong> Cantidad inicial del artículo (número entero entre 1 y 9999999999)</li>
+                        <li><strong>cantidad_minima:</strong> Cantidad mínima permitida (número entero mayor a 0)</li>
+                        <li><strong>categoria:</strong> Nombre de la categoría del artículo</li>
+                        <li><strong>proveedor:</strong> Nombre del proveedor del artículo</li>
+                        <li><strong>presentacion:</strong> Descripción de la presentación del artículo</li>
+                        <li><strong>unidad:</strong> Unidad de medida del artículo</li>
+                    </ul>
+                </div>
+
+                <div class="mt-4">
+                    <p class="fw-bold">Ejemplo de estructura del archivo Excel:</p>
+                    <div class="table-responsive mt-2">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>nombre</th>
+                                    <th>cantidad</th>
+                                    <th>cantidad_minima</th>
+                                    <th>categoria</th>
+                                    <th>proveedor</th>
+                                    <th>presentacion</th>
+                                    <th>unidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Concentrado Lechones Iniciación</td>
+                                    <td>500</td>
+                                    <td>100</td>
+                                    <td>Alimentos</td>
+                                    <td>Contegral S.A.</td>
+                                    <td>Bulto</td>
+                                    <td>Kilogramos</td>
+                                </tr>
+                                <tr>
+                                    <td>Vacuna Mycoplasma</td>
+                                    <td>1000</td>
+                                    <td>200</td>
+                                    <td>Medicamentos</td>
+                                    <td>MSD Salud Animal</td>
+                                    <td>Frasco x100</td>
+                                    <td>Dosis</td>
+                                </tr>
+                                <tr>
+                                    <td>Desinfectante Virkon-S</td>
+                                    <td>50</td>
+                                    <td>10</td>
+                                    <td>Bioseguridad</td>
+                                    <td>Laboratorios CALIER</td>
+                                    <td>Bolsa</td>
+                                    <td>Kilogramos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <p class="fw-bold">Recomendaciones:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Asegúrese de que los encabezados estén escritos exactamente como se muestra en el ejemplo.</li>
+                        <li>Las cantidades deben ser números enteros positivos.</li>
+                        <li>La cantidad mínima debe ser menor que la cantidad inicial.</li>
+                        <li>Si una categoría, proveedor, presentación o unidad no existe, se creará automáticamente.</li>
+                        <li>Los nombres de artículos deben ser únicos en el sistema.</li>
+                        <li>Evite usar caracteres especiales en los nombres.</li>
+                        <li>No incluya espacios antes o después de los datos.</li>
+                    </ul>
+                </div>
+
+                <div class="mt-4">
+                    <p class="fw-bold">Notas sobre la creación automática:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Categorías nuevas: Se crearán con una descripción predeterminada.</li>
+                        <li>Proveedores nuevos: Se crearán sin número de teléfono (puede actualizarlo después).</li>
+                        <li>Presentaciones y unidades: Se crearán con el nombre exacto proporcionado.</li>
+                    </ul>
+                </div>
             </div>
 
             @if (session('success'))
