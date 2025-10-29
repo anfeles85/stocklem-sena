@@ -28,17 +28,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/index', [IndexController::class, 'index'])->name('index');
     Route::get('/', [IndexController::class, 'index'])->name('index');
 });
 
-Route::middleware('auth')->prefix('user')->group(function(){
+Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('user.profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('user.profile.update');
 });
 
-Route::prefix('auth')->group(function(){
+Route::prefix('auth')->group(function () {
     Route::get('/index', [AuthController::class, 'index'])->name('auth.index');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
@@ -54,7 +54,7 @@ Route::get('/help', function () {
     return view('help.help');
 })->name('help');
 
-Route::middleware(['auth', 'can:administrador'])->prefix('user')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('user')->group(function () {
     Route::get('/index', [UsersController::class, 'index'])->name('users.index');
     Route::get('/create', [UsersController::class, 'create'])->name('users.create');
     Route::post('/store', [UsersController::class, 'store'])->name('users.store');
@@ -63,7 +63,7 @@ Route::middleware(['auth', 'can:administrador'])->prefix('user')->group(function
     Route::delete('/destroy/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(function () {
     Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
@@ -72,7 +72,7 @@ Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(func
     Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('person')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('person')->group(function () {
     Route::get('/index', [PersonController::class, 'index'])->name('person.index');
     Route::get('/create', [PersonController::class, 'create'])->name('person.create');
     Route::post('/store', [PersonController::class, 'store'])->name('person.store');
@@ -81,7 +81,7 @@ Route::middleware(['auth', 'can:administrador'])->prefix('person')->group(functi
     Route::delete('/destroy/{id}', [PersonController::class, 'destroy'])->name('person.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('presentation')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('presentation')->group(function () {
     Route::get('/index', [PresentationController::class, 'index'])->name('presentation.index');
     Route::get('/create', [PresentationController::class, 'create'])->name('presentation.create');
     Route::post('/store', [PresentationController::class, 'store'])->name('presentation.store');
@@ -90,7 +90,7 @@ Route::middleware(['auth', 'can:administrador'])->prefix('presentation')->group(
     Route::delete('/destroy/{id}', [PresentationController::class, 'destroy'])->name('presentation.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('supplier')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('supplier')->group(function () {
     Route::get('/index', [SupplierController::class, 'index'])->name('supplier.index');
     Route::get('/create', [SupplierController::class, 'create'])->name('supplier.create');
     Route::post('/store', [SupplierController::class, 'store'])->name('supplier.store');
@@ -99,7 +99,7 @@ Route::middleware(['auth', 'can:administrador'])->prefix('supplier')->group(func
     Route::delete('/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function () {
     Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
     Route::get('/create', [UnitController::class, 'create'])->name('unit.create');
     Route::post('/store', [UnitController::class, 'store'])->name('unit.store');
@@ -108,16 +108,18 @@ Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function
     Route::delete('/destroy/{id}', [UnitController::class, 'destroy'])->name('unit.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(function () {
     Route::get('/index', [ArticleController::class, 'index'])->name('article.index');
     Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
     Route::post('/store', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
     Route::put('/update/{id}', [ArticleController::class, 'update'])->name('article.update');
     Route::delete('/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+    Route::get('articulos/importar', [ArticleController::class, 'showImportForm'])->name('article.import.form');
+    Route::post('articulos/importar', [ArticleController::class, 'import'])->name('article.import.run');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('entry')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('entry')->group(function () {
     Route::get('/index', [EntryController::class, 'index'])->name('entry.index');
     Route::get('/create', [EntryController::class, 'create'])->name('entry.create');
     Route::post('/store', [EntryController::class, 'store'])->name('entry.store');
@@ -126,7 +128,7 @@ Route::middleware(['auth', 'can:administrador'])->prefix('entry')->group(functio
     Route::delete('/destroy/{id}', [EntryController::class, 'destroy'])->name('entry.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('issue')->group(function(){
+Route::middleware(['auth', 'can:administrador'])->prefix('issue')->group(function () {
     Route::get('/index', [IssueController::class, 'index'])->name('issue.index');
     Route::get('/create', [IssueController::class, 'create'])->name('issue.create');
     Route::post('/store', [IssueController::class, 'store'])->name('issue.store');
@@ -144,35 +146,35 @@ Route::middleware(['auth', 'can:administrador'])->prefix('reports')->group(funct
 
 
 // #################### RUTAS PARA COORDINADOR ####################
-Route::middleware(['auth', 'can:admin-coordinador'])->prefix('article')->group(function(){
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('article')->group(function () {
     Route::get('/index', [ArticleController::class, 'index'])->name('article.index');
 });
 
-Route::middleware(['auth', 'can:admin-coordinador'])->prefix('entry')->group(function(){
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('entry')->group(function () {
     Route::get('/index', [EntryController::class, 'index'])->name('entry.index');
 });
 
-Route::middleware(['auth', 'can:admin-coordinador'])->prefix('category')->group(function(){
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('category')->group(function () {
     Route::get('/index', [CategoryController::class, 'index'])->name('category.index');
 });
 
-Route::middleware(['auth', 'can:admin-coordinador'])->prefix('person')->group(function(){
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('person')->group(function () {
     Route::get('/index', [PersonController::class, 'index'])->name('person.index');
 });
 
-Route::middleware(['auth', 'can:admin-coordinador'])->prefix('presentation')->group(function(){
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('presentation')->group(function () {
     Route::get('/index', [PresentationController::class, 'index'])->name('presentation.index');
 });
 
-Route::middleware(['auth', 'can:admin-coordinador'])->prefix('supplier')->group(function(){
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('supplier')->group(function () {
     Route::get('/index', [SupplierController::class, 'index'])->name('supplier.index');
 });
 
-Route::middleware(['auth', 'can:admin-coordinador'])->prefix('unit')->group(function(){
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('unit')->group(function () {
     Route::get('/index', [UnitController::class, 'index'])->name('unit.index');
 });
 
-Route::middleware(['auth', 'can:admin-coordinador'])->prefix('issue')->group(function(){
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('issue')->group(function () {
     Route::get('/index', [IssueController::class, 'index'])->name('issue.index');
 });
 
