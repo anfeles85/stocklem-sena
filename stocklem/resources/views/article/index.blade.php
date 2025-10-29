@@ -7,7 +7,11 @@
         <a href="{{ route('article.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear artículo
         </a>
-    </div>
+
+        <a href="{{ route('article.import.form') }}" class="btn btn-success">
+            <i class="fas fa-file-excel"></i> Importar desde Excel
+        </a>
+        </div>
     @endcan
     <div class="card">
         <div class="table-responsive">

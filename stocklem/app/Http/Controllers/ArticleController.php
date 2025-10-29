@@ -202,7 +202,7 @@ class ArticleController extends Controller
             }
             
             return redirect()->route('article.import.form')
-                ->with('success', $message)
+                ->with('loaded', $message)
                 ->with('skipped', $skipped);
         } catch (\Exception $e) {
             return redirect()->route('article.import.form')

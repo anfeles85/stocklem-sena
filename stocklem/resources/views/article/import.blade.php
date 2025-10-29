@@ -19,9 +19,9 @@
                 </ul>
             </div>
 
-            @if (session('success'))
+            @if (session('loaded'))
                 <div class="alert alert-success alert-dismissible fade show text-white"  role="alert">
-                    {{ session('success') }}
+                    {{ session('loaded') }}
                 </div>
             @endif
 
@@ -86,7 +86,7 @@
 
                 <div class="mb-3">
                     <label for="file" class="form-label">Seleccionar Archivo (XLS, XLSX)</label>
-                    <input type="file" name="file" id="file" class="form-control" required>
+                    <input type="file" name="file" id="file" class="form-control" accept=".xls,.xlsx" required>
                 </div>
 
                 <div class="row">
