@@ -7,7 +7,11 @@
         <a href="{{ route('article.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Crear artículo
         </a>
-    </div>
+
+        <a href="{{ route('article.import.form') }}" class="btn btn-success">
+            <i class="fas fa-file-excel"></i> Importar desde Excel
+        </a>
+        </div>
     @endcan
     <div class="card">
         <div class="table-responsive">
@@ -74,7 +78,7 @@
                                                 <p class="mb-2"><strong>Presentación: </strong>{{ $article->presentation->description ?? 'Sin presentación' }}</p>
                                                 <p class="mb-2"><strong>Categoría: </strong>{{ $article->category->name ?? 'Sin categoría' }}</p>
                                                 <p class="mb-2"><strong>Proveedor: </strong>{{ $article->supplier->name ?? 'Sin proveedor' }}</p>
-                                                <p class="mb-2"><strong>Unidad: </strong>{{ $article->unit->name ?? 'Sin unidad' }}</p>
+                                                <p class="mb-2"><strong>Unidad: </strong>{{ $article->unit->name ?? 'Sin unidad'}}</p>
                                                 
                                                 @if($article->technical_sheet)
                                                     <p class="mb-0">
