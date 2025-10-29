@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-4">
                 <label for="min_quantity" class="form-label">Cantidad mínima</label>
-                <input type="number" name="min_quantity" id="min_quantity" class="form-control" min="1" 
+                <input type="number" name="min_quantity" id="min_quantity" class="form-control" min="1"
                     value="{{ old('min_quantity', $article->min_quantity) }}" disabled>
             </div>
         </div>
@@ -36,7 +36,7 @@
                         <img src="{{ $article->photo }}" alt="Foto actual" class="img-fluid" style="max-width: 60px">
                     </div>
                 @endif
-                <input type="file" name="photo" id="photo" class="form-control" accept="application/pdf">
+                <input type="file" name="photo" id="photo" class="form-control" accept="image/jpeg,image/png,image/jpg">
             </div>
             <div class="col-md-6">
                 <label for="technical_sheet" class="form-label">Ficha técnica</label>
@@ -52,75 +52,55 @@
         {{-- Presentación y Categoría --}}
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="presentation_description" class="form-label">Presentación</label>
-                <div class="position-relative">
-                    <input type="text" id="presentation_description" class="form-control pe-5" required
-                        placeholder="Seleccione"
-                        value="{{ old('presentation_description', optional($article->presentation)->description) }}">
-                    <span id="presentation_clear"
-                        class="position-absolute top-50 translate-middle-y cursor-pointer text-muted"
-                        style="right: 2.2rem; display: none; z-index: 2;">
-                        <i class="fas fa-times"></i>
-                    </span>
-                    <span class="position-absolute top-50 translate-middle-y" style="right: 0.7rem; z-index: 1;">
-                        <i id="presentation_arrow" class="fas fa-chevron-down"></i>
-                    </span>
-                </div>
-                <input type="hidden" name="presentation_id" id="presentation_id"
-                    value="{{ old('presentation_id', $article->presentation_id) }}">
+                <label for="presentation_id" class="form-label">Rol</label>
+                <select name="presentation_id" id="presentation_id" class="form-control js-example-placeholder-single"
+                    required>
+                    <option></option>
+                    @foreach ($presentations as $presentation)
+                        <option value="{{ $presentation->id }}" @if (old('presentation_id', $article->presentation_id) == $presentation->id) selected @endif>
+                            {{ $presentation->description }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="col-md-6">
-                <label for="category_name" class="form-label">Categoría</label>
-                <div class="position-relative">
-                    <input type="text" id="category_name" class="form-control pe-5" required placeholder="Seleccione"
-                        value="{{ old('category_name', optional($article->category)->name) }}">
-                    <span id="category_clear" class="position-absolute top-50 translate-middle-y cursor-pointer text-muted"
-                        style="right: 2.2rem; display: none; z-index: 2;">
-                        <i class="fas fa-times"></i>
-                    </span>
-                    <span class="position-absolute top-50 translate-middle-y" style="right: 0.7rem; z-index: 1;">
-                        <i id="category_arrow" class="fas fa-chevron-down"></i>
-                    </span>
-                </div>
-                <input type="hidden" name="category_id" id="category_id"
-                    value="{{ old('category_id', $article->category_id) }}">
+                <label for="category_id" class="form-label">Categoría</label>
+                <select name="category_id" id="category_id" class="form-control js-example-placeholder-single" required>
+                    <option></option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @if (old('category_id', $article->category_id) == $category->id) selected @endif>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
         </div>
 
         {{-- Proveedor y Unidad --}}
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="supplier_name" class="form-label">Proveedor</label>
-                <div class="position-relative">
-                    <input type="text" id="supplier_name" class="form-control pe-5" required placeholder="Seleccione"
-                        value="{{ old('supplier_name', optional($article->supplier)->name) }}">
-                    <span id="supplier_clear" class="position-absolute top-50 translate-middle-y cursor-pointer text-muted"
-                        style="right: 2.2rem; display: none; z-index: 2;">
-                        <i class="fas fa-times"></i>
-                    </span>
-                    <span class="position-absolute top-50 translate-middle-y" style="right: 0.7rem; z-index: 1;">
-                        <i id="supplier_arrow" class="fas fa-chevron-down"></i>
-                    </span>
-                </div>
-                <input type="hidden" name="supplier_id" id="supplier_id"
-                    value="{{ old('supplier_id', $article->supplier_id) }}">
+                <label for="supplier_id" class="form-label">Proveedor</label>
+                <select name="supplier_id" id="supplier_id" class="form-control js-example-placeholder-single" required>
+                    <option></option>
+                    @foreach ($suppliers as $supplier)
+                        <option value="{{ $supplier->id }}" @if (old('supplier_id', $article->supplier_id) == $supplier->id) selected @endif>
+                            {{ $supplier->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="col-md-6">
-                <label for="unit_name" class="form-label">Unidad</label>
-                <div class="position-relative">
-                    <input type="text" id="unit_name" class="form-control pe-5" required placeholder="Seleccione"
-                        value="{{ old('unit_name', optional($article->unit)->name) }}">
-                    <span id="unit_clear" class="position-absolute top-50 translate-middle-y cursor-pointer text-muted"
-                        style="right: 2.2rem; display: none; z-index: 2;">
-                        <i class="fas fa-times"></i>
-                    </span>
-                    <span class="position-absolute top-50 translate-middle-y" style="right: 0.7rem; z-index: 1;">
-                        <i id="unit_arrow" class="fas fa-chevron-down"></i>
-                    </span>
-                </div>
-                <input type="hidden" name="unit_id" id="unit_id" value="{{ old('unit_id', $article->unit_id) }}">
+                <label for="unit_id" class="form-label">Unidad</label>
+                <select name="unit_id" id="unit_id" class="form-control js-example-placeholder-single" required>
+                    <option></option>
+                    @foreach ($units as $unit)
+                        <option value="{{ $unit->id }}" @if (old('unit_id', $article->unit_id) == $unit->id) selected @endif>
+                            {{ $unit->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
         </div>
 
@@ -140,10 +120,11 @@
 
 @section('scripts')
     <script>
-        const presentations = @json($presentations);
-        const categories = @json($categories);
-        const suppliers = @json($suppliers);
-        const units = @json($units);
+        $(document).ready(function() {
+            $('.js-example-placeholder-single').select2({
+                placeholder: "Seleccione",
+                allowClear: true
+            });
+        });
     </script>
-    <script src="{{ asset('js/autocomplete.js') }}"></script>
 @endsection

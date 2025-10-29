@@ -9,10 +9,10 @@
             <table class="reportTable">
                 <thead>
                     <tr>
-                        <th>Articulo</th>
-                        <th>Codigo Sena</th>
+                        <th>Artículo</th>
+                        <th>Código SENA</th>
                         <th>Fecha de entrada</th>
-                        <th>fecha de expiración</th>
+                        <th>Fecha de expiración</th>
                         <th>Cantidad</th>
                         <th>Observaciones</th>
                     </tr>

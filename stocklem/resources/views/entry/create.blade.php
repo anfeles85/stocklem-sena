@@ -35,18 +35,16 @@
                 <textarea name="observations" id="observations" class="form-control" rows="3">{{ old('observations') }}</textarea>
             </div>
             <div class="col-md-6">
-                <label for="article_name" class="form-label">Artículo</label>
-                <div class="position-relative">
-                    <input type="text" id="article_name" class="form-control pe-5" required placeholder="Seleccione">
-                    <span id="article_clear" class="position-absolute top-50 translate-middle-y text-muted cursor-pointer"
-                        style="right: 2.2rem; display: none; z-index: 2;">
-                        <i class="fas fa-times"></i>
-                    </span>
-                    <span class="position-absolute top-50 translate-middle-y" style="right: 0.7rem; z-index: 1;">
-                        <i id="article_arrow" class="fas fa-chevron-down"></i>
-                    </span>
-                </div>
-                <input type="hidden" name="article_id" id="article_id" value="{{ old('article_id') }}">
+                <label for="article_id" class="form-label">Artículo</label>
+                <select name="article_id" id="article_id" class="form-control js-example-placeholder-single"
+                    required>
+                    <option></option>
+                    @foreach ($articles as $article)
+                        <option value="{{ $article->id }}" @if (old('article_id') == $article->id) selected @endif>
+                            {{ $article->name }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
         </div>
 
@@ -74,7 +72,11 @@
 
 @section('scripts')
     <script>
-        const articles = @json($articles);
+        $(document).ready(function() {
+            $('.js-example-placeholder-single').select2({
+                placeholder: "Seleccione",
+                allowClear: true
+            });
+        });
     </script>
-    <script src="{{ asset('js/autocomplete.js') }}"></script>
 @endsection
