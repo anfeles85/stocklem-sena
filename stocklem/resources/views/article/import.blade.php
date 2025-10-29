@@ -20,14 +20,28 @@
             </div>
 
             @if (session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show text-white"  role="alert">
                     {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if (session('skipped') && count(session('skipped')) > 0)
+                <div class="alert alert-warning alert-dismissible fade show text-white" role="alert">
+                    <strong>Artículos omitidos (ya existen):</strong>
+                    <ul class="mb-0 mt-2">
+                        @foreach (array_slice(session('skipped'), 0, 5) as $name)
+                            <li>{{ $name }}</li>
+                        @endforeach
+                        @if (count(session('skipped')) > 5)
+                            <li><em>y {{ count(session('skipped')) - 5 }} más...</em></li>
+                        @endif
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
             @endif
 
             @error('file')
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show " role="alert">
                     {{ $message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -60,7 +74,7 @@
             @endif
 
             @if (session('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show text-white" role="alert">
                     {{ session('error') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 </div>
@@ -75,10 +89,15 @@
                     <input type="file" name="file" id="file" class="form-control" required>
                 </div>
 
-                <div>
-                    <button type="submit" class="btn btn-primary w-100">
+                <div class="row">
+                    <div class="col-md-6 d-grid">
+                        <button type="submit" class="btn btn-success">
                         <i class="fas fa-upload me-2"></i> Importar Artículos
-                    </button>
+                        </button>
+                    </div>
+                    <div class="col-md-6 d-grid">
+                        <a href="{{ route('article.index') }}" class="btn btn-info">Cancelar</a>
+                    </div>
                 </div>
             </form>
         </div>

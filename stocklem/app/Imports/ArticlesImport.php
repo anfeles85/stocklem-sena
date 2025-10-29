@@ -20,14 +20,19 @@ class ArticlesImport implements
     SkipsOnFailure
 {
     private $errors = [];
+    private $skipped = [];
+    private $imported = 0;
 
-    /**
-     * @param array $row
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
     public function model(array $row)
     {
-        // Crear o buscar las relaciones
+        // Verificar si el artículo ya existe
+        $exists = Article::where('name', $row['nombre'])->exists();
+        
+        if ($exists) {
+            $this->skipped[] = $row['nombre'];
+            return null;
+        }
+
         $category = Category::firstOrCreate(
             ['name' => $row['categoria']],
             ['description' => 'Creado automáticamente desde importación']
@@ -46,6 +51,8 @@ class ArticlesImport implements
             ['name' => $row['unidad']]
         );
 
+        $this->imported++;
+
         return new Article([
             'name'            => $row['nombre'],
             'quantity'        => $row['cantidad'],
@@ -57,14 +64,10 @@ class ArticlesImport implements
         ]);
     }
 
-    /**
-     * Reglas de validación para cada fila del Excel
-     * @return array
-     */
     public function rules(): array
     {
         return [
-            'nombre'          => 'required|string|max:255|unique:article,name',
+            'nombre'          => 'required|string|max:255',
             'cantidad'        => 'required|numeric|min:1',
             'cantidad_minima' => 'required|numeric|min:1',
             'categoria'       => 'required|string|max:255',
@@ -74,22 +77,21 @@ class ArticlesImport implements
         ];
     }
 
-    /**
-     * Mensajes de error personalizados
-     */
     public function customValidationMessages()
     {
         return [
-            'nombre.required' => 'El nombre es obligatorio.',
-            'nombre.unique'   => 'El artículo ":input" ya existe en el sistema.',
-            'cantidad.required' => 'La cantidad es obligatoria.',
+            'nombre.required'          => 'El nombre es obligatorio.',
+            'cantidad.required'        => 'La cantidad es obligatoria.',
+            'cantidad.min'             => 'La cantidad debe ser mayor a 0.',
             'cantidad_minima.required' => 'La cantidad mínima es obligatoria.',
+            'cantidad_minima.min'      => 'La cantidad mínima debe ser mayor a 0.',
+            'categoria.required'       => 'La categoría es obligatoria.',
+            'proveedor.required'       => 'El proveedor es obligatorio.',
+            'presentacion.required'    => 'La presentación es obligatoria.',
+            'unidad.required'          => 'La unidad es obligatoria.',
         ];
     }
 
-    /**
-     * Maneja los errores de validación de forma optimizada
-     */
     public function onFailure(Failure ...$failures)
     {
         foreach ($failures as $failure) {
@@ -97,7 +99,6 @@ class ArticlesImport implements
             $attribute = $failure->attribute();
             $error = $failure->errors()[0];
 
-            // Agrupar errores por columna
             if (!isset($this->errors[$attribute])) {
                 $this->errors[$attribute] = [
                     'rows' => [],
@@ -108,11 +109,18 @@ class ArticlesImport implements
         }
     }
 
-    /**
-     * Obtiene los errores agrupados
-     */
     public function getGroupedErrors()
     {
         return $this->errors;
+    }
+
+    public function getSkipped()
+    {
+        return $this->skipped;
+    }
+
+    public function getImported()
+    {
+        return $this->imported;
     }
 }

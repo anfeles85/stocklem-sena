@@ -170,7 +170,6 @@ class ArticleController extends Controller
      */
     public function showImportForm()
     {
-        // Cambia 'article.import' por el nombre de tu vista
         return view('article.import');
     }
 
@@ -187,16 +186,24 @@ class ArticleController extends Controller
             $import = new ArticlesImport;
             Excel::import($import, $request->file('file'));
 
-            // Verificar si hubo errores agrupados
             $groupedErrors = $import->getGroupedErrors();
+            $skipped = $import->getSkipped();
+            $imported = $import->getImported();
 
             if (!empty($groupedErrors)) {
                 return redirect()->route('article.import.form')
                     ->with('grouped_errors', $groupedErrors);
             }
 
+            $message = "¡Importación completada! Artículos importados: {$imported}";
+
+            if (count($skipped) > 0) {
+                $message .= " | Omitidos (ya existen): " . count($skipped);
+            }
+            
             return redirect()->route('article.import.form')
-                ->with('success', '¡Artículos importados exitosamente!');
+                ->with('success', $message)
+                ->with('skipped', $skipped);
         } catch (\Exception $e) {
             return redirect()->route('article.import.form')
                 ->with('error', 'Error al procesar el archivo: ' . $e->getMessage());
