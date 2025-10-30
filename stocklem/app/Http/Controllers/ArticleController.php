@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Issue;
-use App\Models\Person;
 use App\Models\Presentation;
 use App\Models\Supplier;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+
+use App\Imports\ArticlesImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Validators\ValidationException;
 
 class ArticleController extends Controller
 {
@@ -46,7 +48,7 @@ class ArticleController extends Controller
         $articles = Article::all();
         $lowStockArticles = $articles->filter(fn($article) => $article->isBelowMinimum());
 
-        return view('article.index', compact('articles','lowStockArticles'));
+        return view('article.index', compact('articles', 'lowStockArticles'));
     }
 
     /**
@@ -75,14 +77,14 @@ class ArticleController extends Controller
         }
         $data = $request->all();
 
-    if ($request->hasFile('technical_sheet')) {
-        $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
-        $data['technical_sheet'] = Storage::url($path);
-    }
-    if ($request->hasFile('photo')) {
-        $path = $request->file('photo')->store('photos', 'public');
-        $data['photo'] = Storage::url($path);
-    }
+        if ($request->hasFile('technical_sheet')) {
+            $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
+            $data['technical_sheet'] = Storage::url($path);
+        }
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('photos', 'public');
+            $data['photo'] = Storage::url($path);
+        }
         $article = Article::create($data);
         return redirect()->route('article.index')->with('success', 'Artículo creado exitosamente');
     }
@@ -135,11 +137,11 @@ class ArticleController extends Controller
         if ($article) {
             $data = $request->all();
 
-            if($request->hasFile('technical_sheet')) {
+            if ($request->hasFile('technical_sheet')) {
                 $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
                 $data['technical_sheet'] = Storage::url($path);
             }
-            if($request->hasFile('photo')) {
+            if ($request->hasFile('photo')) {
                 $path = $request->file('photo')->store('photos', 'public');
                 $data['photo'] = Storage::url($path);
             }
@@ -160,6 +162,51 @@ class ArticleController extends Controller
             return redirect()->route('article.index')->with('success', '¡Artículo eliminado correctamente!');
         } else {
             return redirect()->route('article.index')->with('error', 'Ha ocurrido un problema al eliminar el artículo.');
+        }
+    }
+
+    /**
+     * Muestra la vista del formulario de importación.
+     */
+    public function showImportForm()
+    {
+        return view('article.import');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx'
+        ], [
+            'file.required' => 'Debes seleccionar un archivo.',
+            'file.mimes' => 'El archivo debe ser de tipo .xls o .xlsx'
+        ]);
+
+        try {
+            $import = new ArticlesImport;
+            Excel::import($import, $request->file('file'));
+
+            $groupedErrors = $import->getGroupedErrors();
+            $skipped = $import->getSkipped();
+            $imported = $import->getImported();
+
+            if (!empty($groupedErrors)) {
+                return redirect()->route('article.import.form')
+                    ->with('grouped_errors', $groupedErrors);
+            }
+
+            $message = "¡Importación completada! Artículos importados: {$imported}";
+
+            if (count($skipped) > 0) {
+                $message .= " | Omitidos (ya existen): " . count($skipped);
+            }
+            
+            return redirect()->route('article.import.form')
+                ->with('loaded', $message)
+                ->with('skipped', $skipped);
+        } catch (\Exception $e) {
+            return redirect()->route('article.import.form')
+                ->with('error', 'Error al procesar el archivo: ' . $e->getMessage());
         }
     }
 }

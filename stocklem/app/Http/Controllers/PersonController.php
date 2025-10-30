@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Imports\PersonsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PersonController extends Controller
 {
@@ -117,6 +119,51 @@ class PersonController extends Controller
         else
         {
             return redirect()->route('person.index')->with('error', 'Ha ocurrido un problema al eliminar la persona');
+        }
+    }
+
+    /**
+     * Muestra la vista del formulario de importación.
+     */
+    public function showImportForm()
+    {
+        return view('person.import');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx'
+        ], [
+            'file.required' => 'Debes seleccionar un archivo.',
+            'file.mimes' => 'El archivo debe ser de tipo .xls o .xlsx'
+        ]);
+
+        try {
+            $import = new PersonsImport;
+            Excel::import($import, $request->file('file'));
+
+            $groupedErrors = $import->getGroupedErrors();
+            $skipped = $import->getSkipped();
+            $imported = $import->getImported();
+
+            if (!empty($groupedErrors)) {
+                return redirect()->route('person.import.form')
+                    ->with('grouped_errors', $groupedErrors);
+            }
+
+            $message = "¡Importación completada! Personas importadas: {$imported}";
+
+            if (count($skipped) > 0) {
+                $message .= " | Omitidas (ya existen): " . count($skipped);
+            }
+            
+            return redirect()->route('person.import.form')
+                ->with('loaded', $message)
+                ->with('skipped', $skipped);
+        } catch (\Exception $e) {
+            return redirect()->route('person.import.form')
+                ->with('error', 'Error al procesar el archivo: ' . $e->getMessage());
         }
     }
 }
