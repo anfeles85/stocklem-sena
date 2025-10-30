@@ -11,66 +11,17 @@
                 <ul class="list-disc list-inside ml-4">
                     <li>El archivo debe ser .xls o .xlsx.</li>
                     <li>La primera fila debe contener los encabezados exactos.</li>
-                    <li class="fw-bold">Encabezados requeridos: <strong>documento, nombre</strong>.</li>
-                    <li>Encabezados opcionales: <strong>telefono</strong>.</li>
+                    <li class="fw-bold">Encabezados requeridos: <strong>documento, nombre, telefono</strong>.</li>
+                    <li>Valores opcionales: <strong>telefono</strong> los demas campos son requeridos.</li>
                     <li>Si una persona con el mismo documento ya existe, será omitida.</li>
                 </ul>
-
-                <div class="mt-4">
-                    <p class="fw-bold">Especificaciones de los campos:</p>
-                    <ul class="list-disc list-inside ml-4">
-                        <li><strong>documento:</strong> Número de identificación (entre 3 y 20 dígitos, sin puntos ni guiones)</li>
-                        <li><strong>nombre:</strong> Nombre completo de la persona (entre 3 y 255 caracteres)</li>
-                        <li><strong>telefono:</strong> Número de teléfono (opcional, máximo 255 caracteres)</li>
-                    </ul>
-                </div>
-
-                <div class="mt-4">
-                    <p class="fw-bold">Ejemplo de estructura del archivo Excel:</p>
-                    <div class="table-responsive mt-2">
-                        <table class="table table-bordered table-striped">
-                            <thead class="table-primary">
-                                <tr>
-                                    <th>documento</th>
-                                    <th>nombre</th>
-                                    <th>telefono</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>12345678</td>
-                                    <td>Juan Pérez García</td>
-                                    <td>3214567890</td>
-                                </tr>
-                                <tr>
-                                    <td>87654321</td>
-                                    <td>María Rodríguez López</td>
-                                    <td>3105559999</td>
-                                </tr>
-                                <tr>
-                                    <td>98765432</td>
-                                    <td>Carlos González Martínez</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <p class="fw-bold">Recomendaciones:</p>
-                    <ul class="list-disc list-inside ml-4">
-                        <li>Asegúrese de que los encabezados estén escritos exactamente como se muestra en el ejemplo.</li>
-                        <li>No incluya espacios antes o después de los datos.</li>
-                        <li>El campo teléfono puede dejarse vacío si no se tiene la información.</li>
-                        <li>Los documentos no deben contener puntos, comas ni guiones.</li>
-                        <li>Evite usar caracteres especiales en los nombres.</li>
-                    </ul>
-                </div>
+                <button onclick="document.getElementById('photoModal').showModal()" class="btn btn-success">
+                    <i class="fas fa-eye"></i> Ver Ejemplo
+                </button>
             </div>
 
             @if (session('loaded'))
-                <div class="alert alert-success alert-dismissible fade show text-white"  role="alert">
+                <div class="alert alert-success alert-dismissible fade show text-white" role="alert">
                     {{ session('loaded') }}
                 </div>
             @endif
@@ -141,7 +92,7 @@
                 <div class="row">
                     <div class="col-md-6 d-grid">
                         <button type="submit" class="btn btn-success">
-                        <i class="fas fa-upload me-2"></i> Importar Personas
+                            <i class="fas fa-upload me-2"></i> Importar Personas
                         </button>
                     </div>
                     <div class="col-md-6 d-grid">
@@ -151,4 +102,14 @@
             </form>
         </div>
     </div>
+    <dialog id="photoModal" class="rounded shadow-lg" style="max-width: 90vw; max-height: 90vh; border: none;"
+        onclick="if(event.target === this) this.close()">
+        <div class="position-relative">
+            <button onclick="document.getElementById('photoModal').close()"
+                class="btn btn-close position-absolute top-0 end-0 m-2" style="z-index: 10;">
+            </button>
+            <img src="{{ asset('img/person-excel-example.png') }}" alt="person-excel-example" class="img-fluid rounded"
+                style="max-width: 100%; max-height: 85vh; object-fit: contain; height:200px;">
+        </div>
+    </dialog>
 @endsection
