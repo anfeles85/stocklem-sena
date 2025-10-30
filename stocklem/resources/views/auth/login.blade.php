@@ -6,28 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Iniciar Sesión</title>
-    <!-- Custom fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/change-password.css') }}">
-</head>
+    </head>
 
 <body class="password-change-container">
     <div class="password-change-wrapper">
         <div class="card password-change-card">
             <div class="row no-gutters">
-                <!-- Logo Section -->
+                
                 <div class="col-md-5">
                     <div class="logo-section-sena">
                         <div class="sena-logo-container">
                             <img src="{{ asset('img/stockclem-logo.png') }}" alt="Logo CLEM" class="sena-logo-img">
                         </div>
-                    </div>
+                        
+                        <h2 class="h4 text-white font-weight-bold mb-3">¡Bienvenido a StockCLEM!</h2>
+                        <p class="text-white-75 px-3 mb-4">
+                            Tu sistema de gestión de inventario eficiente y en tiempo real.
+                        </p>
+                        
+                        <div class="feature-list">
+                            <div class="d-flex align-items-center text-white mb-2">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Gestión de Artículos</span>
+                            </div>
+                            <div class="d-flex align-items-center text-white mb-2">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Control de Stock</span>
+                            </div>
+                            <div class="d-flex align-items-center text-white">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Reportes Detallados</span>
+                            </div>
+                        </div>
+                        </div>
                 </div>
-
                 <div class="col-md-7">
                     <div class="form-section-sena">
                         <div class="form-header-sena">
@@ -105,7 +123,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+                </div>
         </div>
 
         <div class="help-container">
