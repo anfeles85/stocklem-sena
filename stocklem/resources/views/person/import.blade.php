@@ -1,6 +1,6 @@
 @extends('templates.base')
-@section('title', 'Importar Artículos')
-@section('header', 'Importar Artículos Masivamente')
+@section('title', 'Importar Personas')
+@section('header', 'Importar Personas Masivamente')
 
 @section('content')
     <div class="card">
@@ -11,18 +11,14 @@
                 <ul class="list-disc list-inside ml-4">
                     <li>El archivo debe ser .xls o .xlsx.</li>
                     <li>La primera fila debe contener los encabezados exactos.</li>
-                    <li class="fw-bold">Encabezados requeridos: <strong>nombre, cantidad, cantidad_minima, categoria,
-                            proveedor, presentacion, unidad</strong>.</li>
-                    <li><strong>Si la categoría, proveedor, presentación o unidad no existe, se creará
-                            automáticamente.</strong></li>
-                    <li>Si ya existen en el sistema, se usarán los registros existentes.</li>
+                    <li class="fw-bold">Encabezados requeridos: <strong>documento, nombre, telefono</strong>.</li>
+                    <li>Valores opcionales: <strong>telefono</strong> los demas campos son requeridos.</li>
+                    <li>Si una persona con el mismo documento ya existe, será omitida.</li>
                 </ul>
                 <button onclick="document.getElementById('photoModal').showModal()" class="btn btn-success">
                     <i class="fas fa-eye"></i> Ver Ejemplo
                 </button>
             </div>
-
-            
 
             @if (session('loaded'))
                 <div class="alert alert-success alert-dismissible fade show text-white" role="alert">
@@ -32,7 +28,7 @@
 
             @if (session('skipped') && count(session('skipped')) > 0)
                 <div class="alert alert-warning alert-dismissible fade show text-white" role="alert">
-                    <strong>Artículos omitidos (ya existen):</strong>
+                    <strong>Personas omitidas (ya existen):</strong>
                     <ul class="mb-0 mt-2">
                         @foreach (array_slice(session('skipped'), 0, 5) as $name)
                             <li>{{ $name }}</li>
@@ -85,8 +81,7 @@
                 </div>
             @endif
 
-
-            <form action="{{ route('article.import.run') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('person.import.run') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mb-3">
@@ -97,25 +92,24 @@
                 <div class="row">
                     <div class="col-md-6 d-grid">
                         <button type="submit" class="btn btn-success">
-                            <i class="fas fa-upload me-2"></i> Importar Artículos
+                            <i class="fas fa-upload me-2"></i> Importar Personas
                         </button>
                     </div>
                     <div class="col-md-6 d-grid">
-                        <a href="{{ route('article.index') }}" class="btn btn-info">Cancelar</a>
+                        <a href="{{ route('person.index') }}" class="btn btn-info">Cancelar</a>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-
     <dialog id="photoModal" class="rounded shadow-lg" style="max-width: 90vw; max-height: 90vh; border: none;"
         onclick="if(event.target === this) this.close()">
         <div class="position-relative">
             <button onclick="document.getElementById('photoModal').close()"
                 class="btn btn-close position-absolute top-0 end-0 m-2" style="z-index: 10;">
             </button>
-            <img src="{{ asset('img/article-excel-example.png') }}" alt="article-excel-example" class="img-fluid rounded"
-                style="max-width: 100%; max-height: 85vh; object-fit: contain;">
+            <img src="{{ asset('img/person-excel-example.png') }}" alt="person-excel-example" class="img-fluid rounded"
+                style="max-width: 100%; max-height: 85vh; object-fit: contain; height:200px;">
         </div>
     </dialog>
 @endsection
