@@ -12,18 +12,20 @@ class CategoryController extends Controller
     
     private $rules = [
         'name' => 'required|string|min:3|max:80',
-        'description' => 'required|string|min:31|max:100'
+        'description' => 'required|string|min:31|max:100',
+        'status' => 'required|in:ACTIVO,INACTIVO'
 
     ];
 
     private $traductionAttributes = [
         'name' => 'nombre',
-        'description' => 'descripción'
+        'description' => 'descripción',
+        'status' => 'estado'
     ];
 
    public function index()
     {
-        $categories = Category::all();
+        $categories = Category::orderByRaw("FIELD(status, 'ACTIVO', 'INACTIVO')")->get();
         return view('category.index', compact('categories'));
     }
 
@@ -97,25 +99,35 @@ class CategoryController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Alternar estado de la categoría (ACTIVO <-> INACTIVO).
      */
-    public function destroy(string $id)
+    public function toggleStatus(string $id)
     {
         $category = Category::find($id);
-        if($category)
-        {
-            // Verificar si la categoría tiene artículos asociados
-            if($category->articles()->count() > 0)
-            {
-                return redirect()->route('category.index')->with('error', 'No se puede eliminar la categoría porque tiene artículos asociados');
-            }
+
+        if ($category) {
+            $newStatus = $category->status == 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+            $category->update(['status' => $newStatus]);
             
-            $category->delete();
-            return redirect()->route('category.index')->with('success', 'Categoría eliminada exitosamente');
+            $message = $newStatus == 'ACTIVO' ? 'Categoría activada exitosamente' : 'Categoría inactivada exitosamente';
+            return redirect()->route('category.index')->with('success', $message);
+        } else {
+            return redirect()->route('category.index')->with('error', 'No se encontró la categoría');
         }
-        else
-        {
-            return redirect()->route('category.index')->with('error', 'Ha ocurrido un problema al eliminar la categoria');
+    }
+
+    /**
+     * Eliminar categoría permanentemente.
+     */
+    public function forceDelete(string $id)
+    {
+        $category = Category::find($id);
+
+        if ($category) {
+            $category->delete();
+            return redirect()->route('category.index')->with('success', 'Categoría eliminado permanentemente');
+        } else {
+            return redirect()->route('category.index')->with('error', 'No se encontró la categoría');
         }
     }
 }
