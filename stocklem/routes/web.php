@@ -78,7 +78,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('person')->group(functi
     Route::post('/store', [PersonController::class, 'store'])->name('person.store');
     Route::get('/edit/{id}', [PersonController::class, 'edit'])->name('person.edit');
     Route::put('/update/{id}', [PersonController::class, 'update'])->name('person.update');
-    Route::delete('/destroy/{id}', [PersonController::class, 'destroy'])->name('person.destroy');
+    Route::patch('/toggle-status/{id}', [PersonController::class, 'toggleStatus'])->name('person.toggleStatus');
+    Route::delete('/force-delete/{id}', [PersonController::class, 'forceDelete'])->name('person.forceDelete');
     Route::get('/import', [PersonController::class, 'showImportForm'])->name('person.import.form');
     Route::post('/import', [PersonController::class, 'import'])->name('person.import.run');
 });

@@ -13,13 +13,15 @@ class PersonController extends Controller
 
     private $rules = [
         'phone' => 'max:255',
-        'name' => 'required|string|min:3|max:255'
+        'name' => 'required|string|min:3|max:255',
+        'status' => 'required|in:ACTIVO,INACTIVO'
     ];
 
     private $traductionAttributes = [
         'document' => 'documento',
         'phone' => 'telefono',
-        'name' => 'nombre'
+        'name' => 'nombre',
+        'status' => 'estado'
     ];
 
     /**
@@ -27,7 +29,7 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $persons = Person::all();
+        $persons = Person::orderByRaw("FIELD(status, 'ACTIVO', 'INACTIVO')")->get();
         return view('person.index', compact('persons'));
     }
 
@@ -100,21 +102,35 @@ class PersonController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Alternar estado de la persona (ACTIVO <-> INACTIVO).
      */
-    public function destroy(string $id)
+    public function toggleStatus(string $id)
     {
         $person = Person::find($id);
 
-        if ($person) //la persona existe
-        {
-            if ($person->issues()->count() > 0) {
-                return redirect()->route('person.index')->with('error', 'No se puede eliminar la persona porque tiene salidas asociadas');
-            }
-            $person->delete();
-            return redirect()->route('person.index')->with('success', 'Registro eliminado exitosamente');
+        if ($person) {
+            $newStatus = $person->status == 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+            $person->update(['status' => $newStatus]);
+            
+            $message = $newStatus == 'ACTIVO' ? 'Persona activada exitosamente' : 'Persona inactivada exitosamente';
+            return redirect()->route('person.index')->with('success', $message);
         } else {
-            return redirect()->route('person.index')->with('error', 'Ha ocurrido un problema al eliminar la persona');
+            return redirect()->route('person.index')->with('error', 'No se encontró la persona');
+        }
+    }
+
+    /**
+     * Eliminar persona permanentemente.
+     */
+    public function forceDelete(string $id)
+    {
+        $person = Person::find($id);
+
+        if ($person) {
+            $person->delete();
+            return redirect()->route('person.index')->with('success', 'Persona eliminada permanentemente');
+        } else {
+            return redirect()->route('person.index')->with('error', 'No se encontró la persona');
         }
     }
 
