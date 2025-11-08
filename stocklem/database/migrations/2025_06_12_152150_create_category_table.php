@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->comment('Nombre categoria');
             $table->text('description')->nullable()->comment('Descripcion categoria');
+            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO')->comment('estado categoría');
             $table->timestamps();
         });
     }

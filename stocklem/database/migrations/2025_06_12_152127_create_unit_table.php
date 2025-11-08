@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('unit', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('Nombre unidad');
+            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO')->comment('estado unidad');
             $table->timestamps();
         });
     }
