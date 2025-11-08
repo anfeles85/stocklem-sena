@@ -91,7 +91,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('presentation')->group(
     Route::post('/store', [PresentationController::class, 'store'])->name('presentation.store');
     Route::get('/edit/{id}', [PresentationController::class, 'edit'])->name('presentation.edit');
     Route::put('/update/{id}', [PresentationController::class, 'update'])->name('presentation.update');
-    Route::delete('/destroy/{id}', [PresentationController::class, 'destroy'])->name('presentation.destroy');
+    Route::patch('/toggle-status/{id}', [PresentationController::class, 'toggleStatus'])->name('presentation.toggleStatus');
+    Route::delete('/force-delete/{id}', [PresentationController::class, 'forceDelete'])->name('presentation.forceDelete');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('supplier')->group(function () {
