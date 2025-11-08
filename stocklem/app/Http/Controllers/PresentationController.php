@@ -121,7 +121,7 @@ class PresentationController extends Controller
 
         if ($presentation) {
             $presentation->delete();
-            return redirect()->route('presentation.index')->with('success', 'Presentación eliminado permanentemente');
+            return redirect()->route('presentation.index')->with('success', 'Presentación eliminada permanentemente');
         } else {
             return redirect()->route('presentation.index')->with('error', 'No se encontró la presentación');
         }

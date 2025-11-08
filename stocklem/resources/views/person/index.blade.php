@@ -74,7 +74,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm" title="Eliminar permanentemente" 
-                                     onclick="removeId({{ $person->id }})">
+                                     onclick="removePermanently({{ $person->id }})">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

@@ -125,7 +125,7 @@ class CategoryController extends Controller
 
         if ($category) {
             $category->delete();
-            return redirect()->route('category.index')->with('success', 'Categoría eliminado permanentemente');
+            return redirect()->route('category.index')->with('success', 'Categoría eliminada permanentemente');
         } else {
             return redirect()->route('category.index')->with('error', 'No se encontró la categoría');
         }

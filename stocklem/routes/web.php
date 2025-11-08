@@ -111,7 +111,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function
     Route::post('/store', [UnitController::class, 'store'])->name('unit.store');
     Route::get('/edit/{id}', [UnitController::class, 'edit'])->name('unit.edit');
     Route::put('/update/{id}', [UnitController::class, 'update'])->name('unit.update');
-    Route::delete('/destroy/{id}', [UnitController::class, 'destroy'])->name('unit.destroy');
+    Route::patch('/toggle-status/{id}', [UnitController::class, 'toggleStatus'])->name('unit.toggleStatus');
+    Route::delete('/force-delete/{id}', [UnitController::class, 'forceDelete'])->name('unit.forceDelete');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(function () {

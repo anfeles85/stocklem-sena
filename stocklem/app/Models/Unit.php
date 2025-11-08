@@ -13,6 +13,7 @@ class Unit extends Model
 
     protected $fillable = [
         'name',
+        'status'
     ];
 
     public function issues() {
