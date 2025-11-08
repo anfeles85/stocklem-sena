@@ -16,7 +16,7 @@
 
     <div class="card">
         <div class="table-responsive">
-            <table id="table_active_inactive" class="table table-hover align-middle mb-0">
+            <table id="table_active_inactive" data-status-column="4" class="table table-hover align-middle mb-0">
                 <thead class="table-light">
                     <tr class="text-center">
                         <th>ID</th>

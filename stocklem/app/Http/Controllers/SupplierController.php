@@ -10,16 +10,18 @@ class SupplierController extends Controller
 {
     private $rules = [
         'name' => 'required|string|min:3|max:100',
-        'phone' => 'required|string|min:3|max:20'
+        'phone' => 'required|string|min:3|max:20',
+        'status' => 'required|in:ACTIVO,INACTIVO'
     ];
 
     private $traductionAttributes = [
         'name' => 'nombre',
-        'phone' => 'teléfono'
+        'phone' => 'teléfono',
+        'status' => 'estado'
     ];
     public function index()
     {
-        $suppliers = Supplier::all();
+        $suppliers = Supplier::orderByRaw("FIELD(status, 'ACTIVO', 'INACTIVO')")->get();
         return view('supplier.index', compact('suppliers'));
     }
 
@@ -91,23 +93,35 @@ class SupplierController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Alternar estado del proveedor (ACTIVO <-> INACTIVO).
      */
-    public function destroy(string $id)
+    public function toggleStatus(string $id)
     {
         $supplier = Supplier::find($id);
-        if($supplier){
-            // Verificar si el proveedor tiene artículos asociados
-            if($supplier->articles()->count() > 0)
-            {
-                return redirect()->route('supplier.index')->with('error', 'No se puede eliminar el proveedor porque tiene artículos asociados');
-            }
+
+        if ($supplier) {
+            $newStatus = $supplier->status == 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+            $supplier->update(['status' => $newStatus]);
             
-            $supplier->delete();
-            return redirect()->route('supplier.index')->with('success', '¡Proveedor eliminado correctamente!');
+            $message = $newStatus == 'ACTIVO' ? 'Proveedor activado exitosamente' : 'Proveedor inactivado exitosamente';
+            return redirect()->route('supplier.index')->with('success', $message);
+        } else {
+            return redirect()->route('supplier.index')->with('error', 'No se encontró el proveedor');
         }
-        else{
-            return redirect()->route('supplier.index')->with('error', 'Ha ocurrido un problema al eliminar el proveedor.');
+    }
+
+    /**
+     * Eliminar proveedor permanentemente.
+     */
+    public function forceDelete(string $id)
+    {
+        $supplier = Supplier::find($id);
+
+        if ($supplier) {
+            $supplier->delete();
+            return redirect()->route('supplier.index')->with('success', 'Proveedor eliminado permanentemente');
+        } else {
+            return redirect()->route('supplier.index')->with('error', 'No se encontró la proveedor');
         }
     }
 }

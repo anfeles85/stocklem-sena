@@ -99,7 +99,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('supplier')->group(func
     Route::post('/store', [SupplierController::class, 'store'])->name('supplier.store');
     Route::get('/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
     Route::put('/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
-    Route::delete('/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
+    Route::patch('/toggle-status/{id}', [SupplierController::class, 'toggleStatus'])->name('supplier.toggleStatus');
+    Route::delete('/force-delete/{id}', [SupplierController::class, 'forceDelete'])->name('supplier.forceDelete');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function () {
