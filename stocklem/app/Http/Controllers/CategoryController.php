@@ -104,6 +104,12 @@ class CategoryController extends Controller
         $category = Category::find($id);
         if($category)
         {
+            // Verificar si la categoría tiene artículos asociados
+            if($category->articles()->count() > 0)
+            {
+                return redirect()->route('category.index')->with('error', 'No se puede eliminar la categoría porque tiene artículos asociados');
+            }
+            
             $category->delete();
             return redirect()->route('category.index')->with('success', 'Categoría eliminada exitosamente');
         }

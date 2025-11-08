@@ -97,6 +97,12 @@ class SupplierController extends Controller
     {
         $supplier = Supplier::find($id);
         if($supplier){
+            // Verificar si el proveedor tiene artículos asociados
+            if($supplier->articles()->count() > 0)
+            {
+                return redirect()->route('supplier.index')->with('error', 'No se puede eliminar el proveedor porque tiene artículos asociados');
+            }
+            
             $supplier->delete();
             return redirect()->route('supplier.index')->with('success', '¡Proveedor eliminado correctamente!');
         }

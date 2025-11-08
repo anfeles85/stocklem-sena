@@ -158,6 +158,14 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         if ($article) {
+            // Verificar si el artículo tiene salidas asociadas
+            if($article->issues()->count() > 0) {
+                return redirect()->route('article.index')->with('error', 'No se puede eliminar el artículo porque tiene salidas asociadas');
+            }
+            if($article->entries()->count() > 0) {
+                return redirect()->route('article.index')->with('error', 'No se puede eliminar el artículo porque tiene entradas asociadas');
+            }
+            
             $article->delete();
             return redirect()->route('article.index')->with('success', '¡Artículo eliminado correctamente!');
         } else {

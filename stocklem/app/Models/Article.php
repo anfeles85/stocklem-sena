@@ -48,4 +48,14 @@ class Article extends Model
     {
         return $this->belongsTo(Unit::class, 'unit_id');
     }
+
+    public function issues()
+    {
+        return $this->hasMany(Issue::class, 'article_id');
+    }
+    
+    public function entries()
+    {
+        return $this->hasMany(Entry::class, 'article_id');
+    }
 }

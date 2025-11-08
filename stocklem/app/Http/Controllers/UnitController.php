@@ -106,6 +106,12 @@ class UnitController extends Controller
         $unit = Unit::find($id);
 
         if($unit){
+            // Verificar si la unidad tiene artículos asociados
+            if($unit->articles()->count() > 0)
+            {
+                return redirect()->route('unit.index')->with('error', 'No se puede eliminar la unidad porque tiene artículos asociados');
+            }
+            
             $unit->delete();
             return redirect()->route('unit.index')->with('success','¡Unidad eliminada correctamente!');
         }

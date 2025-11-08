@@ -19,4 +19,8 @@ class Unit extends Model
         return $this->hasMany(Issue::class);
     }
 
+    public function articles() {
+        return $this->hasMany(Article::class);
+    }
+
 }

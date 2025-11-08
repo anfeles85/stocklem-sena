@@ -47,8 +47,7 @@ class PersonController extends Controller
         $this->rules['document'] = 'required|numeric|unique:person|min:3|max:99999999999999999999';
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('person.create')->withInput()->withErrors($errors);
         }
@@ -70,12 +69,10 @@ class PersonController extends Controller
     public function edit(string $id)
     {
         $person = Person::find($id);
-        if($person)//la persona existe
+        if ($person) //la persona existe
         {
             return view('person.edit', compact('person'));
-        }
-        else
-        {
+        } else {
             return redirect()->route('person.index')->with('error', 'No se encuentró la persona');
         }
     }
@@ -85,22 +82,19 @@ class PersonController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $this->rules['document'] = 'required|numeric|unique:person,document,'.$id.'|min:3|max:99999999999999999999';
+        $this->rules['document'] = 'required|numeric|unique:person,document,' . $id . '|min:3|max:99999999999999999999';
         $validator = Validator::make($request->all(), $this->rules);
         $validator->setAttributeNames($this->traductionAttributes);
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             $errors = $validator->errors();
             return redirect()->route('person.edit', $id)->withInput()->withErrors($errors);
         }
         $person = Person::find($id);
-        if($person)//la persona existe
+        if ($person) //la persona existe
         {
             $person->update($request->all());
             return redirect()->route('person.index')->with('success', '¡Registro actualizado correctamente!');
-        }
-        else
-        {
+        } else {
             return redirect()->route('person.index')->with('error', 'Ha ocurrido un problema al acttualizar la persona');
         }
     }
@@ -111,13 +105,15 @@ class PersonController extends Controller
     public function destroy(string $id)
     {
         $person = Person::find($id);
-        if($person)//la persona existe
+
+        if ($person) //la persona existe
         {
+            if ($person->issues()->count() > 0) {
+                return redirect()->route('person.index')->with('error', 'No se puede eliminar la persona porque tiene salidas asociadas');
+            }
             $person->delete();
             return redirect()->route('person.index')->with('success', 'Registro eliminado exitosamente');
-        }
-        else
-        {
+        } else {
             return redirect()->route('person.index')->with('error', 'Ha ocurrido un problema al eliminar la persona');
         }
     }
@@ -157,7 +153,7 @@ class PersonController extends Controller
             if (count($skipped) > 0) {
                 $message .= " | Omitidas (ya existen): " . count($skipped);
             }
-            
+
             return redirect()->route('person.import.form')
                 ->with('loaded', $message)
                 ->with('skipped', $skipped);

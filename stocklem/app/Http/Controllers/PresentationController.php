@@ -100,6 +100,12 @@ class PresentationController extends Controller
         $presentation = Presentation::find($id);
 
         if($presentation){
+            // Verificar si la presentación tiene artículos asociados
+            if($presentation->articles()->count() > 0)
+            {
+                return redirect()->route('presentation.index')->with('error', 'No se puede eliminar la presentación porque tiene artículos asociados');
+            }
+            
             $presentation->delete();
             return redirect()->route('presentation.index')->with('success','¡Presentación eliminada correctamente!');
         }
