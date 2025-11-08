@@ -14,25 +14,16 @@ class UnitSeeder extends Seeder
     public function run(): void
     {
         Unit::insert([
-            [
-                'name' => 'Kilogramos'
-            ],
-
-            [
-                'name' => 'Litros'
-            ],
-
-            [
-                'name' => 'Unidades'
-            ],
-
-            [
-                'name' => 'Paquetes'
-            ],
-
-            [
-                'name' => 'Metros cúbicos'
-            ]
+            ['name' => 'Kilogramos'],
+            ['name' => 'Litros'],
+            ['name' => 'Unidades'],
+            ['name' => 'Paquetes'],
+            ['name' => 'Metros cúbicos'],
+            ['name' => 'Gramos'],
+            ['name' => 'Mililitros'],
+            ['name' => 'Toneladas'],
+            ['name' => 'Cajas'],
+            ['name' => 'Bultos'],
         ]);
     }
 }

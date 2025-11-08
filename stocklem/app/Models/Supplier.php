@@ -13,7 +13,8 @@ class Supplier extends Model
 
     protected $fillable = [
         'name',
-        'phone'
+        'phone',
+        'status'
     ];
 
     public function articles() {

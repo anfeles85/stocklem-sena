@@ -13,10 +13,15 @@ class Unit extends Model
 
     protected $fillable = [
         'name',
+        'status'
     ];
 
     public function issues() {
         return $this->hasMany(Issue::class);
+    }
+
+    public function articles() {
+        return $this->hasMany(Article::class);
     }
 
 }
