@@ -20,7 +20,7 @@ class ArticleController extends Controller
 
     private $rules = [
         'name' => 'required|string|min:3|max:100',
-        'quantity' => 'required|numeric|min:1|max:9999999999',
+        'quantity' => 'required|integer|min:0|max:9999999999',
         'photo' => 'image|max:102400',
         'technical_sheet' => 'mimes:pdf|max:5120',
         'presentation_id' => 'max:9999999999999999999',
