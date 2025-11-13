@@ -3,15 +3,15 @@
 @section('header', 'Personas')
 @section('content')
     @can('administrador')
-    <div class="mb-3">
-        <a href="{{ route('person.create') }}" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Crear persona
-        </a>
+        <div class="mb-3">
+            <a href="{{ route('person.create') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Crear persona
+            </a>
 
-        <a href="{{ route('person.import.form') }}" class="btn btn-success">
-            <i class="fas fa-file-excel"></i> Importar desde Excel
-        </a>
-    </div>
+            <a href="{{ route('person.import.form') }}" class="btn btn-success">
+                <i class="fas fa-file-excel"></i> Importar desde Excel
+            </a>
+        </div>
     @endcan
 
     <div class="card">
@@ -25,7 +25,7 @@
                         <th>TELÉFONO</th>
                         <th>ESTADO</th>
                         @can('administrador')
-                        <th>ACCIONES</th>
+                            <th>ACCIONES</th>
                         @endcan
                     </tr>
                 </thead>
@@ -43,44 +43,47 @@
                             </td>
 
                             @can('administrador')
-                            <td class="text-center">
-                                <a href="{{ route('person.edit', $person->id) }}"
-                                    class="btn btn-warning btn-sm me-1" title="Editar">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                
-                                @if($person->status == 'ACTIVO')
-                                <form id="form-toggle-{{ $person->id }}" action="{{ route('person.toggleStatus', $person->id) }}"
-                                     method="POST" class="d-inline">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-secondary btn-sm me-1" title="Inactivar">
-                                        <i class="fas fa-ban"></i>
-                                    </button>
-                                </form>
-                                @else
-                                <form id="form-toggle-{{ $person->id }}" action="{{ route('person.toggleStatus', $person->id) }}"
-                                     method="POST" class="d-inline">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-success btn-sm me-1" title="Activar">
-                                        <i class="fas fa-check"></i>
-                                    </button>
-                                </form>
-                                @endif
+                                <td class="text-center">
+                                    <a href="{{ route('person.edit', $person->id) }}" class="btn btn-warning btn-sm me-1"
+                                        title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
 
-                                <form id="form-delete-{{ $person->id }}" action="{{ route('person.forceDelete', $person->id) }}"
-                                     method="POST" class="d-inline delete-form">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="btn btn-danger btn-sm" title="Eliminar permanentemente" 
-                                     onclick="removePermanently({{ $person->id }})">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
+                                    @if ($person->status == 'ACTIVO')
+                                        <form id="form-toggle-{{ $person->id }}"
+                                            action="{{ route('person.toggleStatus', $person->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-secondary btn-sm me-1" title="Inactivar">
+                                                <i class="fas fa-ban"></i>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form id="form-toggle-{{ $person->id }}"
+                                            action="{{ route('person.toggleStatus', $person->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-success btn-sm me-1" title="Activar">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                        </form>
+                                    @endif
+
+                                    <form id="form-delete-{{ $person->id }}"
+                                        action="{{ route('person.forceDelete', $person->id) }}" method="POST"
+                                        class="d-inline delete-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="btn btn-danger btn-sm" title="Eliminar permanentemente"
+                                            onclick="removePermanently({{ $person->id }})">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
                             @endcan
-                            
+
                         </tr>
                     @endforeach
                 </tbody>
