@@ -118,13 +118,6 @@
     </form>
 @endsection
 
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.js-example-placeholder-single').select2({
-                placeholder: "Seleccione",
-                allowClear: true
-            });
-        });
-    </script>
-@endsection
+@push('scripts')
+    <script src="{{ asset('js/select2.js') }}"></script>
+@endpush

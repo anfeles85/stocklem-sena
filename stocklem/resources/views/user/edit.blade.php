@@ -26,8 +26,8 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="role_id" class="form-label">Rol</label>
-                <select name="role_id" id="role_id" class="form-control js-example-placeholder-single" required>
-                    <option></option>
+                <select name="role_id" id="role_id" class="form-control" required>
+                    <option>Seleccione el rol</option>
                     @foreach ($roles as $role)
                         <option value="{{ $role->id }}"
                             @if (old('role_id', $user->role_id) == $role->id) selected @endif>
@@ -61,13 +61,6 @@
     </form>
 @endsection
 
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.js-example-placeholder-single').select2({
-                placeholder: "Seleccione",
-                allowClear: true
-            });
-        });
-    </script>
-@endsection
+@push('scripts')
+    <script src="{{ asset('js/select2.js') }}"></script>
+@endpush
