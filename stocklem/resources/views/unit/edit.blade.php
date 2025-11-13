@@ -9,10 +9,16 @@
                 @csrf
                 @method('PUT')
                 <div class="row form-group">
-                    <div class="col-md-12 mb-4">
+                    <div class="col-md-6 mb-4">
                         <label for="name">Nombre</label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{ $unit->name }}"
-                            required>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $unit->name }}" required>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="status">Estado</label>
+                        <select name="status" id="status" class="form-control" required>
+                            <option value="ACTIVO" {{ $unit->status == 'ACTIVO' ? 'selected' : '' }}>ACTIVO</option>
+                            <option value="INACTIVO" {{ $unit->status == 'INACTIVO' ? 'selected' : '' }}>INACTIVO</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">

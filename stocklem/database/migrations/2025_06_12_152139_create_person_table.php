@@ -16,6 +16,7 @@ return new class extends Migration
             $table->bigInteger('document')->unique()->comment('documento persona');
             $table->string('phone')->nullable()->comment('telefono persona');
             $table->string('name')->comment('nombre persona');
+            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO')->comment('estado persona');
             $table->timestamps();
         });
     }

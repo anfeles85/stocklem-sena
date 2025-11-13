@@ -14,7 +14,8 @@ class Person extends Model
     protected $fillable = [
         'phone',
         'document',
-        'name'
+        'name',
+        'status'
     ];
 
     public function issues() {

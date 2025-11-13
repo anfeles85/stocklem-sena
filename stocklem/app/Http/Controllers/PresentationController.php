@@ -10,18 +10,20 @@ class PresentationController extends Controller
 {
 
     private $rules = [
-        'description' => 'required|string|min:3|max:100'
+        'description' => 'required|string|min:3|max:100',
+        'status' => 'required|in:ACTIVO,INACTIVO'
     ];
 
     private $traductionAttributes = [
-        'description' => 'descripcion'
+        'description' => 'descripcion',
+        'status' => 'estado'
     ];
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-         $presentations = Presentation::all();
+        $presentations = Presentation::orderByRaw("FIELD(status, 'ACTIVO', 'INACTIVO')")->get();
         return view('presentation.index',compact('presentations'));
     }
 
@@ -93,19 +95,35 @@ class PresentationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Alternar estado de la presentación (ACTIVO <-> INACTIVO).
      */
-    public function destroy(string $id)
+    public function toggleStatus(string $id)
     {
         $presentation = Presentation::find($id);
 
-        if($presentation){
-            $presentation->delete();
-            return redirect()->route('presentation.index')->with('success','¡Presentación eliminada correctamente!');
+        if ($presentation) {
+            $newStatus = $presentation->status == 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+            $presentation->update(['status' => $newStatus]);
+            
+            $message = $newStatus == 'ACTIVO' ? 'Presentación activada exitosamente' : 'Presentación inactivada exitosamente';
+            return redirect()->route('presentation.index')->with('success', $message);
+        } else {
+            return redirect()->route('presentation.index')->with('error', 'No se encontró la presentación');
         }
-        else
-        {
-            return redirect()->route('presentation.index')->with('error','Ha ocurrido un problema al eliminar la presentación.');    
-        } 
+    }
+
+    /**
+     * Eliminar presentación permanentemente.
+     */
+    public function forceDelete(string $id)
+    {
+        $presentation = Presentation::find($id);
+
+        if ($presentation) {
+            $presentation->delete();
+            return redirect()->route('presentation.index')->with('success', 'Presentación eliminada permanentemente');
+        } else {
+            return redirect()->route('presentation.index')->with('error', 'No se encontró la presentación');
+        }
     }
 }

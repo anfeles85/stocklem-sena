@@ -20,7 +20,7 @@ class ArticleController extends Controller
 
     private $rules = [
         'name' => 'required|string|min:3|max:100',
-        'quantity' => 'required|numeric|min:1|max:9999999999',
+        'quantity' => 'required|integer|min:0|max:9999999999',
         'photo' => 'image|max:102400',
         'technical_sheet' => 'mimes:pdf|max:5120',
         'presentation_id' => 'max:9999999999999999999',
@@ -158,6 +158,14 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         if ($article) {
+            // Verificar si el artículo tiene salidas asociadas
+            if($article->issues()->count() > 0) {
+                return redirect()->route('article.index')->with('error', 'No se puede eliminar el artículo porque tiene salidas asociadas');
+            }
+            if($article->entries()->count() > 0) {
+                return redirect()->route('article.index')->with('error', 'No se puede eliminar el artículo porque tiene entradas asociadas');
+            }
+            
             $article->delete();
             return redirect()->route('article.index')->with('success', '¡Artículo eliminado correctamente!');
         } else {

@@ -30,7 +30,7 @@ class ReportController extends Controller
                 'isRemoteEnabled' => true
             ]);
 
-        return $pdf->download('articles.pdf');
+        return $pdf->download('artículos-stockclem.pdf');
     }
 
     public function export_movements_by_article(Request $request)
@@ -52,7 +52,7 @@ class ReportController extends Controller
                 'isRemoteEnabled' => true
             ]);
 
-        return $pdf->download('movementsByArticle_' . $request['id_article'] . '.pdf');
+        return $pdf->download('movimientos_por_artículo-stockclem' . $request['id_article'] . '.pdf');
     }
 
     public function export_all_movements_by_date(Request $request)
@@ -74,6 +74,6 @@ class ReportController extends Controller
                     'isRemoteEnabled'=>true
                 ]);
                 
-        return $pdf->download('MovementsByDate.pdf');
+        return $pdf->download('movimientos_por_fecha-stockclem.pdf');
     }
 }

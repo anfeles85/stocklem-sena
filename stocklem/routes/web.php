@@ -69,7 +69,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(func
     Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
     Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::put('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
-    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::patch('/toggle-status/{id}', [CategoryController::class, 'toggleStatus'])->name('category.toggleStatus');
+    Route::delete('/force-delete/{id}', [CategoryController::class, 'forceDelete'])->name('category.forceDelete');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('person')->group(function () {
@@ -78,7 +79,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('person')->group(functi
     Route::post('/store', [PersonController::class, 'store'])->name('person.store');
     Route::get('/edit/{id}', [PersonController::class, 'edit'])->name('person.edit');
     Route::put('/update/{id}', [PersonController::class, 'update'])->name('person.update');
-    Route::delete('/destroy/{id}', [PersonController::class, 'destroy'])->name('person.destroy');
+    Route::patch('/toggle-status/{id}', [PersonController::class, 'toggleStatus'])->name('person.toggleStatus');
+    Route::delete('/force-delete/{id}', [PersonController::class, 'forceDelete'])->name('person.forceDelete');
     Route::get('/import', [PersonController::class, 'showImportForm'])->name('person.import.form');
     Route::post('/import', [PersonController::class, 'import'])->name('person.import.run');
 });
@@ -89,7 +91,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('presentation')->group(
     Route::post('/store', [PresentationController::class, 'store'])->name('presentation.store');
     Route::get('/edit/{id}', [PresentationController::class, 'edit'])->name('presentation.edit');
     Route::put('/update/{id}', [PresentationController::class, 'update'])->name('presentation.update');
-    Route::delete('/destroy/{id}', [PresentationController::class, 'destroy'])->name('presentation.destroy');
+    Route::patch('/toggle-status/{id}', [PresentationController::class, 'toggleStatus'])->name('presentation.toggleStatus');
+    Route::delete('/force-delete/{id}', [PresentationController::class, 'forceDelete'])->name('presentation.forceDelete');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('supplier')->group(function () {
@@ -98,7 +101,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('supplier')->group(func
     Route::post('/store', [SupplierController::class, 'store'])->name('supplier.store');
     Route::get('/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
     Route::put('/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
-    Route::delete('/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
+    Route::patch('/toggle-status/{id}', [SupplierController::class, 'toggleStatus'])->name('supplier.toggleStatus');
+    Route::delete('/force-delete/{id}', [SupplierController::class, 'forceDelete'])->name('supplier.forceDelete');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function () {
@@ -107,7 +111,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function
     Route::post('/store', [UnitController::class, 'store'])->name('unit.store');
     Route::get('/edit/{id}', [UnitController::class, 'edit'])->name('unit.edit');
     Route::put('/update/{id}', [UnitController::class, 'update'])->name('unit.update');
-    Route::delete('/destroy/{id}', [UnitController::class, 'destroy'])->name('unit.destroy');
+    Route::patch('/toggle-status/{id}', [UnitController::class, 'toggleStatus'])->name('unit.toggleStatus');
+    Route::delete('/force-delete/{id}', [UnitController::class, 'forceDelete'])->name('unit.forceDelete');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(function () {

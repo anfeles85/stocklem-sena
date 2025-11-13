@@ -12,7 +12,8 @@ class Presentation extends Model
     protected $table = "presentation";
 
     protected $fillable = [
-        'description'
+        'description',
+        'status'
     ];
 
     public function articles() {

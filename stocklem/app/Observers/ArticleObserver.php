@@ -29,7 +29,7 @@ class ArticleObserver
                 $admin_users = User::where('role_id', 1)->get();
 
                 foreach ($admin_users as $user) {
-                    $user->notify(new LowStockAlert($article));
+                    $user->notify(new LowStockAlert(collect([$article])));
                 }
             }
         }

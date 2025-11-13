@@ -2,57 +2,90 @@
 @section('title', 'Proveedores')
 @section('header', 'Proveedores')
 @section('content')
-@can('administrador')
-<div class="mb-3">
-    <a href="{{ route('supplier.create') }}" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Crear proveedor
-    </a>
-</div>
-@endcan
+    @can('administrador')
+        <div class="mb-3">
+            <a href="{{ route('supplier.create') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Crear proveedor
+            </a>
+        </div>
+    @endcan
 
-<div class="card">
-    <div class="table-responsive">
-        <table id="table_data" class="table table-hover align-middle mb-0 text-center">
-            <thead class="table-light">
-                <tr class="text-center">
-                    <th>ID</th>
-                    <th>NOMBRE</th>
-                    <th>TELÉFONO</th>
+    <div class="card">
+        <div class="table-responsive">
+            <table id="table_active_inactive" data-status-column="3" class="table table-hover align-middle mb-0 text-center">
+                <thead class="table-light">
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>TELÉFONO</th>
+                        <th>ESTADO</th>
 
-                    @can('administrador')
-                    <th>ACCIONES</th>
-                    @endcan
+                        @can('administrador')
+                            <th>ACCIONES</th>
+                        @endcan
 
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($suppliers as $supplier)
-                <tr class="text-center">
-                    <td>{{ $supplier->id }}</td>
-                    <td>{{ $supplier->name }}</td>
-                    <td>{{ $supplier->phone }}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($suppliers as $supplier)
+                        <tr class="text-center">
+                            <td>{{ $supplier->id }}</td>
+                            <td>{{ $supplier->name }}</td>
+                            <td>{{ $supplier->phone }}</td>
+                            <td>
+                                <span class="badge {{ $supplier->status == 'ACTIVO' ? 'bg-success' : 'bg-secondary' }}">
+                                    {{ $supplier->status }}
+                                </span>
+                            </td>
 
-                    @can('administrador')
-                    <td>
-                        <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-warning btn-sm me-1"
-                            title="Editar">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <form id="form-delete-{{ $supplier->id }}"
-                            action="{{ route('supplier.destroy', $supplier->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" class="btn btn-danger btn-sm" title="Eliminar"
-                                onclick="removeId({{ $supplier->id }})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
-                    </td>
-                    @endcan
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                            @can('administrador')
+                                <td>
+                                    <a href="{{ route('supplier.edit', $supplier->id) }}" class="btn btn-warning btn-sm me-1"
+                                        title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    @if ($supplier->status == 'ACTIVO')
+                                        <form id="form-toggle-{{ $supplier->id }}"
+                                            action="{{ route('supplier.toggleStatus', $supplier->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-secondary btn-sm me-1" title="Inactivar">
+                                                <i class="fas fa-ban"></i>
+                                            </button>
+                                        </form>
+                                    @else
+                                        <form id="form-toggle-{{ $supplier->id }}"
+                                            action="{{ route('supplier.toggleStatus', $supplier->id) }}" method="POST"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit" class="btn btn-success btn-sm me-1" title="Activar">
+                                                <i class="fas fa-check"></i>
+                                            </button>
+                                        </form>
+                                    @endif
+
+                                    <form id="form-delete-{{ $supplier->id }}"
+                                        action="{{ route('supplier.forceDelete', $supplier->id) }}" method="POST"
+                                        class="d-inline delete-form">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="btn btn-danger btn-sm" title="Eliminar permanentemente"
+                                            onclick="removePermanently({{ $supplier->id }})">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            @endcan
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/table-filter-by-status.js') }}"></script>
+@endpush
