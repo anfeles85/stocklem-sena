@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl custom-navbar bg-sena"
+<nav class="navbar navbar-main nav-customized navbar-expand-lg shadow-none custom-navbar bg-sena"
     id="navbarBlur" data-scroll="false">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb" class="d-flex align-items-center">

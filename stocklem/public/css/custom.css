@@ -216,3 +216,56 @@ tr * {
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.7);
 }
+
+/* Sidebar sin scroll - ocupa toda la altura disponible */
+.sidenav {
+    height: 100vh !important;
+    margin: 2px !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+}
+
+.sidenav .sidenav-header {
+    flex-shrink: 0;
+}
+.sidenav .navbar-collapse {
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: transparent !important;
+}
+
+.sidenav .navbar-nav {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+}
+
+/* Estilos opcionales para el scrollbar del nav si es necesario */
+.sidenav .navbar-nav::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidenav .navbar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidenav .navbar-nav::-webkit-scrollbar-thumb {
+    background: rgba(46, 125, 50, 0.3);
+    border-radius: 10px;
+}
+
+.sidenav .navbar-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(46, 125, 50, 0.5);
+}
+
+.nav-customized {
+    border-radius: 0px 0px 20px 20px; 
+}
