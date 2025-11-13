@@ -12,6 +12,7 @@ Stocklem</h1><br>Sistema de gestión de inventario para la granja CLEM desarroll
 - [⚙️ Instalación](#instalacion)
 - [✨ Características](#Características)
 - [🏗️ Construido con](#Construido-con)
+- [📚 Dependencias y Librerías Utilizadas](#Dependencias-y-Librerías-Utilizadas)
 - [👩‍💻 Autores](#autores)
 - [📫 Contacto](#contacto)
 - [📄 Licencia](#licencia)
@@ -140,6 +141,48 @@ Alertas y notificaciones automáticas
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JavaScript][JavaScript.com]][JavaScript-url]
 * [![Composer][Composer.org]][Composer-url]
+
+## 📚 Dependencias y Librerías Utilizadas
+
+A continuación se detallan las principales dependencias empleadas y desarrolladas en el proyecto, organizadas por entorno y tecnología.
+
+---
+
+### ⚡️ Dependencias / Librerías JavaScript
+
+| Paquete | Versión | Descripción breve |
+|----------|----------|------------------|
+| **axios** | ^1.6.4 | Cliente HTTP basado en promesas para realizar peticiones a APIs. |
+| **laravel-vite-plugin** | ^1.0.0 | Integración entre Laravel y Vite para la compilación de assets. |
+| **vite** | ^5.0.0 | Herramienta de construcción rápida y moderna para JavaScript. |
+
+---
+
+### 🧩 Dependencias / Librerías Laravel
+
+#### 🏗️ require (Producción)
+| Paquete | Versión | Descripción breve |
+|----------|----------|------------------|
+| **anhskohbo/no-captcha** | ^3.7 | Implementación de Google reCAPTCHA en Laravel. |
+| **barryvdh/laravel-dompdf** | ^3.1 | Generación de documentos PDF desde vistas Blade. |
+| **guzzlehttp/guzzle** | ^7.2 | Cliente HTTP para realizar solicitudes externas. |
+| **laravel/framework** | ^10.10 | Framework principal del proyecto. |
+| **laravel/sanctum** | ^3.3 | Autenticación ligera basada en tokens para SPAs y APIs. |
+| **laravel/tinker** | ^2.8 | Consola interactiva REPL para Laravel. |
+| **maatwebsite/excel** | ^3.1 | Exportación e importación de archivos Excel. |
+
+#### 🧪 require-dev (Desarrollo)
+| Paquete | Versión | Descripción breve |
+|----------|----------|------------------|
+| **fakerphp/faker** | ^1.9.1 | Generador de datos falsos para pruebas. |
+| **laravel/pint** | ^1.0 | Herramienta de formateo de código conforme a PSR-12. |
+| **laravel/sail** | ^1.18 | Entorno de desarrollo con Docker para Laravel. |
+| **mockery/mockery** | ^1.4.4 | Librería para crear mocks en pruebas unitarias. |
+| **nunomaduro/collision** | ^7.0 | Manejo elegante de errores y excepciones en consola. |
+| **phpunit/phpunit** | ^10.1 | Framework de pruebas unitarias para PHP. |
+| **spatie/laravel-ignition** | ^2.0 | Mejoras en la visualización y depuración de errores. |
+
+---
 
 
 ## 👩‍💻 Autores
