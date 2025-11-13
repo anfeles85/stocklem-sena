@@ -52,7 +52,7 @@
   --bs-success-text-emphasis: rgb(18, 82.4, 54.8);
   --bs-info-text-emphasis: rgb(6.8, 82, 95.6);
   --bs-warning-text-emphasis: rgb(100.4, 39.6, 25.6);
-  --bs-danger-text-emphasis: rgb(98, 21.6, 36.8);
+  --bs-danger-text-emphasis: rgb(255, 255, 255);
   --bs-light-text-emphasis: #495057;
   --bs-dark-text-emphasis: #495057;
   --bs-primary-bg-subtle: rgb(222.8, 226.8, 249.6);
@@ -9576,6 +9576,7 @@ fieldset:disabled .btn {
 
 .m-2 {
   margin: 0.5rem !important;
+  background-color: #b7b7b7;
 }
 
 .m-3 {
@@ -21485,10 +21486,6 @@ fieldset:disabled .btn {
 
 .btn-close:focus {
   box-shadow: none;
-}
-
-.alert-dismissible .btn-close {
-  background-image: none;
 }
 
 .alert {

@@ -99,19 +99,35 @@ class UnitController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Alternar estado de la unidad (ACTIVO <-> INACTIVO).
      */
-    public function destroy(string $id)
+    public function toggleStatus(string $id)
     {
         $unit = Unit::find($id);
 
-        if($unit){
-            $unit->delete();
-            return redirect()->route('unit.index')->with('success','¡Unidad eliminada correctamente!');
+        if ($unit) {
+            $newStatus = $unit->status == 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+            $unit->update(['status' => $newStatus]);
+            
+            $message = $newStatus == 'ACTIVO' ? 'Unidad activada exitosamente' : 'Unidad inactivada exitosamente';
+            return redirect()->route('unit.index')->with('success', $message);
+        } else {
+            return redirect()->route('unit.index')->with('error', 'No se encontró la unidad');
         }
-        else
-        {
-            return redirect()->route('unit.index')->with('error','Ha ocurrido un problema al eliminar la unidad');
+    }
+
+    /**
+     * Eliminar unidad permanentemente.
+     */
+    public function forceDelete(string $id)
+    {
+        $unit = Unit::find($id);
+
+        if ($unit) {
+            $unit->delete();
+            return redirect()->route('unit.index')->with('success', 'Unidad eliminada permanentemente');
+        } else {
+            return redirect()->route('unit.index')->with('error', 'No se encontró la unidad');
         }
     }
 }

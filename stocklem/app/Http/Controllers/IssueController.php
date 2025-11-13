@@ -13,7 +13,7 @@ class IssueController extends Controller
     private $rules = [
         'sena_code' => 'max:70',
         'date_issue' => 'required|date|date_format:Y-m-d',
-        'quantity' => 'required|numeric|min:1|max:9999999999',
+        'quantity' => 'required|integer|min:1|max:9999999999',
         'observations' => 'string|min:3|max:100',
         'article_id' => 'required|numeric|min:1|max:99999999999999999999',
         'person_id' => 'required|numeric|min:1|max:99999999999999999999'

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->comment('Nombre proveedor');
             $table->string('phone')->comment('Telefono proveedor');
+            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO')->comment('estado proveedor');
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Validators\Failure;
+use Maatwebsite\Excel\Concerns\WithBatchInserts;
 
 class PersonsImport implements
     ToModel,
@@ -18,6 +19,16 @@ class PersonsImport implements
     private $errors = [];
     private $skipped = [];
     private $imported = 0;
+
+    public function prepareForValidation($data)
+    {
+        // Convertir el teléfono a cadena de texto antes de la validación
+        if (isset($data['telefono']) && $data['telefono'] !== null && $data['telefono'] !== '') {
+            $data['telefono'] = (string)$data['telefono'];
+        }
+        
+        return $data;
+    }
 
     public function model(array $row)
     {

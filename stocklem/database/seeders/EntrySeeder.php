@@ -14,16 +14,107 @@ class EntrySeeder extends Seeder
      */
     public function run(): void
     {
-        $entry = new Entry();
-        $entry->sena_code = "SENA-001";
-        $entry->date_entry = "2025-03-01";
-        $entry->expiration_date = "2026-03-01";
-        $entry->quantity = "50";
-        $entry->observations = "Entrada inicial de antibiótico";
-        //FKs
-        $article = Article::where('id', 1)->first();
-        $entry->article_id = $article->id;
-
-        $entry->save();
+        Entry::insert([
+            [
+                'sena_code' => 'ENTRY-001',
+                'date_entry' => '2025-01-15',
+                'expiration_date' => '2026-01-15',
+                'quantity' => 50,
+                'observations' => 'Entrada inicial de antibiótico bovino',
+                'article_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-002',
+                'date_entry' => '2025-01-20',
+                'expiration_date' => '2026-12-31',
+                'quantity' => 200,
+                'observations' => 'Entrada de fertilizante NPK',
+                'article_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-003',
+                'date_entry' => '2025-02-01',
+                'expiration_date' => '2025-12-31',
+                'quantity' => 100,
+                'observations' => 'Semillas de maíz para temporada',
+                'article_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-004',
+                'date_entry' => '2025-02-10',
+                'expiration_date' => '2025-08-10',
+                'quantity' => 150,
+                'observations' => 'Concentrado para aves de engorde',
+                'article_id' => 4,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-005',
+                'date_entry' => '2025-02-15',
+                'expiration_date' => '2027-02-15',
+                'quantity' => 40,
+                'observations' => 'Insecticida para control de plagas',
+                'article_id' => 5,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-006',
+                'date_entry' => '2025-03-01',
+                'expiration_date' => '2026-03-01',
+                'quantity' => 80,
+                'observations' => 'Vitaminas para ganado lechero',
+                'article_id' => 6,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-007',
+                'date_entry' => '2025-03-05',
+                'expiration_date' => '2027-03-05',
+                'quantity' => 60,
+                'observations' => 'Herbicida selectivo para cultivos',
+                'article_id' => 7,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-008',
+                'date_entry' => '2025-03-10',
+                'expiration_date' => '2025-09-10',
+                'quantity' => 200,
+                'observations' => 'Alimento balanceado para porcinos',
+                'article_id' => 8,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-009',
+                'date_entry' => '2025-03-15',
+                'expiration_date' => '2027-03-15',
+                'quantity' => 45,
+                'observations' => 'Fungicida para protección de cultivos',
+                'article_id' => 9,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'sena_code' => 'ENTRY-010',
+                'date_entry' => '2025-03-20',
+                'expiration_date' => '2026-06-20',
+                'quantity' => 120,
+                'observations' => 'Suplemento mineral para ganado bovino',
+                'article_id' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
     }
 }
