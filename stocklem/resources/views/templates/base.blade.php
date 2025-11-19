@@ -45,6 +45,20 @@
         @include('templates.footer')
 
     </main>
+    <!-- Modal de Cargando -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-body text-center py-5">
+                    <div class="spinner-border text-sena mb-3" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                    <h5 class="text-sena fw-bold">Procesando...</h5>
+                    <p class="text-muted">Por favor espera mientras se completa la operación.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/core/popper.min.js') }}"></script>
@@ -95,6 +109,10 @@
 
     @yield('scripts')
     @stack('scripts')
+    <script>
+        function showLoading() { new bootstrap.Modal('#loadingModal').show(); }
+        function hideLoading() { bootstrap.Modal.getInstance('#loadingModal')?.hide(); }
+    </script>
 </body>
 
 </html>

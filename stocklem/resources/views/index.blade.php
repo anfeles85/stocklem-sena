@@ -192,6 +192,67 @@
         </div>
     </div>
 
+    <div class="row mb-4 mt-5">
+        <div class="col-12 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title">Productos próximos a vencer</h6>
+
+                    @if (isset($expiringProducts) && $expiringProducts->count() > 0)
+                        <div class="table-responsive">
+                            <table class="table table-sm table-striped mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Lote</th>
+                                        <th>Fecha vencimiento</th>
+                                        <th>Días para vencer</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($expiringProducts->take(10) as $p)
+                                        @php
+                                            $expDate = null;
+                                            try {
+                                                $expDate = isset($p->expiration_date) ? \Carbon\Carbon::parse($p->expiration_date) : null;
+                                            } catch (\Exception $e) {
+                                                $expDate = null;
+                                            }
+                                            $days = $expDate ? \Carbon\Carbon::now()->diffInDays($expDate, false) : null;
+                                        @endphp
+                                        <tr>
+                                            <td>{{ $p->name ?? '—' }}</td>
+                                            <td>{{ $p->batch ?? '—' }}</td>
+                                            <td>{{ $expDate ? $expDate->format('Y-m-d') : '—' }}</td>
+                                            <td>
+                                                @if (is_null($days))
+                                                    —
+                                                @elseif ($days < 0)
+                                                    <span class="badge bg-danger">Vencido</span>
+                                                @elseif ($days <= 7)
+                                                    <span class="badge bg-danger">{{ $days }} días</span>
+                                                @elseif ($days <= 15)
+                                                    <span class="badge bg-warning">{{ $days }} días</span>
+                                                @else
+                                                    <span class="badge bg-success">{{ $days }} días</span>
+                                                @endif
+                                            </td>
+                                            <td>{{ $p->quantity ?? '—' }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @else
+                        <p class="mb-0">No hay productos próximos a vencer.</p>
+                    @endif
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         window.stockLevelsData = [
             {{ $chartData['stockLevels']['sufficient'] }},
