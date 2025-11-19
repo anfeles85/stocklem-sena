@@ -29,16 +29,17 @@
 
         {{-- Foto y Ficha técnica --}}
         <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="photo" class="form-label">Foto</label>
                 @if ($article->photo)
                     <div class="mb-2">
                         <img src="{{ $article->photo }}" alt="Foto actual" class="img-fluid" style="max-width: 60px">
                     </div>
                 @endif
-                <input type="file" name="photo" id="photo" class="form-control" accept="image/jpeg,image/png,image/jpg">
+                <input type="file" name="photo" id="photo" class="form-control"
+                    accept="image/jpeg,image/png,image/jpg">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="technical_sheet" class="form-label">Ficha técnica</label>
                 @if ($article->technical_sheet)
                     <div class="mb-2">
@@ -46,6 +47,13 @@
                     </div>
                 @endif
                 <input type="file" name="technical_sheet" id="technical_sheet" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="status">Estado</label>
+                <select name="status" id="status" class="form-control" required>
+                    <option value="ACTIVO" {{ $article->status == 'ACTIVO' ? 'selected' : '' }}>ACTIVO</option>
+                    <option value="INACTIVO" {{ $article->status == 'INACTIVO' ? 'selected' : '' }}>INACTIVO</option>
+                </select>
             </div>
         </div>
 
