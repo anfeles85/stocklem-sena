@@ -23,6 +23,7 @@ class ArticleController extends Controller
         'quantity' => 'required|integer|min:0|max:9999999999',
         'photo' => 'image|max:102400',
         'technical_sheet' => 'mimes:pdf|max:5120',
+        'status' => 'required|in:ACTIVO,INACTIVO',
         'presentation_id' => 'max:9999999999999999999',
         'category_id' => 'max:9999999999999999999',
         'supplier_id' => 'max:9999999999999999999'
@@ -34,6 +35,7 @@ class ArticleController extends Controller
         'min_quantity' => 'cantidad minima',
         'photo' => 'foto',
         'technical_sheet' => 'ficha técnica',
+        'status' => 'estado',
         'presentation_id' => 'presentación',
         'category_id' => 'categoría',
         'supplier_id' => 'proveedor'
@@ -45,7 +47,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::orderByRaw("FIELD(status, 'ACTIVO', 'INACTIVO')")->get();
         $lowStockArticles = $articles->filter(fn($article) => $article->isBelowMinimum());
 
         return view('article.index', compact('articles', 'lowStockArticles'));
@@ -152,24 +154,35 @@ class ArticleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Alternar estado del artículo (ACTIVO <-> INACTIVO).
      */
-    public function destroy(string $id)
+    public function toggleStatus(string $id)
     {
         $article = Article::find($id);
+
         if ($article) {
-            // Verificar si el artículo tiene salidas asociadas
-            if($article->issues()->count() > 0) {
-                return redirect()->route('article.index')->with('error', 'No se puede eliminar el artículo porque tiene salidas asociadas');
-            }
-            if($article->entries()->count() > 0) {
-                return redirect()->route('article.index')->with('error', 'No se puede eliminar el artículo porque tiene entradas asociadas');
-            }
-            
-            $article->delete();
-            return redirect()->route('article.index')->with('success', '¡Artículo eliminado correctamente!');
+            $newStatus = $article->status == 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+            $article->update(['status' => $newStatus]);
+
+            $message = $newStatus == 'ACTIVO' ? 'Artículo activado exitosamente' : 'Artículo inactivado exitosamente';
+            return redirect()->route('article.index')->with('success', $message);
         } else {
-            return redirect()->route('article.index')->with('error', 'Ha ocurrido un problema al eliminar el artículo.');
+            return redirect()->route('article.index')->with('error', 'No se encontró el artículo');
+        }
+    }
+
+    /**
+     * Eliminar artículo permanentemente.
+     */
+    public function forceDelete(string $id)
+    {
+        $article = Article::find($id);
+
+        if ($article) {
+            $article->delete();
+            return redirect()->route('article.index')->with('success', 'Artículo eliminado permanentemente');
+        } else {
+            return redirect()->route('article.index')->with('error', 'No se encontró el artículo');
         }
     }
 
@@ -208,7 +221,7 @@ class ArticleController extends Controller
             if (count($skipped) > 0) {
                 $message .= " | Omitidos (ya existen): " . count($skipped);
             }
-            
+
             return redirect()->route('article.import.form')
                 ->with('loaded', $message)
                 ->with('skipped', $skipped);
