@@ -36,7 +36,7 @@
                             <option></option>
                             @foreach ($articles as $article)
                             <option value="{{ $article->id }}" @if (old('article_id', $issue->article_id) == $article->id) selected @endif>
-                                {{ $article->name }}
+                                {{ $article->name }} - {{ $article->presentation->description ?? 'Sin presentación' }}
                             </option>
                             @endforeach
                         </select>
