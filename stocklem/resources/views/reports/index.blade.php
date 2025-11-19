@@ -70,12 +70,15 @@
     <div class="card-body py-4">
         <form action="{{ route('reports.movements_article') }}" method="POST" class="row g-3 align-items-end">
             @csrf
-            <div class="col-auto">
-                <label for="article_id" class="form-label">Artículo:</label>
-                <select name="article_id" id="article_id" class="form-control" required>
-                    <option value="">Selecciona un artículo</option>
+           <div class="col-auto">
+                <label for="article_id" class="form-label">Articulo:</label>
+                <select name="article_id" id="article_id" class="form-control js-example-placeholder-single"
+                    required>
+                    <option></option>
                     @foreach ($articles as $article)
-                        <option value="{{ $article['id'] }}">{{ $article['name'] }}</option>
+                        <option value="{{ $article->id }}" @if (old('article_id') == $article->id) selected @endif>
+                            {{ $article->name}}
+                        </option>
                     @endforeach
                 </select>
             </div>
@@ -95,4 +98,16 @@
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 </script>
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+    $('.js-example-placeholder-single').select2({
+        placeholder: "Seleccione",
+        allowClear: true
+    });
+});
+</script>
+@endsection
+
 @endsection
