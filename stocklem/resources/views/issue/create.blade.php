@@ -9,9 +9,9 @@
             @csrf
             <div class="row form-group">
                 <div class="col-md-3 mb-3">
-                    <label for="sena_code">Código SENA</label>
+                    <label for="sena_code">Código SENA (opcional)</label>
                     <input type="text" class="form-control" name="sena_code" id="sena_code"
-                        value="{{ old('sena_code') }}" required>
+                        value="{{ old('sena_code') }}">
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="date_issue">Fecha salida</label>

@@ -11,7 +11,7 @@
                 @method('PUT')
                 <div class="row form-group">
                     <div class="col-md-6 mb-4">
-                        <label for="sena_code">Código SENA</label>
+                        <label for="sena_code">Código SENA (opcional)</label>
                         <input type="text" id="sena_code" name="sena_code" value="{{ old('sena_code', $entry->sena_code) }}"
                             class="form-control">
                     </div>

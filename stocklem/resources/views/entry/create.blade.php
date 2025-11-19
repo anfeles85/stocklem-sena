@@ -8,7 +8,7 @@
         @csrf
         <div class="row mb-3">
             <div class="col-md-6 mb-3 mb-md-0">
-                <label for="sena_code" class="form-label">Código SENA</label>
+                <label for="sena_code" class="form-label">Código SENA (opcional)</label>
                 <input type="text" name="sena_code" id="sena_code" class="form-control" value="{{ old('sena_code') }}">
             </div>
             <div class="col-md-6">
