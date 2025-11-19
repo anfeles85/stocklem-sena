@@ -111,14 +111,43 @@ class UsersController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Alternar estado del usuario (ACTIVO <-> INACTIVO).
      */
-    public function destroy(string $id)
+    public function toggleStatus(string $id)
     {
-        $user = User::findOrFail($id);
-        $user->status = 'INACTIVO'; // Valor permitido en el enum
-        $user->save();
+        $user = User::find($id);
 
-        return redirect()->route('users.index')->with('success', 'Usuario inactivado exitosamente');
+        if ($user) {
+            if ($user->role_id == 1 && $user->status == 'ACTIVO') {
+                return redirect()->route('users.index')->with('error', 'No se puede inactivar al usuario Administrador');
+            }
+
+            $newStatus = $user->status == 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+            $user->update(['status' => $newStatus]);
+
+            $message = $newStatus == 'ACTIVO' ? 'Usuario activado exitosamente' : 'Usuario inactivado exitosamente';
+            return redirect()->route('users.index')->with('success', $message);
+        } else {
+            return redirect()->route('users.index')->with('error', 'No se encontró el Usuario');
+        }
     }
+
+    /**
+     * Eliminar Usuario permanentemente.
+     */
+    public function forceDelete(string $id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            if ($user->role_id == 1) {
+                return redirect()->route('users.index')->with('error', 'No se puede eliminar al usuario Administrador');
+            }
+            $user->delete();
+            return redirect()->route('users.index')->with('success', 'Usuario eliminado permanentemente');
+        } else {
+            return redirect()->route('users.index')->with('error', 'No se encontró el Usuario');
+        }
+    }
+    
 }
