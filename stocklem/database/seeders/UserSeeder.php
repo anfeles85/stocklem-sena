@@ -20,6 +20,12 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'), 
             'role_id' => 1 
         ]);
+        User::factory()->create([
+            'name' => 'Daniel Ortiz',
+            'email' => 'tecnodm75@gmail.com',
+            'password' => bcrypt('password'),
+            'role_id' => 1
+        ]);
 
         User::factory()->count(10)->create(); // Crea 10 usuarios aleatorios
     }

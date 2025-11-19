@@ -56,7 +56,18 @@ class IndexController extends Controller
             'monthlyIssues' => $monthlyIssues,
         ];
 
-        return view('index', compact('articles', 'entries', 'issues', 'suppliers', 'topSuppliers', 'chartData'));
+        // Productos (entradas) próximos a vencer: dentro de los próximos 30 días (misma estructura que monthlyEntries)
+        $expiringProducts = Entry::selectRaw(
+                "entry.id as entry_id, entry.article_id, a.name as name, entry.sena_code as batch, entry.expiration_date as expiration_date, entry.quantity as quantity, entry.observations as location"
+            )
+            ->join('article as a', 'entry.article_id', '=', 'a.id')
+            ->whereNotNull('entry.expiration_date')
+            ->whereBetween('entry.expiration_date', [now()->toDateString(), now()->addDays(30)->toDateString()])
+            ->where('entry.quantity', '>', 0)
+            ->orderByRaw('entry.expiration_date ASC')
+            ->get();
+
+        return view('index', compact('articles', 'entries', 'issues', 'suppliers', 'topSuppliers', 'chartData', 'expiringProducts'));
     }
 
     /**
