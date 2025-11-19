@@ -11,7 +11,7 @@
                     <div class="col-md-6">
                         <label for="description" >Descripción</label>
                         <input type="text" class="form-control" name="description" id="description" required
-                            value="{{ old('description') }}">
+                            value="{{ old('description') }}" placeholder="Ej: Caja x 12 unidades">
                     </div>
                     <div class="col-md-6">
                         <label for="status" class="form-label">Estado</label>

@@ -9,15 +9,15 @@
     <div class="row mb-3">
         <div class="col-md-3 mb-3 mb-md-0">
             <label for="document" class="form-label">Documento</label>
-            <input type="text" name="document" id="document" class="form-control" required value="{{ old('document') }}">
+            <input type="text" name="document" id="document" class="form-control" required value="{{ old('document') }}" placeholder="Ej: 1234567890">
         </div>
         <div class="col-md-3 mb-3 mb-md-0">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" name="name" id="name" class="form-control" required value="{{ old('name') }}">
+            <input type="text" name="name" id="name" class="form-control" required value="{{ old('name') }}" placeholder="Ej: Juan Pérez">
         </div>
         <div class="col-md-3 mb-3 mb-md-0">
             <label for="phone" class="form-label">Teléfono</label>
-            <input type="number" name="phone" id="phone" class="form-control" required value="{{ old('phone') }}">
+            <input type="number" name="phone" id="phone" class="form-control" required value="{{ old('phone') }}" placeholder="Ej: 3001234567">
         </div>
         <div class="col-md-3">
             <label for="status" class="form-label">Estado</label>

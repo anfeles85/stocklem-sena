@@ -9,9 +9,9 @@
             @csrf
             <div class="row form-group">
                 <div class="col-md-3 mb-3">
-                    <label for="sena_code">Código SENA</label>
+                    <label for="sena_code">Código SENA (opcional)</label>
                     <input type="text" class="form-control" name="sena_code" id="sena_code"
-                        value="{{ old('sena_code') }}" required>
+                        value="{{ old('sena_code') }}" placeholder="Ej: SEN123456">
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="date_issue">Fecha salida</label>
@@ -21,12 +21,12 @@
                 <div class="col-md-3 mb-3">
                     <label for="quantity">Cantidad</label>
                     <input type="number" class="form-control" name="quantity" id="quantity"
-                        value="{{ old('quantity') }}" required>
+                        value="{{ old('quantity') }}" required placeholder="Ej: 5">
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="observations">Observaciones</label>
                     <input type="text" class="form-control" name="observations" id="observations"
-                        value="{{ old('observations') }}" required>
+                        value="{{ old('observations') }}" required placeholder="Motivo de la salida">
                 </div>
             </div>
 
@@ -74,13 +74,6 @@
 </div>
 @endsection
 
-@section('scripts')
-<script>
-    $(document).ready(function() {
-        $('.js-example-placeholder-single').select2({
-            placeholder: "Seleccione",
-            allowClear: true
-        });
-    });
-</script>
-@endsection
+@push('scripts')
+    <script src="{{ asset('js/select2.js') }}"></script>
+@endpush

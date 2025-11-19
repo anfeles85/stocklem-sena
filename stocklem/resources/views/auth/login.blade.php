@@ -7,29 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Iniciar Sesión</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('css/change-password.css') }}">
-    </head>
+</head>
 
 <body class="password-change-container">
     <div class="password-change-wrapper">
         <div class="card password-change-card">
             <div class="row no-gutters">
-                
+
                 <div class="col-md-5">
                     <div class="logo-section-sena">
                         <div class="sena-logo-container">
                             <img src="{{ asset('img/stockclem-logo.png') }}" alt="Logo CLEM" class="sena-logo-img">
                         </div>
-                        
+
                         <h2 class="h4 text-white font-weight-bold mb-3">¡Bienvenido a StockCLEM!</h2>
                         <p class="text-white-75 px-3 mb-4">
                             Tu sistema de gestión de inventario eficiente y en tiempo real.
                         </p>
-                        
+
                         <div class="feature-list">
                             <div class="d-flex align-items-center text-white mb-2">
                                 <i class="fas fa-check-circle"></i>
@@ -44,7 +43,7 @@
                                 <span>Reportes Detallados</span>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
                 <div class="col-md-7">
                     <div class="form-section-sena">
@@ -54,17 +53,17 @@
                         </div>
 
                         @if (session('success'))
-                        <div class="alert-success-sena" id="successAlert">
-                            <i class="fas fa-check-circle me-2"></i>
-                            {{ session('success') }}
-                        </div>
+                            <div class="alert-success-sena" id="successAlert">
+                                <i class="fas fa-check-circle me-2"></i>
+                                {{ session('success') }}
+                            </div>
                         @endif
 
                         @if (session('error'))
-                        <div class="alert-danger-sena" id="errorAlert">
-                            <i class="fas fa-exclamation-circle me-2"></i>
-                            {{ session('error') }}
-                        </div>
+                            <div class="alert-danger-sena" id="errorAlert">
+                                <i class="fas fa-exclamation-circle me-2"></i>
+                                {{ session('error') }}
+                            </div>
                         @endif
 
                         @include('templates.validation_errors')
@@ -77,8 +76,9 @@
                                     <i class="fas fa-envelope me-2"></i>
                                     Correo electrónico
                                 </label>
-                                <input type="email" name="email" id="email" class="form-control form-control-sena"
-                                    placeholder="ejemplo@correo.com" value="{{ old('email') }}" required>
+                                <input type="email" name="email" id="email"
+                                    class="form-control form-control-sena" placeholder="ejemplo@correo.com"
+                                    value="{{ old('email') }}" required>
                             </div>
 
                             <div class="form-group-sena">
@@ -123,16 +123,15 @@
                         </form>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
 
         <div class="help-container">
-            <button class="btn btn-success btn-lg rounded-circle shadow" type="button">
+            <a href=" {{ route('help') }} " class="btn btn-success btn-lg rounded-circle shadow" type="button" target="blank">
                 <i class="fas fa-question"></i>
-            </button>
+            </a>
             <span class="help-message">
-                Si tienes problemas para iniciar sesión, por favor
-                <a href=" {{ route('help') }} ">visita nuestra página de ayuda</a>.
+                Si tienes problemas para iniciar sesión, haz click aquí para obtener ayuda.
             </span>
         </div>
 
