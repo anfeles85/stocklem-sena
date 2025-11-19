@@ -13,17 +13,17 @@
             <div class="col-md-4">
                 <label for="name" class="form-label">Nombre</label>
                 <input type="text" name="name" id="name" class="form-control" required
-                    value="{{ old('name', $article->name) }}">
+                    value="{{ old('name', $article->name) }}" placeholder="Ej: Destornillador Phillips">
             </div>
             <div class="col-md-4">
                 <label for="quantity" class="form-label">Cantidad</label>
                 <input type="number" name="quantity" id="quantity" class="form-control" required
-                    value="{{ old('quantity', $article->quantity) }}">
+                    value="{{ old('quantity', $article->quantity) }}" placeholder="Ej: 50">
             </div>
             <div class="col-md-4">
                 <label for="min_quantity" class="form-label">Cantidad mínima</label>
                 <input type="number" name="min_quantity" id="min_quantity" class="form-control" min="1"
-                    value="{{ old('min_quantity', $article->min_quantity) }}" disabled>
+                    value="{{ old('min_quantity', $article->min_quantity) }}" disabled placeholder="Ej: 10">
             </div>
         </div>
 

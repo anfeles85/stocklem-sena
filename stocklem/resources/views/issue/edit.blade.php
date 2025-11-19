@@ -13,7 +13,7 @@
                         <div class="col-md-6 mb-2">
                             <label for="sena_code">Código SENA (opcional)</label>
                             <input type="text" id="sena_code" name="sena_code"
-                                value="{{ old('sena_code', $issue->sena_code) }}" class="form-control">
+                                value="{{ old('sena_code', $issue->sena_code) }}" class="form-control" placeholder="Ej: SEN123456">
                         </div>
                         <div class="col-md-6 mb-2">
                             <label for="date_issue">Fecha salida</label>
@@ -25,12 +25,12 @@
                         <div class="col-md-6 mb-2">
                             <label for="quantity">Cantidad</label>
                             <input type="number" class="form-control" name="quantity" id="quantity"
-                                value="{{ $issue->quantity }}" required>
+                                value="{{ $issue->quantity }}" required placeholder="Ej: 5">
                         </div>
                         <div class="col-md-6 mb-2">
                             <label for="observations">Observaciones</label>
                             <input type="text" class="form-control" name="observations" id="observations"
-                                value="{{ $issue->observations }}" required>
+                                value="{{ $issue->observations }}" required placeholder="Motivo de la salida">
                         </div>
                     </div>
                 </div>

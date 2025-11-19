@@ -11,17 +11,17 @@
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="name" class="form-label">Nombre</label>
-                <input type="text" name="name" id="name" class="form-control" required value="{{ old('name') }}">
+                <input type="text" name="name" id="name" class="form-control" required value="{{ old('name') }}" placeholder="Ej: Destornillador Phillips">
             </div>
             <div class="col-md-4">
                 <label for="quantity" class="form-label">Cantidad</label>
                 <input type="number" name="quantity" id="quantity" class="form-control" required
-                    value="{{ old('quantity') }}">
+                    value="{{ old('quantity') }}" placeholder="Ej: 50">
             </div>
             <div class="col-md-4">
                 <label for="min_quantity" class="form-label">Cantidad mínima</label>
                 <input type="number" name="min_quantity" id="min_quantity" class="form-control" min="1"
-                    maxlength="9999999999" max="9999999999" required value="{{ old('min_quantity') }}">
+                    maxlength="9999999999" max="9999999999" required value="{{ old('min_quantity') }}" placeholder="Ej: 10">
             </div>
         </div>
 

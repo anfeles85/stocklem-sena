@@ -13,12 +13,12 @@
             <div class="col-md-6">
                 <label for="name" class="form-label">Nombre</label>
                 <input type="text" name="name" id="name" class="form-control" required
-                    value="{{ old('name', $user->name) }}">
+                    value="{{ old('name', $user->name) }}" placeholder="Ej: María López">
             </div>
             <div class="col-md-6">
                 <label for="email" class="form-label">Correo electrónico</label>
                 <input type="email" name="email" id="email" class="form-control"
-                    value="{{ old('email', $user->email) }}">
+                    value="{{ old('email', $user->email) }}" placeholder="Ej: usuario@sena.edu.co">
             </div>
         </div>
 
