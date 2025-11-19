@@ -34,23 +34,21 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- Articulo y persona --}}
-                <div class="row form-group">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="article_id" class="form-label">Articulo</label>
-                            <select name="article_id" id="article_id" class="form-control js-example-placeholder-single"
-                                required>
-                                <option></option>
-                                @foreach ($articles as $article)
-                                    <option value="{{ $article->id }}" @if (old('article_id', $issue->article_id) == $article->id) selected @endif>
-                                        {{ $article->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
+            {{-- Articulo y persona --}}
+            <div class="row form-group">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="article_id" class="form-label">Articulo</label>
+                        <select name="article_id" id="article_id" class="form-control js-example-placeholder-single"
+                            required>
+                            <option></option>
+                            @foreach ($articles as $article)
+                            <option value="{{ $article->id }}" @if (old('article_id', $issue->article_id) == $article->id) selected @endif>
+                                {{ $article->name }} - {{ $article->presentation->description ?? 'Sin presentación' }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
                         <div class="col-md-6">
                             <label for="person_id" class="form-label">Persona</label>
                             <select name="person_id" id="person_id" class="form-control js-example-placeholder-single"
