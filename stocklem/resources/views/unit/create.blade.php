@@ -10,7 +10,7 @@
                     <div class="col-md-6 mb-4">
                         <label for="name">Nombre</label>
                         <input for="name" class="form-control" name="name" id="name" required
-                            value="{{ old('name') }}">
+                            value="{{ old('name') }}" placeholder="Ej: Kilogramo">
                     </div>
                     <div class="col-md-6 mb-4">
                         <label for="status" class="form-label">Estado</label>

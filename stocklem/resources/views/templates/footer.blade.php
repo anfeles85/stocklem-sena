@@ -11,7 +11,7 @@
       <div class="col-md-6 text-md-end">
         <p class="mb-0 text-muted">
           Desarrollado con <i class="fas fa-heart text-danger"></i> por 
-          <strong class="text-sena">ADSO 2921881 - SENA</strong>
+            <strong class="text-sena">ADSO 2921881 - VERSION {{ env('APP_VERSION') }}</strong>
         </p>
       </div>
     </div>

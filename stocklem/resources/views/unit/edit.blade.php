@@ -11,7 +11,7 @@
                 <div class="row form-group">
                     <div class="col-md-6 mb-4">
                         <label for="name">Nombre</label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{ $unit->name }}" required>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $unit->name }}" required placeholder="Ej: Kilogramo">
                     </div>
                     <div class="col-md-6 mb-4">
                         <label for="status">Estado</label>

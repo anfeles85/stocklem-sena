@@ -12,12 +12,12 @@
                     <div class="col-md-4 mb-4">
                         <label for="name">Nombre</label>
                         <input type="text" class="form-control" name="name" id="name"
-                            value="{{ $category->name }}" required>
+                            value="{{ $category->name }}" required placeholder="Ej: Herramientas">
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="description">Descripción</label>
                         <input type="text" class="form-control" name="description" id="description"
-                            value="{{ $category->description }}" required>
+                            value="{{ $category->description }}" required placeholder="Ej: Herramientas de mano y eléctricas">
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="status">Estado</label>

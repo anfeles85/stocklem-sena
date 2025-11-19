@@ -12,7 +12,7 @@
                     <div class="col-md-6 mb-4">
                         <label for="description">Descripción</label>
                         <input type="text" class="form-control" name="description" id="description"
-                            value="{{ $presentation->description }}" required>
+                            value="{{ $presentation->description }}" required placeholder="Ej: Caja x 12 unidades">
                     </div>
                     <div class="col-md-6 mb-4">
                         <label for="status">Estado</label>

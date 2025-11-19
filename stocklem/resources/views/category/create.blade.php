@@ -11,12 +11,12 @@
                     <div class="col-md-4 mb-4">
                         <label for="name">Nombre</label>
                         <input for="name" class="form-control" name="name" id="name" required
-                            value="{{ old('name') }}">
+                            value="{{ old('name') }}" placeholder="Ej: Herramientas">
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="description">Descripción</label>
                         <input type="text" class="form-control" name="description" id="description" required
-                            value="{{ old('description') }}">
+                            value="{{ old('description') }}" placeholder="Ej: Herramientas de mano y eléctricas">
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="status" class="form-label">Estado</label>

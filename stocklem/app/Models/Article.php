@@ -19,6 +19,7 @@ class Article extends Model
         'min_quantity',
         'photo',
         'technical_sheet',
+        'status',
         'presentation_id',
         'category_id',
         'supplier_id',
