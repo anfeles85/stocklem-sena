@@ -80,7 +80,7 @@ main {
                 </div>
 
                 <div class="list-group list-group-flush">
-                    <a href="#" class="help-item list-group-item-action mb-3">
+                    <a href="{{ asset('manuals/manual_iniciar_sesion_.pdf') }}" target="blank" class="help-item list-group-item-action mb-3">
                         <div class="d-flex align-items-center">
                             <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3">
                                 <i class="fas fa-right-to-bracket fa-lg"></i>
@@ -92,7 +92,7 @@ main {
                             <i class="fas fa-chevron-right ms-auto text-muted"></i>
                         </div>
                     </a>
-                    <a href="#" class="help-item list-group-item-action mb-3">
+                    <a href="{{ asset('manuals/manual_recuperar_contraseña.pdf') }}" target="blank" class="help-item list-group-item-action mb-3">
                         <div class="d-flex align-items-center">
                             <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3">
                                 <i class="fas fa-key fa-lg"></i>
@@ -100,18 +100,6 @@ main {
                             <div>
                                 <h5 class="mb-0 fw-semibold">¿Cómo recuperar contraseña?</h5>
                                 <small class="text-muted">Pasos para restablecer tu acceso</small>
-                            </div>
-                            <i class="fas fa-chevron-right ms-auto text-muted"></i>
-                        </div>
-                    </a>
-                    <a href="#" class="help-item list-group-item-action">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3">
-                                <i class="fas fa-user-edit fa-lg"></i>
-                            </div>
-                            <div>
-                                <h5 class="mb-0 fw-semibold">¿Cómo editar mi perfil?</h5>
-                                <small class="text-muted">Actualiza tu información personal</small>
                             </div>
                             <i class="fas fa-chevron-right ms-auto text-muted"></i>
                         </div>
