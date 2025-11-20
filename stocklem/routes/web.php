@@ -60,7 +60,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('user')->group(function
     Route::post('/store', [UsersController::class, 'store'])->name('users.store');
     Route::get('/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
     Route::put('/update/{id}', [UsersController::class, 'update'])->name('users.update');
-    Route::delete('/destroy/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+    Route::patch('/toggle-status/{id}', [UsersController::class, 'toggleStatus'])->name('users.toggleStatus');
+    Route::delete('/force-delete/{id}', [UsersController::class, 'forceDelete'])->name('users.forceDelete');
 });
 
 Route::middleware(['auth', 'can:administrador'])->prefix('category')->group(function () {

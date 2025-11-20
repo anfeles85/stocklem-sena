@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Issue;
 use App\Models\Person;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -57,8 +58,16 @@ class IssueController extends Controller
             $errors = $validator->errors();
             return redirect()->route('issue.create')->withInput()->withErrors($errors);
         }
-        Issue::create($request->all());
-        return redirect()->route('issue.index')->with('success', 'Salida creada exitosamente');
+        
+        try {
+            Issue::create($request->all());
+            return redirect()->route('issue.index')->with('success', 'Salida creada exitosamente');
+        } catch (QueryException $e) {
+            if ($e->getCode() == '45000') {
+                return redirect()->route('issue.create')->withInput()->with('error', 'Stock insuficiente: No hay suficientes unidades disponibles para realizar esta salida.');
+            }
+            throw $e;
+        }
     }
 
     /**
@@ -99,8 +108,15 @@ class IssueController extends Controller
         }
         $issue = Issue::find($id);
         if ($issue) {
-            $issue->update($request->all());
-            return redirect()->route('issue.index')->with('success', '¡Salida actualizada correctamente!');
+            try {
+                $issue->update($request->all());
+                return redirect()->route('issue.index')->with('success', '¡Salida actualizada correctamente!');
+            } catch (\Illuminate\Database\QueryException $e) {
+                if ($e->getCode() == '45000') {
+                    return redirect()->route('issue.edit', $id)->withInput()->with('error', 'Stock insuficiente: Al editar esta salida, el stock quedaría en negativo.');
+                }
+                throw $e;
+            }
         }
         return redirect()->route('issue.index')->with('error', 'Ha ocurrido un problema al actualizar la salida.');
     }

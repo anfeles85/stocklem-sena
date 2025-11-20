@@ -17,7 +17,7 @@
             <div class="col-md-4">
                 <label for="quantity" class="form-label">Cantidad</label>
                 <input type="number" name="quantity" id="quantity" class="form-control" required
-                    value="{{ old('quantity') }}" placeholder="Ej: 50">
+                    value="{{ old('quantity') }}" placeholder="Ej: 50" min="1">
             </div>
             <div class="col-md-4">
                 <label for="min_quantity" class="form-label">Cantidad mínima</label>
