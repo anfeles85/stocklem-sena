@@ -21,6 +21,7 @@
                         <th>FECHA</th>
                         <th>CANTIDAD</th>
                         <th>ARTÍCULO</th>
+                        <th>USUARIO</th>
 
                         @can('administrador')
                         <th>ACCIONES</th>
@@ -35,6 +36,7 @@
                             <td>{{ $entry->date_entry }}</td>
                             <td>{{ $entry->quantity }}</td>
                             <td>{{ $entry->article->name ?? 'Sin artículo' }}</td>
+                            <td>{{ $entry->user->name ?? 'Sin usuario' }}</td>
                             
                             @can('administrador')
                             <td>

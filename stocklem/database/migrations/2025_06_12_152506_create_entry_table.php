@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('quantity')->comment('cantidad entrada');
             $table->text('observations')->nullable()->comment('observaciones entrada');
             $table->foreignId('article_id')->constrained('article')->onDelete('cascade')->onUpdate('cascade')->comment('FK con articulo');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade')->comment('FK con usuario');
             $table->timestamps();
         });
     }

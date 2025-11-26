@@ -26,6 +26,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ISSUE-002',
@@ -36,6 +37,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
             [
                 'sena_code' => 'ISSUE-003',
@@ -46,6 +48,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ISSUE-004',
@@ -56,6 +59,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 4,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
             [
                 'sena_code' => 'ISSUE-005',
@@ -66,6 +70,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ISSUE-006',
@@ -76,6 +81,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 6,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
             [
                 'sena_code' => 'ISSUE-007',
@@ -86,6 +92,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 8,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ISSUE-008',
@@ -96,6 +103,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 9,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
             [
                 'sena_code' => 'ISSUE-009',
@@ -106,6 +114,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 10,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ISSUE-010',
@@ -116,6 +125,7 @@ class IssueSeeder extends Seeder
                 'person_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
         ]);
     }

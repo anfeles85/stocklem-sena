@@ -60,7 +60,10 @@ class EntryController extends Controller
             $errors = $validator->errors();
             return redirect()->route('entry.create')->withInput()->withErrors($errors);
         }
-        $entry = Entry::create($request->all());
+        $data = $request->all();
+        $data['user_id'] = auth()->id();
+
+        Entry::create($data);
         return redirect()->route('entry.index')->with('success', 'Entrada creada exitosamente');
     }
 

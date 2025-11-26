@@ -24,6 +24,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ENTRY-002',
@@ -34,6 +35,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
             [
                 'sena_code' => 'ENTRY-003',
@@ -44,6 +46,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ENTRY-004',
@@ -54,6 +57,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 4,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
             [
                 'sena_code' => 'ENTRY-005',
@@ -64,6 +68,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 5,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ENTRY-006',
@@ -74,6 +79,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 6,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
             [
                 'sena_code' => 'ENTRY-007',
@@ -84,6 +90,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 7,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ENTRY-008',
@@ -94,6 +101,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 8,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
             [
                 'sena_code' => 'ENTRY-009',
@@ -104,6 +112,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 9,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 1, 
             ],
             [
                 'sena_code' => 'ENTRY-010',
@@ -114,6 +123,7 @@ class EntrySeeder extends Seeder
                 'article_id' => 10,
                 'created_at' => now(),
                 'updated_at' => now(),
+                'user_id' => 2, 
             ],
         ]);
     }
