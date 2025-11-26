@@ -11,9 +11,9 @@
                 @method('PUT')
                 <div class="row form-group">
                     <div class="col-md-6 mb-4">
-                        <label for="sena_code">Código SENA</label>
+                        <label for="sena_code">Código SENA (opcional)</label>
                         <input type="text" id="sena_code" name="sena_code" value="{{ old('sena_code', $entry->sena_code) }}"
-                            class="form-control">
+                            class="form-control" placeholder="Ej: SEN123456">
                     </div>
                     <div class="col-md-6 mb-4">
                         <label for="date_entry">Fecha</label>
@@ -31,14 +31,14 @@
                     <div class="col-md-6 mb-4">
                         <label for="quantity">Cantidad</label>
                         <input type="number" id="quantity" name="quantity" required
-                            value="{{ old('quantity', $entry->quantity) }}" class="form-control">
+                            value="{{ old('quantity', $entry->quantity) }}" class="form-control" placeholder="Ej: 10">
                     </div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-md-6 mb-4">
                         <label for="observations">Observaciones</label>
-                        <textarea id="observations" name="observations" class="form-control" rows="3">{{ old('observations', $entry->observations) }}</textarea>
+                        <textarea id="observations" name="observations" class="form-control" rows="3" placeholder="Ingrese observaciones adicionales sobre esta entrada">{{ old('observations', $entry->observations) }}</textarea>
                     </div>
 
                     <div class="col-md-6">
@@ -47,7 +47,7 @@
                             <option></option>
                             @foreach ($articles as $article)
                                 <option value="{{ $article->id }}" @if (old('article_id', $entry->article_id) == $article->id) selected @endif>
-                                    {{ $article->name }}
+                                    {{ $article->name }} - {{ $article->presentation->description ?? 'Sin presentación' }}
                                 </option>
                             @endforeach
                         </select>
@@ -67,13 +67,6 @@
     </div>
 @endsection
 
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.js-example-placeholder-single').select2({
-                placeholder: "Seleccione",
-                allowClear: true
-            });
-        });
-    </script>
-@endsection
+@push('scripts')
+    <script src="{{ asset('js/select2.js') }}"></script>
+@endpush

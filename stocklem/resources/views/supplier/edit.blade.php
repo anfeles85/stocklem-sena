@@ -12,12 +12,12 @@
                     <div class="col-md-4 mb-4">
                         <label for="name">Nombre</label>
                         <input type="text" id="name" name="name" required value="{{ $supplier->name }}"
-                            class="form-control">
+                            class="form-control" placeholder="Ej: Distribuidora XYZ">
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="phone">Teléfono</label>
                         <input type="text" name="phone" id="phone" required
-                            value="{{ $supplier->phone }}" class="form-control">
+                            value="{{ $supplier->phone }}" class="form-control" placeholder="Ej: 6012345678">
                     </div>
                     <div class="col-md-4 mb-4">
                         <label for="status">Estado</label>

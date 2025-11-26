@@ -8,8 +8,8 @@
         @csrf
         <div class="row mb-3">
             <div class="col-md-6 mb-3 mb-md-0">
-                <label for="sena_code" class="form-label">Código SENA</label>
-                <input type="text" name="sena_code" id="sena_code" class="form-control" value="{{ old('sena_code') }}">
+                <label for="sena_code" class="form-label">Código SENA (opcional)</label>
+                <input type="text" name="sena_code" id="sena_code" class="form-control" value="{{ old('sena_code') }}" placeholder="Ej: SEN123456">
             </div>
             <div class="col-md-6">
                 <label for="date_entry" class="form-label">Fecha</label>
@@ -26,13 +26,13 @@
             <div class="col-md-6">
                 <label for="quantity" class="form-label">Cantidad</label>
                 <input type="number" name="quantity" id="quantity" class="form-control" required
-                    value="{{ old('quantity') }}">
+                    value="{{ old('quantity') }}" placeholder="Ej: 10">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-6 mb-3 mb-md-0">
                 <label for="observations" class="form-label">Observaciones</label>
-                <textarea name="observations" id="observations" class="form-control" rows="3">{{ old('observations') }}</textarea>
+                <textarea name="observations" id="observations" class="form-control" rows="3" placeholder="Ingrese observaciones adicionales sobre esta entrada">{{ old('observations') }}</textarea>
             </div>
             <div class="col-md-6">
                 <label for="article_id" class="form-label">Artículo</label>
@@ -41,7 +41,7 @@
                     <option></option>
                     @foreach ($articles as $article)
                         <option value="{{ $article->id }}" @if (old('article_id') == $article->id) selected @endif>
-                            {{ $article->name }}
+                            {{ $article->name }} - {{ $article->presentation->description ?? 'Sin presentación' }}
                         </option>
                     @endforeach
                 </select>
@@ -70,13 +70,6 @@
     </script>
 @endsection
 
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.js-example-placeholder-single').select2({
-                placeholder: "Seleccione",
-                allowClear: true
-            });
-        });
-    </script>
-@endsection
+@push('scripts')
+    <script src="{{ asset('js/select2.js') }}"></script>
+@endpush

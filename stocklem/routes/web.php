@@ -122,7 +122,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(funct
     Route::post('/store', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
     Route::put('/update/{id}', [ArticleController::class, 'update'])->name('article.update');
-    Route::delete('/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+    Route::patch('/toggle-status/{id}', [ArticleController::class, 'toggleStatus'])->name('article.toggleStatus');
+    Route::delete('/force-delete/{id}', [ArticleController::class, 'forceDelete'])->name('article.forceDelete');
     Route::get('articulos/importar', [ArticleController::class, 'showImportForm'])->name('article.import.form');
     Route::post('articulos/importar', [ArticleController::class, 'import'])->name('article.import.run');
 });

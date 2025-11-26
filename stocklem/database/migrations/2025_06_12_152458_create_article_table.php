@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('min_quantity')->default(1)->comment('cantidad minima');
             $table->string('photo',255)->nullable()->comment('foto articulo');
             $table->text('technical_sheet')->nullable()->comment('ficha tecnica articulo');
+            $table->enum('status', ['ACTIVO', 'INACTIVO'])->default('ACTIVO')->comment('estado articulo');
             $table->foreignId('presentation_id')->nullable()->constrained('presentation')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con presentacion');
             $table->foreignId('category_id')->nullable()->constrained('category')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con categoria');
             $table->foreignId('supplier_id')->nullable()->constrained('supplier')->onDelete('cascade')->onUpdate('cascade')->comment('Fk con proveedor');

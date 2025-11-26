@@ -8,11 +8,11 @@
     <div class="row mb-3">
         <div class="col-md-4">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" name="name" id="name" class="form-control" required value="{{ old('name') }}">
+            <input type="text" name="name" id="name" class="form-control" required value="{{ old('name') }}" placeholder="Ej: Distribuidora XYZ">
         </div>
         <div class="col-md-4">
             <label for="phone" class="form-label">Teléfono</label>
-            <input type="number" name="phone" id="phone" class="form-control" required value="{{ old('phone') }}">
+            <input type="number" name="phone" id="phone" class="form-control" required value="{{ old('phone') }}" placeholder="Ej: 6012345678">
         </div>
         <div class="col-md-4">
             <label for="status" class="form-label">Estado</label>

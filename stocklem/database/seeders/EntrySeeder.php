@@ -17,8 +17,8 @@ class EntrySeeder extends Seeder
         Entry::insert([
             [
                 'sena_code' => 'ENTRY-001',
-                'date_entry' => '2025-01-15',
-                'expiration_date' => '2026-01-15',
+                'date_entry' => '2025-11-15',
+                'expiration_date' => '2025-11-24',
                 'quantity' => 50,
                 'observations' => 'Entrada inicial de antibiótico bovino',
                 'article_id' => 1,
@@ -28,8 +28,8 @@ class EntrySeeder extends Seeder
             ],
             [
                 'sena_code' => 'ENTRY-002',
-                'date_entry' => '2025-01-20',
-                'expiration_date' => '2026-12-31',
+                'date_entry' => '2025-11-20',
+                'expiration_date' => '2025-11-25',
                 'quantity' => 200,
                 'observations' => 'Entrada de fertilizante NPK',
                 'article_id' => 2,
@@ -39,8 +39,8 @@ class EntrySeeder extends Seeder
             ],
             [
                 'sena_code' => 'ENTRY-003',
-                'date_entry' => '2025-02-01',
-                'expiration_date' => '2025-12-31',
+                'date_entry' => '2025-11-22',
+                'expiration_date' => '2025-12-02',
                 'quantity' => 100,
                 'observations' => 'Semillas de maíz para temporada',
                 'article_id' => 3,
@@ -51,7 +51,7 @@ class EntrySeeder extends Seeder
             [
                 'sena_code' => 'ENTRY-004',
                 'date_entry' => '2025-02-10',
-                'expiration_date' => '2025-08-10',
+                'expiration_date' => '2025-12-15',
                 'quantity' => 150,
                 'observations' => 'Concentrado para aves de engorde',
                 'article_id' => 4,
@@ -62,7 +62,7 @@ class EntrySeeder extends Seeder
             [
                 'sena_code' => 'ENTRY-005',
                 'date_entry' => '2025-02-15',
-                'expiration_date' => '2027-02-15',
+                'expiration_date' => '2025-11-30',
                 'quantity' => 40,
                 'observations' => 'Insecticida para control de plagas',
                 'article_id' => 5,

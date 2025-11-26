@@ -91,7 +91,7 @@
 
                 <div class="row">
                     <div class="col-md-6 d-grid">
-                        <button type="submit" class="btn btn-success">
+                        <button onclick="showLoading(); setTimeout(hideLoading, 3000)" type="submit" class="btn btn-success">
                             <i class="fas fa-upload me-2"></i> Importar Personas
                         </button>
                     </div>

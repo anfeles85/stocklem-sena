@@ -13,32 +13,33 @@
             <div class="col-md-4">
                 <label for="name" class="form-label">Nombre</label>
                 <input type="text" name="name" id="name" class="form-control" required
-                    value="{{ old('name', $article->name) }}">
+                    value="{{ old('name', $article->name) }}" placeholder="Ej: Destornillador Phillips">
             </div>
             <div class="col-md-4">
                 <label for="quantity" class="form-label">Cantidad</label>
                 <input type="number" name="quantity" id="quantity" class="form-control" required
-                    value="{{ old('quantity', $article->quantity) }}">
+                    value="{{ old('quantity', $article->quantity) }}" placeholder="Ej: 50">
             </div>
             <div class="col-md-4">
                 <label for="min_quantity" class="form-label">Cantidad mínima</label>
                 <input type="number" name="min_quantity" id="min_quantity" class="form-control" min="1"
-                    value="{{ old('min_quantity', $article->min_quantity) }}" disabled>
+                    value="{{ old('min_quantity', $article->min_quantity) }}" disabled placeholder="Ej: 10">
             </div>
         </div>
 
         {{-- Foto y Ficha técnica --}}
         <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="photo" class="form-label">Foto</label>
                 @if ($article->photo)
                     <div class="mb-2">
                         <img src="{{ $article->photo }}" alt="Foto actual" class="img-fluid" style="max-width: 60px">
                     </div>
                 @endif
-                <input type="file" name="photo" id="photo" class="form-control" accept="image/jpeg,image/png,image/jpg">
+                <input type="file" name="photo" id="photo" class="form-control"
+                    accept="image/jpeg,image/png,image/jpg">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="technical_sheet" class="form-label">Ficha técnica</label>
                 @if ($article->technical_sheet)
                     <div class="mb-2">
@@ -46,6 +47,13 @@
                     </div>
                 @endif
                 <input type="file" name="technical_sheet" id="technical_sheet" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="status">Estado</label>
+                <select name="status" id="status" class="form-control" required>
+                    <option value="ACTIVO" {{ $article->status == 'ACTIVO' ? 'selected' : '' }}>ACTIVO</option>
+                    <option value="INACTIVO" {{ $article->status == 'INACTIVO' ? 'selected' : '' }}>INACTIVO</option>
+                </select>
             </div>
         </div>
 
@@ -118,13 +126,6 @@
     </form>
 @endsection
 
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.js-example-placeholder-single').select2({
-                placeholder: "Seleccione",
-                allowClear: true
-            });
-        });
-    </script>
-@endsection
+@push('scripts')
+    <script src="{{ asset('js/select2.js') }}"></script>
+@endpush

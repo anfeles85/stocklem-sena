@@ -10,34 +10,37 @@ use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 use App\Imports\ArticlesImport;
 use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Validators\ValidationException;
 
 class ArticleController extends Controller
 {
-
     private $rules = [
         'name' => 'required|string|min:3|max:100',
-        'quantity' => 'required|integer|min:0|max:9999999999',
-        'photo' => 'image|max:102400',
-        'technical_sheet' => 'mimes:pdf|max:5120',
-        'presentation_id' => 'max:9999999999999999999',
-        'category_id' => 'max:9999999999999999999',
-        'supplier_id' => 'max:9999999999999999999'
+        'quantity' => 'required|integer|min:0',
+        'min_quantity' => 'required|integer|min:0',
+        'photo' => 'nullable|image|max:10240',
+        'technical_sheet' => 'nullable|mimes:pdf|max:5120',
+        'status' => 'required|in:ACTIVO,INACTIVO',
+        'presentation_id' => 'nullable|exists:presentation,id',
+        'category_id' => 'nullable|exists:category,id',
+        'supplier_id' => 'nullable|exists:supplier,id',
+        'unit_id' => 'nullable|exists:unit,id'
     ];
 
     private $traductionAttributes = [
         'name' => 'nombre',
         'quantity' => 'cantidad',
-        'min_quantity' => 'cantidad minima',
+        'min_quantity' => 'cantidad mínima',
         'photo' => 'foto',
         'technical_sheet' => 'ficha técnica',
+        'status' => 'estado',
         'presentation_id' => 'presentación',
         'category_id' => 'categoría',
-        'supplier_id' => 'proveedor'
-
+        'supplier_id' => 'proveedor',
+        'unit_id' => 'unidad'
     ];
 
     /**
@@ -45,7 +48,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::orderByRaw("FIELD(status, 'ACTIVO', 'INACTIVO')")->get();
         $lowStockArticles = $articles->filter(fn($article) => $article->isBelowMinimum());
 
         return view('article.index', compact('articles', 'lowStockArticles'));
@@ -56,10 +59,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $presentations = Presentation::all();
-        $categories = Category::all();
-        $suppliers = Supplier::all();
-        $units = Unit::all();
+        $presentations = Presentation::where('status', 'ACTIVO')->get();
+        $categories = Category::where('status', 'ACTIVO')->get();
+        $suppliers = Supplier::where('status', 'ACTIVO')->get();
+        $units = Unit::where('status', 'ACTIVO')->get();
 
         return view('article.create', compact('presentations', 'categories', 'suppliers', 'units'));
     }
@@ -69,12 +72,16 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), $this->rules);
+        $rules = $this->rules;
+        $rules['name'] .= '|unique:article,name';
+
+        $validator = Validator::make($request->all(), $rules);
         $validator->setAttributeNames($this->traductionAttributes);
+
         if ($validator->fails()) {
-            $errors = $validator->errors();
-            return redirect()->route('article.create')->withInput()->withErrors($errors);
+            return redirect()->route('article.create')->withInput()->withErrors($validator);
         }
+
         $data = $request->all();
 
         if ($request->hasFile('technical_sheet')) {
@@ -85,16 +92,9 @@ class ArticleController extends Controller
             $path = $request->file('photo')->store('photos', 'public');
             $data['photo'] = Storage::url($path);
         }
-        $article = Article::create($data);
-        return redirect()->route('article.index')->with('success', 'Artículo creado exitosamente');
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        Article::create($data);
+        return redirect()->route('article.index')->with('success', 'Artículo creado exitosamente');
     }
 
     /**
@@ -117,8 +117,7 @@ class ArticleController extends Controller
                 'units'
             ));
         } else {
-            session()->flash('error', 'No se encontró el artículo.');
-            return redirect()->route('article.index');
+            return redirect()->route('article.index')->with('error', 'No se encontró el artículo.');
         }
     }
 
@@ -127,49 +126,71 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validator = Validator::make($request->all(), $this->rules);
-        $validator->setAttributeNames($this->traductionAttributes);
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-            return redirect()->route('article.edit', $id)->withInput()->withErrors($errors);
-        }
         $article = Article::find($id);
-        if ($article) {
-            $data = $request->all();
-
-            if ($request->hasFile('technical_sheet')) {
-                $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
-                $data['technical_sheet'] = Storage::url($path);
-            }
-            if ($request->hasFile('photo')) {
-                $path = $request->file('photo')->store('photos', 'public');
-                $data['photo'] = Storage::url($path);
-            }
-            $article->update($data);
-            return redirect()->route('article.index')->with('success', '¡Artículo actualizado correctamente!');
+        
+        if (!$article) {
+            return redirect()->route('article.index')->with('error', 'No se encontró el artículo para actualizar.');
         }
-        return redirect()->route('article.index')->with('error', 'Ha ocurrido un problema al actualizar el artículo.');
+
+        $rules = $this->rules;
+        $rules['name'] .= '|unique:article,name,' . $id;
+        
+        if (!$request->has('min_quantity')) {
+            unset($rules['min_quantity']);
+        }
+
+        $validator = Validator::make($request->all(), $rules);
+        $validator->setAttributeNames($this->traductionAttributes);
+
+        if ($validator->fails()) {
+            return redirect()->route('article.edit', $id)->withInput()->withErrors($validator);
+        }
+
+        $data = $request->all();
+
+        if ($request->hasFile('technical_sheet')) {
+            $path = $request->file('technical_sheet')->store('technical_sheets', 'public');
+            $data['technical_sheet'] = Storage::url($path);
+        }
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('photos', 'public');
+            $data['photo'] = Storage::url($path);
+        }
+
+        $article->update($data);
+        return redirect()->route('article.index')->with('success', '¡Artículo actualizado correctamente!');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Alternar estado del artículo (ACTIVO <-> INACTIVO).
      */
-    public function destroy(string $id)
+    public function toggleStatus(string $id)
     {
         $article = Article::find($id);
+
         if ($article) {
-            // Verificar si el artículo tiene salidas asociadas
-            if($article->issues()->count() > 0) {
-                return redirect()->route('article.index')->with('error', 'No se puede eliminar el artículo porque tiene salidas asociadas');
-            }
-            if($article->entries()->count() > 0) {
-                return redirect()->route('article.index')->with('error', 'No se puede eliminar el artículo porque tiene entradas asociadas');
-            }
-            
-            $article->delete();
-            return redirect()->route('article.index')->with('success', '¡Artículo eliminado correctamente!');
+            $newStatus = $article->status == 'ACTIVO' ? 'INACTIVO' : 'ACTIVO';
+            $article->update(['status' => $newStatus]);
+
+            $message = $newStatus == 'ACTIVO' ? 'Artículo activado exitosamente' : 'Artículo inactivado exitosamente';
+            return redirect()->route('article.index')->with('success', $message);
         } else {
-            return redirect()->route('article.index')->with('error', 'Ha ocurrido un problema al eliminar el artículo.');
+            return redirect()->route('article.index')->with('error', 'No se encontró el artículo');
+        }
+    }
+
+    /**
+     * Eliminar artículo permanentemente.
+     */
+    public function forceDelete(string $id)
+    {
+        $article = Article::find($id);
+
+        if ($article) {
+            $article->delete();
+            return redirect()->route('article.index')->with('success', 'Artículo eliminado permanentemente');
+        } else {
+            return redirect()->route('article.index')->with('error', 'No se encontró el artículo');
         }
     }
 
@@ -208,7 +229,7 @@ class ArticleController extends Controller
             if (count($skipped) > 0) {
                 $message .= " | Omitidos (ya existen): " . count($skipped);
             }
-            
+
             return redirect()->route('article.import.form')
                 ->with('loaded', $message)
                 ->with('skipped', $skipped);

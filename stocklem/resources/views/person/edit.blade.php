@@ -12,17 +12,17 @@
                     <div class="col-md-3 mb-4">
                         <label for="document">Documento</label>
                         <input type="text" id="document" name="document" required value="{{ $person->document }}"
-                            class="form-control">
+                            class="form-control" placeholder="Ej: 1234567890">
                     </div>
                     <div class="col-md-3 mb-4">
                         <label for="name">Nombre</label>
                         <input type="text" id="name" name="name" required value="{{ $person->name }}"
-                            class="form-control">
+                            class="form-control" placeholder="Ej: Juan Pérez">
                     </div>
                     <div class="col-md-3 mb-4">
                         <label for="phone">Teléfono</label>
                         <input type="text" name="phone" id="phone" required value="{{ $person->phone }}"
-                            class="form-control">
+                            class="form-control" placeholder="Ej: 3001234567">
                     </div>
                     <div class="col-md-3 mb-4">
                         <label for="status">Estado</label>
