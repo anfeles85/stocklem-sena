@@ -25,19 +25,13 @@ class LowStockAlertMail extends Mailable
         $this->adminName = $adminName;
     }
 
-    public function build()
-    {
-        return $this->subject("Alerta de Stock Crítico: {$this->articles->count()} artículo(s)")
-            ->markdown('email.low-stock-alert');
-    }
-
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Alerta de Stock Crítico',
+            subject: "Alerta de Stock Crítico: {$this->articles->count()} artículo(s)",
         );
     }
 
@@ -47,7 +41,7 @@ class LowStockAlertMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'email.low-stock-alert',
+            view: 'emails.low_stock_alert',
         );
     }
 

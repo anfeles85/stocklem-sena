@@ -11,11 +11,11 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" name="name" id="name" class="form-control" required>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Ingresa el nombre de usuario" required>
         </div>
         <div class="col-md-6">
             <label for="email" class="form-label">Correo electronico</label>
-            <input type="email" name="email" id="email" class="form-control" required>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Ingresa el correo de usuario" required>
         </div>
     </div>
 
@@ -55,8 +55,8 @@
     <div class="row mb-3">
         <div class="col-md-12">
             <label for="role_id" class="form-label">Rol</label>
-            <select name="role_id" id="role_id" class="form-control js-example-placeholder-single" required>
-                <option></option>
+            <select name="role_id" id="role_id" class="form-control" required>
+                <option>Seleeccione el rol</option>
                 @foreach ($roles as $rol)
                 <option value="{{ $rol->id }}" @if (old('role_id')==$rol->id) selected @endif>
                     {{ $rol->name }}
@@ -82,14 +82,7 @@
 </form>
 @endsection
 
-@section('scripts')
-<script>
-    $(document).ready(function() {
-        $('.js-example-placeholder-single').select2({
-            placeholder: "Seleccione",
-            allowClear: true
-        });
-    });
-</script>
-<script src="{{ asset('js/change-password.js') }}"></script>
-@endsection
+@push('scripts')
+    <script src="{{ asset('js/select2.js') }}"></script>
+    <script src="{{ asset('js/change-password.js') }}"></script>
+@endpush
