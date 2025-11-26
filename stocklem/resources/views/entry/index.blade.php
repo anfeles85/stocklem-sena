@@ -21,7 +21,6 @@
                         <th>FECHA</th>
                         <th>CANTIDAD</th>
                         <th>ARTÍCULO</th>
-                        <th>USUARIO</th>
 
                         @can('administrador')
                         <th>ACCIONES</th>
@@ -36,7 +35,6 @@
                             <td>{{ $entry->date_entry }}</td>
                             <td>{{ $entry->quantity }}</td>
                             <td>{{ $entry->article->name ?? 'Sin artículo' }}</td>
-                            <td>{{ $entry->user->name ?? 'Sin usuario' }}</td>
                             
                             @can('administrador')
                             <td>
@@ -80,6 +78,7 @@
                                                         <p class="mb-2"><strong>Fecha de expiración: </strong>{{ $entry->expiration_date ?? 'Sin fecha de expiración' }}</p>
                                                         <p class="mb-2"><strong>Cantidad: </strong>{{ $entry->quantity}}</p>
                                                         <p class="mb-2"><strong>Observación: </strong>{{$entry->observations ?? 'Sin observación' }}</p>
+                                                        <p class="mb-2"><strong>Usuario: </strong>{{ $entry->user->name}}</p>
                                                     </div>
                                                 </div>
                                             </div>

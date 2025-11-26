@@ -81,6 +81,7 @@
                                                         <p class="mb-2"><strong>Cantidad: </strong>{{ $issue->quantity}}</p>
                                                         <p class="mb-2"><strong>Persona: </strong>{{ $issue->person->name}}</p>
                                                         <p class="mb-2"><strong>Observación: </strong>{{ $issue->observations ?? 'Sin observación' }}</p>
+                                                        <p class="mb-2"><strong>Usuario: </strong>{{ $issue->user->name}}</p>
                                                     </div>
                                                 </div>
                                             </div>
