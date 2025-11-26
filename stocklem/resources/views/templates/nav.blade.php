@@ -1,17 +1,18 @@
 <aside
-    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-sena-light shadow p-3"
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl fixed-start ms-3 bg-sena-light shadow"
     id="sidenav-main">
     <div class="sidenav-header">
-        <i class="fas fa-times p-3 cursor-pointer text-sena-light opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        <i class="fas fa-times cursor-pointer text-sena-light opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-3 d-flex flex-column align-items-center" href="{{ route('index') }}">
-            <img src="{{ asset('img/stockclem-logo.png') }}" class="img-fluid navbar-brand-img mb-2"
+        <a class="navbar-brand d-flex flex-column align-items-center" href="{{ route('index') }}">
+            <img src="{{ asset('img/stockclem-logo.png') }}" class="img-fluid navbar-brand-img mb-1"
                 style="max-height: 100px;" alt="STOCKCLEM Logo">
-            <h4 class="text-sena mb-0 fw-bold">STOCKCLEM</h4>
-            <small class="text-sena-light">Sistema de Inventario</small>
+            <h5 class="text-sena mb-0 fw-bold">STOCKCLEM</h5>
+            <small class="text-sena-light" style="font-size: 0.75rem;">Sistema de Inventario</small>
         </a>
+        
     </div>
-    <hr class="horizontal dark mt-0">
+    <hr class="horizontal gray-light mt-0">
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
 

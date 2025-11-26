@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl custom-navbar bg-sena"
+<nav class="navbar navbar-main nav-customized navbar-expand-lg shadow-none custom-navbar bg-sena"
     id="navbarBlur" data-scroll="false">
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb" class="d-flex align-items-center">
@@ -14,9 +14,9 @@
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <ul class="navbar-nav ms-md-auto justify-content-end">
                 <li class="nav-item d-flex align-items-center me-3">
-                    <a href="{{ route('help') }}" class="nav-link text-white font-weight-bold px-0">
+                    <a href="{{ route('help') }}" class="nav-link text-white font-weight-bold px-0" target="blank">
                         <i class="fas fa-question-circle me-1"></i>
-                        <span class="d-sm-inline d-none fs-6">Ayuda</span>
+                        <span class="d-sm-inline d-none fs-6" >Ayuda</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown d-flex align-items-center">
