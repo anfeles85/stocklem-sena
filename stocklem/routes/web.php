@@ -116,8 +116,13 @@ Route::middleware(['auth', 'can:administrador'])->prefix('unit')->group(function
     Route::delete('/force-delete/{id}', [UnitController::class, 'forceDelete'])->name('unit.forceDelete');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(function () {
+// Rutas de artículos - Solo lectura para coordinador
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('article')->group(function () {
     Route::get('/index', [ArticleController::class, 'index'])->name('article.index');
+});
+
+// Rutas de artículos - Solo administrador puede crear/editar/eliminar
+Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(function () {
     Route::get('/create', [ArticleController::class, 'create'])->name('article.create');
     Route::post('/store', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
@@ -128,8 +133,13 @@ Route::middleware(['auth', 'can:administrador'])->prefix('article')->group(funct
     Route::post('articulos/importar', [ArticleController::class, 'import'])->name('article.import.run');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('entry')->group(function () {
+// Rutas de entradas - Solo lectura para coordinador
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('entry')->group(function () {
     Route::get('/index', [EntryController::class, 'index'])->name('entry.index');
+});
+
+// Rutas de entradas - Solo administrador puede crear/editar/eliminar
+Route::middleware(['auth', 'can:administrador'])->prefix('entry')->group(function () {
     Route::get('/create', [EntryController::class, 'create'])->name('entry.create');
     Route::post('/store', [EntryController::class, 'store'])->name('entry.store');
     Route::get('/edit/{id}', [EntryController::class, 'edit'])->name('entry.edit');
@@ -137,8 +147,13 @@ Route::middleware(['auth', 'can:administrador'])->prefix('entry')->group(functio
     Route::delete('/destroy/{id}', [EntryController::class, 'destroy'])->name('entry.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('issue')->group(function () {
+// Rutas de salidas - Solo lectura para coordinador
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('issue')->group(function () {
     Route::get('/index', [IssueController::class, 'index'])->name('issue.index');
+});
+
+// Rutas de salidas - Solo administrador puede crear/editar/eliminar
+Route::middleware(['auth', 'can:administrador'])->prefix('issue')->group(function () {
     Route::get('/create', [IssueController::class, 'create'])->name('issue.create');
     Route::post('/store', [IssueController::class, 'store'])->name('issue.store');
     Route::get('/edit/{id}', [IssueController::class, 'edit'])->name('issue.edit');
@@ -146,7 +161,8 @@ Route::middleware(['auth', 'can:administrador'])->prefix('issue')->group(functio
     Route::delete('/destroy/{id}', [IssueController::class, 'destroy'])->name('issue.destroy');
 });
 
-Route::middleware(['auth', 'can:administrador'])->prefix('reports')->group(function () {
+// Rutas de reportes - Ambos roles tienen acceso completo
+Route::middleware(['auth', 'can:admin-coordinador'])->prefix('reports')->group(function () {
     Route::get('/index', [ReportController::class, 'index'])->name('reports.index');
     Route::get('/export_articles', [ReportController::class, 'export_articles'])->name('reports.articles');
     Route::post('/export_movements_by_article', [ReportController::class, 'export_movements_by_article'])->name('reports.movements_article');

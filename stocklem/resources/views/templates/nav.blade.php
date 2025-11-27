@@ -31,7 +31,7 @@
                 </li>
             @endcan
 
-            @can('admin-coordinador')
+            @can('administrador')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('person.*') ? 'active' : '' }} text-sena-light"
                         href="{{ route('person.index') }}">
@@ -46,7 +46,7 @@
                 </li>
             @endcan
 
-            @can('admin-coordinador')
+            @can('administrador')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }} text-sena-light"
                         href="{{ route('users.index') }}">
@@ -61,7 +61,7 @@
                 </li>
             @endcan
 
-            @can('admin-coordinador')
+            @can('administrador')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('supplier.*') ? 'active' : '' }} text-sena-light"
                         href="{{ route('supplier.index') }}">
@@ -91,7 +91,7 @@
                 </li>
             @endcan
 
-            @can('admin-coordinador')
+            @can('administrador')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('category.*') ? 'active' : '' }} text-sena-light"
                         href="{{ route('category.index') }}">
@@ -106,7 +106,7 @@
                 </li>
             @endcan
 
-            @can('admin-coordinador')
+            @can('administrador')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('presentation.*') ? 'active' : '' }} text-sena-light"
                         href="{{ route('presentation.index') }}">
@@ -151,7 +151,7 @@
                 </li>
             @endcan
 
-            @can('admin-coordinador')
+            @can('administrador')
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('unit.*') ? 'active' : '' }} text-sena-light"
                         href="{{ route('unit.index') }}">

@@ -22,10 +22,8 @@
                         <th>NOMBRE</th>
                         <th>CANTIDAD</th>
                         <th>CATEGORÍA</th>
-                        @can('administrador')
-                            <th>ESTADO</th>
-                            <th>ACCIONES</th>
-                        @endcan
+                        <th>ESTADO</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,12 +38,13 @@
                                     {{ $article->status }}
                                 </span>
                             </td>
-                            @can('administrador')
-                                <td>
-                                    <button type="button" class="btn btn-info btn-sm" title="Ver" data-bs-toggle="modal"
-                                        data-bs-target="#viewModal{{ $article->id }}">
-                                        <i class="fa-solid fa-eye"></i>
-                                    </button>
+
+                            <td>
+                                <button type="button" class="btn btn-info btn-sm" title="Ver" data-bs-toggle="modal"
+                                    data-bs-target="#viewModal{{ $article->id }}">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                                @can('administrador')
                                     <a href="{{ route('article.edit', $article->id) }}" class="btn btn-warning btn-sm me-1"
                                         title="Editar">
                                         <i class="fas fa-edit"></i>
@@ -82,8 +81,9 @@
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
-                                </td>
-                            @endcan
+                                @endcan
+                            </td>
+
                         </tr>
                         {{-- Modal con detalles del artículo --}}
                         <div class="modal fade" id="viewModal{{ $article->id }}" tabindex="-1" aria-hidden="true">
