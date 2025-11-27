@@ -56,36 +56,30 @@
                                 @endcan
                             </td>
                         </tr>
-
-                        
-                        {{-- Modal con detalles de la entrada --}}
-                        <div class="modal fade" id="viewModal{{ $issue->id }}" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content shadow-lg border-0"
-                                    style="width: fit-content; min-width: 300px; max-width: 600px; margin: 0 auto;">
-                                    <div class="modal-header" style="background-color: #198754;">
-                                        <h5 class="modal-title text-white">
-                                            <i class="fas fa-info-circle me-2"></i>Detalles de la salida
-                                        </h5>
-                                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body text-black">
-                                        <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <p class="mb-2"><strong>ID: </strong>{{ $issue->id }}</p>
-                                                    <p class="mb-2"><strong>Codigo SENA:
-                                                        </strong>{{ $issue->sena_code ?? 'Sin codigo SENA' }}</p>
-                                                    <p class="mb-2"><strong>Fecha de salida:
-                                                        </strong>{{ $issue->date_issue }}</p>
-                                                    <p class="mb-2"><strong>Articulo:
-                                                        </strong>{{ $issue->article->name }}</p>
-                                                    <p class="mb-2"><strong>Cantidad: </strong>{{ $issue->quantity }}</p>
-                                                    <p class="mb-2"><strong>Persona: </strong>{{ $issue->person->name }}
-                                                    </p>
-                                                    <p class="mb-2"><strong>Observación:
-                                                        </strong>{{ $issue->observations ?? 'Sin observación' }}</p>
+                    {{-- Modal con detalles de la entrada --}}
+                            <div class="modal fade" id="viewModal{{ $issue->id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content shadow-lg border-0"
+                                        style="width: fit-content; min-width: 300px; max-width: 600px; margin: 0 auto;">
+                                        <div class="modal-header" style="background-color: #198754;">
+                                            <h5 class="modal-title text-white">
+                                                <i class="fas fa-info-circle me-2"></i>Detalles de la salida
+                                            </h5>
+                                            <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-black">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="mb-2"><strong>ID: </strong>{{ $issue->id }}</p>
+                                                        <p class="mb-2"><strong>Codigo SENA: </strong>{{ $issue->sena_code ?? 'Sin codigo SENA' }}</p>
+                                                        <p class="mb-2"><strong>Fecha de salida: </strong>{{ $issue->date_issue }}</p>
+                                                        <p class="mb-2"><strong>Articulo: </strong>{{ $issue->article->name}}</p>
+                                                        <p class="mb-2"><strong>Cantidad: </strong>{{ $issue->quantity}}</p>
+                                                        <p class="mb-2"><strong>Persona: </strong>{{ $issue->person->name}}</p>
+                                                        <p class="mb-2"><strong>Observación: </strong>{{ $issue->observations ?? 'Sin observación' }}</p>
+                                                        <p class="mb-2"><strong>Usuario: </strong>{{ $issue->user->name}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

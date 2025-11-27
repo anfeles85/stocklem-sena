@@ -58,6 +58,11 @@ class IssueController extends Controller
             $errors = $validator->errors();
             return redirect()->route('issue.create')->withInput()->withErrors($errors);
         }
+
+        $data = $request->all();
+        $data['user_id'] = auth()->id();
+
+        Issue::create($data);
         
         try {
             Issue::create($request->all());
