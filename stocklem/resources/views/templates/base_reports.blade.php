@@ -16,7 +16,7 @@
 
     <!-- Logo Stocklem centrado debajo -->
     <div style="text-align: center;">
-        <img src="{{ asset('img/stockclem-logo.png') }}" alt="STOCKCLEM Logo" style="height: 80px;">
+        <img src="{{ asset('img/stockclem-logo-reports.png') }}" alt="STOCKCLEM Logo" style="height: 80px;">
         <h4 style="color: #39a900; margin: 8px 0 0 0;">STOCKCLEM</h4>
     </div>
 
