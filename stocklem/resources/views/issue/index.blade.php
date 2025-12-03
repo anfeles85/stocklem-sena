@@ -72,13 +72,14 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <p class="mb-2"><strong>ID: </strong>{{ $issue->id }}</p>
+                                                        <p class="mb-2"><strong>Creado por: </strong>{{ $issue->user->name}}</p>
+                                                        <p class="mb-2"><strong>Articulo: </strong>{{ $issue->article->name}}</p>
                                                         <p class="mb-2"><strong>Codigo SENA: </strong>{{ $issue->sena_code ?? 'Sin codigo SENA' }}</p>
                                                         <p class="mb-2"><strong>Fecha de salida: </strong>{{ $issue->date_issue }}</p>
-                                                        <p class="mb-2"><strong>Articulo: </strong>{{ $issue->article->name}}</p>
                                                         <p class="mb-2"><strong>Cantidad: </strong>{{ $issue->quantity}}</p>
-                                                        <p class="mb-2"><strong>Persona: </strong>{{ $issue->person->name}}</p>
+                                                        <p class="mb-2"><strong>Persona asignada: </strong>{{ $issue->person->name}}</p>
                                                         <p class="mb-2"><strong>Observación: </strong>{{ $issue->observations ?? 'Sin observación' }}</p>
-                                                        <p class="mb-2"><strong>Usuario: </strong>{{ $issue->user->name}}</p>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

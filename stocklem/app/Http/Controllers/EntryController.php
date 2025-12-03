@@ -45,7 +45,7 @@ class EntryController extends Controller
      */
     public function create()
     {
-        $articles = Article::all();
+        $articles = Article::where('status', 'ACTIVO')->get();
         return view('entry.create', compact('articles'));
     }
 
@@ -82,7 +82,7 @@ class EntryController extends Controller
 {
     $entry = Entry::find($id);
     if ($entry) {
-        $articles = Article::all();
+        $articles = Article::where('status', 'ACTIVO')->get();
         return view('entry.edit', compact('entry', 'articles'));
     } else {
         session()->flash('error', 'No se encontró la entrada.');

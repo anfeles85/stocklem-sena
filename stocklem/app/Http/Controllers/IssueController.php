@@ -40,7 +40,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        $articles = Article::all();
+        $articles = Article::where('status', 'ACTIVO')->get();
         $persons = Person::all();
         $issue = Issue::all();
 
@@ -61,11 +61,9 @@ class IssueController extends Controller
 
         $data = $request->all();
         $data['user_id'] = auth()->id();
-
-        Issue::create($data);
         
         try {
-            Issue::create($request->all());
+            Issue::create($data);
             return redirect()->route('issue.index')->with('success', 'Salida creada exitosamente');
         } catch (QueryException $e) {
             if ($e->getCode() == '45000') {
@@ -90,7 +88,7 @@ class IssueController extends Controller
     {
         $issue = Issue::find($id);
         if ($issue) {
-            $articles = Article::all();
+            $articles = Article::where('status', 'ACTIVO')->get();
             $persons = Person::all();
 
             return view('issue.edit', compact('issue', 'articles', 'persons'));

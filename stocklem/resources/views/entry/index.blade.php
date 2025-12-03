@@ -69,13 +69,14 @@
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-12">
+                                                        <p class="mb-2"><strong>ID: </strong>{{ $entry->id}}</p>
+                                                        <p class="mb-2"><strong>Creado por: </strong>{{ $entry->user->name}}</p>
+                                                        <p class="mb-2"><strong>Articulo: </strong>{{ $entry->article->name}}</p>
                                                         <p class="mb-2"><strong>Codigo SENA: </strong>{{ $entry->sena_code ?? 'Sin codigo SENA' }}</p>
                                                         <p class="mb-2"><strong>Fecha de entrada: </strong>{{ $entry->date_entry }}</p>
-                                                        <p class="mb-2"><strong>Articulo: </strong>{{ $entry->article->name}}</p>
                                                         <p class="mb-2"><strong>Fecha de expiración: </strong>{{ $entry->expiration_date ?? 'Sin fecha de expiración' }}</p>
                                                         <p class="mb-2"><strong>Cantidad: </strong>{{ $entry->quantity}}</p>
                                                         <p class="mb-2"><strong>Observación: </strong>{{$entry->observations ?? 'Sin observación' }}</p>
-                                                        <p class="mb-2"><strong>Usuario: </strong>{{ $entry->user->name}}</p>
                                                     </div>
                                                 </div>
                                             </div>
