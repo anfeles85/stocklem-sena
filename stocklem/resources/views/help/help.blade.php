@@ -80,7 +80,7 @@ main {
                 </div>
 
                 <div class="list-group list-group-flush">
-                    <a href="{{ asset('manuals/manual_iniciar_sesion.pdf') }}" target="blank" class="help-item list-group-item-action mb-3">
+                    <a href="{{ asset('manuals/manual_iniciar_sesion.pdf') }}" target="_blank" class="help-item list-group-item-action mb-3">
                         <div class="d-flex align-items-center">
                             <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3">
                                 <i class="fas fa-right-to-bracket fa-lg"></i>
@@ -92,7 +92,7 @@ main {
                             <i class="fas fa-chevron-right ms-auto text-muted"></i>
                         </div>
                     </a>
-                    <a href="{{ asset('manuals/manual_recuperar_contraseña.pdf') }}" target="blank" class="help-item list-group-item-action mb-3">
+                    <a href="{{ asset('manuals/manual_recuperar_contraseña.pdf') }}" target="_blank" class="help-item list-group-item-action mb-3">
                         <div class="d-flex align-items-center">
                             <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3">
                                 <i class="fas fa-key fa-lg"></i>
@@ -111,7 +111,7 @@ main {
                     <h3 class="fw-bold mb-0">Rol de Administrador</h3>
                 </div>
                 <div class="list-group list-group-flush">
-                    <a href="{{ asset('manuals/manual_gestión_usuarios.pdf') }}" class="help-item list-group-item-action mb-3">
+                    <a href="{{ asset('manuals/manual_gestión_usuarios.pdf') }}" target="_blank" class="help-item list-group-item-action mb-3">
                         <div class="d-flex align-items-center">
                             <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3">
                                 <i class="fas fa-users-cog fa-lg"></i>
@@ -130,7 +130,7 @@ main {
                     <h3 class="fw-bold mb-0">Rol de Coordinador Administrativo</h3>
                 </div>
                 <div class="list-group list-group-flush">
-                     <a href="{{ asset('manuals/manual_aprobar_solicitudes.pdf') }}" class="help-item list-group-item-action mb-3">
+                     <a href="{{ asset('manuals/manual_aprobar_solicitudes.pdf') }}" target="_blank" class="help-item list-group-item-action mb-3">
                         <div class="d-flex align-items-center">
                             <div class="icon-circle rounded-circle d-flex align-items-center justify-content-center me-3">
                                 <i class="fas fa-tasks fa-lg"></i>
